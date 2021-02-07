@@ -1,5 +1,7 @@
 package view;
 
+import controller.GameEngine;
+
 /**
  * This class is used to execute entered command i.e.: call respective functions from
  * controller that will process the command.
@@ -13,7 +15,7 @@ public class ExecuteCommandView {
 	 * @param p_filename The map file to be read
 	 * @return void It returns nothings
 	 */
-	void readMapFile(String p_filename) {
-		
+	void readMapFile(GameEngine p_gameEngineObject, String p_filename) {
+		// Akhil use this GameEngine object to populate listOfContinents
 	}
 }
