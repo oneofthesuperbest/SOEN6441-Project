@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 /**
  * Represents a country.
  */
@@ -13,7 +11,6 @@ public class CountryModel {
 	private PlayerModel d_owner;
 
 	private ArrayList<CountryModel> d_neighbourCountries = new ArrayList<CountryModel>();
-
 	/**
 	 * Creates a country with the specified order, name, continent order and, coordinate.
 	 * @param p_order			Order of the country according to the map file.
