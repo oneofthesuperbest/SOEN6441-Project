@@ -6,59 +6,56 @@ import java.util.ArrayList;
  * Represents a continent.
  */
 public class ContinentModel {
-	private int continentOrder;
-	private String name;
-	private int army;
-	private String color;
-	private ArrayList<CountryModel> countries = new ArrayList<CountryModel>();
+	private int d_order;
+	private String d_name;
+	private int d_army;
+	private String d_color;
+	private ArrayList<CountryModel> d_countries = new ArrayList<CountryModel>();
 
 	/**
-	 * Create a continent with the specified name, army, color.
-	 * @param continentOrder Order of the continent according to the map.
-	 * @param name  Name of the continent.
-	 * @param color Color of the continent.
-	 * @param army  Army value for the continent.
+	 * Create a continent with the specified Order, name, color and, army.
+	 * @param p_order Order of the continent according to the map file.
+	 * @param p_name  Name of the continent according to the map file.
+	 * @param p_color Color of the continent according to the map file.
+	 * @param p_army  Army value for the continent according to the map file.
 	 */
-	public ContinentModel(int continentOrder, String name, String color, int army) {
-		this.continentOrder = continentOrder;
-		this.name = name;
-		this.color = color;
-		this.army = army;
+	public ContinentModel(int p_order, String p_name, String p_color, int p_army) {
+		this.d_order = p_order;
+		this.d_name = p_name;
+		this.d_color = p_color;
+		this.d_army = p_army;
 	}
 
 	/**
-	 * Get the order of the continent
+	 * Get the order of the continent.
 	 * @return order of the continent.
 	 */
-	public int getContinentOrder() {
-		return this.continentOrder;
+	public int getOrder() {
+		return this.d_order;
 	}
 
 	/**
 	 * Get the name of the continent.
-	 *
-	 * @return String representing the name of the country.
+	 * @return Name of the country.
 	 */
 	public String getName() {
-		return this.name;
+		return this.d_name;
 	}
 
 	/**
 	 * Get the army value for the continent.
-	 *
 	 * @return Int representing the army value.
 	 */
 	public int getArmy() {
-		return this.army;
+		return this.d_army;
 	}
 
 	/**
 	 * Get the color of the continent.
-	 *
 	 * @return String representing the color.
 	 */
 	public String getColor(){
-		return this.color;
+		return this.d_color;
 	}
 
 	/**
@@ -66,6 +63,6 @@ public class ContinentModel {
 	 * @return ArrayList of countries.
 	 */
 	public ArrayList<CountryModel> getCountries() {
-		return this.countries;
+		return this.d_countries;
 	}
 }
