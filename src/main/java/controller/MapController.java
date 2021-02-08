@@ -127,7 +127,7 @@ public class MapController {
             // Add the country to the continent as well.
             for (ContinentModel continent : getContinents()){
                 if (continent.getOrder() == l_continentOrder){
-                    continent.getCountries().add(l_currentCountry);
+                    continent.getCountries().add(l_currentCountry.getOrder());
                 }
             }
             p_idx++;
@@ -225,36 +225,5 @@ public class MapController {
 
         l_lines = Files.readAllLines(l_path, StandardCharsets.UTF_8);
         return l_lines;
-    }
-
-    // Remove the main function before merging with main.
-    public static void main(String[] args) {
-        String SAMPLE_MAP_PATH_2 = "res/maps/bigeurope/bigeurope.map";
-        MapController controller = new MapController();
-        try{
-            controller.loadMapData(SAMPLE_MAP_PATH_2);
-
-            System.out.println("List of continents stored in the GameState.");
-            for(ContinentModel continent : controller.getContinents()){
-                System.out.print(continent.getOrder() + " ");
-                System.out.print(continent.getName() + " ");
-                System.out.print(continent.getArmy() + " ");
-                System.out.print(continent.getColor() + " ");
-                System.out.println("Total Countries: " + continent.getCountries().size());
-            }
-
-            System.out.println();
-
-            System.out.println("List of countries saved in the GameState.");
-            for(CountryModel country : controller.getCountries()){
-                System.out.print(country.getOrder() + " ");
-                System.out.print(country.getName() + " ");
-                System.out.print(country.getContinentOrder() + " ");
-                System.out.println("Total neighbours: " + country.getNeighbourCountries().size());
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

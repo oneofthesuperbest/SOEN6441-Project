@@ -10,7 +10,7 @@ public class ContinentModel {
 	private String d_name;
 	private int d_army;
 	private String d_color;
-	private ArrayList<CountryModel> d_countries = new ArrayList<CountryModel>();
+	private ArrayList<Integer> d_countries = new ArrayList<Integer>();
 
 	/**
 	 * Create a continent with the specified Order, name, color and, army.
@@ -62,7 +62,7 @@ public class ContinentModel {
 	 * Get the countries under this continent.
 	 * @return ArrayList of countries.
 	 */
-	public ArrayList<CountryModel> getCountries() {
+	public ArrayList<Integer> getCountries() {
 		return this.d_countries;
 	}
 }

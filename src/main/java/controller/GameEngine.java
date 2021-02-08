@@ -18,7 +18,7 @@ public class GameEngine {
 	 * @param p_listOfContinents List of continents.
 	 */
 	public void setListOfContinents(ArrayList<ContinentModel> p_listOfContinents) {
-		this.d_listOfContinents = d_listOfContinents;
+		this.d_listOfContinents = p_listOfContinents;
 	}
 
 	/**

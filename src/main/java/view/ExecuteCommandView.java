@@ -16,6 +16,7 @@ public class ExecuteCommandView {
 	 * for processing and creation of relevant objects
 	 * 
 	 * @param p_filename The map file to be read
+	 * @param p_gameEngineObject Data read from map will be added to the p_gameEngineObject
 	 * @return void It returns nothings
 	 */
 	void readMapFile(GameEngine p_gameEngineObject, String p_filename) {
@@ -28,6 +29,7 @@ public class ExecuteCommandView {
 			p_gameEngineObject.setListOfContinents(l_mapController.getContinents());
 			p_gameEngineObject.setListOfCountries(l_mapController.getCountries());
 			p_gameEngineObject.setBorderGraph(l_mapController.getBorders());
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
