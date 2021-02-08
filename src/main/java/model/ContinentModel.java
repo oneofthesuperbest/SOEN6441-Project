@@ -3,25 +3,69 @@ package model;
 import java.util.ArrayList;
 
 /**
- * This class will store information related to specific continent
+ * Represents a continent.
  */
 public class ContinentModel {
-	String d_continentId;
-	int d_continentValue;
-	ArrayList<CountryModel> d_listOfCountries = new ArrayList<CountryModel>();
+	private int continentOrder;
+	private String name;
+	private int army;
+	private String color;
+	private ArrayList<CountryModel> countries = new ArrayList<CountryModel>();
 
-	public ContinentModel(String p_continentId, int p_continentValue) {
-		d_continentId  = p_continentId;
-		d_continentValue = p_continentValue;
+	/**
+	 * Create a continent with the specified name, army, color.
+	 * @param continentOrder Order of the continent according to the map.
+	 * @param name  Name of the continent.
+	 * @param color Color of the continent.
+	 * @param army  Army value for the continent.
+	 */
+	public ContinentModel(int continentOrder, String name, String color, int army) {
+		this.continentOrder = continentOrder;
+		this.name = name;
+		this.color = color;
+		this.army = army;
 	}
-	
-	void addCountries(ArrayList<CountryModel> p_listOfCountries) {
-		for(CountryModel l_countryIndex : p_listOfCountries) {
-			d_listOfCountries.add(l_countryIndex);
-		}
+
+	/**
+	 * Get the order of the continent
+	 * @return order of the continent.
+	 */
+	public int getContinentOrder() {
+		return this.continentOrder;
 	}
-	
-	void addCountry(CountryModel p_country) {
-		d_listOfCountries.add(p_country);
+
+	/**
+	 * Get the name of the continent.
+	 *
+	 * @return String representing the name of the country.
+	 */
+	public String getName() {
+		return this.name;
+	}
+
+	/**
+	 * Get the army value for the continent.
+	 *
+	 * @return Int representing the army value.
+	 */
+	public int getArmy() {
+		return this.army;
+	}
+
+	/**
+	 * Get the color of the continent.
+	 *
+	 * @return String representing the color.
+	 */
+	public String getColor(){
+		return this.color;
+	}
+
+	/**
+	 * Get the countries under this continent.
+	 * @return ArrayList of countries.
+	 */
+	public ArrayList<CountryModel> getCountries() {
+		return this.countries;
 	}
 }
