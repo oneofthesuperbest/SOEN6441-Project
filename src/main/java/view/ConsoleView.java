@@ -23,9 +23,11 @@ public class ConsoleView {
 		@SuppressWarnings("resource")
 		Scanner l_scannerObject = new Scanner(System.in);
 		while(true) {
-			System.out.println("Please enter your command");
+			System.out.println("Enter your command");
 			String l_command = l_scannerObject.nextLine();
 			l_VCVObject.isValidCommand(d_gameEngineObject, l_command, this);
+			
+			//if phase 2 then exit loop and call GameEngine loadmap with l_command
 		}
 	}
 	

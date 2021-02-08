@@ -11,7 +11,8 @@ class ValidateCommandView {
 	String d_commandSeparator = " ";
 
 	/**
-	 * This function is to accept the command that needs to be validated
+	 * This function Validated the base command and calls respective function from ExecuteCommandView
+	 * class
 	 * 
 	 * @param p_gameEngineObject Reference of the GameEngine
 	 * @param p_command          The command that needs to be validated
@@ -27,6 +28,7 @@ class ValidateCommandView {
 				if (l_commandParameters.length == 2) {
 					ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 					l_executeCVObject.readMapFile(p_gameEngineObject, l_commandParameters[1]);
+					p_consoleViewObject.setPhase(1);
 				} else {
 					System.out.println("Incorrect command: filename not entered.");
 				}
@@ -35,7 +37,8 @@ class ValidateCommandView {
 				System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
 				if (l_commandParameters.length == 2) {
 					ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
-					
+					l_executeCVObject.readMapFile(p_gameEngineObject, l_commandParameters[1]);
+					p_consoleViewObject.setPhase(2);
 				} else {
 					System.out.println("Incorrect command: filename not entered.");
 				}
@@ -52,6 +55,7 @@ class ValidateCommandView {
 					return;
 				}
 			}
+			System.out.println("Invalid command: Please check your command");
 		} else if (l_phase == 2) {
 			for (GamePlayCommandList l_commandParameter : GamePlayCommandList.values()) {
 				if (l_commandParameters[0].equals(l_commandParameter.getCommandString())) {
@@ -60,6 +64,7 @@ class ValidateCommandView {
 					return;
 				}
 			}
+			System.out.println("Invalid command: Please check your command");
 		}
 	}
 
