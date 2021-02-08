@@ -5,29 +5,56 @@ package view;
  */
 public enum MapEditingCommandListForUser {
 	EDITCONTINENT("editcontinent") {
+		/**
+		 * This functions returns parameter requirement for -add sub-command
+		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
+		 */
 		public int[] getAddCommandTypes() {
 			return new int[]{1, 0}; 
 		}
+		
+		/**
+		 * This functions returns parameter requirement for -remove sub-command
+		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
+		 */
 		public int[] getRemoveCommandTypes() {
 			return new int[]{1};
 		}
 	},
 	EDITCOUNTRY("editcountry") {
+		/**
+		 * This functions returns parameter requirement for -add sub-command
+		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
+		 */
 		public int[] getAddCommandTypes() {
 			return new int[]{1, 1}; 
 		}
+		
+		/**
+		 * This functions returns parameter requirement for -remove sub-command
+		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
+		 */
 		public int[] getRemoveCommandTypes() {
 			return new int[]{1};
 		}
 	}, 
 	EDITNEIGHBOR("editneighbor") {
+		/**
+		 * This functions returns parameter requirement for -add sub-command
+		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
+		 */
 		public int[] getAddCommandTypes() {
 			return new int[]{1, 1}; 
 		}
+		
+		/**
+		 * This functions returns parameter requirement for -remove sub-command
+		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
+		 */
 		public int[] getRemoveCommandTypes() {
 			return new int[]{1, 1};
 		}
-	}, SHOWMAP("showmap"), EDITMAP("editmap"), VALIDATEMAP("validatemap");
+	}, SHOWMAP("showmap"), EDITMAP("editmap"), SAVEMAP("savemap"), VALIDATEMAP("validatemap"), ADD("-add"), REMOVE("-remove");
 	
 	private String d_command;
 	

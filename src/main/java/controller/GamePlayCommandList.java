@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 /**
  * This enum is used to store list of valid commands for map editing phase.
