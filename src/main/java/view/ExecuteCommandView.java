@@ -1,6 +1,9 @@
 package view;
 
 import controller.GameEngine;
+import controller.MapController;
+
+import java.io.IOException;
 
 /**
  * This class is used to execute entered command i.e.: call respective functions from
@@ -16,6 +19,17 @@ public class ExecuteCommandView {
 	 * @return void It returns nothings
 	 */
 	void readMapFile(GameEngine p_gameEngineObject, String p_filename) {
-		// Akhil use this GameEngine object to populate listOfContinents
+		MapController l_mapController = new MapController();
+		try {
+			// Load the data from map.
+			l_mapController.loadMapData(p_filename);
+
+			// Populating the game Engine object.
+			p_gameEngineObject.setListOfContinents(l_mapController.getContinents());
+			p_gameEngineObject.setListOfCountries(l_mapController.getCountries());
+			p_gameEngineObject.setBorderGraph(l_mapController.getBorders());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

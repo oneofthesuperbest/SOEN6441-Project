@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * Represents a country.
  */
@@ -9,6 +11,8 @@ public class CountryModel {
 	private int d_continentOrder;
 	private CoordinateModel d_coordinate;
 	private PlayerModel d_owner;
+
+	private ArrayList<CountryModel> d_neighbourCountries = new ArrayList<CountryModel>();
 
 	/**
 	 * Creates a country with the specified order, name, continent order and, coordinate.
@@ -54,6 +58,14 @@ public class CountryModel {
 	 */
 	public CoordinateModel getCoordinate() {
 		return this.d_coordinate;
+	}
+
+	/**
+	 * Get the list of neighbours of this country.
+	 * @return List of neighbours.
+	 */
+	public ArrayList<CountryModel> getNeighbourCountries() {
+		return d_neighbourCountries;
 	}
 
 	/**
