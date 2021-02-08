@@ -11,7 +11,7 @@ public class MainView {
 	 * @param args Command-line arguments
 	 * @return null It does not return anything
 	 */
-	public static void Main(String[] args) {
+	public static void main(String[] args) {
 		ConsoleView l_consoleHandle = new ConsoleView();
 		System.out.println("Starting console...");
 		l_consoleHandle.startConsole();
