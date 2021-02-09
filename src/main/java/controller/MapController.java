@@ -10,37 +10,18 @@ import model.ContinentModel;
 import model.CoordinateModel;
 import model.CountryModel;
 
+/**
+ * Controller class for handling map data.
+ */
 public class MapController {
-    private ArrayList<ContinentModel> d_continents = new ArrayList<ContinentModel>();
-    private ArrayList<CountryModel> d_countries = new ArrayList<CountryModel>();
-    private int[][] d_borders;
+    private GameEngine d_gameEngine;
 
     /**
-     * Get the ArrayList of continents.
-     * @return List of continents.
+     * Create a new map controller with the specified GameEngine.
+     * @param p_gameEngine A GameEngine object which is populated with the map data.
      */
-    public ArrayList<ContinentModel> getContinents() {
-        return d_continents;
-    }
-
-    /**
-     * Get the ArrayList of countries.
-     * @return An List of countries.
-     */
-    public ArrayList<CountryModel> getCountries() {
-        return d_countries;
-    }
-
-    /**
-     * Get borders of the countries.
-     * @return A 2-d Array representing the borders between countries.
-     */
-    public int[][] getBorders() {
-        return d_borders;
-    }
-
-    public void setBorders(int[][] p_borders) {
-        this.d_borders = p_borders;
+    public MapController(GameEngine p_gameEngine) {
+        d_gameEngine = p_gameEngine;
     }
 
     /**
@@ -94,7 +75,7 @@ public class MapController {
             String l_continentName = l_segments[0];
             int l_continentArmy = Integer.parseInt(l_segments[1]);
             String l_color = l_segments[2];
-            getContinents().add(new ContinentModel(l_continentOrder, l_continentName, l_color, l_continentArmy));
+            d_gameEngine.getListOfContinents().add(new ContinentModel(l_continentOrder, l_continentName, l_color, l_continentArmy));
 
             p_idx++;
             l_continentOrder++;
@@ -122,10 +103,10 @@ public class MapController {
 
             CountryModel l_currentCountry = new CountryModel(l_countryOrder, l_countryName, l_continentOrder, l_coordinate);
 
-            getCountries().add(l_currentCountry);
+            d_gameEngine.getListOfCountries().add(l_currentCountry);
 
             // Add the country to the continent as well.
-            for (ContinentModel continent : getContinents()){
+            for (ContinentModel continent : d_gameEngine.getListOfContinents()){
                 if (continent.getOrder() == l_continentOrder){
                     continent.getCountries().add(l_currentCountry.getOrder());
                 }
@@ -142,7 +123,7 @@ public class MapController {
      * @return      current index
      */
     public int loadMapBordersFromFile(int p_idx, List<String> p_lines){
-        int totalCountries = getCountries().size();
+        int totalCountries = d_gameEngine.getListOfCountries().size();
         int[][] l_graph = new int[totalCountries][totalCountries];
 
         p_idx += 1;
@@ -176,7 +157,7 @@ public class MapController {
             p_idx++;
         }
 
-        setBorders(l_graph);
+        d_gameEngine.setBorderGraph(l_graph);
         return p_idx;
     }
 
@@ -204,7 +185,7 @@ public class MapController {
      * @return      Country.
      */
     public CountryModel getCountryByOrder(int p_order){
-        for(CountryModel country : getCountries()){
+        for(CountryModel country : d_gameEngine.getListOfCountries()){
             if (country.getOrder() == p_order){
                 return country;
             }
@@ -213,13 +194,13 @@ public class MapController {
     }
 
     /**
-     * A private utility method to read the contents from file.
+     * A utility method to read the contents from file.
      * @param l_fileName The complete path of the file.
      * @return A List of all the lines in the file.
      *
      * @throws IOException Exception while reading the map file.
      */
-    private List<String> readMap(String l_fileName) throws IOException{
+    public List<String> readMap(String l_fileName) throws IOException{
         List<String> l_lines;
         Path l_path = Paths.get(l_fileName);
 
