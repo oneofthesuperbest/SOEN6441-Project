@@ -58,6 +58,7 @@ public class MapController {
                 }
             }
         }
+        System.out.println("Map Loaded successfully.");
     }
 
     /**
@@ -75,11 +76,12 @@ public class MapController {
             String l_continentName = l_segments[0];
             int l_continentArmy = Integer.parseInt(l_segments[1]);
             String l_color = l_segments[2];
-            d_gameEngine.getListOfContinents().add(new ContinentModel(l_continentOrder, l_continentName, l_color, l_continentArmy));
+            d_gameEngine.getMapState().getListOfContinents().add(new ContinentModel(l_continentOrder, l_continentName, l_color, l_continentArmy));
 
             p_idx++;
             l_continentOrder++;
         }
+        System.out.println("...Loaded Continents. Total: " + d_gameEngine.getMapState().getListOfContinents().size());
         return p_idx;
     }
 
@@ -103,16 +105,17 @@ public class MapController {
 
             CountryModel l_currentCountry = new CountryModel(l_countryOrder, l_countryName, l_continentOrder, l_coordinate);
 
-            d_gameEngine.getListOfCountries().add(l_currentCountry);
+            d_gameEngine.getMapState().getListOfCountries().add(l_currentCountry);
 
             // Add the country to the continent as well.
-            for (ContinentModel continent : d_gameEngine.getListOfContinents()){
+            for (ContinentModel continent : d_gameEngine.getMapState().getListOfContinents()){
                 if (continent.getOrder() == l_continentOrder){
                     continent.getCountries().add(l_currentCountry.getOrder());
                 }
             }
             p_idx++;
         }
+        System.out.println("...Loaded Countries. Total: " + d_gameEngine.getMapState().getListOfCountries().size());
         return p_idx;
     }
 
@@ -123,24 +126,20 @@ public class MapController {
      * @return      current index
      */
     public int loadMapBordersFromFile(int p_idx, List<String> p_lines){
-        int totalCountries = d_gameEngine.getListOfCountries().size();
+        int totalCountries = d_gameEngine.getMapState().getListOfCountries().size();
         int[][] l_graph = new int[totalCountries][totalCountries];
 
         p_idx += 1;
         while(checkSameBlock(p_idx, p_lines)){
             String[] l_segments = p_lines.get(p_idx).split(" ");
             // parse the string segments into integers.
-            int[] l_intSegments = Arrays
-                    .stream(l_segments)
-                    .mapToInt(Integer::parseInt)
-                    .toArray();
-            int l_startIndex = 1;
-            int l_endIndex = l_intSegments.length;
+            int[] l_intSegments = Arrays.stream(l_segments).mapToInt(Integer::parseInt).toArray();
+
             // slice the intSegments array [1:length]
-            int[] l_neighbours = IntStream
-                    .range(l_startIndex, l_endIndex)
-                    .map(i -> l_intSegments[i])
-                    .toArray();
+            int l_start = 1;
+            int l_end = l_intSegments.length;
+            int[] l_neighbours = IntStream.range(l_start, l_end).map(i -> l_intSegments[i]).toArray();
+
             int l_countryOrder = l_intSegments[0];
             CountryModel l_currentCountry = getCountryByOrder(l_countryOrder);
 
@@ -157,7 +156,8 @@ public class MapController {
             p_idx++;
         }
 
-        d_gameEngine.setBorderGraph(l_graph);
+        d_gameEngine.getMapState().setBorderGraph(l_graph);
+        System.out.println("...Loaded borders.");
         return p_idx;
     }
 
@@ -185,7 +185,7 @@ public class MapController {
      * @return      Country.
      */
     public CountryModel getCountryByOrder(int p_order){
-        for(CountryModel country : d_gameEngine.getListOfCountries()){
+        for(CountryModel country : d_gameEngine.getMapState().getListOfCountries()){
             if (country.getOrder() == p_order){
                 return country;
             }
