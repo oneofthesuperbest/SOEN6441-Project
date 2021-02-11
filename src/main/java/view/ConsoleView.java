@@ -20,15 +20,21 @@ public class ConsoleView {
 	void startConsole() {
 		ValidateCommandView l_VCVObject = new ValidateCommandView();
 		d_gameEngineObject = new GameEngine();
-		@SuppressWarnings("resource")
 		Scanner l_scannerObject = new Scanner(System.in);
+		String l_command;
 		while(true) {
 			System.out.println("Enter your command");
-			String l_command = l_scannerObject.nextLine();
+			l_command = l_scannerObject.nextLine();
 			l_VCVObject.isValidCommand(d_gameEngineObject, l_command, this);
 			
-			//if phase 2 then exit loop and call GameEngine loadmap with l_command
+			if(d_phase == 2) {
+				//if phase 2 then exit loop and call GameEngine loadmap with l_command
+				l_scannerObject.close();
+				break;
+			}
 		}
+		
+		d_gameEngineObject.loadGameEngine(l_command);
 	}
 	
 	/**

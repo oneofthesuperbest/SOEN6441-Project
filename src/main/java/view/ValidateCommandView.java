@@ -28,7 +28,7 @@ public class ValidateCommandView {
 				System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
 				if (l_commandParameters.length == 2) {
 					ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
-					System.out.println("Valid parameters. Loading map for editing.");
+					System.out.println("Valid parameters. Loading map for editing...");
 					l_executeCVObject.readMapFile(p_gameEngineObject, l_commandParameters[1]);
 					p_consoleViewObject.setPhase(1);
 				} else {
@@ -38,7 +38,7 @@ public class ValidateCommandView {
 			} else if (l_commandParameters[0].equals(GamePlayCommandList.LOADMAP.getCommandString())) {
 				System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
 				if (l_commandParameters.length == 2) {
-					System.out.println("Valid parameters. Loading map.");
+					System.out.println("Valid parameters. Loading GameEngine console...");
 					p_consoleViewObject.setPhase(2);
 					return;
 				} else {
@@ -56,17 +56,7 @@ public class ValidateCommandView {
 					System.out.println(
 							"Valid base command. Checking if all the sub-commands and their parameters (if any) are valid...");
 					hasValidMapEditingParameters(p_gameEngineObject, l_commandParameters, p_consoleViewObject);
-					return;
-				}
-			}
-			System.out.println("Invalid command: Please check your command");
-		} else if (l_phase == 2) {
-			// Phase 2 needs to be in controller
-			for (GamePlayCommandList l_commandParameter : GamePlayCommandList.values()) {
-				if (l_commandParameters[0].equals(l_commandParameter.getCommandString())) {
-					System.out.println(
-							"Valid base command. Checking if all the sub-commands and their parameters (if any) are valid...");
-
+					System.out.println("All sub-commands and their parameters (if any) are valid");
 					return;
 				}
 			}
@@ -99,6 +89,7 @@ public class ValidateCommandView {
 			}
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITCONTINENT.getCommandString())) {
 			// validate all sub-commands and parameters of editcontinent command
+			System.out.println("Validating all sub-commands and parameters of editcontinent command...");
 			int l_sunCommandIndex = 0;
 			for (int l_index = 1; l_index < p_commandParameters.length; l_index++) {
 				String l_commandOrParameter = p_commandParameters[l_index];
@@ -121,7 +112,7 @@ public class ValidateCommandView {
 							// We dont't have string parameters
 						}
 					}
-					l_index += (l_numberOfRequiredParameters.length - 1);
+					l_index += (l_numberOfRequiredParameters.length);
 				} else if (l_commandOrParameter.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
 					int[] l_numberOfRequiredParameters = MapEditingCommandListForUser.EDITCONTINENT.getRemoveCommandTypes();
 					for(int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
@@ -140,7 +131,7 @@ public class ValidateCommandView {
 							// We dont't have string parameters
 						}
 					}
-					l_index += (l_numberOfRequiredParameters.length - 1);
+					l_index += (l_numberOfRequiredParameters.length);
 				} else {
 					System.out.printf("Invalid sub-command at position %d: Please check your list of sub commands",
 							l_sunCommandIndex);
@@ -151,6 +142,7 @@ public class ValidateCommandView {
 			// Call EditContinent function
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITCOUNTRY.getCommandString())) {
 			// validate all sub-commands and parameters of editcountry command
+			System.out.println("Validating all sub-commands and parameters of editcountry command...");
 			int l_sunCommandIndex = 0;
 			for (int l_index = 1; l_index < p_commandParameters.length; l_index++) {
 				String l_commandOrParameter = p_commandParameters[l_index];
@@ -173,7 +165,7 @@ public class ValidateCommandView {
 							// We dont't have string parameters
 						}
 					}
-					l_index += (l_numberOfRequiredParameters.length - 1);
+					l_index += (l_numberOfRequiredParameters.length);
 				} else if (l_commandOrParameter.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
 					int[] l_numberOfRequiredParameters = MapEditingCommandListForUser.EDITCOUNTRY.getRemoveCommandTypes();
 					for(int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
@@ -192,7 +184,7 @@ public class ValidateCommandView {
 							// We dont't have string parameters
 						}
 					}
-					l_index += (l_numberOfRequiredParameters.length - 1);
+					l_index += (l_numberOfRequiredParameters.length);
 				} else {
 					System.out.printf("Invalid sub-command at position %d: Please check your list of sub commands",
 							l_sunCommandIndex);
@@ -203,6 +195,7 @@ public class ValidateCommandView {
 			// Call EditCountry function
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITNEIGHBOR.getCommandString())) {
 			// validate all sub-commands and parameters of editneighbor command
+			System.out.println("Validating all sub-commands and parameters of editneighbor command...");
 			int l_sunCommandIndex = 0;
 			for (int l_index = 1; l_index < p_commandParameters.length; l_index++) {
 				String l_commandOrParameter = p_commandParameters[l_index];
@@ -225,7 +218,7 @@ public class ValidateCommandView {
 							// We dont't have string parameters
 						}
 					}
-					l_index += (l_numberOfRequiredParameters.length - 1);
+					l_index += (l_numberOfRequiredParameters.length);
 				} else if (l_commandOrParameter.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
 					int[] l_numberOfRequiredParameters = MapEditingCommandListForUser.EDITNEIGHBOR.getRemoveCommandTypes();
 					for(int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
@@ -244,7 +237,7 @@ public class ValidateCommandView {
 							// We dont't have string parameters
 						}
 					}
-					l_index += (l_numberOfRequiredParameters.length - 1);
+					l_index += (l_numberOfRequiredParameters.length);
 				} else {
 					System.out.printf("Invalid sub-command at position %d: Please check your list of sub commands",
 							l_sunCommandIndex);
@@ -254,10 +247,5 @@ public class ValidateCommandView {
 			}
 			// Call EditNeighbour function
 		}
-	}
-
-	void hasValidGamePlayParameters(GameEngine p_gameEngineObject, String[] p_commandParameters,
-			ConsoleView p_consoleViewObject) {
-		// This needs to be in Controller
 	}
 }
