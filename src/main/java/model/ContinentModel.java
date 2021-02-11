@@ -13,7 +13,7 @@ public class ContinentModel {
 	private ArrayList<Integer> d_countries = new ArrayList<Integer>();
 
 	/**
-	 * Create a continent with the specified Order, name, color and, army.
+	 * Create a continent with the specified Order, name, color and, army..
 	 * @param p_order Order of the continent according to the map file.
 	 * @param p_name  Name of the continent according to the map file.
 	 * @param p_color Color of the continent according to the map file.
