@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 /**
- * Represents a continent.
+ * This class represents a continent.
  */
 public class ContinentModel {
 	private int d_order;
