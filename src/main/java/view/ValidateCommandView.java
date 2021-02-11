@@ -121,7 +121,7 @@ public class ValidateCommandView {
 							// We dont't have string parameters
 						}
 					}
-					l_index += (l_numberOfRequiredParameters.length - 1);
+					l_index += (l_numberOfRequiredParameters.length);
 				} else if (l_commandOrParameter.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
 					int[] l_numberOfRequiredParameters = MapEditingCommandListForUser.EDITCONTINENT.getRemoveCommandTypes();
 					for(int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
@@ -140,7 +140,7 @@ public class ValidateCommandView {
 							// We dont't have string parameters
 						}
 					}
-					l_index += (l_numberOfRequiredParameters.length - 1);
+					l_index += (l_numberOfRequiredParameters.length);
 				} else {
 					System.out.printf("Invalid sub-command at position %d: Please check your list of sub commands",
 							l_sunCommandIndex);
@@ -173,7 +173,7 @@ public class ValidateCommandView {
 							// We dont't have string parameters
 						}
 					}
-					l_index += (l_numberOfRequiredParameters.length - 1);
+					l_index += (l_numberOfRequiredParameters.length);
 				} else if (l_commandOrParameter.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
 					int[] l_numberOfRequiredParameters = MapEditingCommandListForUser.EDITCOUNTRY.getRemoveCommandTypes();
 					for(int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
@@ -192,7 +192,7 @@ public class ValidateCommandView {
 							// We dont't have string parameters
 						}
 					}
-					l_index += (l_numberOfRequiredParameters.length - 1);
+					l_index += (l_numberOfRequiredParameters.length);
 				} else {
 					System.out.printf("Invalid sub-command at position %d: Please check your list of sub commands",
 							l_sunCommandIndex);
@@ -225,7 +225,7 @@ public class ValidateCommandView {
 							// We dont't have string parameters
 						}
 					}
-					l_index += (l_numberOfRequiredParameters.length - 1);
+					l_index += (l_numberOfRequiredParameters.length);
 				} else if (l_commandOrParameter.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
 					int[] l_numberOfRequiredParameters = MapEditingCommandListForUser.EDITNEIGHBOR.getRemoveCommandTypes();
 					for(int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
@@ -244,7 +244,7 @@ public class ValidateCommandView {
 							// We dont't have string parameters
 						}
 					}
-					l_index += (l_numberOfRequiredParameters.length - 1);
+					l_index += (l_numberOfRequiredParameters.length);
 				} else {
 					System.out.printf("Invalid sub-command at position %d: Please check your list of sub commands",
 							l_sunCommandIndex);
