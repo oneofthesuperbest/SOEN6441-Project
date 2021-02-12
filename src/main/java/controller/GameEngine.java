@@ -22,12 +22,9 @@ public class GameEngine {
 	 * Used to load the GameEngine console for game play phase
 	 * @return none
 	 */
-	public void loadGameEngine(String p_command) {
-		System.out.println("GameEngine console loaded. Loading map...");
+	public void loadGameEngine() {
+		System.out.println("GameEngine console loaded.");
 		ValidateCommandController l_VCVObject = new ValidateCommandController();
-		String[] l_commandParameters = p_command.split(d_commandSeparator);
-		// Load map using the above command
-		
 		@SuppressWarnings("resource")
 		Scanner l_scannerObject = new Scanner(System.in);
 		while(true) {

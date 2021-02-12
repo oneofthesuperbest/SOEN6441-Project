@@ -73,7 +73,13 @@ public class ValidateCommandController {
 								return;
 							}
 						} else if (l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							// We dont't have string parameters
+							try {
+								@SuppressWarnings("unused")
+								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
+							} catch (ArrayIndexOutOfBoundsException e) {
+								System.out.println("Invalid number of parameters: Missing parameters");
+								return;
+							}
 						}
 					}
 					l_index += (l_numberOfRequiredParameters.length);
@@ -94,7 +100,13 @@ public class ValidateCommandController {
 								return;
 							}
 						} else if (l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							// We dont't have string parameters
+							try {
+								@SuppressWarnings("unused")
+								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
+							} catch (ArrayIndexOutOfBoundsException e) {
+								System.out.println("Invalid number of parameters: Missing parameters");
+								return;
+							}
 						}
 					}
 					l_index += (l_numberOfRequiredParameters.length);

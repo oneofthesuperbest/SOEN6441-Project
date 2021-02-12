@@ -28,13 +28,14 @@ public class ConsoleView {
 			l_VCVObject.isValidCommand(d_gameEngineObject, l_command, this);
 			
 			if(d_phase == 2) {
-				//if phase 2 then exit loop and call GameEngine loadmap with l_command
+				//if phase 2 then exit loop and call GameEngine loadmap
 				l_scannerObject.close();
 				break;
 			}
 		}
 		
-		d_gameEngineObject.loadGameEngine(l_command);
+		System.out.println("Loading GameEngine console...");
+		d_gameEngineObject.loadGameEngine();
 	}
 	
 	/**

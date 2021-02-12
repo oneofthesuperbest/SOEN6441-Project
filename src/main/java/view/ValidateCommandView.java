@@ -38,7 +38,10 @@ public class ValidateCommandView {
 			} else if (l_commandParameters[0].equals(GamePlayCommandList.LOADMAP.getCommandString())) {
 				System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
 				if (l_commandParameters.length == 2) {
-					System.out.println("Valid parameters. Loading GameEngine console...");
+					System.out.println("Valid parameters. Loading map...");
+					
+					//--------- Call load map function
+					
 					p_consoleViewObject.setPhase(2);
 					return;
 				} else {
@@ -77,13 +80,13 @@ public class ValidateCommandView {
 	void hasValidMapEditingParameters(GameEngine p_gameEngineObject, String[] p_commandParameters,
 			ConsoleView p_consoleViewObject) {
 		if (p_commandParameters[0].equals(MapEditingCommandListForUser.SHOWMAP.getCommandString())) {
-			// Call ShowMap functions
+			//------- Call ShowMap functions
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.VALIDATEMAP.getCommandString())) {
-			// Call ValidateMap functions
+			//------- Call ValidateMap functions
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.SAVEMAP.getCommandString())) {
 			if (p_commandParameters.length == 2) {
-				// Call ValidateMap function and based on the boolean value return call SaveMap
-				// function
+				//------- Call ValidateMap function and based on the boolean value return call SaveMap
+				//------- function
 			} else {
 				System.out.println("Incorrect command: filename not entered.");
 			}
@@ -109,7 +112,13 @@ public class ValidateCommandView {
 								return;
 							}
 						} else if(l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							// We dont't have string parameters
+							try {
+								@SuppressWarnings("unused")
+								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
+							} catch (ArrayIndexOutOfBoundsException e) {
+								System.out.println("Invalid number of parameters: Missing parameters");
+								return;
+							}
 						}
 					}
 					l_index += (l_numberOfRequiredParameters.length);
@@ -128,7 +137,13 @@ public class ValidateCommandView {
 								return;
 							}
 						} else if(l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							// We dont't have string parameters
+							try {
+								@SuppressWarnings("unused")
+								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
+							} catch (ArrayIndexOutOfBoundsException e) {
+								System.out.println("Invalid number of parameters: Missing parameters");
+								return;
+							}
 						}
 					}
 					l_index += (l_numberOfRequiredParameters.length);
@@ -139,7 +154,7 @@ public class ValidateCommandView {
 					return;
 				}
 			}
-			// Call EditContinent function
+			//------- Call EditContinent function
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITCOUNTRY.getCommandString())) {
 			// validate all sub-commands and parameters of editcountry command
 			System.out.println("Validating all sub-commands and parameters of editcountry command...");
@@ -162,7 +177,13 @@ public class ValidateCommandView {
 								return;
 							}
 						} else if(l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							// We dont't have string parameters
+							try {
+								@SuppressWarnings("unused")
+								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
+							} catch (ArrayIndexOutOfBoundsException e) {
+								System.out.println("Invalid number of parameters: Missing parameters");
+								return;
+							}
 						}
 					}
 					l_index += (l_numberOfRequiredParameters.length);
@@ -181,7 +202,13 @@ public class ValidateCommandView {
 								return;
 							}
 						} else if(l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							// We dont't have string parameters
+							try {
+								@SuppressWarnings("unused")
+								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
+							} catch (ArrayIndexOutOfBoundsException e) {
+								System.out.println("Invalid number of parameters: Missing parameters");
+								return;
+							}
 						}
 					}
 					l_index += (l_numberOfRequiredParameters.length);
@@ -192,7 +219,7 @@ public class ValidateCommandView {
 					return;
 				}
 			}
-			// Call EditCountry function
+			//------ Call EditCountry function
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITNEIGHBOR.getCommandString())) {
 			// validate all sub-commands and parameters of editneighbor command
 			System.out.println("Validating all sub-commands and parameters of editneighbor command...");
@@ -215,7 +242,13 @@ public class ValidateCommandView {
 								return;
 							}
 						} else if(l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							// We dont't have string parameters
+							try {
+								@SuppressWarnings("unused")
+								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
+							} catch (ArrayIndexOutOfBoundsException e) {
+								System.out.println("Invalid number of parameters: Missing parameters");
+								return;
+							}
 						}
 					}
 					l_index += (l_numberOfRequiredParameters.length);
@@ -234,7 +267,13 @@ public class ValidateCommandView {
 								return;
 							}
 						} else if(l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							// We dont't have string parameters
+							try {
+								@SuppressWarnings("unused")
+								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
+							} catch (ArrayIndexOutOfBoundsException e) {
+								System.out.println("Invalid number of parameters: Missing parameters");
+								return;
+							}
 						}
 					}
 					l_index += (l_numberOfRequiredParameters.length);
@@ -245,7 +284,7 @@ public class ValidateCommandView {
 					return;
 				}
 			}
-			// Call EditNeighbour function
+			//------- Call EditNeighbour function
 		}
 	}
 }
