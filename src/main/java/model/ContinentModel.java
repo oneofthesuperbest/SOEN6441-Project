@@ -6,32 +6,33 @@ import java.util.ArrayList;
  * Represents a continent.
  */
 public class ContinentModel {
-	private int d_order;
+	private int d_ContinentId;
 	private String d_name;
 	private int d_army;
 	private String d_color;
-	private ArrayList<Integer> d_countries = new ArrayList<Integer>();
+	private ArrayList<Integer> d_countryIds = new ArrayList<Integer>();
 
 	/**
-	 * Create a continent with the specified Order, name, color and, army.
-	 * @param p_order Order of the continent according to the map file.
+	 * Create a continent with the specified id, name, color and, army.
+	 * @param p_continentId Order of the continent according to the map file.
 	 * @param p_name  Name of the continent according to the map file.
 	 * @param p_color Color of the continent according to the map file.
 	 * @param p_army  Army value for the continent according to the map file.
 	 */
-	public ContinentModel(int p_order, String p_name, String p_color, int p_army) {
-		this.d_order = p_order;
+	public ContinentModel(int p_continentId, String p_name, String p_color, int p_army) {
+		this.d_ContinentId = p_continentId;
 		this.d_name = p_name;
 		this.d_color = p_color;
+		this.d_army = p_army;
 		this.d_army = p_army;
 	}
 
 	/**
-	 * Get the order of the continent.
-	 * @return order of the continent.
+	 * Get the id of the continent.
+	 * @return id of the continent.
 	 */
-	public int getOrder() {
-		return this.d_order;
+	public int getContinentId() {
+		return this.d_ContinentId;
 	}
 
 	/**
@@ -59,10 +60,10 @@ public class ContinentModel {
 	}
 
 	/**
-	 * Get the countries under this continent.
-	 * @return ArrayList of countries.
+	 * Get the ids of the countries under this continent.
+	 * @return ArrayList of country ids.
 	 */
-	public ArrayList<Integer> getCountries() {
-		return this.d_countries;
+	public ArrayList<Integer> getCountryIds() {
+		return this.d_countryIds;
 	}
 }
