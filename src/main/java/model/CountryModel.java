@@ -6,24 +6,24 @@ import java.util.ArrayList;
  * Represents a country.
  */
 public class CountryModel {
-	private int d_order;
+	private int d_countryId;
 	private String d_name;
-	private int d_continentOrder;
+	private int d_continentId;
 	private CoordinateModel d_coordinate;
 	private PlayerModel d_owner;
 
 	private ArrayList<CountryModel> d_neighbourCountries = new ArrayList<CountryModel>();
 	/**
 	 * Creates a country with the specified order, name, continent order and, coordinate.
-	 * @param p_order			Order of the country according to the map file.
+	 * @param p_countryId			Order of the country according to the map file.
 	 * @param p_name            Name of the country according to the map file.
-	 * @param p_continentOrder  The order of the continent that this country belongs to.
+	 * @param p_continentId  The order of the continent that this country belongs to.
 	 * @param p_coordinate  	The Coordinate of this country.
 	 */
-	public CountryModel(int p_order, String p_name, int p_continentOrder, CoordinateModel p_coordinate) {
-		this.d_order = p_order;
+	public CountryModel(int p_countryId, String p_name, int p_continentId, CoordinateModel p_coordinate) {
+		this.d_countryId = p_countryId;
 		this.d_name = p_name;
-		this.d_continentOrder = p_continentOrder;
+		this.d_continentId = p_continentId;
 		this.d_coordinate = p_coordinate;
 	}
 
@@ -31,8 +31,8 @@ public class CountryModel {
 	 * Get the order of the country.
 	 * @return Order of the country.
 	 */
-	public int getOrder() {
-		return this.d_order;
+	public int getCountryId() {
+		return this.d_countryId;
 	}
 
 	/**
@@ -47,8 +47,8 @@ public class CountryModel {
 	 * Get the continent order of the continent to which this country belongs.
 	 * @return The continent order to which this country belongs.
 	 */
-	public int getContinentOrder() {
-		return this.d_continentOrder;
+	public int getContinentId() {
+		return this.d_continentId;
 	}
 
 	/**

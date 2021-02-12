@@ -69,17 +69,17 @@ public class MapController {
      */
     public int loadMapContinentsFromFile(int p_idx, List<String> p_lines){
         p_idx += 1;
-        int l_continentOrder = 1;
+        int l_continentId = 1;
         while(checkSameBlock(p_idx, p_lines)){
             String[] l_segments = p_lines.get(p_idx).split(" ");
 
             String l_continentName = l_segments[0];
             int l_continentArmy = Integer.parseInt(l_segments[1]);
             String l_color = l_segments[2];
-            d_gameEngine.getMapState().getListOfContinents().add(new ContinentModel(l_continentOrder, l_continentName, l_color, l_continentArmy));
+            d_gameEngine.getMapState().getListOfContinents().add(new ContinentModel(l_continentId, l_continentName, l_color, l_continentArmy));
 
             p_idx++;
-            l_continentOrder++;
+            l_continentId++;
         }
         System.out.println("...Loaded Continents. Total: " + d_gameEngine.getMapState().getListOfContinents().size());
         return p_idx;
@@ -96,21 +96,21 @@ public class MapController {
         while(checkSameBlock(p_idx, p_lines)){
             String[] l_segments = p_lines.get(p_idx).split(" ");
 
-            int l_countryOrder = Integer.parseInt(l_segments[0]);
+            int l_countryId = Integer.parseInt(l_segments[0]);
             String l_countryName = l_segments[1];
-            int l_continentOrder = Integer.parseInt(l_segments[2]);
+            int l_continentId = Integer.parseInt(l_segments[2]);
             int l_x_coordinate = Integer.parseInt(l_segments[3]);
             int l_y_coordinate = Integer.parseInt(l_segments[4]);
             CoordinateModel l_coordinate = new CoordinateModel(l_x_coordinate, l_y_coordinate);
 
-            CountryModel l_currentCountry = new CountryModel(l_countryOrder, l_countryName, l_continentOrder, l_coordinate);
+            CountryModel l_currentCountry = new CountryModel(l_countryId, l_countryName, l_continentId, l_coordinate);
 
             d_gameEngine.getMapState().getListOfCountries().add(l_currentCountry);
 
             // Add the country to the continent as well.
             for (ContinentModel continent : d_gameEngine.getMapState().getListOfContinents()){
-                if (continent.getOrder() == l_continentOrder){
-                    continent.getCountries().add(l_currentCountry.getOrder());
+                if (continent.getContinentId() == l_continentId){
+                    continent.getCountryIds().add(l_currentCountry.getCountryId());
                 }
             }
             p_idx++;
@@ -140,16 +140,16 @@ public class MapController {
             int l_end = l_intSegments.length;
             int[] l_neighbours = IntStream.range(l_start, l_end).map(i -> l_intSegments[i]).toArray();
 
-            int l_countryOrder = l_intSegments[0];
-            CountryModel l_currentCountry = getCountryByOrder(l_countryOrder);
+            int l_countryId = l_intSegments[0];
+            CountryModel l_currentCountry = getCountryById(l_countryId);
 
             for (int neighbour: l_neighbours){
                 // creating only one way connections at the moment.
                 // Assuming, 1-way connections are possible.
-                l_graph[l_countryOrder - 1][neighbour - 1] = 1;
+                l_graph[l_countryId - 1][neighbour - 1] = 1;
 
                 // Add the neighbour country in the list of neighbours.
-                CountryModel l_neighbourCountry = getCountryByOrder(neighbour);
+                CountryModel l_neighbourCountry = getCountryById(neighbour);
                 l_currentCountry.getNeighbourCountries().add(l_neighbourCountry);
             }
 
@@ -164,7 +164,7 @@ public class MapController {
     /**
      * Checks whether the given line is a part of an
      * existing block in the map file.
-     * The test is based on the fact that the lines in a block are
+     * The check is based on the fact that the lines in a block are
      * not blank and contain at least 1 space.
      *
      * @param p_idx   Index of the current line.
@@ -180,13 +180,13 @@ public class MapController {
     }
 
     /**
-     * Helper method for retrieving the CountryModel object from country order.
-     * @param p_order Order of the country according to the map.
+     * Helper method for retrieving the CountryModel object from country id.
+     * @param p_id Order of the country according to the map.
      * @return      Country.
      */
-    public CountryModel getCountryByOrder(int p_order){
+    public CountryModel getCountryById(int p_id){
         for(CountryModel country : d_gameEngine.getMapState().getListOfCountries()){
-            if (country.getOrder() == p_order){
+            if (country.getCountryId() == p_id){
                 return country;
             }
         }
