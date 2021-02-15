@@ -117,7 +117,7 @@ public class ValidateCommandController {
 					return;
 				}
 			}
-			// Call GamePlayer function
+			p_gameEngineObject.addRemovePlayers(p_commandParameters);
 		}
 	}
 }

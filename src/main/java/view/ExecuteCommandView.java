@@ -2,10 +2,8 @@ package view;
 
 import controller.GameEngine;
 import controller.MapController;
-import model.ContinentModel;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * This class is used to execute entered command i.e.: call respective functions from
