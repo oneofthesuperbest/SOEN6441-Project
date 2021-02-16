@@ -10,11 +10,15 @@ public class ContinentModel {
 	private String d_name;
 	private int d_army;
 	private String d_color;
-	private ArrayList<Integer> d_countryIds = new ArrayList<Integer>();
+	private ArrayList<CountryModel> d_listOfCountries = new ArrayList<CountryModel>();
 
 	/**
 	 * Create a continent with the specified id, name, color and, army.
-	 * @param p_continentId Order of the continent according to the map file.
+	 * @param p_continentId Id of the continent according to the map file.
+	 *                      NOTE: <p>This id will become irrelevant when a map
+	 *                      is saved after edits since the new ids are
+	 *                      interpreted from the position of the continent in
+	 *                      the list of continents.</p>
 	 * @param p_name  Name of the continent according to the map file.
 	 * @param p_color Color of the continent according to the map file.
 	 * @param p_army  Army value for the continent according to the map file.
@@ -63,7 +67,7 @@ public class ContinentModel {
 	 * Get the ids of the countries under this continent.
 	 * @return ArrayList of country ids.
 	 */
-	public ArrayList<Integer> getCountryIds() {
-		return this.d_countryIds;
+	public ArrayList<CountryModel> getCountries() {
+		return this.d_listOfCountries;
 	}
 }

@@ -75,8 +75,14 @@ public class MapController {
 
             String l_continentName = l_segments[0];
             int l_continentArmy = Integer.parseInt(l_segments[1]);
-            String l_color = l_segments[2];
-            d_gameEngine.getMapState().getListOfContinents().add(new ContinentModel(l_continentId, l_continentName, l_color, l_continentArmy));
+            // Default color.
+            String l_color = "#00000";
+            if (l_segments.length == 3){
+                l_color = l_segments[2];
+            }
+
+            d_gameEngine.getMapState().getListOfContinents()
+                    .add(new ContinentModel(l_continentId, l_continentName, l_color, l_continentArmy));
 
             p_idx++;
             l_continentId++;
@@ -99,20 +105,20 @@ public class MapController {
             int l_countryId = Integer.parseInt(l_segments[0]);
             String l_countryName = l_segments[1];
             int l_continentId = Integer.parseInt(l_segments[2]);
-            int l_x_coordinate = Integer.parseInt(l_segments[3]);
-            int l_y_coordinate = Integer.parseInt(l_segments[4]);
+            ContinentModel l_parentContinent = getContinentById(l_continentId);
+            // default coordinates
+            int l_x_coordinate = -1;
+            int l_y_coordinate = -1;
+            if (l_segments.length == 5){
+                l_x_coordinate = Integer.parseInt(l_segments[3]);
+                l_y_coordinate = Integer.parseInt(l_segments[4]);
+            }
             CoordinateModel l_coordinate = new CoordinateModel(l_x_coordinate, l_y_coordinate);
 
-            CountryModel l_currentCountry = new CountryModel(l_countryId, l_countryName, l_continentId, l_coordinate);
-
+            CountryModel l_currentCountry = new CountryModel(l_countryId, l_countryName, l_parentContinent, l_coordinate);
             d_gameEngine.getMapState().getListOfCountries().add(l_currentCountry);
-
             // Add the country to the continent as well.
-            for (ContinentModel continent : d_gameEngine.getMapState().getListOfContinents()){
-                if (continent.getContinentId() == l_continentId){
-                    continent.getCountryIds().add(l_currentCountry.getCountryId());
-                }
-            }
+            getContinentById(l_continentId).getCountries().add(l_currentCountry);
             p_idx++;
         }
         System.out.println("...Loaded Countries. Total: " + d_gameEngine.getMapState().getListOfCountries().size());
@@ -139,18 +145,12 @@ public class MapController {
             int l_start = 1;
             int l_end = l_intSegments.length;
             int[] l_neighbours = IntStream.range(l_start, l_end).map(i -> l_intSegments[i]).toArray();
-
             int l_countryId = l_intSegments[0];
-            CountryModel l_currentCountry = getCountryById(l_countryId);
 
             for (int neighbour: l_neighbours){
                 // creating only one way connections at the moment.
                 // Assuming, 1-way connections are possible.
                 l_graph[l_countryId - 1][neighbour - 1] = 1;
-
-                // Add the neighbour country in the list of neighbours.
-                CountryModel l_neighbourCountry = getCountryById(neighbour);
-                l_currentCountry.getNeighbourCountries().add(l_neighbourCountry);
             }
 
             p_idx++;
@@ -194,12 +194,50 @@ public class MapController {
     }
 
     /**
+     * Helper method for retrieving the ContinentModel object from continent id.
+     * @param p_id Order of the continent according to the map.
+     * @return      Continent.
+     */
+    public ContinentModel getContinentById(int p_id){
+        for(ContinentModel l_continent : d_gameEngine.getMapState().getListOfContinents()){
+            if (l_continent.getContinentId() == p_id){
+                return l_continent;
+            }
+        }
+        return null;
+    }
+
+    /**
      * editContinent takes in relevant commandParameters and calls the associated
      * methods which are addContinent and removeContinent.
      * @param p_commandParameters List of command parameter.
      */
     public void editContinent(String[] p_commandParameters){
+        int l_totalParameterSize = p_commandParameters.length;
+        for (int l_i = 0; l_i < l_totalParameterSize; l_i++){
+            String l_command = p_commandParameters[l_i];
+            switch (l_command){
+                case "-add": {
+                    l_i++;
+                    int l_continentId = Integer.parseInt(p_commandParameters[l_i]);
+                    l_i++;
+                    int l_continentValue = Integer.parseInt(p_commandParameters[l_i]);
+                    addContinent(l_continentId, l_continentValue);
+                    break;
+                }
 
+                case "-remove":{
+                    l_i++;
+                    int l_continentId = Integer.parseInt(p_commandParameters[l_i]);
+                    removeContinent(l_continentId);
+                    break;
+                }
+
+                default:{
+                    break;
+                }
+            }
+        }
     }
 
     /**
@@ -211,17 +249,14 @@ public class MapController {
      */
     private void addContinent(int p_continentId, int p_continentValue){
         // If the continent is already present.
-        for (ContinentModel l_continent : d_gameEngine.getMapState().getListOfContinents()){
-            if (p_continentId == l_continent.getContinentId()){
-                System.out.println("error: Unable to add continent with id: " + p_continentId +
-                        ". Already exists.");
-                return;
-            }
+        if (getContinentById(p_continentId) != null){
+            System.out.println("error: Unable to add continent with id: " + p_continentId + ". Already exists.");
+            return;
         }
 
         // Create a new continent and add it to the list of continents.
         String l_continentName = "continent-" + p_continentId;
-        String l_color = "#0000";
+        String l_color = "#00000";
         ContinentModel l_newContinent = new ContinentModel(p_continentId, l_continentName, l_color, p_continentValue);
         d_gameEngine.getMapState().getListOfContinents().add(l_newContinent);
 
@@ -234,13 +269,65 @@ public class MapController {
      */
     private void removeContinent(int p_continentId){
         // If the continent doesn't exist.
-        for (ContinentModel l_continent : d_gameEngine.getMapState().getListOfContinents()){
-            if (p_continentId == l_continent.getContinentId()){
-                System.out.println("error: Unable to add continent with id: " + p_continentId +
-                        ". Already exists.");
-                return;
+        ContinentModel l_continentToRemove = getContinentById(p_continentId);
+        if(l_continentToRemove == null){
+            System.out.println("error: Unable to remove continent with id: " + p_continentId +
+                    ". Does not exists.");
+            return;
+        }
+
+        // delete all the countries within this continent.
+        // delete the continent from mapState.
+
+        for(CountryModel l_country: l_continentToRemove.getCountries()){
+            removeCountry(l_country);
+        }
+
+        d_gameEngine.getMapState().getListOfContinents().remove(l_continentToRemove);
+        System.out.println("Continent with id: " + p_continentId + "removed successfully.");
+    }
+
+    /**
+     * Remove a country from the map using the CountryModel obj.
+     * @param l_country CountryModel object of the country to be removed.
+     */
+    public void removeCountry(CountryModel l_country){
+        //remove country from the continent, the list of countries, borders.
+        int l_countryOrder = d_gameEngine.getMapState().getListOfCountries().indexOf(l_country);
+        l_country.getContinent().getCountries().remove(l_country);
+        d_gameEngine.getMapState().getListOfCountries().remove(l_country);
+        removeBorder(l_countryOrder);
+    }
+
+    /**
+     * Remove the border associated with the given position.
+     * A new border matrix is created which does not include
+     * the country for which the border is to be removed.
+     * @param p_countryPosition position of the country
+     *                        (in the country list) for which
+     *                        the border is to be removed.
+     */
+    public void removeBorder(int p_countryPosition){
+        int[][] l_currentBorderGraph = d_gameEngine.getMapState().getBorderGraph();
+        int l_newSize = l_currentBorderGraph[0].length - 1;
+
+        int[][] l_newBorderGraph = new int[l_newSize][l_newSize];
+
+        // Copy the new graph while avoiding the position of the country to be removed.
+
+        for (int row = 0; row < p_countryPosition; row++) {
+            for (int col = 0; col < p_countryPosition; col++) {
+                l_newBorderGraph[row][col] = l_currentBorderGraph[row][col];
             }
         }
+
+        for (int row = l_newSize - 1; row >= p_countryPosition; row--) {
+            for (int col = l_newSize - 1; col >= p_countryPosition; col--) {
+                l_newBorderGraph[row][col] = l_currentBorderGraph[row + 1][col + 1];
+            }
+        }
+
+        d_gameEngine.getMapState().setBorderGraph(l_newBorderGraph);
     }
 
     /**

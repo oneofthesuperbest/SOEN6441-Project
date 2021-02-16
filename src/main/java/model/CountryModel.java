@@ -1,29 +1,26 @@
 package model;
 
-import java.util.ArrayList;
-
 /**
  * Represents a country.
  */
 public class CountryModel {
 	private int d_countryId;
 	private String d_name;
-	private int d_continentId;
+	private ContinentModel d_continent;
 	private CoordinateModel d_coordinate;
 	private PlayerModel d_owner;
 
-	private ArrayList<CountryModel> d_neighbourCountries = new ArrayList<CountryModel>();
 	/**
 	 * Creates a country with the specified order, name, continent order and, coordinate.
 	 * @param p_countryId			Order of the country according to the map file.
 	 * @param p_name            Name of the country according to the map file.
-	 * @param p_continentId  The order of the continent that this country belongs to.
+	 * @param p_continent  The continent that this country belongs to.
 	 * @param p_coordinate  	The Coordinate of this country.
 	 */
-	public CountryModel(int p_countryId, String p_name, int p_continentId, CoordinateModel p_coordinate) {
+	public CountryModel(int p_countryId, String p_name, ContinentModel p_continent, CoordinateModel p_coordinate) {
 		this.d_countryId = p_countryId;
 		this.d_name = p_name;
-		this.d_continentId = p_continentId;
+		this.d_continent = p_continent;
 		this.d_coordinate = p_coordinate;
 	}
 
@@ -44,11 +41,11 @@ public class CountryModel {
 	}
 
 	/**
-	 * Get the continent order of the continent to which this country belongs.
-	 * @return The continent order to which this country belongs.
+	 * Get the continent to which this country belongs.
+	 * @return The continent to which this country belongs.
 	 */
-	public int getContinentId() {
-		return this.d_continentId;
+	public ContinentModel getContinent() {
+		return this.d_continent;
 	}
 
 	/**
@@ -57,14 +54,6 @@ public class CountryModel {
 	 */
 	public CoordinateModel getCoordinate() {
 		return this.d_coordinate;
-	}
-
-	/**
-	 * Get the list of neighbours of this country.
-	 * @return List of neighbours.
-	 */
-	public ArrayList<CountryModel> getNeighbourCountries() {
-		return d_neighbourCountries;
 	}
 
 	/**
