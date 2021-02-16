@@ -29,4 +29,14 @@ public class ExecuteCommandView {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * The function calls the editContinent method with relevant parameter list.
+	 * @param p_gameEngineObject The edits will be made to this object.
+	 * @param p_commandParameters The list of validated sub commands to performs relevant edits.
+	 */
+	void editContinent(GameEngine p_gameEngineObject, String[] p_commandParameters){
+		MapController l_mapController = new MapController(p_gameEngineObject);
+		l_mapController.editContinent(p_commandParameters);
+	}
 }

@@ -194,6 +194,69 @@ public class MapController {
     }
 
     /**
+     * editContinent takes in relevant commandParameters and calls the associated
+     * methods which are addContinent and removeContinent.
+     * @param p_commandParameters List of command parameter.
+     */
+    public void editContinent(String[] p_commandParameters){
+
+    }
+
+    /**
+     * addContinent adds valid continents to the map.
+     * A continent may not be added if it already exists in the gameEngine.
+     * Default continent name is of the form: `continent-<continentId>`
+     * @param p_continentId Id of the continent to be added.
+     * @param p_continentValue The army value of the continent.
+     */
+    private void addContinent(int p_continentId, int p_continentValue){
+        // If the continent is already present.
+        for (ContinentModel l_continent : d_gameEngine.getMapState().getListOfContinents()){
+            if (p_continentId == l_continent.getContinentId()){
+                System.out.println("error: Unable to add continent with id: " + p_continentId +
+                        ". Already exists.");
+                return;
+            }
+        }
+
+        // Create a new continent and add it to the list of continents.
+        String l_continentName = "continent-" + p_continentId;
+        String l_color = "#0000";
+        ContinentModel l_newContinent = new ContinentModel(p_continentId, l_continentName, l_color, p_continentValue);
+        d_gameEngine.getMapState().getListOfContinents().add(l_newContinent);
+
+        System.out.println("Continent with id: " + p_continentId + " added successfully.");
+    }
+
+    /**
+     * removerContinent removes a continent from the map.
+     * @param p_continentId Id of the continent to be removed.
+     */
+    private void removeContinent(int p_continentId){
+        // If the continent doesn't exist.
+        for (ContinentModel l_continent : d_gameEngine.getMapState().getListOfContinents()){
+            if (p_continentId == l_continent.getContinentId()){
+                System.out.println("error: Unable to add continent with id: " + p_continentId +
+                        ". Already exists.");
+                return;
+            }
+        }
+    }
+
+    /**
+     * HELPER: : : REMOVE BEFORE MERGE!!!!!
+     */
+    public void showMap(){
+        for (ContinentModel l_continent: d_gameEngine.getMapState().getListOfContinents()){
+            int l_index = l_continent.getContinentId();
+            String l_name = l_continent.getName();
+            String l_color = l_continent.getColor();
+            int l_army = l_continent.getArmy();
+            System.out.println(l_index + " " + l_name + " " + l_army + " " + l_color);
+        }
+    }
+
+    /**
      * A utility method to read the contents from file.
      * @param l_fileName The complete path of the file.
      * @return A List of all the lines in the file.
