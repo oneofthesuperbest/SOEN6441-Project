@@ -44,4 +44,9 @@ public class ExecuteCommandView {
 		MapController l_mapController = new MapController(p_gameEngineObject);
 		l_mapController.showMap();
 	}
+
+	void validateMap(GameEngine p_gameEngineObject){
+		MapController l_mapController = new MapController(p_gameEngineObject);
+//		l_mapController.validateMap();
+	}
 }

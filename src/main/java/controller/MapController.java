@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.charset.*;
 import java.nio.file.*;
 import java.util.*;
@@ -278,9 +279,13 @@ public class MapController {
 
         // delete all the countries within this continent.
         // delete the continent from mapState.
-
+        ArrayList<Integer> l_childCountries = new ArrayList<>();
         for(CountryModel l_country: l_continentToRemove.getCountries()){
-            removeCountry(l_country);
+            l_childCountries.add(l_country.getCountryId());
+        }
+
+        for(int l_countryId : l_childCountries){
+            removeCountry(l_countryId);
         }
 
         d_gameEngine.getMapState().getListOfContinents().remove(l_continentToRemove);
@@ -288,10 +293,16 @@ public class MapController {
     }
 
     /**
-     * Remove a country from the map using the CountryModel obj.
-     * @param l_country CountryModel object of the country to be removed.
+     * Remove a country from the map using the country id.
+     * @param p_countryId Id of the country to be removed.
      */
-    public void removeCountry(CountryModel l_country){
+    private void removeCountry(int p_countryId){
+        CountryModel l_country = getCountryById(p_countryId);
+        if (l_country == null){
+            System.out.println("error: Unable to remove continent with id: " + p_countryId +
+                    ". Does not exists.");
+            return;
+        }
         //remove country from the continent, the list of countries, borders.
         int l_countryOrder = d_gameEngine.getMapState().getListOfCountries().indexOf(l_country);
         l_country.getContinent().getCountries().remove(l_country);
