@@ -39,9 +39,9 @@ public class ValidateCommandView {
 				System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
 				if (l_commandParameters.length == 2) {
 					System.out.println("Valid parameters. Loading map...");
-					
-					//--------- Call load map function
-					
+
+					// --------- Call load map function
+
 					p_consoleViewObject.setPhase(2);
 					return;
 				} else {
@@ -53,7 +53,7 @@ public class ValidateCommandView {
 						"Invalid/Incorrect command: Map is empty. Either enter a command for editing a map or loading a map for game play.");
 			}
 		} else if (l_phase == 1) {
-			// Validate phase 1 commands 
+			// Validate phase 1 commands
 			for (MapEditingCommandListForUser l_commandParameter : MapEditingCommandListForUser.values()) {
 				if (l_commandParameters[0].equals(l_commandParameter.getCommandString())) {
 					System.out.println(
@@ -68,8 +68,9 @@ public class ValidateCommandView {
 	}
 
 	/**
-	 * This function is use to validate list of sub-commands and their parameters. Checking if sub commands are valid or
-	 * parameters are of required type and number of parameters
+	 * This function is use to validate list of sub-commands and their parameters.
+	 * Checking if sub commands are valid or parameters are of required type and
+	 * number of parameters
 	 * 
 	 * @param p_gameEngineObject  This is the main GameEngine object
 	 * @param p_commandParameters This is the list of sub-commands and their
@@ -80,211 +81,112 @@ public class ValidateCommandView {
 	void hasValidMapEditingParameters(GameEngine p_gameEngineObject, String[] p_commandParameters,
 			ConsoleView p_consoleViewObject) {
 		if (p_commandParameters[0].equals(MapEditingCommandListForUser.SHOWMAP.getCommandString())) {
-			//------- Call ShowMap functions
+			// ------- Call ShowMap functions
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.VALIDATEMAP.getCommandString())) {
-			//------- Call ValidateMap functions
+			// ------- Call ValidateMap functions
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.SAVEMAP.getCommandString())) {
 			if (p_commandParameters.length == 2) {
-				//------- Call ValidateMap function and based on the boolean value return call SaveMap
-				//------- function
+				// ------- Call ValidateMap function and based on the boolean value return call
+				// SaveMap
+				// ------- function
 			} else {
 				System.out.println("Incorrect command: filename not entered.");
 			}
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITCONTINENT.getCommandString())) {
 			// validate all sub-commands and parameters of editcontinent command
 			System.out.println("Validating all sub-commands and parameters of editcontinent command...");
-			int l_sunCommandIndex = 0;
-			for (int l_index = 1; l_index < p_commandParameters.length; l_index++) {
-				String l_commandOrParameter = p_commandParameters[l_index];
-				l_sunCommandIndex++;
-				if (l_commandOrParameter.equals(MapEditingCommandListForUser.ADD.getCommandString())) {
-					int[] l_numberOfRequiredParameters = MapEditingCommandListForUser.EDITCONTINENT.getAddCommandTypes();
-					for(int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
-						if(l_numberOfRequiredParameters[l_parameterIndex] == 0) {
-							try {
-								@SuppressWarnings("unused")
-								int l_testIfInteger = Integer.parseInt(p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							} catch(NumberFormatException e) {
-								System.out.println("Invalid parameter type: One of the parameter is not of type integer");
-								return;
-							} catch(ArrayIndexOutOfBoundsException e) {
-								System.out.println("Invalid number of parameters: Missing parameters");
-								return;
-							}
-						} else if(l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							try {
-								@SuppressWarnings("unused")
-								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							} catch (ArrayIndexOutOfBoundsException e) {
-								System.out.println("Invalid number of parameters: Missing parameters");
-								return;
-							}
-						}
-					}
-					l_index += (l_numberOfRequiredParameters.length);
-				} else if (l_commandOrParameter.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
-					int[] l_numberOfRequiredParameters = MapEditingCommandListForUser.EDITCONTINENT.getRemoveCommandTypes();
-					for(int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
-						if(l_numberOfRequiredParameters[l_parameterIndex] == 0) {
-							try {
-								@SuppressWarnings("unused")
-								int l_testIfInteger = Integer.parseInt(p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							} catch(NumberFormatException e) {
-								System.out.println("Invalid parameter type: One of the parameter is not of type integer");
-								return;
-							} catch(ArrayIndexOutOfBoundsException e) {
-								System.out.println("Invalid number of parameters: Missing parameters");
-								return;
-							}
-						} else if(l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							try {
-								@SuppressWarnings("unused")
-								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							} catch (ArrayIndexOutOfBoundsException e) {
-								System.out.println("Invalid number of parameters: Missing parameters");
-								return;
-							}
-						}
-					}
-					l_index += (l_numberOfRequiredParameters.length);
-				} else {
-					System.out.printf("Invalid sub-command at position %d: Please check your list of sub commands",
-							l_sunCommandIndex);
-					System.out.println("");
-					return;
-				}
+			int l_returnValue = validateSubCommands(p_commandParameters, MapEditingCommandListForUser.EDITCONTINENT);
+			if (l_returnValue == 1) {
+				// ------- Call EditContinent function
 			}
-			//------- Call EditContinent function
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITCOUNTRY.getCommandString())) {
 			// validate all sub-commands and parameters of editcountry command
 			System.out.println("Validating all sub-commands and parameters of editcountry command...");
-			int l_sunCommandIndex = 0;
-			for (int l_index = 1; l_index < p_commandParameters.length; l_index++) {
-				String l_commandOrParameter = p_commandParameters[l_index];
-				l_sunCommandIndex++;
-				if (l_commandOrParameter.equals(MapEditingCommandListForUser.ADD.getCommandString())) {
-					int[] l_numberOfRequiredParameters = MapEditingCommandListForUser.EDITCOUNTRY.getAddCommandTypes();
-					for(int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
-						if(l_numberOfRequiredParameters[l_parameterIndex] == 0) {
-							try {
-								@SuppressWarnings("unused")
-								int l_testIfInteger = Integer.parseInt(p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							} catch(NumberFormatException e) {
-								System.out.println("Invalid parameter type: One of the parameter is not of type integer");
-								return;
-							} catch(ArrayIndexOutOfBoundsException e) {
-								System.out.println("Invalid number of parameters: Missing parameters");
-								return;
-							}
-						} else if(l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							try {
-								@SuppressWarnings("unused")
-								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							} catch (ArrayIndexOutOfBoundsException e) {
-								System.out.println("Invalid number of parameters: Missing parameters");
-								return;
-							}
-						}
-					}
-					l_index += (l_numberOfRequiredParameters.length);
-				} else if (l_commandOrParameter.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
-					int[] l_numberOfRequiredParameters = MapEditingCommandListForUser.EDITCOUNTRY.getRemoveCommandTypes();
-					for(int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
-						if(l_numberOfRequiredParameters[l_parameterIndex] == 0) {
-							try {
-								@SuppressWarnings("unused")
-								int l_testIfInteger = Integer.parseInt(p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							} catch(NumberFormatException e) {
-								System.out.println("Invalid parameter type: One of the parameter is not of type integer");
-								return;
-							} catch(ArrayIndexOutOfBoundsException e) {
-								System.out.println("Invalid number of parameters: Missing parameters");
-								return;
-							}
-						} else if(l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							try {
-								@SuppressWarnings("unused")
-								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							} catch (ArrayIndexOutOfBoundsException e) {
-								System.out.println("Invalid number of parameters: Missing parameters");
-								return;
-							}
-						}
-					}
-					l_index += (l_numberOfRequiredParameters.length);
-				} else {
-					System.out.printf("Invalid sub-command at position %d: Please check your list of sub commands",
-							l_sunCommandIndex);
-					System.out.println("");
-					return;
-				}
+			int l_returnValue = validateSubCommands(p_commandParameters, MapEditingCommandListForUser.EDITCOUNTRY);
+			if (l_returnValue == 1) {
+				// ------- Call EditCountry function
 			}
-			//------ Call EditCountry function
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITNEIGHBOR.getCommandString())) {
 			// validate all sub-commands and parameters of editneighbor command
 			System.out.println("Validating all sub-commands and parameters of editneighbor command...");
-			int l_sunCommandIndex = 0;
-			for (int l_index = 1; l_index < p_commandParameters.length; l_index++) {
-				String l_commandOrParameter = p_commandParameters[l_index];
-				l_sunCommandIndex++;
-				if (l_commandOrParameter.equals(MapEditingCommandListForUser.ADD.getCommandString())) {
-					int[] l_numberOfRequiredParameters = MapEditingCommandListForUser.EDITNEIGHBOR.getAddCommandTypes();
-					for(int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
-						if(l_numberOfRequiredParameters[l_parameterIndex] == 0) {
-							try {
-								@SuppressWarnings("unused")
-								int l_testIfInteger = Integer.parseInt(p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							} catch(NumberFormatException e) {
-								System.out.println("Invalid parameter type: One of the parameter is not of type integer");
-								return;
-							} catch(ArrayIndexOutOfBoundsException e) {
-								System.out.println("Invalid number of parameters: Missing parameters");
-								return;
-							}
-						} else if(l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							try {
-								@SuppressWarnings("unused")
-								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							} catch (ArrayIndexOutOfBoundsException e) {
-								System.out.println("Invalid number of parameters: Missing parameters");
-								return;
-							}
-						}
-					}
-					l_index += (l_numberOfRequiredParameters.length);
-				} else if (l_commandOrParameter.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
-					int[] l_numberOfRequiredParameters = MapEditingCommandListForUser.EDITNEIGHBOR.getRemoveCommandTypes();
-					for(int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
-						if(l_numberOfRequiredParameters[l_parameterIndex] == 0) {
-							try {
-								@SuppressWarnings("unused")
-								int l_testIfInteger = Integer.parseInt(p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							} catch(NumberFormatException e) {
-								System.out.println("Invalid parameter type: One of the parameter is not of type integer");
-								return;
-							} catch(ArrayIndexOutOfBoundsException e) {
-								System.out.println("Invalid number of parameters: Missing parameters");
-								return;
-							}
-						} else if(l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-							try {
-								@SuppressWarnings("unused")
-								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							} catch (ArrayIndexOutOfBoundsException e) {
-								System.out.println("Invalid number of parameters: Missing parameters");
-								return;
-							}
-						}
-					}
-					l_index += (l_numberOfRequiredParameters.length);
-				} else {
-					System.out.printf("Invalid sub-command at position %d: Please check your list of sub commands",
-							l_sunCommandIndex);
-					System.out.println("");
-					return;
-				}
+			int l_returnValue = validateSubCommands(p_commandParameters, MapEditingCommandListForUser.EDITNEIGHBOR);
+			if (l_returnValue == 1) {
+				// ------- Call EditNeighbour function
 			}
-			//------- Call EditNeighbour function
 		}
+	}
+
+	/**
+	 * This function is used to traverse through all the sub-commands for a specific main command and return 0 if
+	 * any sub-commands or number of parameters passed for each sub-command is incorrect. Otherwise it returns 1
+	 * @param p_commandParameters list of all the sub-commands
+	 * @param p_mainCommand Enum pointer that corresponds to the main command
+	 * @return Integer 0 if validatoin fails or 1 if it passes
+	 */
+	public int validateSubCommands(String[] p_commandParameters, MapEditingCommandListForUser p_mainCommand) {
+		int l_sunCommandIndex = 0;
+		for (int l_index = 1; l_index < p_commandParameters.length; l_index++) {
+			String l_commandOrParameter = p_commandParameters[l_index];
+			l_sunCommandIndex++;
+			if (l_commandOrParameter.equals(MapEditingCommandListForUser.ADD.getCommandString())) {
+				int[] l_numberOfRequiredParameters = p_mainCommand.getAddCommandTypes();
+				for (int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
+					if (l_numberOfRequiredParameters[l_parameterIndex] == 0) {
+						try {
+							@SuppressWarnings("unused")
+							int l_testIfInteger = Integer
+									.parseInt(p_commandParameters[(l_index + l_parameterIndex + 1)]);
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid parameter type: One of the parameter is not of type integer");
+							return 0;
+						} catch (ArrayIndexOutOfBoundsException e) {
+							System.out.println("Invalid number of parameters: Missing parameters");
+							return 0;
+						}
+					} else if (l_numberOfRequiredParameters[l_parameterIndex] == 1) {
+						try {
+							@SuppressWarnings("unused")
+							String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
+						} catch (ArrayIndexOutOfBoundsException e) {
+							System.out.println("Invalid number of parameters: Missing parameters");
+							return 0;
+						}
+					}
+				}
+				l_index += (l_numberOfRequiredParameters.length);
+			} else if (l_commandOrParameter.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
+				int[] l_numberOfRequiredParameters = p_mainCommand.getRemoveCommandTypes();
+				for (int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
+					if (l_numberOfRequiredParameters[l_parameterIndex] == 0) {
+						try {
+							@SuppressWarnings("unused")
+							int l_testIfInteger = Integer
+									.parseInt(p_commandParameters[(l_index + l_parameterIndex + 1)]);
+						} catch (NumberFormatException e) {
+							System.out.println("Invalid parameter type: One of the parameter is not of type integer");
+							return 0;
+						} catch (ArrayIndexOutOfBoundsException e) {
+							System.out.println("Invalid number of parameters: Missing parameters");
+							return 0;
+						}
+					} else if (l_numberOfRequiredParameters[l_parameterIndex] == 1) {
+						try {
+							@SuppressWarnings("unused")
+							String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
+						} catch (ArrayIndexOutOfBoundsException e) {
+							System.out.println("Invalid number of parameters: Missing parameters");
+							return 0;
+						}
+					}
+				}
+				l_index += (l_numberOfRequiredParameters.length);
+			} else {
+				System.out.printf("Invalid sub-command at position %d: Please check your list of sub commands",
+						l_sunCommandIndex);
+				System.out.println("");
+				return 0;
+			}
+		}
+		return 1;
 	}
 }

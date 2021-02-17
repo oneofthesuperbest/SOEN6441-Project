@@ -10,7 +10,7 @@ public enum MapEditingCommandListForUser {
 		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
 		 */
 		public int[] getAddCommandTypes() {
-			return new int[]{0, 0}; 
+			return new int[]{1, 0}; 
 		}
 		
 		/**
@@ -18,7 +18,7 @@ public enum MapEditingCommandListForUser {
 		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
 		 */
 		public int[] getRemoveCommandTypes() {
-			return new int[]{0};
+			return new int[]{1};
 		}
 	},
 	EDITCOUNTRY("editcountry") {
@@ -27,7 +27,7 @@ public enum MapEditingCommandListForUser {
 		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
 		 */
 		public int[] getAddCommandTypes() {
-			return new int[]{0, 0}; 
+			return new int[]{1, 1}; 
 		}
 		
 		/**
@@ -35,7 +35,7 @@ public enum MapEditingCommandListForUser {
 		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
 		 */
 		public int[] getRemoveCommandTypes() {
-			return new int[]{0};
+			return new int[]{1};
 		}
 	}, 
 	EDITNEIGHBOR("editneighbor") {
@@ -44,7 +44,7 @@ public enum MapEditingCommandListForUser {
 		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
 		 */
 		public int[] getAddCommandTypes() {
-			return new int[]{0, 0}; 
+			return new int[]{1, 1}; 
 		}
 		
 		/**
@@ -52,7 +52,7 @@ public enum MapEditingCommandListForUser {
 		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
 		 */
 		public int[] getRemoveCommandTypes() {
-			return new int[]{0, 0};
+			return new int[]{1, 1};
 		}
 	}, SHOWMAP("showmap"), EDITMAP("editmap"), SAVEMAP("savemap"), VALIDATEMAP("validatemap"), ADD("-add"), REMOVE("-remove");
 	
