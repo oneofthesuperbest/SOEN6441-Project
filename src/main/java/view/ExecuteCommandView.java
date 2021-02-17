@@ -19,15 +19,9 @@ public class ExecuteCommandView {
 	 * @param p_gameEngineObject Data read from map will be added to the p_gameEngineObject
 	 * @return void It returns nothings
 	 */
-	void readMapFile(GameEngine p_gameEngineObject, String p_filename) {
+	public void readMapFile(GameEngine p_gameEngineObject, String p_filename) {
 		MapController l_mapController = new MapController(p_gameEngineObject);
-		try {
-			// Load the data from map into the game Engine.
-			l_mapController.loadMapData(p_filename);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		l_mapController.loadMapData(p_filename, true);
 	}
 
 	/**
@@ -35,18 +29,56 @@ public class ExecuteCommandView {
 	 * @param p_gameEngineObject The edits will be made to this object.
 	 * @param p_commandParameters The list of validated sub commands to performs relevant edits.
 	 */
-	void editContinent(GameEngine p_gameEngineObject, String[] p_commandParameters){
+	public void editContinent(GameEngine p_gameEngineObject, String[] p_commandParameters){
 		MapController l_mapController = new MapController(p_gameEngineObject);
 		l_mapController.editContinent(p_commandParameters);
 	}
 
-	void showMap(GameEngine p_gameEngineObject){
+	/**
+	 * This function calls the editContinent method with relevant parameter list.
+	 * @param p_gameEngineObject The edits will be made to this object.
+	 * @param p_commandParameters The list of validated sub commands to performs relevant edits.
+	 */
+	public void editCountry(GameEngine p_gameEngineObject, String[] p_commandParameters) {
+		MapController l_mapController = new MapController(p_gameEngineObject);
+		l_mapController.editCountry(p_commandParameters);
+	}
+
+	/**
+	 * Calls the showMap method in the mapController to display the map.
+	 * @param p_gameEngineObject GameEngine object that holds the map data.
+	 */
+	public void showMap(GameEngine p_gameEngineObject){
 		MapController l_mapController = new MapController(p_gameEngineObject);
 		l_mapController.showMap();
 	}
 
-	void validateMap(GameEngine p_gameEngineObject){
+	/**
+	 * Calls the validateMap method in the mapController to check if the map is valid.
+	 * @param p_gameEngineObject GameEngine object that holds the map data.
+	 */
+	public void validateMap(GameEngine p_gameEngineObject){
 		MapController l_mapController = new MapController(p_gameEngineObject);
 //		l_mapController.validateMap();
+	}
+
+	/**
+	 * Save the map to the file described by the filename.
+	 * @param p_gameEngineObject GameEngine object that holds the map data.
+	 * @param fileName Location where the map will be saved.
+	 */
+	public void saveMap(GameEngine p_gameEngineObject, String fileName){
+		MapController l_mapController = new MapController(p_gameEngineObject);
+		l_mapController.saveMap(fileName);
+	}
+
+	/**
+	 * Calls the editNeighbor method in mapController to add new neighbors or remove neighbors.
+	 * @param p_gameEngineObject GameEngine object that holds the map data.
+	 * @param p_commandParameters The list of validated sub commands to performs relevant edits.
+	 */
+	public void editNeighbor(GameEngine p_gameEngineObject, String[] p_commandParameters){
+		MapController l_mapController = new MapController(p_gameEngineObject);
+		l_mapController.editNeighbor(p_commandParameters);
 	}
 }
