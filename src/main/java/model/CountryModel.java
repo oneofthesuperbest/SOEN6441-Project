@@ -1,10 +1,12 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * Represents a country.
  */
 public class CountryModel {
-	private int d_countryId;
+	private int d_countryIdMap;
 	private String d_name;
 	private ContinentModel d_continent;
 	private CoordinateModel d_coordinate;
@@ -12,24 +14,25 @@ public class CountryModel {
 
 	/**
 	 * Creates a country with the specified order, name, continent order and, coordinate.
-	 * @param p_countryId			Order of the country according to the map file.
+	 * @param p_countryIdMap    Ordered id of the country based on the position in the map.
 	 * @param p_name            Name of the country according to the map file.
 	 * @param p_continent  The continent that this country belongs to.
 	 * @param p_coordinate  	The Coordinate of this country.
 	 */
-	public CountryModel(int p_countryId, String p_name, ContinentModel p_continent, CoordinateModel p_coordinate) {
-		this.d_countryId = p_countryId;
+	public CountryModel(int p_countryIdMap, String p_name, ContinentModel p_continent, CoordinateModel p_coordinate) {
+		this.d_countryIdMap = p_countryIdMap;
 		this.d_name = p_name;
 		this.d_continent = p_continent;
 		this.d_coordinate = p_coordinate;
 	}
 
 	/**
-	 * Get the order of the country.
-	 * @return Order of the country.
+	 * Get the id of the country in the map based on the relative position in the map file.
+	 * This value will become irrelevant for an editmap phase as soon as remove command is used.
+	 * @return
 	 */
-	public int getCountryId() {
-		return this.d_countryId;
+	public int getCountryIdMap(){
+		return d_countryIdMap;
 	}
 
 	/**
@@ -68,7 +71,6 @@ public class CountryModel {
 	 * Set the owner of this country.
 	 * @param p_owner Player who owns this country.
 	 */
-
 	public void setOwner(PlayerModel p_owner) {
 		if (p_owner != this.d_owner) {
 			this.d_owner = p_owner;
