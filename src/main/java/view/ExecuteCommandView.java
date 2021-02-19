@@ -17,7 +17,7 @@ public class ExecuteCommandView {
 	 * 
 	 * @param p_filename The map file to be read
 	 * @param p_gameEngineObject Data read from map will be added to the p_gameEngineObject
-	 * @return void It returns nothings
+	 * @return bool indicating the status of operation.
 	 */
 	public boolean readMapFile(GameEngine p_gameEngineObject, String p_filename) {
 		MapController l_mapController = new MapController(p_gameEngineObject);
@@ -84,5 +84,18 @@ public class ExecuteCommandView {
 	public void editNeighbor(GameEngine p_gameEngineObject, String[] p_commandParameters){
 		MapController l_mapController = new MapController(p_gameEngineObject);
 		l_mapController.editNeighbor(p_commandParameters);
+	}
+
+	/**
+	 * This function is used to load a map file and pass the content to controller
+	 * for processing and creation of relevant objects for the GAME PLAY.
+	 *
+	 * @param p_filename The map file to be read
+	 * @param p_gameEngineObject Data read from map will be added to the p_gameEngineObject
+	 * @return bool indicating the status of operation.
+	 */
+	public boolean loadMapFile(GameEngine p_gameEngineObject, String p_filename) {
+		MapController l_mapController = new MapController(p_gameEngineObject);
+		return l_mapController.loadMapData(p_filename, false, false);
 	}
 }

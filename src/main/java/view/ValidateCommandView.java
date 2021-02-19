@@ -39,11 +39,14 @@ public class ValidateCommandView {
 			} else if (l_commandParameters[0].equals(GamePlayCommandList.LOADMAP.getCommandString())) {
 				System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
 				if (l_commandParameters.length == 2) {
+					ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 					System.out.println("Valid parameters. Loading map...");
 
 					// --------- Call load map function
-
-					p_consoleViewObject.setPhase(2);
+					boolean loadMapResult = l_executeCVObject.loadMapFile(p_gameEngineObject, l_commandParameters[1]);
+					if(loadMapResult){
+						p_consoleViewObject.setPhase(2);
+					}
 					return;
 				} else {
 					System.out.println("Incorrect command: filename not entered.");
