@@ -624,10 +624,10 @@ public class MapController {
 	 * @param fileName Filename to which the map is to be written.
 	 */
 	public void saveMap(String fileName) {
-//        if (!isMapValid()){
-//            System.out.println("The map file is not valid. saveMap command failed.");
-//            return;
-//        }
+		if (!isMapValid()) {
+			System.out.println("The map file is not valid. saveMap command failed.");
+			return;
+		}
 		FileWriter writer = null;
 		try {
 			writer = new FileWriter(fileName);
@@ -650,16 +650,14 @@ public class MapController {
 		}
 	}
 
-	
-	public boolean isMapValid()
-	{
-		if(!validateMap())
-		{
+	public boolean isMapValid() {
+		if (!validateMap()) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
+
 	/**
 	 * Write the Continent data in the map file.
 	 * 
@@ -762,15 +760,14 @@ public class MapController {
 
 	/**
 	 * Validate the map data.
-	 * @return 
+	 * 
+	 * @return
 	 * 
 	 */
 	public boolean validateMap() {
 		ArrayList<ContinentModel> l_listOfContinents = d_gameEngine.getMapState().getListOfContinents();
 		ArrayList<CountryModel> l_listOfCountries = d_gameEngine.getMapState().getListOfCountries();
 		int[][] l_bordergraph = d_gameEngine.getMapState().getBorderGraph();
-		System.out.println(l_bordergraph.length + " is the size of the border graph");
-
 		boolean l_countriesAreVaid = validateCountries(l_listOfCountries);
 		boolean l_continentsAreVaid = validateContinents(l_listOfContinents);
 		boolean l_bordersAreVaid = validateBorders(l_bordergraph);
@@ -781,12 +778,14 @@ public class MapController {
 				isMyGraphconnected = +1;
 			}
 		}
-		boolean l_isCountryAConnectedGraph = isCountryAConnectedGraph(l_listOfContinents, l_listOfCountries, l_bordergraph);
-        if(l_countriesAreVaid == false || l_continentsAreVaid == false || l_bordersAreVaid == false || isMyGraphconnected>0) {
-        	return false;
-        }else {
-        	return true;
-        }
+		boolean l_isCountryAConnectedGraph = isCountryAConnectedGraph(l_listOfContinents, l_listOfCountries,
+				l_bordergraph);
+		if (l_countriesAreVaid == false || l_continentsAreVaid == false || l_bordersAreVaid == false
+				|| isMyGraphconnected > 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	/**
@@ -912,11 +911,9 @@ public class MapController {
 			}
 		}
 
-		System.out.print("The source node " + p_source + " is connected to: ");
 		int count = 0;
 		for (int v = 1; v <= l_number_of_nodes; v++)
 			if (l_visited[v] == 1) {
-				System.out.print(v + " ");
 				count++;
 			}
 
@@ -940,22 +937,14 @@ public class MapController {
 	public boolean isCountryAConnectedGraph(ArrayList<ContinentModel> p_listOfContinents,
 			ArrayList<CountryModel> p_listOfCountries, int[][] p_graph) {
 		int disconnectedContinents = 0;
-		for (int[] row : p_graph) {
-			System.out.println(Arrays.toString(row));
-		}
 		for (ContinentModel continent : p_listOfContinents) {
 			ArrayList<CountryModel> CM = continent.getCountries();
-			System.out.println(CM.size() + "size is");
 			ArrayList<Integer> countryIds = new ArrayList<Integer>();
-			System.out.println("The current continent being checked is as follows  " + continent.getName());
 			for (CountryModel l_country : continent.getCountries()) {
-				System.out.println(l_country.getName());
 				countryIds.add(l_country.getCountryIdMap());
 			}
 			;
 			int countriesInThisContinent = countryIds.size();
-			System.out.println("ArrayList : " + countryIds);
-			System.out.println("the number of countries in this continent are" + countriesInThisContinent);
 			int[][] l_subgraph = new int[countriesInThisContinent][countriesInThisContinent];
 			int i = 0;
 			for (int id : countryIds) {
@@ -967,9 +956,6 @@ public class MapController {
 				i++;
 			}
 			Stack<Integer> stack = new Stack<Integer>();
-			for (int[] row : l_subgraph) {
-				System.out.println(Arrays.toString(row));
-			}
 			for (int countriesInContinent = 0; countriesInContinent < l_subgraph.length; countriesInContinent++) {
 				boolean isDirected = validateSubGraph(l_subgraph, countriesInContinent);
 				if (isDirected == false) {
@@ -996,9 +982,7 @@ public class MapController {
 		int[] l_visited = new int[l_number_of_nodes + 1];
 		Stack<Integer> stack = new Stack<Integer>();
 		int i, element;
-		System.out.println("during start");
 		l_visited[p_source] = 1;
-		System.out.println(Arrays.toString(l_visited));
 		stack.push(p_source);
 		while (!stack.isEmpty()) {
 			element = stack.pop();
@@ -1012,14 +996,9 @@ public class MapController {
 			}
 		}
 
-		System.out.print("The source node " + p_source + " is connected to: ");
 		int count = 0;
-		System.out.println("during end");
-		System.out.println(Arrays.toString(l_visited));
-		System.out.println("************8");
 		for (int v = 1; v <= l_number_of_nodes; v++)
 			if (l_visited[v] == 1) {
-				System.out.print(v + " ");
 				count++;
 			}
 
