@@ -6,7 +6,7 @@ North 4 #ff3333
 Northeast 5 #0000cc
 Center-West 2 #009900
 Southeast 3 #00ccff
-South 2 yellow
+AkhilContinent 21 #00000
 
 [countries]
 1 Acre 1 53 161
@@ -34,9 +34,8 @@ South 2 yellow
 23 Espirito_Santo 4 364 276
 24 Rio_de_Janeiro 4 340 304
 25 Sao_Paulo 4 282 300
-26 Santa_Catarina 5 261 349
-27 Parana 5 252 321
-28 Rio_Grande_do_Sul 5 233 375
+26 chandigarh 5 -1 -1
+27 mohali 5 -1 -1
 
 [borders]
 1 2 3 
@@ -57,14 +56,13 @@ South 2 yellow
 16 7 9 13 14 15 20 22 23 
 17 11 12 
 18 2 3 6 7 19 20 
-19 18 20 25 27 
+19 18 20 25 
 20 7 16 18 19 21 22 25 
 21 20 22 
 22 16 20 21 23 24 25 
 23 16 22 24 
 24 22 23 25 
 25 19 20 22 24 27 
-26 27 28 
-27 19 25 26 
-28 26 
+26 27 
+27 25 26 
 
