@@ -8,7 +8,10 @@ import java.util.ArrayList;
 public class MapState {
     ArrayList<ContinentModel> d_listOfContinents = new ArrayList<ContinentModel>();
     ArrayList<CountryModel> d_listOfCountries = new ArrayList<CountryModel>();
-    int[][] d_borderGraph;
+    /**
+     * An empty graph is loaded by default.
+     */
+    int[][] d_borderGraph = new int[0][0];
 
     /**
      * Set the list of continents.
@@ -62,8 +65,13 @@ public class MapState {
      * Clear the map data.
      */
     public void clear(){
+        int l_continentLength = d_listOfContinents.size();
+        int l_countryLength = d_listOfCountries.size();
+        if (l_continentLength > 0 || l_countryLength > 0){
+            System.out.println("Clearing current map data...");
+        }
         d_listOfContinents = new ArrayList<ContinentModel>();
         d_listOfCountries = new ArrayList<CountryModel>();
-        d_borderGraph = null;
+        d_borderGraph = new int[0][0];
     }
 }

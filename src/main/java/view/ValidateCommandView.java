@@ -16,7 +16,6 @@ public class ValidateCommandView {
 	 * 
 	 * @param p_gameEngineObject Reference of the GameEngine
 	 * @param p_command          The command that needs to be validated
-	 * @param p_phase            Current phase
 	 * @return null It returns nothing
 	 */
 	void isValidCommand(GameEngine p_gameEngineObject, String p_command, ConsoleView p_consoleViewObject) {
@@ -29,8 +28,10 @@ public class ValidateCommandView {
 				if (l_commandParameters.length == 2) {
 					ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 					System.out.println("Valid parameters. Loading map for editing...");
-					l_executeCVObject.readMapFile(p_gameEngineObject, l_commandParameters[1]);
-					p_consoleViewObject.setPhase(1);
+					boolean readMapResult = l_executeCVObject.readMapFile(p_gameEngineObject, l_commandParameters[1]);
+					if(readMapResult){
+						p_consoleViewObject.setPhase(1);
+					}
 				} else {
 					System.out.println("Incorrect command: filename not entered.");
 				}
@@ -59,7 +60,6 @@ public class ValidateCommandView {
 					System.out.println(
 							"Valid base command. Checking if all the sub-commands and their parameters (if any) are valid...");
 					hasValidMapEditingParameters(p_gameEngineObject, l_commandParameters, p_consoleViewObject);
-					System.out.println("All sub-commands and their parameters (if any) are valid");
 					return;
 				}
 			}
@@ -82,13 +82,20 @@ public class ValidateCommandView {
 			ConsoleView p_consoleViewObject) {
 		if (p_commandParameters[0].equals(MapEditingCommandListForUser.SHOWMAP.getCommandString())) {
 			// ------- Call ShowMap functions
+			ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+			l_executeCVObject.showMap(p_gameEngineObject);
+
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.VALIDATEMAP.getCommandString())) {
 			// ------- Call ValidateMap functions
+			ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+			l_executeCVObject.validateMap(p_gameEngineObject);
+
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.SAVEMAP.getCommandString())) {
 			if (p_commandParameters.length == 2) {
-				// ------- Call ValidateMap function and based on the boolean value return call
-				// SaveMap
-				// ------- function
+				//------- Call ValidateMap function and based on the boolean value return call SaveMap
+				ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+				l_executeCVObject.saveMap(p_gameEngineObject, p_commandParameters[1]);
+
 			} else {
 				System.out.println("Incorrect command: filename not entered.");
 			}
@@ -98,6 +105,9 @@ public class ValidateCommandView {
 			int l_returnValue = validateSubCommands(p_commandParameters, MapEditingCommandListForUser.EDITCONTINENT);
 			if (l_returnValue == 1) {
 				// ------- Call EditContinent function
+				ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+				l_executeCVObject.editContinent(p_gameEngineObject, p_commandParameters);
+
 			}
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITCOUNTRY.getCommandString())) {
 			// validate all sub-commands and parameters of editcountry command
@@ -105,6 +115,9 @@ public class ValidateCommandView {
 			int l_returnValue = validateSubCommands(p_commandParameters, MapEditingCommandListForUser.EDITCOUNTRY);
 			if (l_returnValue == 1) {
 				// ------- Call EditCountry function
+				ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+				l_executeCVObject.editCountry(p_gameEngineObject, p_commandParameters);
+
 			}
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITNEIGHBOR.getCommandString())) {
 			// validate all sub-commands and parameters of editneighbor command
@@ -112,6 +125,9 @@ public class ValidateCommandView {
 			int l_returnValue = validateSubCommands(p_commandParameters, MapEditingCommandListForUser.EDITNEIGHBOR);
 			if (l_returnValue == 1) {
 				// ------- Call EditNeighbour function
+				ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+				l_executeCVObject.editNeighbor(p_gameEngineObject, p_commandParameters);
+
 			}
 		}
 	}
