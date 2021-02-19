@@ -32,7 +32,10 @@ public class MapController {
 	 * 
 	 * @param p_fileName The complete path of the file.
 	 */
-	public void loadMapData(String p_fileName, boolean p_createNewFile) {
+	public boolean loadMapData(String p_fileName, boolean p_createNewFile, boolean p_allowInvalid) {
+	    // Clear the current map.
+        d_gameEngine.getMapState().clear();
+
 		List<String> l_lines = null;
 		// try to read the file. If it does not exist, load a new map based on
 		// p_createNewFile boolean.
@@ -42,45 +45,58 @@ public class MapController {
 		} catch (IOException e) {
 			if (p_createNewFile) {
 				System.out.println("File not found. Loaded an empty map.");
-				return;
-			}
-			System.out.println("error: file not found.");
-			return;
+                return true;
+
+			} else {
+			    System.out.println("error: file not found.");
+                return false;
+            }
 		}
 
-		if (l_lines == null) {
-			System.out.println("error while reading the file: " + p_fileName);
-			return;
-		}
+        for (int l_idx = 0; l_idx < l_lines.size(); l_idx++) {
+            String currentLine = l_lines.get(l_idx);
+            // ignore the comments in .map file.
+            if (currentLine.startsWith(";")) {
+                continue;
+            }
+            String beginningWord = currentLine.split(" ")[0];
+            switch (beginningWord) {
+                case "[continents]": {
+                    l_idx = loadMapContinentsFromFile(l_idx, l_lines);
+                    break;
+                }
+                case "[countries]": {
+                    l_idx = loadMapCountriesFromFile(l_idx, l_lines);
+                    break;
+                }
+                case "[borders]": {
+                    l_idx = loadMapBordersFromFile(l_idx, l_lines);
+                    break;
+                }
+                case "[files]":
+                case "":
+                default: {
+                    break;
+                }
+            }
+        }
 
-		for (int l_idx = 0; l_idx < l_lines.size(); l_idx++) {
-			String currentLine = l_lines.get(l_idx);
-			// ignore the comments in .map file.
-			if (currentLine.startsWith(";")) {
-				continue;
-			}
-			String beginningWord = currentLine.split(" ")[0];
-			switch (beginningWord) {
-			case "[continents]": {
-				l_idx = loadMapContinentsFromFile(l_idx, l_lines);
-				break;
-			}
-			case "[countries]": {
-				l_idx = loadMapCountriesFromFile(l_idx, l_lines);
-				break;
-			}
-			case "[borders]": {
-				l_idx = loadMapBordersFromFile(l_idx, l_lines);
-				break;
-			}
-			case "[files]":
-			case "":
-			default: {
-				break;
-			}
-			}
-		}
-		System.out.println("Map Loaded successfully.");
+
+		// Validate map
+        if(!isMapValid()){
+            if (!p_allowInvalid){
+                System.out.println("THE MAP WAS NOT LOADED. INVALID MAP.");
+                d_gameEngine.getMapState().clear();
+                return false;
+            }
+            else {
+                System.out.println("Map Loaded successfully but is not valid in its current state.");
+                return true;
+            }
+        } else {
+            System.out.println("Map Loaded successfully.");
+            return true;
+        }
 	}
 
 	/**
@@ -111,7 +127,7 @@ public class MapController {
 			p_idx++;
 			l_continentId++;
 		}
-		System.out.println("...Loaded Continents. Total: " + d_gameEngine.getMapState().getListOfContinents().size());
+		System.out.println("...Reading Continents. Total: " + d_gameEngine.getMapState().getListOfContinents().size());
 		return p_idx;
 	}
 
@@ -156,7 +172,7 @@ public class MapController {
 			l_parentContinent.getCountries().add(l_currentCountry);
 			p_idx++;
 		}
-		System.out.println("...Loaded Countries. Total: " + d_gameEngine.getMapState().getListOfCountries().size());
+		System.out.println("...Reading Countries. Total: " + d_gameEngine.getMapState().getListOfCountries().size());
 		return p_idx;
 	}
 
@@ -193,7 +209,7 @@ public class MapController {
 		}
 
 		d_gameEngine.getMapState().setBorderGraph(l_graph);
-		System.out.println("...Loaded borders.");
+		System.out.println("...Reading borders.");
 		return p_idx;
 	}
 
@@ -299,8 +315,6 @@ public class MapController {
 		String l_color = "#00000";
 		ContinentModel l_newContinent = new ContinentModel(p_continentId, l_color, p_continentValue);
 		d_gameEngine.getMapState().getListOfContinents().add(l_newContinent);
-
-		System.out.println("totalContinents: " + d_gameEngine.getMapState().getListOfContinents().size());
 
 		System.out.println("Continent with id: " + p_continentId + " added successfully.");
 	}
@@ -625,7 +639,7 @@ public class MapController {
 	 */
 	public void saveMap(String fileName) {
 		if (!isMapValid()) {
-			System.out.println("The map file is not valid. saveMap command failed.");
+			System.out.println("savemap command failed.");
 			return;
 		}
 		FileWriter writer = null;
@@ -657,9 +671,9 @@ public class MapController {
 	 */
 	public boolean isMapValid() {
 		if (!validateMap()) {
-			return true;
-		} else {
 			return false;
+		} else {
+			return true;
 		}
 	}
 
@@ -845,25 +859,25 @@ public class MapController {
 	 *         not
 	 */
 	public boolean validateContinents(ArrayList<ContinentModel> p_listOfContinents) {
-		boolean areCountinentsValid = true;
+		boolean l_areContinentsValid = true;
 		ArrayList<String> l_Continents = new ArrayList<String>();
 		for (int l_idx = 0; l_idx < p_listOfContinents.size(); l_idx++) {
 			l_Continents.add(p_listOfContinents.get(l_idx).getName());
 		}
 		if (p_listOfContinents.size() > 0) {
-			areCountinentsValid = true;
+			l_areContinentsValid = true;
 			if (hasDuplicates(l_Continents) == true) {
 				System.out.println("Validation Check Failed: A map should not have two continents with the same name");
-				areCountinentsValid = false;
+				l_areContinentsValid = false;
 			} else {
 				System.out.println("Validation Check: No duplicates continents found");
-				areCountinentsValid = true;
+				l_areContinentsValid = true;
 			}
 		} else {
 			System.out.println("Validation Check Failed: Map must contain at least one continent");
-			areCountinentsValid = true;
+			l_areContinentsValid = true;
 		}
-		return areCountinentsValid;
+		return l_areContinentsValid;
 	}
 
 	/**
@@ -887,12 +901,12 @@ public class MapController {
 	/**
 	 * Check to see if borders are defined in the map
 	 * 
-	 * @param p_bordergraph a association graph specifying the connection between
+	 * @param p_borderGraph a association graph specifying the connection between
 	 *                      the countries
 	 * @return a boolean specifying whether borders are defined or not
 	 */
-	public boolean validateBorders(int[][] p_bordergraph) {
-		if (p_bordergraph.length > 0) {
+	public boolean validateBorders(int[][] p_borderGraph) {
+		if (p_borderGraph.length > 0) {
 			System.out.println("Validation Check: Borders are defined in the map");
 			return true;
 		} else {
@@ -904,16 +918,16 @@ public class MapController {
 	/**
 	 * Checks whether the graph is connected or not
 	 * 
-	 * @param p_adjacency_matrix A two dimensional array representation of a graph
+	 * @param p_adjacencyMatrix A two dimensional array representation of a graph
 	 * @param p_source           The node or position in matrix for which we need to
 	 *                           check adjacency for
 	 * @param isSubGraph         true or false based on what kind of graph the
 	 *                           method should validate
 	 * @return a boolean based on whether the graph is connected or not
 	 */
-	public boolean validateGraph(int p_adjacency_matrix[][], int p_source, boolean isSubGraph) {
-		int l_number_of_nodes = p_adjacency_matrix[p_source].length - 1;
-		int[] l_visited = new int[l_number_of_nodes + 1];
+	public boolean validateGraph(int p_adjacencyMatrix[][], int p_source, boolean isSubGraph) {
+		int l_numberOfNodes = p_adjacencyMatrix[p_source].length - 1;
+		int[] l_visited = new int[l_numberOfNodes + 1];
 		Stack<Integer> stack = new Stack<Integer>();
 		int i, element;
 		l_visited[p_source] = 1;
@@ -925,8 +939,8 @@ public class MapController {
 			} else {
 				i = 0;
 			}
-			while (i <= l_number_of_nodes) {
-				if (p_adjacency_matrix[element][i] == 1 && l_visited[i] == 0) {
+			while (i <= l_numberOfNodes) {
+				if (p_adjacencyMatrix[element][i] == 1 && l_visited[i] == 0) {
 					stack.push(i);
 					l_visited[i] = 1;
 				}
@@ -935,12 +949,12 @@ public class MapController {
 		}
 
 		int count = 0;
-		for (int v = 1; v <= l_number_of_nodes; v++)
+		for (int v = 1; v <= l_numberOfNodes; v++)
 			if (l_visited[v] == 1) {
 				count++;
 			}
 
-		if (count == l_number_of_nodes) {
+		if (count == l_numberOfNodes) {
 			return true;
 		} else {
 			return false;

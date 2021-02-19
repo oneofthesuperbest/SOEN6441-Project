@@ -19,9 +19,9 @@ public class ExecuteCommandView {
 	 * @param p_gameEngineObject Data read from map will be added to the p_gameEngineObject
 	 * @return void It returns nothings
 	 */
-	public void readMapFile(GameEngine p_gameEngineObject, String p_filename) {
+	public boolean readMapFile(GameEngine p_gameEngineObject, String p_filename) {
 		MapController l_mapController = new MapController(p_gameEngineObject);
-		l_mapController.loadMapData(p_filename, true);
+		return l_mapController.loadMapData(p_filename, true, true);
 	}
 
 	/**
@@ -59,7 +59,11 @@ public class ExecuteCommandView {
 	 */
 	public void validateMap(GameEngine p_gameEngineObject){
 		MapController l_mapController = new MapController(p_gameEngineObject);
-//		l_mapController.validateMap();
+		if (!l_mapController.validateMap()){
+			System.out.println("VALIDATION CHECK FAILED. INVALID MAP.");
+		}else{
+			System.out.println("VALIDATION CHECK PASSED. MAP IS VALID");
+		};
 	}
 
 	/**

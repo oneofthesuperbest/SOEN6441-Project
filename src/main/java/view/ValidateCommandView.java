@@ -29,8 +29,10 @@ public class ValidateCommandView {
 				if (l_commandParameters.length == 2) {
 					ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 					System.out.println("Valid parameters. Loading map for editing...");
-					l_executeCVObject.readMapFile(p_gameEngineObject, l_commandParameters[1]);
-					p_consoleViewObject.setPhase(1);
+					boolean readMapResult = l_executeCVObject.readMapFile(p_gameEngineObject, l_commandParameters[1]);
+					if(readMapResult){
+						p_consoleViewObject.setPhase(1);
+					}
 				} else {
 					System.out.println("Incorrect command: filename not entered.");
 				}
