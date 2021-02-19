@@ -650,6 +650,11 @@ public class MapController {
 		}
 	}
 
+	/**
+	 * A helper method to validate the map
+	 * 
+	 * @return true if the map is valid, false if not valid
+	 */
 	public boolean isMapValid() {
 		if (!validateMap()) {
 			return true;
@@ -759,10 +764,16 @@ public class MapController {
 	}
 
 	/**
-	 * Validate the map data.
+	 * Validates Map Data
+	 * <ul>
+	 * <li>Checks if there are any Duplicate Continents</li>
+	 * <li>Checks if there are any Duplicate Countries</li>
+	 * <li>Checks if the borders are defined in the map or not</li>
+	 * <li>Checks if the map is a connected graph</li>
+	 * <li>Checks if each continent as itself is a connected graph</li>
+	 * </ul>
 	 * 
-	 * @return
-	 * 
+	 * @return true if the map is valid
 	 */
 	public boolean validateMap() {
 		ArrayList<ContinentModel> l_listOfContinents = d_gameEngine.getMapState().getListOfContinents();
@@ -773,11 +784,17 @@ public class MapController {
 		boolean l_bordersAreVaid = validateBorders(l_bordergraph);
 		int isMyGraphconnected = 0;
 		for (int i = 0; i < l_bordergraph.length; i++) {
-			boolean connectedCheck = validateGraph(l_bordergraph, i);
+			boolean connectedCheck = validateGraph(l_bordergraph, i, false);
 			if (connectedCheck == false) {
 				isMyGraphconnected = +1;
 			}
 		}
+		if (isMyGraphconnected == 0) {
+			System.out.println("Validation Check: The map is a connected graph ");
+		} else {
+			System.out.println("Validation Check Failed: The map is not a connected graph ");
+		}
+
 		boolean l_isCountryAConnectedGraph = isCountryAConnectedGraph(l_listOfContinents, l_listOfCountries,
 				l_bordergraph);
 		if (l_countriesAreVaid == false || l_continentsAreVaid == false || l_bordersAreVaid == false
@@ -890,9 +907,11 @@ public class MapController {
 	 * @param p_adjacency_matrix A two dimensional array representation of a graph
 	 * @param p_source           The node or position in matrix for which we need to
 	 *                           check adjacency for
+	 * @param isSubGraph         true or false based on what kind of graph the
+	 *                           method should validate
 	 * @return a boolean based on whether the graph is connected or not
 	 */
-	public boolean validateGraph(int p_adjacency_matrix[][], int p_source) {
+	public boolean validateGraph(int p_adjacency_matrix[][], int p_source, boolean isSubGraph) {
 		int l_number_of_nodes = p_adjacency_matrix[p_source].length - 1;
 		int[] l_visited = new int[l_number_of_nodes + 1];
 		Stack<Integer> stack = new Stack<Integer>();
@@ -901,7 +920,11 @@ public class MapController {
 		stack.push(p_source);
 		while (!stack.isEmpty()) {
 			element = stack.pop();
-			i = 1;// element;
+			if (isSubGraph == false) {
+				i = 1;
+			} else {
+				i = 0;
+			}
 			while (i <= l_number_of_nodes) {
 				if (p_adjacency_matrix[element][i] == 1 && l_visited[i] == 0) {
 					stack.push(i);
@@ -957,7 +980,7 @@ public class MapController {
 			}
 			Stack<Integer> stack = new Stack<Integer>();
 			for (int countriesInContinent = 0; countriesInContinent < l_subgraph.length; countriesInContinent++) {
-				boolean isDirected = validateSubGraph(l_subgraph, countriesInContinent);
+				boolean isDirected = validateGraph(l_subgraph, countriesInContinent, true);
 				if (isDirected == false) {
 					disconnectedContinents = +1;
 					int countryId = countryIds.get(countriesInContinent);
@@ -975,39 +998,6 @@ public class MapController {
 					"Validation Check Failed: Invalid Map,countries in a continent has to form a directed graph");
 			return false;
 		}
-	}
-
-	public boolean validateSubGraph(int p_adjacency_matrix[][], int p_source) {
-		int l_number_of_nodes = p_adjacency_matrix[p_source].length - 1;
-		int[] l_visited = new int[l_number_of_nodes + 1];
-		Stack<Integer> stack = new Stack<Integer>();
-		int i, element;
-		l_visited[p_source] = 1;
-		stack.push(p_source);
-		while (!stack.isEmpty()) {
-			element = stack.pop();
-			i = 0;// element;
-			while (i <= l_number_of_nodes) {
-				if (p_adjacency_matrix[element][i] == 1 && l_visited[i] == 0) {
-					stack.push(i);
-					l_visited[i] = 1;
-				}
-				i++;
-			}
-		}
-
-		int count = 0;
-		for (int v = 1; v <= l_number_of_nodes; v++)
-			if (l_visited[v] == 1) {
-				count++;
-			}
-
-		if (count == l_number_of_nodes) {
-			return true;
-		} else {
-			return false;
-		}
-
 	}
 
 }
