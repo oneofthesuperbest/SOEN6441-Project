@@ -89,6 +89,7 @@ public class ExecuteCommandView {
 	/**
 	 * This function is used to load a map file and pass the content to controller
 	 * for processing and creation of relevant objects for the GAME PLAY.
+	 * Diff readMap? 1. No new file is created. 2. Invalid files are cleared immediately.
 	 *
 	 * @param p_filename The map file to be read
 	 * @param p_gameEngineObject Data read from map will be added to the p_gameEngineObject

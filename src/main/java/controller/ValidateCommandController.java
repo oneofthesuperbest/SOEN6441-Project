@@ -14,7 +14,6 @@ public class ValidateCommandController {
 	 * 
 	 * @param p_gameEngineObject Reference of the GameEngine
 	 * @param p_command          The command that needs to be validated
-	 * @param p_phase            Current phase
 	 * @return null It returns nothing
 	 */
 	void isValidCommand(String p_command, GameEngine p_gameEngineObject) {

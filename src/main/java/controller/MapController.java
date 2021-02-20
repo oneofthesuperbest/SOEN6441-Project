@@ -81,7 +81,6 @@ public class MapController {
             }
         }
 
-
 		// Validate map
         if(!isMapValid()){
             if (!p_allowInvalid){
