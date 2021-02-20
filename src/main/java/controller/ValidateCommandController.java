@@ -46,9 +46,8 @@ public class ValidateCommandController {
 	 */
 	void hasValidGamePlayParameters(GameEngine p_gameEngineObject, String[] p_commandParameters) {
 		if (p_commandParameters[0].equals(GamePlayCommandList.SHOWMAP.getCommandString())) {
-			// Call ShowMap functions
-		} else if (p_commandParameters[0].equals(GamePlayCommandList.ASSIGNCOUNTRIES.getCommandString())) {
-			// Call AssignCountries functions
+			MapController l_mapController = new MapController(p_gameEngineObject);
+			l_mapController.showMapForGamePlay();
 		} else if (p_commandParameters[0].equals(GamePlayCommandList.GAMEPLAYER.getCommandString())) {
 			// validate all sub-commands and parameters of gameplayer command
 			System.out.println("Validating all sub-commands and parameters of gameplayer command...");

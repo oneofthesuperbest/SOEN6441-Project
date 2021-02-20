@@ -2,7 +2,6 @@ package controller;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.charset.*;
 import java.nio.file.*;
 import java.util.*;
@@ -627,20 +626,93 @@ public class MapController {
 		l_neighborStr += "Neighbors: ";
 		ArrayList<CountryModel> l_neighborCountries = getNeighbors(p_country);
 		for (CountryModel l_neighbor : l_neighborCountries) {
-			l_neighborStr += l_neighbor.getName() + " ";
+			l_neighborStr += l_neighbor.getName() + " | ";
 		}
 		System.out.printf("\t\t\t%-30s %30s\n", l_countryStr, l_neighborStr);
+	}
+	
+	/**
+	 * Display the contents of the map along with assignment of player and count of armies
+	 * in each countries.
+	 */
+	public void showMapForGamePlay() {
+		String l_listOfCountries = "";
+		System.out.println("MAP DETAILS");
+		System.out.println("-----------------------------------------------------------------------------");
+		System.out.print("\tCONTINENT VALUE\tCONTINENT");
+		System.out.println("");
+		System.out.println("-----------------------------------------------------------------------------");
+		for (ContinentModel l_continent : d_gameEngine.getMapState().getListOfContinents()) {
+			String l_name = l_continent.getName();
+			int l_army = l_continent.getArmy();
+			System.out.print("\t" + l_army + "\t" + l_name);
+			System.out.println("");
+			System.out.println("Countries map:");
+			// countries
+			ArrayList<CountryModel> l_countries = l_continent.getCountries();
+			l_listOfCountries += printCountryMapForGamePlay(l_countries);
+			System.out.println("\t----------------------------------------------------------");
+		}
+		System.out.println("");
+		System.out.println(l_listOfCountries);
+		System.out.println("\t----------------------------------------------------------");
+	}
+	
+	/**
+	 * Helper method for printing only the countries map to facilitate game play
+	 * 
+	 * @param p_countries The countries for which the mapping is to be printed.
+	 * @return Concatenated countries names with players name who owns it and no. of armies
+	 */
+	private String printCountryMapForGamePlay(ArrayList<CountryModel> p_countries) {
+		String l_listOfCountries = "";
+		String l_topLabels = "\t";
+		String l_sideLabels = "";
+		ArrayList<Integer> l_neighbourMap = new ArrayList<Integer>();
+		for (CountryModel l_country : p_countries) {
+			ArrayList<Integer> l_neighbourXMap = new ArrayList<Integer>(Collections.nCopies(l_neighbourMap.size(),0));
+			l_sideLabels += (l_country.getCountryIdMap() + "\t");
+			ArrayList<CountryModel> l_neighborCountries = getNeighbors(l_country);
+			for(CountryModel l_neighbourCountry : l_neighborCountries) {
+				int l_index = l_neighbourMap.indexOf(l_neighbourCountry.getCountryIdMap());
+			    if(l_index >= 0) {
+			    	l_neighbourXMap.set(l_index, 1);
+			    } else {
+			    	l_topLabels += (l_neighbourCountry.getCountryIdMap() + "\t");
+					l_neighbourMap.add(l_neighbourCountry.getCountryIdMap());
+					l_neighbourXMap.add(1);
+			    }
+			}
+			for(int l_mapIndex = 0; l_mapIndex < l_neighbourXMap.size() - 1; l_mapIndex++) {
+				if(l_neighbourXMap.get(l_mapIndex) == 0) {
+					l_sideLabels += "\t";
+				} else {
+					l_sideLabels += "\tX";
+				}
+			}
+			l_sideLabels += "\n";
+			l_listOfCountries += (l_country.getCountryIdMap() + ": " + l_country.getName() + "\t\t\t\tArmies:" +l_country.getArmies());
+			if(l_country.getOwner() == null) {
+				l_listOfCountries += ("\tOwned by: NO ONE\n");
+			} else {
+				l_listOfCountries += ("\tOwned by:" +l_country.getOwner().getName()+ "(Reinforcements - " +l_country.getOwner().getReinforcementsArmies()+ ")\n");
+			}
+		}
+		System.out.println(l_topLabels);
+		System.out.println(l_sideLabels);
+		return l_listOfCountries;
 	}
 
 	/**
 	 * Write the map to file.
 	 * 
 	 * @param fileName Filename to which the map is to be written.
+	 * @return true if map was saved successful else returns false
 	 */
-	public void saveMap(String fileName) {
+	public boolean saveMap(String fileName) {
 		if (!isMapValid()) {
-			System.out.println("savemap command failed.");
-			return;
+			System.out.println("savemap command failed: Map not valid");
+			return false;
 		}
 		FileWriter writer = null;
 		try {
@@ -657,10 +729,12 @@ public class MapController {
 			saveBorders(writer);
 
 			writer.close();
+			
+			return true;
 
 		} catch (IOException e) {
 			System.out.println("Error while writing to file. Invalid filename.");
-			return;
+			return false;
 		}
 	}
 

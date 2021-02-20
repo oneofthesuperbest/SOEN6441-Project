@@ -6,14 +6,22 @@ import java.util.ArrayList;
  * Represents the current players state
  */
 public class PlayersState {
-	ArrayList<PlayerModel> d_listOfPlayers = new ArrayList<PlayerModel>();
+	private ArrayList<PlayerModel> d_listOfPlayers = new ArrayList<PlayerModel>();
 	
 	/**
      * Adds a new player to the list of players
      * @param p_playerObject New player that needs to be added
+     * @return It returns 1 if player was added and 0 if player was found with same name
      */
-	public void addPlayer(PlayerModel p_playerObject) {
+	public int addPlayer(PlayerModel p_playerObject) {
+		String l_playerName = p_playerObject.getName();
+		for(int l_index = 0; l_index < d_listOfPlayers.size(); l_index++) {
+			if(d_listOfPlayers.get(l_index).getName().equals(l_playerName)) {
+				return 0;
+			}
+		}
 		d_listOfPlayers.add(p_playerObject);
+		return 1;
 	}
 	
 	
@@ -21,6 +29,7 @@ public class PlayersState {
      * Removes a player from the list of players and returns 1 if player was successfully removed.
      * It returns 0 if player was not found.
      * @param p_playerName Name of player that needs to be removed
+     * @return It returns 1 if palyer was removed and 0 if player was not found
      */
 	public int removePlayer(String p_playerName) {
 		for(int l_index = 0; l_index < d_listOfPlayers.size(); l_index++) {
@@ -30,5 +39,13 @@ public class PlayersState {
 			}
 		}
 		return 0;
+	}
+	
+	/**
+	 * This function return the entire list of players
+	 * @return ArrayList contains the PlayerModel object
+	 */
+	public ArrayList<PlayerModel> getPlayers() {
+		return this.d_listOfPlayers;
 	}
 }

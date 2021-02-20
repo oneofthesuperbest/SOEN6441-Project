@@ -39,11 +39,12 @@ public class ValidateCommandView {
 			} else if (l_commandParameters[0].equals(GamePlayCommandList.LOADMAP.getCommandString())) {
 				System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
 				if (l_commandParameters.length == 2) {
+					ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 					System.out.println("Valid parameters. Loading map...");
-
-					// --------- Call load map function
-
-					p_consoleViewObject.setPhase(2);
+					boolean loadMapResult = l_executeCVObject.loadMapFile(p_gameEngineObject, l_commandParameters[1]);
+					if(loadMapResult){
+						p_consoleViewObject.setPhase(2);
+					}
 					return;
 				} else {
 					System.out.println("Incorrect command: filename not entered.");
@@ -94,8 +95,11 @@ public class ValidateCommandView {
 			if (p_commandParameters.length == 2) {
 				//------- Call ValidateMap function and based on the boolean value return call SaveMap
 				ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
-				l_executeCVObject.saveMap(p_gameEngineObject, p_commandParameters[1]);
-
+				boolean l_returnValue = l_executeCVObject.saveMap(p_gameEngineObject, p_commandParameters[1]);
+				if(l_returnValue) {
+					System.out.println("Moving out of map editing phase.");
+					p_consoleViewObject.setPhase(0);
+				}
 			} else {
 				System.out.println("Incorrect command: filename not entered.");
 			}
@@ -137,7 +141,7 @@ public class ValidateCommandView {
 	 * any sub-commands or number of parameters passed for each sub-command is incorrect. Otherwise it returns 1
 	 * @param p_commandParameters list of all the sub-commands
 	 * @param p_mainCommand Enum pointer that corresponds to the main command
-	 * @return Integer 0 if validatoin fails or 1 if it passes
+	 * @return Integer 0 if validation fails or 1 if it passes
 	 */
 	public int validateSubCommands(String[] p_commandParameters, MapEditingCommandListForUser p_mainCommand) {
 		int l_sunCommandIndex = 0;

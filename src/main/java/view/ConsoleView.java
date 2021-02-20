@@ -19,8 +19,8 @@ public class ConsoleView {
 	 */
 	void startConsole() {
 		ValidateCommandView l_VCVObject = new ValidateCommandView();
-		d_gameEngineObject = new GameEngine();
 		Scanner l_scannerObject = new Scanner(System.in);
+		d_gameEngineObject = new GameEngine(l_scannerObject);
 		String l_command;
 		while(true) {
 			System.out.println("Enter your command");
@@ -29,13 +29,13 @@ public class ConsoleView {
 			
 			if(d_phase == 2) {
 				//if phase 2 then exit loop and call GameEngine loadmap
-				l_scannerObject.close();
 				break;
 			}
 		}
 		
 		System.out.println("Loading GameEngine console...");
-		d_gameEngineObject.loadGameEngine();
+		//Need to use the same Scanner object, as creating a new scanner object throws NoSuchElementException
+		d_gameEngineObject.loadGameEngineConsole();
 	}
 	
 	/**
