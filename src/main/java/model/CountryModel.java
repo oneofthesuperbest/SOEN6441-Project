@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 /**
  * Represents a country.
  */
@@ -30,7 +28,7 @@ public class CountryModel {
 	/**
 	 * Get the id of the country in the map based on the relative position in the map file.
 	 * This value will become irrelevant for an editmap phase as soon as remove command is used.
-	 * @return
+	 * @return The index of the country
 	 */
 	public int getCountryIdMap(){
 		return d_countryIdMap;

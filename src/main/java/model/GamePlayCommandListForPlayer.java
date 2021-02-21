@@ -7,7 +7,7 @@ public enum GamePlayCommandListForPlayer {
 	DEPLOY("deploy") {
 		/**
 		 * This functions returns parameter requirement for -add sub-command
-		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
+		 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
 		 */
 		public int[] getCommandTypes() {
 			return new int[]{1, 0}; 
@@ -19,7 +19,7 @@ public enum GamePlayCommandListForPlayer {
 	/**
 	 * This constructor is used to initialize the string command for an enum
 	 * 
-	 * @param p_command
+	 * @param p_command The string value of the command held by the enum
 	 */
 	GamePlayCommandListForPlayer(String p_command) {
 		this.d_command = p_command;
@@ -36,7 +36,7 @@ public enum GamePlayCommandListForPlayer {
 	
 	/**
 	 * This functions returns default parameter requirement
-	 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
+	 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
 	 */
 	public int[] getCommandTypes() {
 		return new int[] {};

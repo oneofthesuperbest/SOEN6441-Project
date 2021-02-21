@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import controller.GameEngine;
-import controller.GamePlayCommandList;
 import controller.MapController;
 
 /**
@@ -22,6 +21,8 @@ public class PlayerModel {
 	 * Creates a player with the specified name.
 	 * 
 	 * @param p_name The players name.
+	 * @param p_gameEngine GameEngine reference.
+	 * @param p_scannerObject Scanner object reference.
 	 */
 	public PlayerModel(String p_name, GameEngine p_gameEngine, Scanner p_scannerObject) {
 		this.d_name = p_name;
@@ -118,7 +119,6 @@ public class PlayerModel {
 			for (int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
 				if (l_numberOfRequiredParameters[l_parameterIndex] == 0) {
 					try {
-						@SuppressWarnings("unused")
 						int l_testIfInteger = Integer
 								.parseInt(l_commandArray[(l_parameterIndex + 1)]);
 						if(l_testIfInteger > d_reinforementsArmies) {
@@ -136,7 +136,6 @@ public class PlayerModel {
 					}
 				} else if (l_numberOfRequiredParameters[l_parameterIndex] == 1) {
 					try {
-						@SuppressWarnings("unused")
 						String l_stringParamter = (l_commandArray[(l_parameterIndex + 1)]);
 						boolean l_isCountryOwned = false;
 						for(CountryModel l_ownedCountries : d_listOfOwnedCountries) {

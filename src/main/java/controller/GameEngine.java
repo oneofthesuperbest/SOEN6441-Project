@@ -49,8 +49,6 @@ public class GameEngine {
 
 	/**
 	 * Used to load the GameEngine console for game play phase
-	 * 
-	 * @return none
 	 */
 	public void loadGameEngineConsole() {
 		System.out.println("GameEngine console loaded.");

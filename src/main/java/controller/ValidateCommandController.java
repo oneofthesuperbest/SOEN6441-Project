@@ -14,8 +14,6 @@ public class ValidateCommandController {
 	 * 
 	 * @param p_gameEngineObject Reference of the GameEngine
 	 * @param p_command          The command that needs to be validated
-	 * @param p_phase            Current phase
-	 * @return null It returns nothing
 	 */
 	void isValidCommand(String p_command, GameEngine p_gameEngineObject) {
 		String[] l_commandParameters = p_command.split(d_commandSeparator);
@@ -42,7 +40,6 @@ public class ValidateCommandController {
 	 * @param p_gameEngineObject  This is the main GameEngine object
 	 * @param p_commandParameters This is the list of sub-commands and their
 	 *                            parameters
-	 * @return null It returns nothing
 	 */
 	void hasValidGamePlayParameters(GameEngine p_gameEngineObject, String[] p_commandParameters) {
 		if (p_commandParameters[0].equals(GamePlayCommandList.SHOWMAP.getCommandString())) {

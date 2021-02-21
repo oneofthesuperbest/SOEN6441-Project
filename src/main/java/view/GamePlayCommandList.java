@@ -11,7 +11,7 @@ public enum GamePlayCommandList {
 	/**
 	 * This constructor is used to initialize the string command for an enum
 	 * 
-	 * @param p_command
+	 * @param p_command The string value of the command
 	 */
 	GamePlayCommandList(String p_command) {
 		this.d_command = p_command;
@@ -20,7 +20,7 @@ public enum GamePlayCommandList {
 	/**
 	 * This function is used to get the string value of the command held by the enum
 	 * 
-	 * @return d_command The string value of the command held by the enum
+	 * @return The string value of the command held by the enum
 	 */
 	public String getCommandString() {
 		return this.d_command;

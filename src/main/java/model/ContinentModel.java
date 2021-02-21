@@ -21,7 +21,6 @@ public class ContinentModel {
 		this.d_name = p_name;
 		this.d_color = p_color;
 		this.d_army = p_army;
-		this.d_army = p_army;
 	}
 
 	/**
@@ -49,8 +48,8 @@ public class ContinentModel {
 	}
 
 	/**
-	 * Get the ids of the countries under this continent.
-	 * @return ArrayList of country ids.
+	 * Get the objects of the countries under this continent.
+	 * @return ArrayList of country objects in this continent.
 	 */
 	public ArrayList<CountryModel> getCountries() {
 		return this.d_listOfCountries;

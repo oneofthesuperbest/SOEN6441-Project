@@ -14,12 +14,11 @@ public class ConsoleView {
 	
 	/**
 	 * This functions initializes the console and prompts users for commands
-	 * 
-	 * @return null It returns nothing
 	 */
 	void startConsole() {
 		ValidateCommandView l_VCVObject = new ValidateCommandView();
 		Scanner l_scannerObject = new Scanner(System.in);
+		//Need to use the same Scanner object, as creating a new scanner object throws NoSuchElementException
 		d_gameEngineObject = new GameEngine(l_scannerObject);
 		String l_command;
 		while(true) {
@@ -34,7 +33,6 @@ public class ConsoleView {
 		}
 		
 		System.out.println("Loading GameEngine console...");
-		//Need to use the same Scanner object, as creating a new scanner object throws NoSuchElementException
 		d_gameEngineObject.loadGameEngineConsole();
 	}
 	
@@ -42,7 +40,6 @@ public class ConsoleView {
 	 * This function is used to set the phase to specified value
 	 * 
 	 * @param p_phase The phase you want to enter
-	 * @return null It returns nothing
 	 */
 	void setPhase(int p_phase) {
 		this.d_phase = p_phase;

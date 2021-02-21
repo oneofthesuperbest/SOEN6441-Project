@@ -29,7 +29,7 @@ public class PlayersState {
      * Removes a player from the list of players and returns 1 if player was successfully removed.
      * It returns 0 if player was not found.
      * @param p_playerName Name of player that needs to be removed
-     * @return It returns 1 if palyer was removed and 0 if player was not found
+     * @return It returns 1 if player was removed and 0 if player was not found
      */
 	public int removePlayer(String p_playerName) {
 		for(int l_index = 0; l_index < d_listOfPlayers.size(); l_index++) {

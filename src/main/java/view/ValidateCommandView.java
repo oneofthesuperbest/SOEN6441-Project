@@ -16,7 +16,7 @@ public class ValidateCommandView {
 	 * 
 	 * @param p_gameEngineObject Reference of the GameEngine
 	 * @param p_command          The command that needs to be validated
-	 * @return null It returns nothing
+	 * @param p_consoleViewObject Reference of ConsoleView
 	 */
 	void isValidCommand(GameEngine p_gameEngineObject, String p_command, ConsoleView p_consoleViewObject) {
 		String[] l_commandParameters = p_command.split(d_commandSeparator);
@@ -77,7 +77,6 @@ public class ValidateCommandView {
 	 * @param p_commandParameters This is the list of sub-commands and their
 	 *                            parameters
 	 * @param p_consoleViewObject This is the object to ConsoleView class
-	 * @return null It returns nothing
 	 */
 	void hasValidMapEditingParameters(GameEngine p_gameEngineObject, String[] p_commandParameters,
 			ConsoleView p_consoleViewObject) {

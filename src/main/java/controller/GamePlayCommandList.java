@@ -7,7 +7,7 @@ public enum GamePlayCommandList {
 	GAMEPLAYER("gameplayer") {
 		/**
 		 * This functions returns parameter requirement for -add sub-command
-		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
+		 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
 		 */
 		public int[] getAddCommandTypes() {
 			return new int[]{1}; 
@@ -15,7 +15,7 @@ public enum GamePlayCommandList {
 		
 		/**
 		 * This functions returns parameter requirement for -remove sub-command
-		 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
+		 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
 		 */
 		public int[] getRemoveCommandTypes() {
 			return new int[]{1};
@@ -27,7 +27,7 @@ public enum GamePlayCommandList {
 	/**
 	 * This constructor is used to initialize the string command for an enum
 	 * 
-	 * @param p_command
+	 * @param p_command The string value of the command held by the enum
 	 */
 	GamePlayCommandList(String p_command) {
 		this.d_command = p_command;
@@ -44,7 +44,7 @@ public enum GamePlayCommandList {
 	
 	/**
 	 * This functions returns default parameter requirement for -add sub-command
-	 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
+	 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
 	 */
 	public int[] getAddCommandTypes() {
 		return new int[] {};
@@ -52,7 +52,7 @@ public enum GamePlayCommandList {
 	
 	/**
 	 * This functions returns default parameter requirement for -remove sub-command
-	 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
+	 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
 	 */
 	public int[] getRemoveCommandTypes() {
 		return new int[] {};

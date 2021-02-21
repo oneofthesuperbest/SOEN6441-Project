@@ -13,6 +13,7 @@ public class Order {
 	 * @param p_order Name of the order
 	 * @param p_targetCountryName Name of the target country affected by the order
 	 * @param p_numberOfArmies Number of armies to carry out the order
+	 * @param p_player The player who issued the command
 	 */
 	public Order(String p_order, String p_targetCountryName, int p_numberOfArmies, PlayerModel p_player) {
 		d_order = p_order;

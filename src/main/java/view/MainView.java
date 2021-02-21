@@ -9,7 +9,6 @@ public class MainView {
 	 * before start of the game
 	 * 
 	 * @param args Command-line arguments
-	 * @return null It does not return anything
 	 */
 	public static void main(String[] args) {
 		ConsoleView l_consoleHandle = new ConsoleView();
