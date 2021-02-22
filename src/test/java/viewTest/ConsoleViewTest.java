@@ -1,17 +1,7 @@
 package viewTest;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
 /**
- * This class contains test cases for ConsoleView class
+ * This class contains no test cases for ConsoleView class. This is just a placeholder
  */
 public class ConsoleViewTest {
-
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-
 }

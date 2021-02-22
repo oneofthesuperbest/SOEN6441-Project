@@ -197,7 +197,7 @@ public class GameEngine {
 	/**
 	 * Used to add/remove players
 	 * 
-	 * @param p_commandList
+	 * @param p_commandList The command in array form split by " "
 	 */
 	public void addRemovePlayers(String[] p_commandList) {
 		for (int l_index = 1; l_index < p_commandList.length; l_index++) {

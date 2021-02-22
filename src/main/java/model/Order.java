@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+/**
+ * This class is used to stored a order issued by a player
+ */
 public class Order {
 	String d_order;
 	String d_targetCountryName;

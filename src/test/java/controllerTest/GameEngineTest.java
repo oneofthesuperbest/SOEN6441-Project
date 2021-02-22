@@ -9,8 +9,10 @@ import org.junit.Test;
  */
 public class GameEngineTest {
 
-	@Test
-	public void test() {
+	/**
+	 * This function is used to test some of the GameEngine functionality
+	 */
+	@Test public void test() {
 		fail("Not yet implemented");
 	}
 

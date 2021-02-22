@@ -4,6 +4,9 @@ package model;
  * This enum is used to store list of valid commands for map editing phase.
  */
 public enum GamePlayCommandListForPlayer { 
+	/**
+	 * This is an enum for deploy command
+	 */
 	DEPLOY("deploy") {
 		/**
 		 * This functions returns parameter requirement for -add sub-command
@@ -12,7 +15,17 @@ public enum GamePlayCommandListForPlayer {
 		public int[] getCommandTypes() {
 			return new int[]{1, 0}; 
 		}
-	}, SHOWMAP("showmap"), STOP("");
+	}, 
+	
+	/**
+	 * This is an enum for showmap command
+	 */
+	SHOWMAP("showmap"), 
+	
+	/**
+	 * This is an enum for stop issuing order
+	 */
+	STOP("");
 
 	private String d_command;
 	

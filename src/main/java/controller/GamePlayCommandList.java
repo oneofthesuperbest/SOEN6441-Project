@@ -4,6 +4,9 @@ package controller;
  * This enum is used to store list of valid commands for map editing phase.
  */
 public enum GamePlayCommandList { 
+	/**
+	 * This is an enum for gameplayer command
+	 */
 	GAMEPLAYER("gameplayer") {
 		/**
 		 * This functions returns parameter requirement for -add sub-command
@@ -20,7 +23,32 @@ public enum GamePlayCommandList {
 		public int[] getRemoveCommandTypes() {
 			return new int[]{1};
 		}
-	}, SHOWMAP("showmap"), ASSIGNCOUNTRIES("assigncountries"), LOADMAP("loadmap"), ADD("-add"), REMOVE("-remove");
+	}, 
+	
+	/**
+	 * This is an enum for showmap command
+	 */
+	SHOWMAP("showmap"), 
+	
+	/**
+	 * This is an enum for assigncountries command
+	 */
+	ASSIGNCOUNTRIES("assigncountries"), 
+	
+	/**
+	 * This is an enum for loadmap command
+	 */
+	LOADMAP("loadmap"), 
+	
+	/**
+	 * This is an enum for add command
+	 */
+	ADD("-add"), 
+	
+	/**
+	 * This is an enum for remove command
+	 */
+	REMOVE("-remove");
 
 	private String d_command;
 	

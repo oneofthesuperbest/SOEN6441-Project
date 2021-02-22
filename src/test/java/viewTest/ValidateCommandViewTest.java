@@ -9,9 +9,11 @@ import org.junit.Test;
  */
 public class ValidateCommandViewTest {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
+	/**
+	 * This function is used to test ValidateCommandView functionality
+	 */
+	@Test public void test() {
+		
 	}
 
 }

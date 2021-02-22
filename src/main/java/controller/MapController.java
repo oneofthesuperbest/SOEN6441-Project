@@ -30,6 +30,9 @@ public class MapController {
 	 * Load the map contents into the game.
 	 * 
 	 * @param p_fileName The complete path of the file.
+	 * @param p_createNewFile Used to indicate if a new map need to be created if file is not present.
+	 * @param p_allowInvalid Used to indicate if invalid map is allowed to load.
+	 * @return true if map was loaded successfully else it returns false
 	 */
 	public boolean loadMapData(String p_fileName, boolean p_createNewFile, boolean p_allowInvalid) {
 	    // Clear the current map.
@@ -817,7 +820,7 @@ public class MapController {
 	/**
 	 * Get the list of neighboring countries of the given country.
 	 * 
-	 * @param p_country
+	 * @param p_country The country object for which we need to get the neighbors
 	 * @return A list of countries which may be empty.
 	 */
 	public ArrayList<CountryModel> getNeighbors(CountryModel p_country) {
@@ -1044,6 +1047,7 @@ public class MapController {
 	 * @param p_listOfCountries  The complete list of continents defined in the map
 	 * @param p_graph            a association graph specifying the connection
 	 *                           between the countries
+	 * @return true if map is connected graph else it returns false
 	 */
 	public boolean isCountryAConnectedGraph(ArrayList<ContinentModel> p_listOfContinents,
 			ArrayList<CountryModel> p_listOfCountries, int[][] p_graph) {

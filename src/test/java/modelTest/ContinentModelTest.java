@@ -9,8 +9,10 @@ import org.junit.Test;
  */
 public class ContinentModelTest {
 
-	@Test
-	public void test() {
+	/**
+	 * This function is used to test some of the ContinentModel functionality
+	 */
+	@Test public void test() {
 		fail("Not yet implemented");
 	}
 

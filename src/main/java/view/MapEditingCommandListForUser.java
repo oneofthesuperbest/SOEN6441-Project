@@ -4,6 +4,9 @@ package view;
  * This enum is used to store list of valid commands for map editing phase.
  */
 public enum MapEditingCommandListForUser {
+	/**
+	 * This is an enum for editcontinent command
+	 */
 	EDITCONTINENT("editcontinent") {
 		/**
 		 * This functions returns parameter requirement for -add sub-command
@@ -21,6 +24,10 @@ public enum MapEditingCommandListForUser {
 			return new int[]{1};
 		}
 	},
+	
+	/**
+	 * This is an enum for editcountry command
+	 */
 	EDITCOUNTRY("editcountry") {
 		/**
 		 * This functions returns parameter requirement for -add sub-command
@@ -38,6 +45,10 @@ public enum MapEditingCommandListForUser {
 			return new int[]{1};
 		}
 	}, 
+	
+	/**
+	 * This is an enum for editneighbor command
+	 */
 	EDITNEIGHBOR("editneighbor") {
 		/**
 		 * This functions returns parameter requirement for -add sub-command
@@ -54,7 +65,37 @@ public enum MapEditingCommandListForUser {
 		public int[] getRemoveCommandTypes() {
 			return new int[]{1, 1};
 		}
-	}, SHOWMAP("showmap"), EDITMAP("editmap"), SAVEMAP("savemap"), VALIDATEMAP("validatemap"), ADD("-add"), REMOVE("-remove");
+	}, 
+	
+	/**
+	 * This is an enum for showmap command
+	 */
+	SHOWMAP("showmap"), 
+	
+	/**
+	 * This is an enum for editmap command
+	 */
+	EDITMAP("editmap"), 
+	
+	/**
+	 * This is an enum for savemap command
+	 */
+	SAVEMAP("savemap"), 
+	
+	/**
+	 * This is an enum for validatemap command
+	 */
+	VALIDATEMAP("validatemap"), 
+	
+	/**
+	 * This is an enum for add command
+	 */
+	ADD("-add"), 
+	
+	/**
+	 * This is an enum for remove command
+	 */
+	REMOVE("-remove");
 	
 	private String d_command;
 	

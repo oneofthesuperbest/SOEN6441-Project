@@ -9,8 +9,10 @@ import org.junit.Test;
  */
 public class ExecuteCommandViewTest {
 
-	@Test
-	public void test() {
+	/**
+	 * This function is used to test some of the functions from ExecuteCommandView
+	 */
+	@Test public void test() {
 		fail("Not yet implemented");
 	}
 
