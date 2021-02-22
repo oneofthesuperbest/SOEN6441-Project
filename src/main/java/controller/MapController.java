@@ -952,9 +952,40 @@ public class MapController {
 			}
 		} else {
 			System.out.println("Validation Check Failed: Map must contain at least one continent");
-			l_areContinentsValid = true;
+			l_areContinentsValid = false;
 		}
+		// the below check is to see if continent has countries or is empty
+		if (isEmptyContinent(p_listOfContinents) == true) {
+			l_areContinentsValid = false;
+		} else {
+			l_areContinentsValid = true;
+		}		
 		return l_areContinentsValid;
+	}
+	
+	/**
+	 * Checks whether any of the continents does not have any countries in them
+	 * 
+	 * @param p_listOfContinents the complete list of continents defined in the map
+	 * @return true if any of the continent is empty, false if all continents at
+	 *         least one country in them
+	 */
+	public boolean isEmptyContinent(ArrayList<ContinentModel> p_listOfContinents) {
+		int emptyCheck = 0;
+		for (ContinentModel continent : p_listOfContinents) {
+			ArrayList<CountryModel> countriesInContinent = continent.getCountries();
+			if (countriesInContinent.size() == 0) {
+				System.out.println(
+						"Validation Check Failed: There are no countries in the continent " + continent.getName());
+				emptyCheck++;
+			}
+		}
+		if (emptyCheck > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	/**
@@ -1083,7 +1114,7 @@ public class MapController {
 			}
 		}
 		if (disconnectedContinents == 0) {
-			System.out.println("Validation Check: All the contries form a directed graph within their continent");
+			System.out.println("Validation Check: All the countries form a directed graph within their continent");
 			return true;
 		} else {
 			System.out.println(
