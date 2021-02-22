@@ -15,7 +15,7 @@ public class ValidateCommandController {
 	 * @param p_gameEngineObject Reference of the GameEngine
 	 * @param p_command          The command that needs to be validated
 	 */
-	void isValidCommand(String p_command, GameEngine p_gameEngineObject) {
+	public void isValidCommand(String p_command, GameEngine p_gameEngineObject) {
 		String[] l_commandParameters = p_command.split(d_commandSeparator);
 		for (GamePlayCommandList l_commandParameter : GamePlayCommandList.values()) {
 			if (l_commandParameters[0].equals(l_commandParameter.getCommandString())) {
