@@ -964,10 +964,10 @@ public class MapController {
 	}
 	
 	/**
-	 * Checks whether any of the continents does not have any countries in them
+	 * Checks whether any of the continents is empty.
 	 * 
 	 * @param p_listOfContinents the complete list of continents defined in the map
-	 * @return true if any of the continent is empty, false if all continents at
+	 * @return true if any of the continent is empty, false if all continents have at
 	 *         least one country in them
 	 */
 	public boolean isEmptyContinent(ArrayList<ContinentModel> p_listOfContinents) {
