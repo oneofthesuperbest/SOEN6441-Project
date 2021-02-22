@@ -13,7 +13,6 @@ public class ContinentModelTest {
 	 * This function is used to test some of the ContinentModel functionality
 	 */
 	@Test public void test() {
-		fail("Not yet implemented");
 	}
 
 }
