@@ -99,7 +99,6 @@ public class PlayerModel {
 			} else {
 				int l_returnValue = validateOrder(l_command);
 				if (l_returnValue > 0) {
-					d_reinforementsArmies -= l_returnValue;
 					l_issuedOrder = true;
 				}
 			}
@@ -160,6 +159,7 @@ public class PlayerModel {
 			return 0;
 		}
 		createOrder(l_commandArray);
+		d_reinforementsArmies -= Integer.parseInt(l_commandArray[2]);
 		return Integer.parseInt(l_commandArray[2]);
 	}
 	

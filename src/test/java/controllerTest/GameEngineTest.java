@@ -12,6 +12,7 @@ import controller.MapController;
 import model.ContinentModel;
 import model.CoordinateModel;
 import model.CountryModel;
+import model.Order;
 import model.PlayerModel;
 
 /**
@@ -93,7 +94,7 @@ public class GameEngineTest {
 				.addPlayer(new PlayerModel("Player2", l_gameEngineCase, l_dummyScannerObject));
 		l_listOfPlayers = l_gameEngineCase.getPlayersState().getPlayers();
 
-		l_country = new CountryModel(1, "Continent1Country1", l_listOfCoontinents.get(0),new CoordinateModel(1, 2));
+		l_country = new CountryModel(1, "Continent1Country1", l_listOfCoontinents.get(0), new CoordinateModel(1, 2));
 		l_gameEngineCase.getMapState().getListOfCountries().add(l_country);
 		l_listOfCoontinents.get(0).getCountries().add(l_country);
 		l_country.setOwner(l_listOfPlayers.get(0));
@@ -131,10 +132,36 @@ public class GameEngineTest {
 
 		// calling functions that assigns reinforcements
 		l_gameEngineCase.assignReinforcements();
-		
+
 		// checking if both players got the reinforcements as per the test case
-		assertEquals(l_gameEngineCase.getPlayersState().getPlayers().get(0).getReinforcementsArmies(), l_gameEngineTestCase.getPlayersState().getPlayers().get(0).getReinforcementsArmies());
-		assertEquals(l_gameEngineCase.getPlayersState().getPlayers().get(1).getReinforcementsArmies(), l_gameEngineTestCase.getPlayersState().getPlayers().get(1).getReinforcementsArmies());
+		assertEquals(l_gameEngineCase.getPlayersState().getPlayers().get(0).getReinforcementsArmies(),
+				l_gameEngineTestCase.getPlayersState().getPlayers().get(0).getReinforcementsArmies());
+		assertEquals(l_gameEngineCase.getPlayersState().getPlayers().get(1).getReinforcementsArmies(),
+				l_gameEngineTestCase.getPlayersState().getPlayers().get(1).getReinforcementsArmies());
+	}
+
+	/**
+	 * This function is used to check if players order are prevented if the army
+	 * number exceeds player reinforcement number
+	 */
+	@Test
+	public void testDeployCheck() {
+		// Initializing test case
+		ContinentModel l_continent = new ContinentModel("TestContinent", "red", 2);
+		CountryModel l_country = new CountryModel(1, "TestCountry", l_continent, new CoordinateModel(1, 2));
+		Scanner l_scannerObject = new Scanner(System.in);
+		GameEngine l_gameEngine = new GameEngine(l_scannerObject);
+		PlayerModel l_player = new PlayerModel("Test", l_gameEngine, l_scannerObject);
+		l_player.addOwnedCountry(l_country);
+		l_player.setReinforcementsArmies(5);
+
+		// Executing function
+		l_player.validateOrder("deploy TestCountry 2");
+		l_player.validateOrder("deploy TestCountry 2");
+		l_player.validateOrder("deploy TestCountry 2");
+
+		// Check if only two order were issued
+		assertEquals(2, l_player.getOrders().size());
 	}
 
 }
