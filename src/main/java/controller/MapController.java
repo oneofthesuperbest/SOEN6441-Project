@@ -346,7 +346,7 @@ public class MapController {
 		}
 
 		d_gameEngine.getMapState().getListOfContinents().remove(l_continentToRemove);
-		System.out.println("Continent with id: " + p_continentId + "removed successfully.");
+		System.out.println("Continent with id: " + p_continentId + " removed successfully.");
 	}
 
 	/**
@@ -1088,7 +1088,7 @@ public class MapController {
 			ArrayList<CountryModel> CM = continent.getCountries();
 			ArrayList<Integer> countryIds = new ArrayList<Integer>();
 			for (CountryModel l_country : continent.getCountries()) {
-				countryIds.add(l_country.getCountryIdMap());
+				countryIds.add(d_gameEngine.getMapState().getListOfCountries().indexOf(l_country));
 			}
 			;
 			int countriesInThisContinent = countryIds.size();
@@ -1098,7 +1098,7 @@ public class MapController {
 
 				for (int j = 0; j < countriesInThisContinent; j++) {
 
-					l_subgraph[i][j] = p_graph[id - 1][countryIds.get(j) - 1];
+					l_subgraph[i][j] = p_graph[id][countryIds.get(j)];
 				}
 				i++;
 			}
@@ -1108,7 +1108,7 @@ public class MapController {
 				if (isDirected == false) {
 					disconnectedContinents = +1;
 					int countryId = countryIds.get(countriesInContinent);
-					String country = p_listOfCountries.get(countryId - 1).getName();
+					String country = p_listOfCountries.get(countryId).getName();
 					System.out.println("Validation Check Failed: The country " + country + " in continent "
 							+ continent.getName() + " does not form a connected graph");
 				}
