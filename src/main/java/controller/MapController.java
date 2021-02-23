@@ -306,7 +306,7 @@ public class MapController {
 	 * @param p_continentId    Name of the continent.
 	 * @param p_continentValue The army value of the continent.
 	 */
-	private void addContinent(String p_continentId, int p_continentValue) {
+	public void addContinent(String p_continentId, int p_continentValue) {
 		// If the continent is already present.
 		if (getContinentById(p_continentId) != null) {
 			System.out.println("error: Unable to add continent with id: " + p_continentId + ". Already exists.");
