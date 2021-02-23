@@ -3,14 +3,14 @@ package view;
 /**
  * This enum is used to store list of valid commands for map editing phase.
  */
-public enum GamePlayCommandList { 
+public enum GamePlayCommandList {
 	/**
 	 * This is an enum for loadmap command
 	 */
 	LOADMAP("loadmap");
 
 	private String d_command;
-	
+
 	/**
 	 * This constructor is used to initialize the string command for an enum
 	 * 

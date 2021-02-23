@@ -43,8 +43,9 @@ public class ValidateCommandController {
 	 */
 	void hasValidGamePlayParameters(GameEngine p_gameEngineObject, String[] p_commandParameters) {
 		if (p_commandParameters[0].equals(GamePlayCommandList.SHOWMAP.getCommandString())) {
-			if(p_commandParameters.length > 1) {
-				System.out.println("Invalid number of parameters: Extra parameter(s) present. showmap command doesn't require a parameter.");
+			if (p_commandParameters.length > 1) {
+				System.out.println(
+						"Invalid number of parameters: Extra parameter(s) present. showmap command doesn't require a parameter.");
 				return;
 			}
 			MapController l_mapController = new MapController(p_gameEngineObject);
@@ -65,11 +66,15 @@ public class ValidateCommandController {
 								int l_testIfInteger = Integer
 										.parseInt(p_commandParameters[(l_index + l_parameterIndex + 1)]);
 							} catch (NumberFormatException e) {
-								if(p_commandParameters[(l_index + l_parameterIndex + 1)].equals(GamePlayCommandList.ADD.getCommandString()) || p_commandParameters[(l_index + l_parameterIndex + 1)].equals(GamePlayCommandList.REMOVE.getCommandString())) {
+								if (p_commandParameters[(l_index + l_parameterIndex + 1)]
+										.equals(GamePlayCommandList.ADD.getCommandString())
+										|| p_commandParameters[(l_index + l_parameterIndex + 1)]
+												.equals(GamePlayCommandList.REMOVE.getCommandString())) {
 									System.out.println("Invalid number of parameters: Missing parameter(s)");
 									return;
 								}
-								System.out.println("Invalid parameter type: One of the parameter is not of type integer");
+								System.out
+										.println("Invalid parameter type: One of the parameter is not of type integer");
 								return;
 							} catch (ArrayIndexOutOfBoundsException e) {
 								System.out.println("Invalid number of parameters: Missing parameters");
@@ -79,7 +84,10 @@ public class ValidateCommandController {
 							try {
 								@SuppressWarnings("unused")
 								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
-								if(p_commandParameters[(l_index + l_parameterIndex + 1)].equals(GamePlayCommandList.ADD.getCommandString()) || p_commandParameters[(l_index + l_parameterIndex + 1)].equals(GamePlayCommandList.REMOVE.getCommandString())) {
+								if (p_commandParameters[(l_index + l_parameterIndex + 1)]
+										.equals(GamePlayCommandList.ADD.getCommandString())
+										|| p_commandParameters[(l_index + l_parameterIndex + 1)]
+												.equals(GamePlayCommandList.REMOVE.getCommandString())) {
 									System.out.println("Invalid number of parameters: Missing parameter(s)");
 									return;
 								}
@@ -99,7 +107,10 @@ public class ValidateCommandController {
 								int l_testIfInteger = Integer
 										.parseInt(p_commandParameters[(l_index + l_parameterIndex + 1)]);
 							} catch (NumberFormatException e) {
-								if(p_commandParameters[(l_index + l_parameterIndex + 1)].equals(GamePlayCommandList.ADD.getCommandString()) || p_commandParameters[(l_index + l_parameterIndex + 1)].equals(GamePlayCommandList.REMOVE.getCommandString())) {
+								if (p_commandParameters[(l_index + l_parameterIndex + 1)]
+										.equals(GamePlayCommandList.ADD.getCommandString())
+										|| p_commandParameters[(l_index + l_parameterIndex + 1)]
+												.equals(GamePlayCommandList.REMOVE.getCommandString())) {
 									System.out.println("Invalid number of parameters: Missing parameter(s)");
 									return;
 								}
@@ -114,7 +125,10 @@ public class ValidateCommandController {
 							try {
 								@SuppressWarnings("unused")
 								String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
-								if(p_commandParameters[(l_index + l_parameterIndex + 1)].equals(GamePlayCommandList.ADD.getCommandString()) || p_commandParameters[(l_index + l_parameterIndex + 1)].equals(GamePlayCommandList.REMOVE.getCommandString())) {
+								if (p_commandParameters[(l_index + l_parameterIndex + 1)]
+										.equals(GamePlayCommandList.ADD.getCommandString())
+										|| p_commandParameters[(l_index + l_parameterIndex + 1)]
+												.equals(GamePlayCommandList.REMOVE.getCommandString())) {
 									System.out.println("Invalid number of parameters: Missing parameter(s)");
 									return;
 								}

@@ -59,10 +59,11 @@ public class GameEngine {
 			l_command = d_scannerObject.nextLine();
 			if (l_command.equals(GamePlayCommandList.ASSIGNCOUNTRIES.getCommandString())) {
 				// Break out of Game engine console for user
-				if(l_command.split(" ").length > 1) {
-					System.out.println("Invalid number of parameters: Extra parameter(s) present. assigncountries command doesn't require a parameter.");
+				if (l_command.split(" ").length > 1) {
+					System.out.println(
+							"Invalid number of parameters: Extra parameter(s) present. assigncountries command doesn't require a parameter.");
 				} else {
-				    break;
+					break;
 				}
 			} else {
 				l_VCVObject.isValidCommand(l_command, this);
@@ -83,9 +84,10 @@ public class GameEngine {
 			this.executeOrderLoop();
 		}
 	}
-	
+
 	/**
-	 * This function is used to loop over all the players in round-robin fashion to request execute orders
+	 * This function is used to loop over all the players in round-robin fashion to
+	 * request execute orders
 	 */
 	public void executeOrderLoop() {
 		ArrayList<PlayerModel> l_players = this.getPlayersState().getPlayers();

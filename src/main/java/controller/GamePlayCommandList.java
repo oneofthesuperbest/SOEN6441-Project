@@ -3,55 +3,59 @@ package controller;
 /**
  * This enum is used to store list of valid commands for map editing phase.
  */
-public enum GamePlayCommandList { 
+public enum GamePlayCommandList {
 	/**
 	 * This is an enum for gameplayer command
 	 */
 	GAMEPLAYER("gameplayer") {
 		/**
 		 * This functions returns parameter requirement for -add sub-command
-		 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
+		 * 
+		 * @return Array of number of parameters required and their types i.e: 1 for
+		 *         string and 0 for integer
 		 */
 		public int[] getAddCommandTypes() {
-			return new int[]{1}; 
+			return new int[] { 1 };
 		}
-		
+
 		/**
 		 * This functions returns parameter requirement for -remove sub-command
-		 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
+		 * 
+		 * @return Array of number of parameters required and their types i.e: 1 for
+		 *         string and 0 for integer
 		 */
 		public int[] getRemoveCommandTypes() {
-			return new int[]{1};
+			return new int[] { 1 };
 		}
-	}, 
-	
+	},
+
 	/**
 	 * This is an enum for showmap command
 	 */
-	SHOWMAP("showmap"), 
-	
+	SHOWMAP("showmap"),
+
 	/**
 	 * This is an enum for assigncountries command
 	 */
-	ASSIGNCOUNTRIES("assigncountries"), 
-	
+	ASSIGNCOUNTRIES("assigncountries"),
+
 	/**
 	 * This is an enum for loadmap command
 	 */
-	LOADMAP("loadmap"), 
-	
+	LOADMAP("loadmap"),
+
 	/**
 	 * This is an enum for add command
 	 */
-	ADD("-add"), 
-	
+	ADD("-add"),
+
 	/**
 	 * This is an enum for remove command
 	 */
 	REMOVE("-remove");
 
 	private String d_command;
-	
+
 	/**
 	 * This constructor is used to initialize the string command for an enum
 	 * 
@@ -69,18 +73,22 @@ public enum GamePlayCommandList {
 	public String getCommandString() {
 		return this.d_command;
 	}
-	
+
 	/**
 	 * This functions returns default parameter requirement for -add sub-command
-	 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
+	 * 
+	 * @return Array of number of parameters required and their types i.e: 1 for
+	 *         string and 0 for integer
 	 */
 	public int[] getAddCommandTypes() {
 		return new int[] {};
 	}
-	
+
 	/**
 	 * This functions returns default parameter requirement for -remove sub-command
-	 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
+	 * 
+	 * @return Array of number of parameters required and their types i.e: 1 for
+	 *         string and 0 for integer
 	 */
 	public int[] getRemoveCommandTypes() {
 		return new int[] {};

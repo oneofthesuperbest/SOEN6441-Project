@@ -5,7 +5,7 @@ package view;
  */
 public class MainView {
 	/**
-	 * This is the main function which is executed first and initializes variables 
+	 * This is the main function which is executed first and initializes variables
 	 * before start of the game
 	 * 
 	 * @param args Command-line arguments

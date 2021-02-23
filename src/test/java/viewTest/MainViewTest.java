@@ -1,6 +1,5 @@
 package viewTest;
 
-
 /**
  * This class contains test cases for MainView class
  */

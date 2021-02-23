@@ -29,14 +29,15 @@ public class MapController {
 	/**
 	 * Load the map contents into the game.
 	 * 
-	 * @param p_fileName The complete path of the file.
-	 * @param p_createNewFile Used to indicate if a new map need to be created if file is not present.
-	 * @param p_allowInvalid Used to indicate if invalid map is allowed to load.
+	 * @param p_fileName      The complete path of the file.
+	 * @param p_createNewFile Used to indicate if a new map need to be created if
+	 *                        file is not present.
+	 * @param p_allowInvalid  Used to indicate if invalid map is allowed to load.
 	 * @return true if map was loaded successfully else it returns false
 	 */
 	public boolean loadMapData(String p_fileName, boolean p_createNewFile, boolean p_allowInvalid) {
-	    // Clear the current map.
-        d_gameEngine.getMapState().clear();
+		// Clear the current map.
+		d_gameEngine.getMapState().clear();
 
 		List<String> l_lines = null;
 		// try to read the file. If it does not exist, load a new map based on
@@ -47,58 +48,56 @@ public class MapController {
 		} catch (IOException e) {
 			if (p_createNewFile) {
 				System.out.println("File not found. Loaded an empty map.");
-                return true;
+				return true;
 
 			} else {
-			    System.out.println("error: file not found.");
-                return false;
-            }
+				System.out.println("error: file not found.");
+				return false;
+			}
 		}
 
-        for (int l_idx = 0; l_idx < l_lines.size(); l_idx++) {
-            String currentLine = l_lines.get(l_idx);
-            // ignore the comments in .map file.
-            if (currentLine.startsWith(";")) {
-                continue;
-            }
-            String beginningWord = currentLine.split(" ")[0];
-            switch (beginningWord) {
-                case "[continents]": {
-                    l_idx = loadMapContinentsFromFile(l_idx, l_lines);
-                    break;
-                }
-                case "[countries]": {
-                    l_idx = loadMapCountriesFromFile(l_idx, l_lines);
-                    break;
-                }
-                case "[borders]": {
-                    l_idx = loadMapBordersFromFile(l_idx, l_lines);
-                    break;
-                }
-                case "[files]":
-                case "":
-                default: {
-                    break;
-                }
-            }
-        }
-
+		for (int l_idx = 0; l_idx < l_lines.size(); l_idx++) {
+			String currentLine = l_lines.get(l_idx);
+			// ignore the comments in .map file.
+			if (currentLine.startsWith(";")) {
+				continue;
+			}
+			String beginningWord = currentLine.split(" ")[0];
+			switch (beginningWord) {
+			case "[continents]": {
+				l_idx = loadMapContinentsFromFile(l_idx, l_lines);
+				break;
+			}
+			case "[countries]": {
+				l_idx = loadMapCountriesFromFile(l_idx, l_lines);
+				break;
+			}
+			case "[borders]": {
+				l_idx = loadMapBordersFromFile(l_idx, l_lines);
+				break;
+			}
+			case "[files]":
+			case "":
+			default: {
+				break;
+			}
+			}
+		}
 
 		// Validate map
-        if(!isMapValid()){
-            if (!p_allowInvalid){
-                System.out.println("THE MAP WAS NOT LOADED. INVALID MAP.");
-                d_gameEngine.getMapState().clear();
-                return false;
-            }
-            else {
-                System.out.println("Map Loaded successfully but is not valid in its current state.");
-                return true;
-            }
-        } else {
-            System.out.println("Map Loaded successfully.");
-            return true;
-        }
+		if (!isMapValid()) {
+			if (!p_allowInvalid) {
+				System.out.println("THE MAP WAS NOT LOADED. INVALID MAP.");
+				d_gameEngine.getMapState().clear();
+				return false;
+			} else {
+				System.out.println("Map Loaded successfully but is not valid in its current state.");
+				return true;
+			}
+		} else {
+			System.out.println("Map Loaded successfully.");
+			return true;
+		}
 	}
 
 	/**
@@ -634,10 +633,10 @@ public class MapController {
 		}
 		System.out.printf("\t\t\t%-30s %30s\n", l_countryStr, l_neighborStr);
 	}
-	
+
 	/**
-	 * Display the contents of the map along with assignment of player and count of armies
-	 * in each countries.
+	 * Display the contents of the map along with assignment of player and count of
+	 * armies in each countries.
 	 */
 	public void showMapForGamePlay() {
 		String l_listOfCountries = "";
@@ -661,12 +660,13 @@ public class MapController {
 		System.out.println(l_listOfCountries);
 		System.out.println("\t----------------------------------------------------------");
 	}
-	
+
 	/**
 	 * Helper method for printing only the countries map to facilitate game play
 	 * 
 	 * @param p_countries The countries for which the mapping is to be printed.
-	 * @return Concatenated countries names with players name who owns it and no. of armies
+	 * @return Concatenated countries names with players name who owns it and no. of
+	 *         armies
 	 */
 	private String printCountryMapForGamePlay(ArrayList<CountryModel> p_countries) {
 		String l_listOfCountries = "";
@@ -674,32 +674,34 @@ public class MapController {
 		String l_sideLabels = "";
 		ArrayList<Integer> l_neighbourMap = new ArrayList<Integer>();
 		for (CountryModel l_country : p_countries) {
-			ArrayList<Integer> l_neighbourXMap = new ArrayList<Integer>(Collections.nCopies(l_neighbourMap.size(),0));
+			ArrayList<Integer> l_neighbourXMap = new ArrayList<Integer>(Collections.nCopies(l_neighbourMap.size(), 0));
 			l_sideLabels += (l_country.getCountryIdMap() + "\t");
 			ArrayList<CountryModel> l_neighborCountries = getNeighbors(l_country);
-			for(CountryModel l_neighbourCountry : l_neighborCountries) {
+			for (CountryModel l_neighbourCountry : l_neighborCountries) {
 				int l_index = l_neighbourMap.indexOf(l_neighbourCountry.getCountryIdMap());
-			    if(l_index >= 0) {
-			    	l_neighbourXMap.set(l_index, 1);
-			    } else {
-			    	l_topLabels += (l_neighbourCountry.getCountryIdMap() + "\t");
+				if (l_index >= 0) {
+					l_neighbourXMap.set(l_index, 1);
+				} else {
+					l_topLabels += (l_neighbourCountry.getCountryIdMap() + "\t");
 					l_neighbourMap.add(l_neighbourCountry.getCountryIdMap());
 					l_neighbourXMap.add(1);
-			    }
+				}
 			}
-			for(int l_mapIndex = 0; l_mapIndex < l_neighbourXMap.size() - 1; l_mapIndex++) {
-				if(l_neighbourXMap.get(l_mapIndex) == 0) {
+			for (int l_mapIndex = 0; l_mapIndex < l_neighbourXMap.size() - 1; l_mapIndex++) {
+				if (l_neighbourXMap.get(l_mapIndex) == 0) {
 					l_sideLabels += "\t";
 				} else {
 					l_sideLabels += "\tX";
 				}
 			}
 			l_sideLabels += "\n";
-			l_listOfCountries += (l_country.getCountryIdMap() + ": " + l_country.getName() + "\t\t\t\tArmies:" +l_country.getArmies());
-			if(l_country.getOwner() == null) {
+			l_listOfCountries += (l_country.getCountryIdMap() + ": " + l_country.getName() + "\t\t\t\tArmies:"
+					+ l_country.getArmies());
+			if (l_country.getOwner() == null) {
 				l_listOfCountries += ("\tOwned by: NO ONE\n");
 			} else {
-				l_listOfCountries += ("\tOwned by:" +l_country.getOwner().getName()+ "(Reinforcements - " +l_country.getOwner().getReinforcementsArmies()+ ")\n");
+				l_listOfCountries += ("\tOwned by:" + l_country.getOwner().getName() + "(Reinforcements - "
+						+ l_country.getOwner().getReinforcementsArmies() + ")\n");
 			}
 		}
 		System.out.println(l_topLabels);
@@ -733,7 +735,7 @@ public class MapController {
 			saveBorders(writer);
 
 			writer.close();
-			
+
 			return true;
 
 		} catch (IOException e) {
@@ -960,16 +962,16 @@ public class MapController {
 			l_areContinentsValid = false;
 		} else {
 			l_areContinentsValid = true;
-		}		
+		}
 		return l_areContinentsValid;
 	}
-	
+
 	/**
 	 * Checks whether any of the continents is empty.
 	 * 
 	 * @param p_listOfContinents the complete list of continents defined in the map
-	 * @return true if any of the continent is empty, false if all continents have at
-	 *         least one country in them
+	 * @return true if any of the continent is empty, false if all continents have
+	 *         at least one country in them
 	 */
 	public boolean isEmptyContinent(ArrayList<ContinentModel> p_listOfContinents) {
 		int emptyCheck = 0;
@@ -1028,10 +1030,10 @@ public class MapController {
 	 * Checks whether the graph is connected or not
 	 * 
 	 * @param p_adjacencyMatrix A two dimensional array representation of a graph
-	 * @param p_source           The node or position in matrix for which we need to
-	 *                           check adjacency for
-	 * @param isSubGraph         true or false based on what kind of graph the
-	 *                           method should validate
+	 * @param p_source          The node or position in matrix for which we need to
+	 *                          check adjacency for
+	 * @param isSubGraph        true or false based on what kind of graph the method
+	 *                          should validate
 	 * @return a boolean based on whether the graph is connected or not
 	 */
 	public boolean validateGraph(int p_adjacencyMatrix[][], int p_source, boolean isSubGraph) {

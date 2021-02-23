@@ -3,32 +3,34 @@ package model;
 /**
  * This enum is used to store list of valid commands for map editing phase.
  */
-public enum GamePlayCommandListForPlayer { 
+public enum GamePlayCommandListForPlayer {
 	/**
 	 * This is an enum for deploy command
 	 */
 	DEPLOY("deploy") {
 		/**
 		 * This functions returns parameter requirement for -add sub-command
-		 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
+		 * 
+		 * @return Array of number of parameters required and their types i.e: 1 for
+		 *         string and 0 for integer
 		 */
 		public int[] getCommandTypes() {
-			return new int[]{1, 0}; 
+			return new int[] { 1, 0 };
 		}
-	}, 
-	
+	},
+
 	/**
 	 * This is an enum for showmap command
 	 */
-	SHOWMAP("showmap"), 
-	
+	SHOWMAP("showmap"),
+
 	/**
 	 * This is an enum for stop issuing order
 	 */
 	STOP("");
 
 	private String d_command;
-	
+
 	/**
 	 * This constructor is used to initialize the string command for an enum
 	 * 
@@ -46,10 +48,12 @@ public enum GamePlayCommandListForPlayer {
 	public String getCommandString() {
 		return this.d_command;
 	}
-	
+
 	/**
 	 * This functions returns default parameter requirement
-	 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
+	 * 
+	 * @return Array of number of parameters required and their types i.e: 1 for
+	 *         string and 0 for integer
 	 */
 	public int[] getCommandTypes() {
 		return new int[] {};

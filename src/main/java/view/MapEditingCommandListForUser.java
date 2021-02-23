@@ -10,95 +10,107 @@ public enum MapEditingCommandListForUser {
 	EDITCONTINENT("editcontinent") {
 		/**
 		 * This functions returns parameter requirement for -add sub-command
-		 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
+		 * 
+		 * @return Array of number of parameters required and their types i.e: 1 for
+		 *         string and 0 for integer
 		 */
 		public int[] getAddCommandTypes() {
-			return new int[]{1, 0}; 
+			return new int[] { 1, 0 };
 		}
-		
+
 		/**
 		 * This functions returns parameter requirement for -remove sub-command
-		 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
+		 * 
+		 * @return Array of number of parameters required and their types i.e: 1 for
+		 *         string and 0 for integer
 		 */
 		public int[] getRemoveCommandTypes() {
-			return new int[]{1};
+			return new int[] { 1 };
 		}
 	},
-	
+
 	/**
 	 * This is an enum for editcountry command
 	 */
 	EDITCOUNTRY("editcountry") {
 		/**
 		 * This functions returns parameter requirement for -add sub-command
-		 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
+		 * 
+		 * @return Array of number of parameters required and their types i.e: 1 for
+		 *         string and 0 for integer
 		 */
 		public int[] getAddCommandTypes() {
-			return new int[]{1, 1}; 
+			return new int[] { 1, 1 };
 		}
-		
+
 		/**
 		 * This functions returns parameter requirement for -remove sub-command
-		 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
+		 * 
+		 * @return Array of number of parameters required and their types i.e: 1 for
+		 *         string and 0 for integer
 		 */
 		public int[] getRemoveCommandTypes() {
-			return new int[]{1};
+			return new int[] { 1 };
 		}
-	}, 
-	
+	},
+
 	/**
 	 * This is an enum for editneighbor command
 	 */
 	EDITNEIGHBOR("editneighbor") {
 		/**
 		 * This functions returns parameter requirement for -add sub-command
-		 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
+		 * 
+		 * @return Array of number of parameters required and their types i.e: 1 for
+		 *         string and 0 for integer
 		 */
 		public int[] getAddCommandTypes() {
-			return new int[]{1, 1}; 
+			return new int[] { 1, 1 };
 		}
-		
+
 		/**
 		 * This functions returns parameter requirement for -remove sub-command
-		 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
+		 * 
+		 * @return Array of number of parameters required and their types i.e: 1 for
+		 *         string and 0 for integer
 		 */
 		public int[] getRemoveCommandTypes() {
-			return new int[]{1, 1};
+			return new int[] { 1, 1 };
 		}
-	}, 
-	
+	},
+
 	/**
 	 * This is an enum for showmap command
 	 */
-	SHOWMAP("showmap"), 
-	
+	SHOWMAP("showmap"),
+
 	/**
 	 * This is an enum for editmap command
 	 */
-	EDITMAP("editmap"), 
-	
+	EDITMAP("editmap"),
+
 	/**
 	 * This is an enum for savemap command
 	 */
-	SAVEMAP("savemap"), 
-	
+	SAVEMAP("savemap"),
+
 	/**
 	 * This is an enum for validatemap command
 	 */
-	VALIDATEMAP("validatemap"), 
-	
+	VALIDATEMAP("validatemap"),
+
 	/**
 	 * This is an enum for add command
 	 */
-	ADD("-add"), 
-	
+	ADD("-add"),
+
 	/**
 	 * This is an enum for remove command
 	 */
 	REMOVE("-remove");
-	
+
 	private String d_command;
-	
+
 	/**
 	 * This constructor is used to initialize the string command for an enum
 	 * 
@@ -116,18 +128,22 @@ public enum MapEditingCommandListForUser {
 	public String getCommandString() {
 		return this.d_command;
 	}
-	
+
 	/**
 	 * This functions returns default parameter requirement for -add sub-command
-	 * @return ParameterTypes Number of parameters required and their types i.e: 1 for string and 0 for integer
+	 * 
+	 * @return ParameterTypes Number of parameters required and their types i.e: 1
+	 *         for string and 0 for integer
 	 */
 	public int[] getAddCommandTypes() {
 		return new int[] {};
 	}
-	
+
 	/**
 	 * This functions returns default parameter requirement for -remove sub-command
-	 * @return Array of number of parameters required and their types i.e: 1 for string and 0 for integer
+	 * 
+	 * @return Array of number of parameters required and their types i.e: 1 for
+	 *         string and 0 for integer
 	 */
 	public int[] getRemoveCommandTypes() {
 		return new int[] {};

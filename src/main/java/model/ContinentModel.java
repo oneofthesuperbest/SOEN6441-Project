@@ -13,6 +13,7 @@ public class ContinentModel {
 
 	/**
 	 * Create a continent with the specified id, name, color and, army.
+	 * 
 	 * @param p_name  Name of the continent according to the map file.
 	 * @param p_color Color of the continent according to the map file.
 	 * @param p_army  Army value for the continent according to the map file.
@@ -25,6 +26,7 @@ public class ContinentModel {
 
 	/**
 	 * Get the name of the continent.
+	 * 
 	 * @return Name of the country.
 	 */
 	public String getName() {
@@ -33,6 +35,7 @@ public class ContinentModel {
 
 	/**
 	 * Get the army value for the continent.
+	 * 
 	 * @return Int representing the army value.
 	 */
 	public int getArmy() {
@@ -41,14 +44,16 @@ public class ContinentModel {
 
 	/**
 	 * Get the color of the continent.
+	 * 
 	 * @return String representing the color.
 	 */
-	public String getColor(){
+	public String getColor() {
 		return this.d_color;
 	}
 
 	/**
 	 * Get the objects of the countries under this continent.
+	 * 
 	 * @return ArrayList of country objects in this continent.
 	 */
 	public ArrayList<CountryModel> getCountries() {

@@ -15,11 +15,12 @@ public class ValidateCommandViewTest {
 	/**
 	 * This function is used to test Validation functionality
 	 */
-	@Test public void testValidation() {
+	@Test
+	public void testValidation() {
 		ValidateCommandView l_VCV = new ValidateCommandView();
-		String[] l_str = {"IncorrectCommand","-add"};
-		
-		//check if the above command return 0 as it is incorrect
+		String[] l_str = { "IncorrectCommand", "-add" };
+
+		// check if the above command return 0 as it is incorrect
 		assertEquals(0, l_VCV.validateSubCommands(l_str, MapEditingCommandListForUser.EDITCONTINENT));
 	}
 

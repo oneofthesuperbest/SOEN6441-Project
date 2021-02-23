@@ -8,6 +8,6 @@ import org.junit.runners.Suite.SuiteClasses;
  * Test suit for all the model test classes
  */
 @RunWith(Suite.class)
-@SuiteClasses({OrderTest.class})
+@SuiteClasses({ OrderTest.class })
 public class ModelSuite {
 }

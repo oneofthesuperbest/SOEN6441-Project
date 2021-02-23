@@ -15,8 +15,8 @@ public class ValidateCommandView {
 	 * This function Validated the base command and calls respective function from
 	 * ExecuteCommandView class
 	 * 
-	 * @param p_gameEngineObject Reference of the GameEngine
-	 * @param p_command          The command that needs to be validated
+	 * @param p_gameEngineObject  Reference of the GameEngine
+	 * @param p_command           The command that needs to be validated
 	 * @param p_consoleViewObject Reference of ConsoleView
 	 */
 	void isValidCommand(GameEngine p_gameEngineObject, String p_command, ConsoleView p_consoleViewObject) {
@@ -30,14 +30,15 @@ public class ValidateCommandView {
 					ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 					System.out.println("Valid parameters. Loading map for editing...");
 					boolean readMapResult = l_executeCVObject.readMapFile(p_gameEngineObject, l_commandParameters[1]);
-					if(readMapResult){
+					if (readMapResult) {
 						p_consoleViewObject.setPhase(1);
 					}
 				} else {
-					if(l_commandParameters.length < 2) {
+					if (l_commandParameters.length < 2) {
 						System.out.println("Incorrect command: filename not entered.");
 					} else {
-						System.out.println("Incorrect command: Extra parameters passed. editmap command only requires 1 paramater.");
+						System.out.println(
+								"Incorrect command: Extra parameters passed. editmap command only requires 1 paramater.");
 					}
 				}
 				return;
@@ -47,14 +48,15 @@ public class ValidateCommandView {
 					ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 					System.out.println("Valid parameters. Loading map...");
 					boolean loadMapResult = l_executeCVObject.loadMapFile(p_gameEngineObject, l_commandParameters[1]);
-					if(loadMapResult){
+					if (loadMapResult) {
 						p_consoleViewObject.setPhase(2);
 					}
 				} else {
-					if(l_commandParameters.length < 2) {
+					if (l_commandParameters.length < 2) {
 						System.out.println("Incorrect command: filename not entered.");
 					} else {
-						System.out.println("Incorrect command: Extra parameters passed. loadmap command only requires 1 parameter.");
+						System.out.println(
+								"Incorrect command: Extra parameters passed. loadmap command only requires 1 parameter.");
 					}
 				}
 				return;
@@ -90,8 +92,9 @@ public class ValidateCommandView {
 			ConsoleView p_consoleViewObject) {
 		if (p_commandParameters[0].equals(MapEditingCommandListForUser.SHOWMAP.getCommandString())) {
 			// ------- Call ShowMap functions
-			if(p_commandParameters.length > 1) {
-				System.out.println("Incorrect command: Extra parameters passed. showmap command doesn't require a parameter.");
+			if (p_commandParameters.length > 1) {
+				System.out.println(
+						"Incorrect command: Extra parameters passed. showmap command doesn't require a parameter.");
 				return;
 			}
 			ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
@@ -99,8 +102,9 @@ public class ValidateCommandView {
 
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.VALIDATEMAP.getCommandString())) {
 			// ------- Call ValidateMap functions
-			if(p_commandParameters.length > 1) {
-				System.out.println("Incorrect command: Extra parameters passed. validatemap command doesn't require a parameter.");
+			if (p_commandParameters.length > 1) {
+				System.out.println(
+						"Incorrect command: Extra parameters passed. validatemap command doesn't require a parameter.");
 				return;
 			}
 			ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
@@ -108,18 +112,20 @@ public class ValidateCommandView {
 
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.SAVEMAP.getCommandString())) {
 			if (p_commandParameters.length == 2) {
-				//------- Call ValidateMap function and based on the boolean value return call SaveMap
+				// ------- Call ValidateMap function and based on the boolean value return call
+				// SaveMap
 				ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 				boolean l_returnValue = l_executeCVObject.saveMap(p_gameEngineObject, p_commandParameters[1]);
-				if(l_returnValue) {
+				if (l_returnValue) {
 					System.out.println("Moving out of map editing phase.");
 					p_consoleViewObject.setPhase(0);
 				}
 			} else {
-				if(p_commandParameters.length < 2) {
+				if (p_commandParameters.length < 2) {
 					System.out.println("Incorrect command: filename not entered.");
 				} else {
-					System.out.println("Incorrect command: Extra parameters passed. savemap command only requires 1 parameter.");
+					System.out.println(
+							"Incorrect command: Extra parameters passed. savemap command only requires 1 parameter.");
 				}
 			}
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITCONTINENT.getCommandString())) {
@@ -156,10 +162,12 @@ public class ValidateCommandView {
 	}
 
 	/**
-	 * This function is used to traverse through all the sub-commands for a specific main command and return 0 if
-	 * any sub-commands or number of parameters passed for each sub-command is incorrect. Otherwise it returns 1
+	 * This function is used to traverse through all the sub-commands for a specific
+	 * main command and return 0 if any sub-commands or number of parameters passed
+	 * for each sub-command is incorrect. Otherwise it returns 1
+	 * 
 	 * @param p_commandParameters list of all the sub-commands
-	 * @param p_mainCommand Enum pointer that corresponds to the main command
+	 * @param p_mainCommand       Enum pointer that corresponds to the main command
 	 * @return Integer 0 if validation fails or 1 if it passes
 	 */
 	public int validateSubCommands(String[] p_commandParameters, MapEditingCommandListForUser p_mainCommand) {
@@ -176,7 +184,10 @@ public class ValidateCommandView {
 							int l_testIfInteger = Integer
 									.parseInt(p_commandParameters[(l_index + l_parameterIndex + 1)]);
 						} catch (NumberFormatException e) {
-							if(p_commandParameters[(l_index + l_parameterIndex + 1)].equals(MapEditingCommandListForUser.ADD.getCommandString()) || p_commandParameters[(l_index + l_parameterIndex + 1)].equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
+							if (p_commandParameters[(l_index + l_parameterIndex + 1)]
+									.equals(MapEditingCommandListForUser.ADD.getCommandString())
+									|| p_commandParameters[(l_index + l_parameterIndex + 1)]
+											.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
 								System.out.println("Invalid number of parameters: Missing parameter(s)");
 								return 0;
 							}
@@ -190,7 +201,10 @@ public class ValidateCommandView {
 						try {
 							@SuppressWarnings("unused")
 							String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							if(p_commandParameters[(l_index + l_parameterIndex + 1)].equals(MapEditingCommandListForUser.ADD.getCommandString()) || p_commandParameters[(l_index + l_parameterIndex + 1)].equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
+							if (p_commandParameters[(l_index + l_parameterIndex + 1)]
+									.equals(MapEditingCommandListForUser.ADD.getCommandString())
+									|| p_commandParameters[(l_index + l_parameterIndex + 1)]
+											.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
 								System.out.println("Invalid number of parameters: Missing parameter(s)");
 								return 0;
 							}
@@ -210,7 +224,10 @@ public class ValidateCommandView {
 							int l_testIfInteger = Integer
 									.parseInt(p_commandParameters[(l_index + l_parameterIndex + 1)]);
 						} catch (NumberFormatException e) {
-							if(p_commandParameters[(l_index + l_parameterIndex + 1)].equals(MapEditingCommandListForUser.ADD.getCommandString()) || p_commandParameters[(l_index + l_parameterIndex + 1)].equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
+							if (p_commandParameters[(l_index + l_parameterIndex + 1)]
+									.equals(MapEditingCommandListForUser.ADD.getCommandString())
+									|| p_commandParameters[(l_index + l_parameterIndex + 1)]
+											.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
 								System.out.println("Invalid number of parameters: Missing parameter(s)");
 								return 0;
 							}
@@ -224,7 +241,10 @@ public class ValidateCommandView {
 						try {
 							@SuppressWarnings("unused")
 							String l_stringParamter = (p_commandParameters[(l_index + l_parameterIndex + 1)]);
-							if(p_commandParameters[(l_index + l_parameterIndex + 1)].equals(MapEditingCommandListForUser.ADD.getCommandString()) || p_commandParameters[(l_index + l_parameterIndex + 1)].equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
+							if (p_commandParameters[(l_index + l_parameterIndex + 1)]
+									.equals(MapEditingCommandListForUser.ADD.getCommandString())
+									|| p_commandParameters[(l_index + l_parameterIndex + 1)]
+											.equals(MapEditingCommandListForUser.REMOVE.getCommandString())) {
 								System.out.println("Invalid number of parameters: Missing parameter(s)");
 								return 0;
 							}

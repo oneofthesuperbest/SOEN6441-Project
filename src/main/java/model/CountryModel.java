@@ -12,11 +12,14 @@ public class CountryModel {
 	private int d_armies;
 
 	/**
-	 * Creates a country with the specified order, name, continent order and, coordinate.
-	 * @param p_countryIdMap    Ordered id of the country based on the position in the map.
-	 * @param p_name            Name of the country according to the map file.
-	 * @param p_continent  The continent that this country belongs to.
-	 * @param p_coordinate  	The Coordinate of this country.
+	 * Creates a country with the specified order, name, continent order and,
+	 * coordinate.
+	 * 
+	 * @param p_countryIdMap Ordered id of the country based on the position in the
+	 *                       map.
+	 * @param p_name         Name of the country according to the map file.
+	 * @param p_continent    The continent that this country belongs to.
+	 * @param p_coordinate   The Coordinate of this country.
 	 */
 	public CountryModel(int p_countryIdMap, String p_name, ContinentModel p_continent, CoordinateModel p_coordinate) {
 		this.d_countryIdMap = p_countryIdMap;
@@ -26,16 +29,19 @@ public class CountryModel {
 	}
 
 	/**
-	 * Get the id of the country in the map based on the relative position in the map file.
-	 * This value will become irrelevant for an editmap phase as soon as remove command is used.
+	 * Get the id of the country in the map based on the relative position in the
+	 * map file. This value will become irrelevant for an editmap phase as soon as
+	 * remove command is used.
+	 * 
 	 * @return The index of the country
 	 */
-	public int getCountryIdMap(){
+	public int getCountryIdMap() {
 		return d_countryIdMap;
 	}
 
 	/**
 	 * Get the name of the country.
+	 * 
 	 * @return Name of the country.
 	 */
 	public String getName() {
@@ -44,6 +50,7 @@ public class CountryModel {
 
 	/**
 	 * Get the continent to which this country belongs.
+	 * 
 	 * @return The continent to which this country belongs.
 	 */
 	public ContinentModel getContinent() {
@@ -52,6 +59,7 @@ public class CountryModel {
 
 	/**
 	 * Get the coordinates of this country.
+	 * 
 	 * @return The coordinates of this country
 	 */
 	public CoordinateModel getCoordinate() {
@@ -60,22 +68,25 @@ public class CountryModel {
 
 	/**
 	 * Get the owner of this country.
+	 * 
 	 * @return The player who owns this country.
 	 */
 	public PlayerModel getOwner() {
 		return this.d_owner;
 	}
-	
+
 	/**
 	 * Get the armies stationed on this country
+	 * 
 	 * @return Number of armies stationed on this country
 	 */
 	public int getArmies() {
 		return this.d_armies;
 	}
-	
+
 	/**
 	 * Set the armies stationed on this country
+	 * 
 	 * @param p_armies Number of armies to be stationed on this country
 	 */
 	public void setArmies(int p_armies) {
@@ -84,6 +95,7 @@ public class CountryModel {
 
 	/**
 	 * Set the owner of this country.
+	 * 
 	 * @param p_owner Player who owns this country.
 	 */
 	public void setOwner(PlayerModel p_owner) {
