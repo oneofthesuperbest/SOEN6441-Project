@@ -59,7 +59,11 @@ public class GameEngine {
 			l_command = d_scannerObject.nextLine();
 			if (l_command.equals(GamePlayCommandList.ASSIGNCOUNTRIES.getCommandString())) {
 				// Break out of Game engine console for user
-				break;
+				if(l_command.split(" ").length > 1) {
+					System.out.println("Invalid number of parameters: Extra parameter(s) present. assigncountries command doesn't require a parameter.");
+				} else {
+				    break;
+				}
 			} else {
 				l_VCVObject.isValidCommand(l_command, this);
 			}

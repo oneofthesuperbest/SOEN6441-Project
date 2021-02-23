@@ -154,6 +154,10 @@ public class PlayerModel {
 					}
 				}
 			}
+			if(l_commandArray.length > 3) {
+				System.out.println("Invalid number of parameters: Extra parameter(s) present. deploy command only requires 2 parameters.");
+				return 0;
+			}
 		} else {
 			System.out.println("Invalid command: Please check your command");
 			return 0;

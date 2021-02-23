@@ -365,6 +365,7 @@ public class MapController {
 		l_country.getContinent().getCountries().remove(l_country);
 		d_gameEngine.getMapState().getListOfCountries().remove(l_country);
 		removeBorder(l_countryOrder);
+		System.out.println("Country with id: " + p_countryId + " was removed successfully.");
 	}
 
 	/**
