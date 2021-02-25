@@ -469,7 +469,7 @@ public class MapController {
 			System.out.println("error: Unable to add country with id: " + p_countryId + ". Already exists.");
 			return;
 		}
-		int insertionOrder = d_gameEngine.getMapState().getBorderGraph()[0].length + 1;
+		int insertionOrder = d_gameEngine.getMapState().getBorderGraph().length + 1;
 		l_countryToAdd = new CountryModel(insertionOrder, p_countryId, p_parentContinent, new CoordinateModel(-1, -1));
 
 		d_gameEngine.getMapState().getListOfCountries().add(l_countryToAdd);
