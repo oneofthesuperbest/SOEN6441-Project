@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Represents the current players state
  */
 public class PlayersState {
-	private ArrayList<PlayerModel> d_listOfPlayers = new ArrayList<PlayerModel>();
+	private ArrayList<Player> d_listOfPlayers = new ArrayList<Player>();
 
 	/**
 	 * Adds a new player to the list of players
@@ -15,7 +15,7 @@ public class PlayersState {
 	 * @return It returns 1 if player was added and 0 if player was found with same
 	 *         name
 	 */
-	public int addPlayer(PlayerModel p_playerObject) {
+	public int addPlayer(Player p_playerObject) {
 		String l_playerName = p_playerObject.getName();
 		for (int l_index = 0; l_index < d_listOfPlayers.size(); l_index++) {
 			if (d_listOfPlayers.get(l_index).getName().equals(l_playerName)) {
@@ -48,7 +48,7 @@ public class PlayersState {
 	 * 
 	 * @return ArrayList contains the PlayerModel object
 	 */
-	public ArrayList<PlayerModel> getPlayers() {
+	public ArrayList<Player> getPlayers() {
 		return this.d_listOfPlayers;
 	}
 }

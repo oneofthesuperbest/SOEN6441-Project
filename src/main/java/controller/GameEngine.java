@@ -8,7 +8,7 @@ import java.util.Scanner;
 import model.ContinentModel;
 import model.CountryModel;
 import model.MapState;
-import model.PlayerModel;
+import model.Player;
 import model.PlayersState;
 
 /**
@@ -90,11 +90,11 @@ public class GameEngine {
 	 * request execute orders
 	 */
 	public void executeOrderLoop() {
-		ArrayList<PlayerModel> l_players = this.getPlayersState().getPlayers();
+		ArrayList<Player> l_players = this.getPlayersState().getPlayers();
 		HashMap<String, Integer> l_playersMapCompleted = new HashMap<String, Integer>();
 
 		while (l_playersMapCompleted.size() < l_players.size()) {
-			for (PlayerModel l_player : l_players) {
+			for (Player l_player : l_players) {
 				if (l_playersMapCompleted.get(l_player.getName()) == null) {
 					if (l_player.getOrders().size() > 0) {
 						l_player.nextOrder();
@@ -112,11 +112,11 @@ public class GameEngine {
 	 * request issue orders
 	 */
 	public void issueOrderLoop() {
-		ArrayList<PlayerModel> l_players = this.getPlayersState().getPlayers();
+		ArrayList<Player> l_players = this.getPlayersState().getPlayers();
 		HashMap<String, Integer> l_playersMapCompleted = new HashMap<String, Integer>();
 
 		while (l_playersMapCompleted.size() < l_players.size()) {
-			for (PlayerModel l_player : l_players) {
+			for (Player l_player : l_players) {
 				if (l_playersMapCompleted.get(l_player.getName()) == null) {
 					if (l_player.getReinforcementsArmies() > 0) {
 						int l_returnValue = l_player.issueOrder();
@@ -146,9 +146,9 @@ public class GameEngine {
 			l_continentsMapOfControlValues.put(l_continent.getName(), l_continent.getArmy());
 		}
 
-		ArrayList<PlayerModel> l_players = this.getPlayersState().getPlayers();
+		ArrayList<Player> l_players = this.getPlayersState().getPlayers();
 
-		for (PlayerModel l_player : l_players) {
+		for (Player l_player : l_players) {
 			ArrayList<CountryModel> l_listOfOwnedCountries = l_player.getOwnedCountry();
 			int l_playerReinforcement = Math.max(3, (int) Math.floor(l_listOfOwnedCountries.size() / 3));
 			HashMap<String, Integer> l_playersMapOfOwnedCountries = new HashMap<String, Integer>();
@@ -180,11 +180,11 @@ public class GameEngine {
 	public void assignCountries() {
 		ArrayList<CountryModel> l_countries = this.getMapState().getListOfCountries();
 		int l_numberOfCountries = l_countries.size();
-		ArrayList<PlayerModel> l_players = this.getPlayersState().getPlayers();
+		ArrayList<Player> l_players = this.getPlayersState().getPlayers();
 		int l_numberOfPlayers = l_players.size();
 
 		int l_countryIndex = (int) (Math.random() * (l_numberOfCountries));
-		for (PlayerModel l_player : l_players) {
+		for (Player l_player : l_players) {
 			int l_numberOfCountriesTobeAssigned = (int) Math.ceil(l_numberOfCountries / l_numberOfPlayers);
 			int l_countryStartIndex = l_countryIndex;
 			for (; l_countryIndex != ((l_countryStartIndex + l_numberOfCountriesTobeAssigned) % l_countries.size());) {
@@ -210,7 +210,7 @@ public class GameEngine {
 			if (p_commandList[l_index].equals(GamePlayCommandList.ADD.getCommandString())) {
 				l_index++;
 				int l_returnValue = d_playerState
-						.addPlayer(new PlayerModel(p_commandList[l_index], this, d_scannerObject));
+						.addPlayer(new Player(p_commandList[l_index], this, d_scannerObject));
 				if (l_returnValue == 0) {
 					System.out.println("Player with name '" + p_commandList[l_index] + "' is already present");
 				} else {

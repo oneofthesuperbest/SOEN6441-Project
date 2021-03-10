@@ -8,7 +8,7 @@ public class CountryModel {
 	private String d_name;
 	private ContinentModel d_continent;
 	private CoordinateModel d_coordinate;
-	private PlayerModel d_owner;
+	private Player d_owner;
 	private int d_armies;
 
 	/**
@@ -71,7 +71,7 @@ public class CountryModel {
 	 * 
 	 * @return The player who owns this country.
 	 */
-	public PlayerModel getOwner() {
+	public Player getOwner() {
 		return this.d_owner;
 	}
 
@@ -98,7 +98,7 @@ public class CountryModel {
 	 * 
 	 * @param p_owner Player who owns this country.
 	 */
-	public void setOwner(PlayerModel p_owner) {
+	public void setOwner(Player p_owner) {
 		if (p_owner != this.d_owner) {
 			this.d_owner = p_owner;
 		}

@@ -253,7 +253,7 @@ public class MapController {
 	 * is the name.
 	 * 
 	 * @param p_id Name of the continent.
-	 * @return Continent.
+	 * @return Continent object.
 	 */
 	public ContinentModel getContinentById(String p_id) {
 		for (ContinentModel l_continent : d_gameEngine.getMapState().getListOfContinents()) {
@@ -376,7 +376,7 @@ public class MapController {
 	 *                          which the border is to be removed.
 	 */
 	public void removeBorder(int p_countryPosition) {
-		int[][] l_currentBorderGraph = d_gameEngine.getMapState().getBorderGraph();
+		int[][] l_currentBorderGraph = d_gameEngine.getMapState().getBorderGraph();		
 		int l_newSize = l_currentBorderGraph[0].length - 1;
 
 		int[][] l_newBorderGraph = new int[l_newSize][l_newSize];
@@ -878,7 +878,7 @@ public class MapController {
 		boolean l_bordersAreVaid = validateBorders(l_bordergraph);
 		int isMyGraphconnected = 0;
 		for (int i = 0; i < l_bordergraph.length; i++) {
-			boolean connectedCheck = validateGraph(l_bordergraph, i, false);
+			boolean connectedCheck = validateGraph(l_bordergraph, i, true);
 			if (connectedCheck == false) {
 				isMyGraphconnected = +1;
 			}
@@ -1037,8 +1037,8 @@ public class MapController {
 	 * @return a boolean based on whether the graph is connected or not
 	 */
 	public boolean validateGraph(int p_adjacencyMatrix[][], int p_source, boolean isSubGraph) {
-		int l_numberOfNodes = p_adjacencyMatrix[p_source].length - 1;
-		int[] l_visited = new int[l_numberOfNodes + 1];
+		int l_numberOfNodes = p_adjacencyMatrix[p_source].length;
+		int[] l_visited = new int[l_numberOfNodes];
 		Stack<Integer> stack = new Stack<Integer>();
 		int i, element;
 		l_visited[p_source] = 1;
@@ -1050,7 +1050,7 @@ public class MapController {
 			} else {
 				i = 0;
 			}
-			while (i <= l_numberOfNodes) {
+			while (i < l_numberOfNodes) {
 				if (p_adjacencyMatrix[element][i] == 1 && l_visited[i] == 0) {
 					stack.push(i);
 					l_visited[i] = 1;
@@ -1060,7 +1060,7 @@ public class MapController {
 		}
 
 		int count = 0;
-		for (int v = 1; v <= l_numberOfNodes; v++)
+		for (int v = 0; v < l_numberOfNodes; v++)
 			if (l_visited[v] == 1) {
 				count++;
 			}

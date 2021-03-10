@@ -9,7 +9,7 @@ public class Order {
 	String d_order;
 	String d_targetCountryName;
 	int d_numberOfArmies;
-	PlayerModel d_issuer;
+	Player d_issuer;
 
 	/**
 	 * This constructor is used to initialized the data members i.e.: create an
@@ -20,7 +20,7 @@ public class Order {
 	 * @param p_numberOfArmies    Number of armies to carry out the order
 	 * @param p_player            The player who issued the command
 	 */
-	public Order(String p_order, String p_targetCountryName, int p_numberOfArmies, PlayerModel p_player) {
+	public Order(String p_order, String p_targetCountryName, int p_numberOfArmies, Player p_player) {
 		d_order = p_order;
 		d_targetCountryName = p_targetCountryName;
 		d_numberOfArmies = p_numberOfArmies;

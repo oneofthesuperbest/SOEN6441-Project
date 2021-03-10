@@ -9,7 +9,7 @@ import controller.MapController;
 /**
  * Represents a player
  */
-public class PlayerModel {
+public class Player {
 	private String d_name;
 	private ArrayList<CountryModel> d_listOfOwnedCountries = new ArrayList<CountryModel>();
 	private int d_reinforementsArmies;
@@ -24,7 +24,7 @@ public class PlayerModel {
 	 * @param p_gameEngine    GameEngine reference.
 	 * @param p_scannerObject Scanner object reference.
 	 */
-	public PlayerModel(String p_name, GameEngine p_gameEngine, Scanner p_scannerObject) {
+	public Player(String p_name, GameEngine p_gameEngine, Scanner p_scannerObject) {
 		this.d_name = p_name;
 		d_gameEngineContext = p_gameEngine;
 		d_scannerObject = p_scannerObject;
