@@ -1,5 +1,7 @@
 package controller;
 
+import model.Player;
+
 /**
  * This class is used to used an abstract state class, which is used to maintain/handle current phase state
  */
@@ -86,4 +88,57 @@ public abstract class Phase {
 	 * This function is used to assign players to countries and start the game
 	 */
 	abstract void startGame();
+	
+	/**
+	 * This function is used to issue deploy order
+	 * @param p_player The player who issued the order
+	 * @param p_countryID ID of the country to which to deploy the armies
+	 * @param p_numberOfArmies Number of armies to deploy
+	 * @return 1 if the deploy order was issued else 0
+	 */
+	abstract int delop(Player p_player, String p_countryID, int p_numberOfArmies);
+	
+	/**
+	 * This function is used to issue advance order
+	 * @param p_player The player who issued the order
+	 * @param p_countryIDFrom ID of the country from which to deploy the armies
+	 * @param p_countryIDTo ID of the country to which to deploy the armies
+	 * @param p_numberOfArmies Number of armies to advance
+	 * @return 1 if the advance order was issued else 0
+	 */
+	abstract int advance(Player p_player, String p_countryIDFrom, String p_countryIDTo, int p_numberOfArmies);
+	
+	/**
+	 * This function is used to issue bomb order
+	 * @param p_player The player who issued the order
+	 * @param p_countryID ID of the country to bomb
+	 * @return 1 if the bomb order was issued else 0
+	 */
+	abstract int bomb(Player p_player, String p_countryID);
+	
+	/**
+	 * This function is used to issue blockade order
+	 * @param p_player The player who issued the order
+	 * @param p_countryID ID of the country to block
+	 * @return 1 if the blockade order was issued else 0
+	 */
+	abstract int blockade(Player p_player, String p_countryID);
+	
+	/**
+	 * This function is used to issue negotiate order
+	 * @param p_player The player who issued the order
+	 * @param p_playerID ID of the player to negotiate with
+	 * @return 1 if the negotiate order was issued else 0
+	 */
+	abstract int negotiate(Player p_player, String p_playerID);
+	
+	/**
+	 * This function is used to issue airlift order
+	 * @param p_player The player who issued the order
+	 * @param p_countryIDFrom ID of the country from which to deploy the armies
+	 * @param p_countryIDTo ID of the country to which to deploy the armies
+	 * @param p_numberOfArmies Number of armies to advance
+	 * @return 1 if the airlift order was issued else 0
+	 */
+	abstract int airlift(Player p_player, String p_countryIDFrom, String p_countryIDTo, int p_numberOfArmies);
 }
