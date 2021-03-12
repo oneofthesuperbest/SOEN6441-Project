@@ -18,7 +18,7 @@ public class DefaultPhase extends IntermediateMapEditingPhase {
 	 * {@inheritDoc}
 	 */
 	String getString() {
-		return "Default";
+		return "default";
 	}
 	
 	/**

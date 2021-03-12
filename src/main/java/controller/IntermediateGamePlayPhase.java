@@ -1,22 +1,17 @@
 package controller;
 
 /**
- * This class represents the map editing phase.
+ * This class is used to implement the common behavior of certain commands generically
+ * @author -Bilbo-
+ *
  */
-public class MapEditingPhase extends IntermediateMapEditingPhase {
+public abstract class IntermediateGamePlayPhase extends Phase {
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	MapEditingPhase(GameEngine p_gameEngine) {
+	IntermediateGamePlayPhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	String getString() {
-		return "map editing";
 	}
 	
 	/**
@@ -58,6 +53,7 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 	 * {@inheritDoc}
 	 */
 	void showMap() {
+		// ----
 		printErrorMessage(this);
 	}
 	
