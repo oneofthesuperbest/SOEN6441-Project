@@ -19,6 +19,7 @@ public class GameEngine {
 	private PlayersState d_playerState = new PlayersState();
 	String d_commandSeparator = " ";
 	Scanner d_scannerObject;
+	Phase d_phase;
 
 	/**
 	 * This constructor is used to set the scanner object context
@@ -27,6 +28,13 @@ public class GameEngine {
 	 */
 	public GameEngine(Scanner p_scannerObject) {
 		d_scannerObject = p_scannerObject;
+		setPhase(0);
+	}
+	
+	void setPhase(int p_phase) {
+		if(p_phase == 0) {
+			d_phase = new DefaultPhase(this);
+		}
 	}
 
 	/**

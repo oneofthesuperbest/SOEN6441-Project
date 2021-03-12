@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -20,9 +19,19 @@ import model.Player;
  * This class is used to test GameEngine class
  */
 public class GameEngineTest {
-	
+	/**
+	 * This holds the player object
+	 */
 	public static Player d_player;
+	
+	/**
+	 * This holds the test game engine object
+	 */
 	public static GameEngine d_gameEngineCase;
+	
+	/**
+	 * This holds the tested game engine object
+	 */
 	public static GameEngine d_gameEngineTestCase;
 
 	/**
