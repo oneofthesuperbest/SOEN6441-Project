@@ -22,14 +22,14 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 	 * {@inheritDoc}
 	 */
 	void addPlayers(String[] p_command) {
-		printErrorMessage(this);
+		d_gameEngineObject.addRemovePlayers(p_command);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	void startGame() {
-		printErrorMessage(this);
+		d_gameEngineObject.assignCountries();
 	}
 	
 	/**

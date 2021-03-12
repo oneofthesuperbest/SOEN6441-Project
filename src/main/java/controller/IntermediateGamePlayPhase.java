@@ -53,8 +53,8 @@ public abstract class IntermediateGamePlayPhase extends Phase {
 	 * {@inheritDoc}
 	 */
 	void showMap() {
-		// ----
-		printErrorMessage(this);
+		MapController l_mapController = new MapController(d_gameEngineObject);
+		l_mapController.showMapForGamePlay();
 	}
 	
 	/**

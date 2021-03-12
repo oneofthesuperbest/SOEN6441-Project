@@ -1,5 +1,7 @@
 package controller;
 
+import view.ExecuteCommandView;
+
 /**
  * This class represents the map editing phase.
  */
@@ -37,41 +39,51 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 	 * {@inheritDoc}
 	 */
 	void editContinent(String[] p_command) {
-		printErrorMessage(this);
+		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+		l_executeCVObject.editContinent(d_gameEngineObject, p_command);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	void editCountry(String[] p_command) {
-		printErrorMessage(this);
+		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+		l_executeCVObject.editCountry(d_gameEngineObject, p_command);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	void editNeighbor(String[] p_command) {
-		printErrorMessage(this);
+		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+		l_executeCVObject.editNeighbor(d_gameEngineObject, p_command);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	void showMap() {
-		printErrorMessage(this);
+		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+		l_executeCVObject.showMap(d_gameEngineObject);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	void saveMap(String p_filename) {
-		printErrorMessage(this);
+		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+		boolean l_returnValue = l_executeCVObject.saveMap(d_gameEngineObject, p_filename);
+		if (l_returnValue) {
+			System.out.println("Moving out of map editing phase.");
+			d_gameEngineObject.setPhase(0);
+		}
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
 	void validate() {
-		printErrorMessage(this);
+		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+		l_executeCVObject.validateMap(d_gameEngineObject);
 	}
 }

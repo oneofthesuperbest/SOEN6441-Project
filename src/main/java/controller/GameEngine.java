@@ -31,10 +31,31 @@ public class GameEngine {
 		setPhase(0);
 	}
 	
+	/**
+	 * This function is used to set the phase based on integer value. 0 for default, 1 for map editing,
+	 * 2 for start up, 3 for issue order and 4 for execute order
+	 * @param p_phase integer value of the phase
+	 */
 	void setPhase(int p_phase) {
 		if(p_phase == 0) {
 			d_phase = new DefaultPhase(this);
+		} else if (p_phase == 1) {
+			d_phase = new MapEditingPhase(this);
+		} else if (p_phase == 2) {
+			d_phase = new StartUpPhase(this);
+		} else if (p_phase == 3) {
+			d_phase = new IssueOrderPhase(this);
+		} else if (p_phase == 4) {
+			d_phase = new ExecuteOrderPhase(this);
 		}
+	}
+	
+	/**
+	 * This functions return object of the current phase
+	 * @return Current phase object
+	 */
+	Phase getPhase() {
+		return d_phase;
 	}
 
 	/**

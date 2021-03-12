@@ -9,7 +9,7 @@ public abstract class Phase {
 	GameEngine d_gameEngineObject;
 	
 	/**
-	 * This construtor initializes the game engine object
+	 * This constructor initializes the game engine object
 	 * @param p_gameEngine The current context of game engine object
 	 */
 	Phase(GameEngine p_gameEngine) {
