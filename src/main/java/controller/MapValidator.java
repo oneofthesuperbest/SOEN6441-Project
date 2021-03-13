@@ -53,8 +53,20 @@ public class MapValidator {
 		ArrayList<CountryModel> l_listOfCountries = d_gameEngine.getMapState().getListOfCountries();
 		int[][] l_bordergraph = d_gameEngine.getMapState().getBorderGraph();
 		boolean l_countriesAreVaid = validateCountries(l_listOfCountries);
-		boolean l_continentsAreVaid = validateContinents(l_listOfContinents);
+		if(l_countriesAreVaid == false)
+		{
+			return false;
+		}
+		boolean l_continentsAreValid = validateContinents(l_listOfContinents);
+		if(l_continentsAreValid == false)
+		{
+			return false;
+		}
 		boolean l_bordersAreVaid = validateBorders(l_bordergraph);
+		if(l_bordersAreVaid == false)
+		{
+			return false;
+		}
 		int isMyGraphconnected = 0;
 		for (int i = 0; i < l_bordergraph.length; i++) {
 			boolean connectedCheck = validateGraph(l_bordergraph, i, true);
@@ -70,7 +82,7 @@ public class MapValidator {
 
 		boolean l_isCountryAConnectedGraph = isCountryAConnectedGraph(l_listOfContinents, l_listOfCountries,
 				l_bordergraph);
-		if (l_countriesAreVaid == false || l_continentsAreVaid == false || l_bordersAreVaid == false
+		if (l_countriesAreVaid == false || l_continentsAreValid == false || l_bordersAreVaid == false
 				|| isMyGraphconnected > 0) {
 			return false;
 		} else {
@@ -196,7 +208,22 @@ public class MapValidator {
 	 * @return a boolean specifying whether borders are defined or not
 	 */
 	public boolean validateBorders(int[][] p_borderGraph) {
+		System.out.println(p_borderGraph.length);
+		int count = 0;
+		 for (int i = 0; i < p_borderGraph.length; i++)
+			 
+	            // Loop through all elements of current row
+	            for (int j = 0; j < p_borderGraph[i].length; j++)
+	                if(p_borderGraph[i][j] == 1)
+	                {
+	                	count++;
+	                }
+		 if(count == 0)
+		 {
+			 return false;
+		 }
 		if (p_borderGraph.length > 0) {
+			
 			System.out.println("Validation Check: Borders are defined in the map");
 			return true;
 		} else {
