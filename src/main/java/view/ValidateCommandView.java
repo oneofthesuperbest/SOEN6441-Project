@@ -2,6 +2,7 @@ package view;
 
 import controller.GameEngine;
 import controller.GamePlayCommandList;
+import model.LogEntryBuffer;
 
 /**
  * This class is used to validate entered command. It will check if a command is
@@ -21,6 +22,7 @@ public class ValidateCommandView {
 	 */
 	void isValidCommand(GameEngine p_gameEngineObject, String p_command, ConsoleView p_consoleViewObject) {
 		String[] l_commandParameters = p_command.split(d_commandSeparator);
+		LogEntryBuffer l_logEntryBuffer = p_consoleViewObject.getLogEntryBuffer();
 		int l_phase = p_consoleViewObject.getPhase();
 		if (l_phase == 0) {
 			// Check if base command is editmap or loadmap, otherwise return
@@ -32,6 +34,8 @@ public class ValidateCommandView {
 					boolean readMapResult = l_executeCVObject.readMapFile(p_gameEngineObject, l_commandParameters[1]);
 					if (readMapResult) {
 						p_consoleViewObject.setPhase(1);
+						// log the phase change.
+						l_logEntryBuffer.addLogEntry("PHASE CHANGED: (1) Entered Map Editing Phase.");
 					}
 				} else {
 					if (l_commandParameters.length < 2) {
@@ -50,6 +54,8 @@ public class ValidateCommandView {
 					boolean loadMapResult = l_executeCVObject.loadMapFile(p_gameEngineObject, l_commandParameters[1]);
 					if (loadMapResult) {
 						p_consoleViewObject.setPhase(2);
+						// log the phase change.
+						l_logEntryBuffer.addLogEntry("PHASE CHANGED: (2) Entered Game Phase.");
 					}
 				} else {
 					if (l_commandParameters.length < 2) {
@@ -90,6 +96,7 @@ public class ValidateCommandView {
 	 */
 	void hasValidMapEditingParameters(GameEngine p_gameEngineObject, String[] p_commandParameters,
 			ConsoleView p_consoleViewObject) {
+		LogEntryBuffer l_logEntryBuffer = p_consoleViewObject.getLogEntryBuffer();
 		if (p_commandParameters[0].equals(MapEditingCommandListForUser.SHOWMAP.getCommandString())) {
 			// ------- Call ShowMap functions
 			if (p_commandParameters.length > 1) {
@@ -119,6 +126,8 @@ public class ValidateCommandView {
 				if (l_returnValue) {
 					System.out.println("Moving out of map editing phase.");
 					p_consoleViewObject.setPhase(0);
+					// log the phase change.
+					l_logEntryBuffer.addLogEntry("PHASE CHANGED: (0) Moved out of map editing phase.");
 				}
 			} else {
 				if (p_commandParameters.length < 2) {
