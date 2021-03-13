@@ -76,11 +76,14 @@ public class MapValidator {
 		} else {
 			System.out.println("Validation Check Failed: The map is not a connected graph ");
 		}
+		
+		if (isMyGraphconnected > 0) {
+			return false;
+		}
 
 		boolean l_isCountryAConnectedGraph = isCountryAConnectedGraph(l_listOfContinents, l_listOfCountries,
 				l_bordergraph);
-		if (l_countriesAreVaid == false || l_continentsAreValid == false || l_bordersAreVaid == false
-				|| isMyGraphconnected > 0) {
+		if (l_isCountryAConnectedGraph == false) {
 			return false;
 		} else {
 			return true;
