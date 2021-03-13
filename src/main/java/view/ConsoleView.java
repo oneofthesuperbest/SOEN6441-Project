@@ -25,9 +25,9 @@ public class ConsoleView {
 		while (true) {
 			System.out.println("Enter your command");
 			l_command = l_scannerObject.nextLine();
-			l_VCVObject.isValidCommand(d_gameEngineObject, l_command, this);
+			l_VCVObject.checkCommand(d_gameEngineObject, l_command, null);
 
-			if (d_phase == 2) {
+			if (d_gameEngineObject.getPhase().getString().equals("start-up")) {
 				// if phase 2 then exit loop and call GameEngine loadmap
 				break;
 			}

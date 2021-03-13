@@ -12,14 +12,14 @@ public abstract class IntermediateOrderPhase extends IntermediateGamePlayPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	void addPlayers(String[] p_command) {
+	public void addPlayers(String[] p_command) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void startGame() {
+	public void startGame() {
 		printErrorMessage(this);
 	}
 }

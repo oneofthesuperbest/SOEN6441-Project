@@ -1,6 +1,6 @@
 package controller;
 
-import model.Player;
+import model.Order;
 
 /**
  * This abstract class represents the intermediate state were all game play command are invalid
@@ -17,29 +17,21 @@ public abstract class IntermediateMapEditingPhase extends Phase{
 	/**
 	 * {@inheritDoc}
 	 */
-	void addPlayers(String[] p_command) {
+	public void addPlayers(String[] p_command) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void startGame() {
+	public void startGame() {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	int delop(Player p_player, String p_countryID, int p_numberOfArmies) {
-		printErrorMessage(this);
-		return 0;
-	}
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	int advance(Player p_player, String p_countryIDFrom, String p_countryIDTo, int p_numberOfArmies) {
+	public int delop(Order p_order) {
 		printErrorMessage(this);
 		return 0;
 	}
@@ -47,7 +39,7 @@ public abstract class IntermediateMapEditingPhase extends Phase{
 	/**
 	 * {@inheritDoc}
 	 */
-	int bomb(Player p_player, String p_countryID) {
+	public int advance(Order p_order) {
 		printErrorMessage(this);
 		return 0;
 	}
@@ -55,7 +47,7 @@ public abstract class IntermediateMapEditingPhase extends Phase{
 	/**
 	 * {@inheritDoc}
 	 */
-	int blockade(Player p_player, String p_countryID) {
+	public int bomb(Order p_order) {
 		printErrorMessage(this);
 		return 0;
 	}
@@ -63,7 +55,7 @@ public abstract class IntermediateMapEditingPhase extends Phase{
 	/**
 	 * {@inheritDoc}
 	 */
-	int negotiate(Player p_player, String p_playerID) {
+	public int blockade(Order p_order) {
 		printErrorMessage(this);
 		return 0;
 	}
@@ -71,7 +63,15 @@ public abstract class IntermediateMapEditingPhase extends Phase{
 	/**
 	 * {@inheritDoc}
 	 */
-	int airlift(Player p_player, String p_countryIDFrom, String p_countryIDTo, int p_numberOfArmies) {
+	public int negotiate(Order p_order) {
+		printErrorMessage(this);
+		return 0;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public int airlift(Order p_order) {
 		printErrorMessage(this);
 		return 0;
 	}

@@ -17,42 +17,42 @@ public abstract class IntermediateGamePlayPhase extends Phase {
 	/**
 	 * {@inheritDoc}
 	 */
-	void editMap(String p_mapPath) {
+	public void editMap(String p_mapPath) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void loadMap(String p_mapPath) {
+	public void loadMap(String p_mapPath) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void editContinent(String[] p_command) {
+	public void editContinent(String[] p_command) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void editCountry(String[] p_command) {
+	public void editCountry(String[] p_command) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void editNeighbor(String[] p_command) {
+	public void editNeighbor(String[] p_command) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void showMap() {
+	public void showMap() {
 		MapController l_mapController = new MapController(d_gameEngineObject);
 		l_mapController.showMapForGamePlay();
 	}
@@ -60,14 +60,14 @@ public abstract class IntermediateGamePlayPhase extends Phase {
 	/**
 	 * {@inheritDoc}
 	 */
-	void saveMap(String p_filename) {
+	public void saveMap(String p_filename) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void validate() {
+	public void validate() {
 		printErrorMessage(this);
 	}
 }

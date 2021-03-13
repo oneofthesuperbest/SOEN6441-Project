@@ -2,6 +2,7 @@ package view;
 
 import controller.GameEngine;
 import controller.GamePlayCommandList;
+import model.Player;
 
 /**
  * This class is used to validate entered command. It will check if a command is
@@ -12,72 +13,58 @@ public class ValidateCommandView {
 	String d_commandSeparator = " ";
 
 	/**
-	 * This function Validated the base command and calls respective function from
-	 * ExecuteCommandView class
+	 * This functions is used to check if the base command is valid or not
 	 * 
-	 * @param p_gameEngineObject  Reference of the GameEngine
-	 * @param p_command           The command that needs to be validated
-	 * @param p_consoleViewObject Reference of ConsoleView
+	 * @param p_gameEngineObject
+	 * @param p_command
+	 * @param p_player
+	 * @return Greater than 1 if valid else 0
 	 */
-	void isValidCommand(GameEngine p_gameEngineObject, String p_command, ConsoleView p_consoleViewObject) {
+	public int checkCommand(GameEngine p_gameEngineObject, String p_command, Player p_player) {
 		String[] l_commandParameters = p_command.split(d_commandSeparator);
-		int l_phase = p_consoleViewObject.getPhase();
-		if (l_phase == 0) {
-			// Check if base command is editmap or loadmap, otherwise return
-			if (l_commandParameters[0].equals(MapEditingCommandListForUser.EDITMAP.getCommandString())) {
-				System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
-				if (l_commandParameters.length == 2) {
-					ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
-					System.out.println("Valid parameters. Loading map for editing...");
-					boolean readMapResult = l_executeCVObject.readMapFile(p_gameEngineObject, l_commandParameters[1]);
-					if (readMapResult) {
-						p_consoleViewObject.setPhase(1);
-					}
-				} else {
-					if (l_commandParameters.length < 2) {
-						System.out.println("Incorrect command: filename not entered.");
-					} else {
-						System.out.println(
-								"Incorrect command: Extra parameters passed. editmap command only requires 1 paramater.");
-					}
-				}
-				return;
-			} else if (l_commandParameters[0].equals(GamePlayCommandList.LOADMAP.getCommandString())) {
-				System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
-				if (l_commandParameters.length == 2) {
-					ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
-					System.out.println("Valid parameters. Loading map...");
-					boolean loadMapResult = l_executeCVObject.loadMapFile(p_gameEngineObject, l_commandParameters[1]);
-					if (loadMapResult) {
-						p_consoleViewObject.setPhase(2);
-					}
-				} else {
-					if (l_commandParameters.length < 2) {
-						System.out.println("Incorrect command: filename not entered.");
-					} else {
-						System.out.println(
-								"Incorrect command: Extra parameters passed. loadmap command only requires 1 parameter.");
-					}
-				}
-				return;
+		if (l_commandParameters[0].equals(MapEditingCommandListForUser.EDITMAP.getCommandString())) {
+			// Check if base command is editmap
+			System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
+			if (l_commandParameters.length == 2) {
+				p_gameEngineObject.getPhase().editMap(l_commandParameters[1]);
 			} else {
-				System.out.println(
-						"Invalid/Incorrect command: Map is empty. Either enter a command for editing a map or loading a map for game play.");
-			}
-		} else if (l_phase == 1) {
-			// Validate phase 1 commands
-			for (MapEditingCommandListForUser l_commandParameter : MapEditingCommandListForUser.values()) {
-				if (l_commandParameters[0].equals(l_commandParameter.getCommandString())) {
+				if (l_commandParameters.length < 2) {
+					System.out.println("Incorrect command: filename not entered.");
+				} else {
 					System.out.println(
-							"Valid base command. Checking if all the sub-commands and their parameters (if any) are valid...");
-					hasValidMapEditingParameters(p_gameEngineObject, l_commandParameters, p_consoleViewObject);
-					return;
+							"Incorrect command: Extra parameters passed. editmap command only requires 1 paramater.");
 				}
 			}
-			System.out.println("Invalid command: Please check your command");
+		} else if (l_commandParameters[0].equals(GamePlayCommandList.LOADMAP.getCommandString())) {
+			// Check if base command is loadmap
+			System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
+			if (l_commandParameters.length == 2) {
+				p_gameEngineObject.getPhase().loadMap(l_commandParameters[1]);
+			} else {
+				if (l_commandParameters.length < 2) {
+					System.out.println("Incorrect command: filename not entered.");
+				} else {
+					System.out.println(
+							"Incorrect command: Extra parameters passed. loadmap command only requires 1 parameter.");
+				}
+				return 0;
+			}
+		} else {
+			int l_returnValue = isValidMapEditing(p_gameEngineObject, l_commandParameters);
+			if(l_returnValue == 0) {
+				l_returnValue = isValidGamePlay(p_gameEngineObject, l_commandParameters);
+				if(l_returnValue == 0) {
+					l_returnValue = isValidOrderCommand(p_gameEngineObject, l_commandParameters, p_player);
+					if(l_returnValue == 0) {
+						return 0;
+					}
+				}
+			}
 		}
+		return 1;
 	}
-
+	
+	
 	/**
 	 * This function is use to validate list of sub-commands and their parameters.
 	 * Checking if sub commands are valid or parameters are of required type and
@@ -161,6 +148,180 @@ public class ValidateCommandView {
 		}
 	}
 
+	/**
+	 * This function Validated the base command and calls respective function from
+	 * ExecuteCommandView class
+	 * 
+	 * @param p_gameEngineObject  Reference of the GameEngine
+	 * @param p_command           The command that needs to be validated
+	 * @param p_consoleViewObject Reference of ConsoleView
+	 */
+	void isValidCommand(GameEngine p_gameEngineObject, String p_command, ConsoleView p_consoleViewObject) {
+		String[] l_commandParameters = p_command.split(d_commandSeparator);
+		int l_phase = p_consoleViewObject.getPhase();
+		if (l_phase == 0) {
+			// Check if base command is editmap or loadmap, otherwise return
+			if (l_commandParameters[0].equals(MapEditingCommandListForUser.EDITMAP.getCommandString())) {
+				System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
+				if (l_commandParameters.length == 2) {
+					ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+					System.out.println("Valid parameters. Loading map for editing...");
+					boolean readMapResult = l_executeCVObject.readMapFile(p_gameEngineObject, l_commandParameters[1]);
+					if (readMapResult) {
+						p_consoleViewObject.setPhase(1);
+					}
+				} else {
+					if (l_commandParameters.length < 2) {
+						System.out.println("Incorrect command: filename not entered.");
+					} else {
+						System.out.println(
+								"Incorrect command: Extra parameters passed. editmap command only requires 1 paramater.");
+					}
+				}
+				return;
+			} else if (l_commandParameters[0].equals(GamePlayCommandList.LOADMAP.getCommandString())) {
+				System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
+				if (l_commandParameters.length == 2) {
+					ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
+					System.out.println("Valid parameters. Loading map...");
+					boolean loadMapResult = l_executeCVObject.loadMapFile(p_gameEngineObject, l_commandParameters[1]);
+					if (loadMapResult) {
+						p_consoleViewObject.setPhase(2);
+					}
+				} else {
+					if (l_commandParameters.length < 2) {
+						System.out.println("Incorrect command: filename not entered.");
+					} else {
+						System.out.println(
+								"Incorrect command: Extra parameters passed. loadmap command only requires 1 parameter.");
+					}
+				}
+				return;
+			} else {
+				System.out.println(
+						"Invalid/Incorrect command: Map is empty. Either enter a command for editing a map or loading a map for game play.");
+			}
+		} else if (l_phase == 1) {
+			// Validate phase 1 commands
+			for (MapEditingCommandListForUser l_commandParameter : MapEditingCommandListForUser.values()) {
+				if (l_commandParameters[0].equals(l_commandParameter.getCommandString())) {
+					System.out.println(
+							"Valid base command. Checking if all the sub-commands and their parameters (if any) are valid...");
+					hasValidMapEditingParameters(p_gameEngineObject, l_commandParameters, p_consoleViewObject);
+					return;
+				}
+			}
+			System.out.println("Invalid command: Please check your command");
+		}
+	}
+
+	
+	/**
+	 * This function is use to check if command is valid map editing command
+	 * 
+	 * @param p_gameEngineObject  This is the main GameEngine object
+	 * @param p_commandParameters This is the list of sub-commands and their
+	 *                            parameters
+	 * @return 1 if successful else 0
+	 */
+	int isValidMapEditing(GameEngine p_gameEngineObject, String[] p_commandParameters) {
+		if (p_commandParameters[0].equals(MapEditingCommandListForUser.SHOWMAP.getCommandString())) {
+			// ------- Call ShowMap functions
+			if (p_commandParameters.length > 1) {
+				System.out.println(
+						"Incorrect command: Extra parameters passed. showmap command doesn't require a parameter.");
+			}
+			p_gameEngineObject.getPhase().showMap();
+			// Returning 0 to indicate showmap is not an order
+			return 0;
+		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.VALIDATEMAP.getCommandString())) {
+			// ------- Call ValidateMap functions
+			if (p_commandParameters.length > 1) {
+				System.out.println(
+						"Incorrect command: Extra parameters passed. validatemap command doesn't require a parameter.");
+			}
+			p_gameEngineObject.getPhase().validate();
+		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.SAVEMAP.getCommandString())) {
+			if (p_commandParameters.length == 2) {
+				// ------- Call ValidateMap function and based on the boolean value return call
+				// SaveMap
+				p_gameEngineObject.getPhase().saveMap(p_commandParameters[1]);
+				return 1;
+			} else {
+				if (p_commandParameters.length < 2) {
+					System.out.println("Incorrect command: filename not entered.");
+				} else {
+					System.out.println(
+							"Incorrect command: Extra parameters passed. savemap command only requires 1 parameter.");
+				}
+			}
+		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITCONTINENT.getCommandString())) {
+			// validate all sub-commands and parameters of editcontinent command
+			System.out.println("Validating all sub-commands and parameters of editcontinent command...");
+			int l_returnValue = validateSubCommands(p_commandParameters, MapEditingCommandListForUser.EDITCONTINENT);
+			if (l_returnValue == 1) {
+				// ------- Call EditContinent function
+				p_gameEngineObject.getPhase().editContinent(p_commandParameters);
+			}
+		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITCOUNTRY.getCommandString())) {
+			// validate all sub-commands and parameters of editcountry command
+			System.out.println("Validating all sub-commands and parameters of editcountry command...");
+			int l_returnValue = validateSubCommands(p_commandParameters, MapEditingCommandListForUser.EDITCOUNTRY);
+			if (l_returnValue == 1) {
+				// ------- Call EditCountry function
+				p_gameEngineObject.getPhase().editCountry(p_commandParameters);
+				return 1;
+			}
+		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITNEIGHBOR.getCommandString())) {
+			// validate all sub-commands and parameters of editneighbor command
+			System.out.println("Validating all sub-commands and parameters of editneighbor command...");
+			int l_returnValue = validateSubCommands(p_commandParameters, MapEditingCommandListForUser.EDITNEIGHBOR);
+			if (l_returnValue == 1) {
+				// ------- Call EditNeighbour function
+				p_gameEngineObject.getPhase().editNeighbor(p_commandParameters);
+				return 1;
+			}
+		}
+		return 0;
+	}
+	
+	/**
+	 * This function is use to check if command is valid game playe command
+	 * 
+	 * @param p_gameEngineObject  This is the main GameEngine object
+	 * @param p_commandParameters This is the list of sub-commands and their
+	 *                            parameters
+	 * @return 1 if successful else 0
+	 */
+	int isValidGamePlay(GameEngine p_gameEngineObject, String[] p_commandParameters) {
+		if (p_commandParameters[0].equals(MapEditingCommandListForUser.GAMEPLAYER.getCommandString())) {
+			// validate all sub-commands and parameters of gameplayer command
+			System.out.println("Validating all sub-commands and parameters of gameplayer command...");
+			int l_returnValue = validateSubCommands(p_commandParameters, MapEditingCommandListForUser.GAMEPLAYER);
+			if (l_returnValue == 1) {
+				// ------- Call add/remove players function
+				p_gameEngineObject.getPhase().addPlayers(p_commandParameters);
+				return 1;
+			}
+		} else if(p_commandParameters[0].equals(GamePlayCommandList.ASSIGNCOUNTRIES.getCommandString())) {
+			p_gameEngineObject.getPhase().startGame();
+		}
+		return 1;
+	}
+
+	/**
+	 * This function is use to check if command is valid order command
+	 * @param p_gameEngineObject This is the main GameEngine object
+	 * @param p_commandParameters This is the list of sub-commands and their
+	 *                            parameters
+	 * @param p_player The player who issued the command
+	 * @return 1 if successful else 0
+	 */
+	int isValidOrderCommand(GameEngine p_gameEngineObject, String[] p_commandParameters, Player p_player) {
+		
+		return 1;
+	}
+	
 	/**
 	 * This function is used to traverse through all the sub-commands for a specific
 	 * main command and return 0 if any sub-commands or number of parameters passed

@@ -10,6 +10,7 @@ import model.CountryModel;
 import model.MapState;
 import model.Player;
 import model.PlayersState;
+import view.ValidateCommandView;
 
 /**
  * This class is the main game engine which carry out commands of the players
@@ -54,7 +55,7 @@ public class GameEngine {
 	 * This functions return object of the current phase
 	 * @return Current phase object
 	 */
-	Phase getPhase() {
+	public Phase getPhase() {
 		return d_phase;
 	}
 
@@ -81,24 +82,19 @@ public class GameEngine {
 	 */
 	public void loadGameEngineConsole() {
 		System.out.println("GameEngine console loaded.");
-		ValidateCommandController l_VCVObject = new ValidateCommandController();
+		ValidateCommandView l_VCVObject = new ValidateCommandView();
 		while (true) {
 			System.out.println("Enter your command");
 			String l_command = "";
 			l_command = d_scannerObject.nextLine();
-			if (l_command.equals(GamePlayCommandList.ASSIGNCOUNTRIES.getCommandString())) {
+			if (!this.getPhase().getString().equals("start-up")) {
 				// Break out of Game engine console for user
-				if (l_command.split(" ").length > 1) {
-					System.out.println(
-							"Invalid number of parameters: Extra parameter(s) present. assigncountries command doesn't require a parameter.");
-				} else {
-					break;
-				}
+				break;
 			} else {
-				l_VCVObject.isValidCommand(l_command, this);
+				l_VCVObject.checkCommand(this, l_command, null);
 			}
 		}
-		this.assignCountries();
+		this.loadGameEngine();
 	}
 
 	/**
@@ -108,8 +104,10 @@ public class GameEngine {
 	public void loadGameEngine() {
 		System.out.println("Game Engine loaded.");
 		while (true) {
+			this.setPhase(3);
 			this.assignReinforcements();
 			this.issueOrderLoop();
+			this.setPhase(4);
 			this.executeOrderLoop();
 		}
 	}
@@ -226,7 +224,6 @@ public class GameEngine {
 			l_numberOfCountries -= l_numberOfCountriesTobeAssigned;
 		}
 		System.out.println("Countries are assigned to players. Starting Game Engine...");
-		this.loadGameEngine();
 	}
 
 	/**

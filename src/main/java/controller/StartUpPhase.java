@@ -1,6 +1,6 @@
 package controller;
 
-import model.Player;
+import model.Order;
 
 public class StartUpPhase extends IntermediateGamePlayPhase {
 	
@@ -14,28 +14,29 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	String getString() {
+	public String getString() {
 		return "start-up";
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void addPlayers(String[] p_command) {
+	public void addPlayers(String[] p_command) {
 		d_gameEngineObject.addRemovePlayers(p_command);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void startGame() {
+	public void startGame() {
 		d_gameEngineObject.assignCountries();
+		d_gameEngineObject.setPhase(3);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	int delop(Player p_player, String p_countryID, int p_numberOfArmies) {
+	public int delop(Order p_order) {
 		printErrorMessage(this);
 		return 0;
 	}
@@ -43,7 +44,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	int advance(Player p_player, String p_countryIDFrom, String p_countryIDTo, int p_numberOfArmies) {
+	public int advance(Order p_order) {
 		printErrorMessage(this);
 		return 0;
 	}
@@ -51,7 +52,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	int bomb(Player p_player, String p_countryID) {
+	public int bomb(Order p_order) {
 		printErrorMessage(this);
 		return 0;
 	}
@@ -59,7 +60,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	int blockade(Player p_player, String p_countryID) {
+	public int blockade(Order p_order) {
 		printErrorMessage(this);
 		return 0;
 	}
@@ -67,7 +68,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	int negotiate(Player p_player, String p_playerID) {
+	public int negotiate(Order p_order) {
 		printErrorMessage(this);
 		return 0;
 	}
@@ -75,7 +76,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	int airlift(Player p_player, String p_countryIDFrom, String p_countryIDTo, int p_numberOfArmies) {
+	public int airlift(Order p_order) {
 		printErrorMessage(this);
 		return 0;
 	}

@@ -17,28 +17,28 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	String getString() {
+	public String getString() {
 		return "map editing";
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void editMap(String p_mapPath) {
+	public void editMap(String p_mapPath) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void loadMap(String p_mapPath) {
+	public void loadMap(String p_mapPath) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void editContinent(String[] p_command) {
+	public void editContinent(String[] p_command) {
 		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 		l_executeCVObject.editContinent(d_gameEngineObject, p_command);
 	}
@@ -46,7 +46,7 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	void editCountry(String[] p_command) {
+	public void editCountry(String[] p_command) {
 		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 		l_executeCVObject.editCountry(d_gameEngineObject, p_command);
 	}
@@ -54,7 +54,7 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	void editNeighbor(String[] p_command) {
+	public void editNeighbor(String[] p_command) {
 		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 		l_executeCVObject.editNeighbor(d_gameEngineObject, p_command);
 	}
@@ -62,7 +62,7 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	void showMap() {
+	public void showMap() {
 		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 		l_executeCVObject.showMap(d_gameEngineObject);
 	}
@@ -70,7 +70,7 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	void saveMap(String p_filename) {
+	public void saveMap(String p_filename) {
 		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 		boolean l_returnValue = l_executeCVObject.saveMap(d_gameEngineObject, p_filename);
 		if (l_returnValue) {
@@ -82,7 +82,7 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	void validate() {
+	public void validate() {
 		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 		l_executeCVObject.validateMap(d_gameEngineObject);
 	}

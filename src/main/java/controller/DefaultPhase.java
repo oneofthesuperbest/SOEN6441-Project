@@ -17,14 +17,14 @@ public class DefaultPhase extends IntermediateMapEditingPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	String getString() {
+	public String getString() {
 		return "default";
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void editMap(String p_mapPath) {
+	public void editMap(String p_mapPath) {
 		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 		System.out.println("Valid parameters. Loading map for editing...");
 		boolean readMapResult = l_executeCVObject.readMapFile(d_gameEngineObject, p_mapPath);
@@ -36,7 +36,7 @@ public class DefaultPhase extends IntermediateMapEditingPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	void loadMap(String p_mapPath) {
+	public void loadMap(String p_mapPath) {
 		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 		System.out.println("Valid parameters. Loading map...");
 		boolean loadMapResult = l_executeCVObject.loadMapFile(d_gameEngineObject, p_mapPath);
@@ -48,42 +48,42 @@ public class DefaultPhase extends IntermediateMapEditingPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	void editContinent(String[] p_command) {
+	public void editContinent(String[] p_command) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void editCountry(String[] p_command) {
+	public void editCountry(String[] p_command) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void editNeighbor(String[] p_command) {
+	public void editNeighbor(String[] p_command) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void showMap() {
+	public void showMap() {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void saveMap(String p_filename) {
+	public void saveMap(String p_filename) {
 		printErrorMessage(this);
 	}
 	
 	/**
 	 * {@inheritDoc}
 	 */
-	void validate() {
+	public void validate() {
 		printErrorMessage(this);
 	}
 }
