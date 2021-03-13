@@ -2,6 +2,7 @@ package view;
 
 import controller.GameEngine;
 import controller.GamePlayCommandList;
+import model.LogEntryBuffer;
 import model.Player;
 
 /**
@@ -158,6 +159,7 @@ public class ValidateCommandView {
 	 */
 	void isValidCommand(GameEngine p_gameEngineObject, String p_command, ConsoleView p_consoleViewObject) {
 		String[] l_commandParameters = p_command.split(d_commandSeparator);
+		LogEntryBuffer l_logEntryBuffer = p_consoleViewObject.getLogEntryBuffer();
 		int l_phase = p_consoleViewObject.getPhase();
 		if (l_phase == 0) {
 			// Check if base command is editmap or loadmap, otherwise return
@@ -169,6 +171,8 @@ public class ValidateCommandView {
 					boolean readMapResult = l_executeCVObject.readMapFile(p_gameEngineObject, l_commandParameters[1]);
 					if (readMapResult) {
 						p_consoleViewObject.setPhase(1);
+						// log the phase change.
+						l_logEntryBuffer.addLogEntry("PHASE CHANGED: (1) Entered Map Editing Phase.");
 					}
 				} else {
 					if (l_commandParameters.length < 2) {
@@ -187,6 +191,8 @@ public class ValidateCommandView {
 					boolean loadMapResult = l_executeCVObject.loadMapFile(p_gameEngineObject, l_commandParameters[1]);
 					if (loadMapResult) {
 						p_consoleViewObject.setPhase(2);
+						// log the phase change.
+						l_logEntryBuffer.addLogEntry("PHASE CHANGED: (2) Entered Game Phase.");
 					}
 				} else {
 					if (l_commandParameters.length < 2) {

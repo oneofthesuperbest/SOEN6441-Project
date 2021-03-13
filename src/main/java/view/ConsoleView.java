@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import controller.GameEngine;
+import model.LogEntryBuffer;
 
 /**
  * This class provides the console to the user. This class allows user to give
@@ -11,6 +12,10 @@ import controller.GameEngine;
 public class ConsoleView {
 	private int d_phase; // 1 for Map editor phase and 2 for Game phase
 	GameEngine d_gameEngineObject;
+	// Observable LogEntryBuffer class to push log strings.
+	LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
+	// Observer FileEntryLogger which waits for notification from LogEntryBuffer
+	FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
 
 	/**
 	 * This functions initializes the console and prompts users for commands
@@ -53,5 +58,14 @@ public class ConsoleView {
 	 */
 	int getPhase() {
 		return this.d_phase;
+	}
+
+	/**
+	 * This function returns the LogEntryBuffer object which
+	 * is used to add log entries.
+	 * @return A LogEntryBuffer object which is used to push log entries into the file.
+	 */
+	LogEntryBuffer getLogEntryBuffer(){
+		return d_logEntryBuffer;
 	}
 }
