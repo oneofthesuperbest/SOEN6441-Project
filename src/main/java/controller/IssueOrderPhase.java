@@ -22,6 +22,7 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 	 * {@inheritDoc}
 	 */
 	public int delop(Order p_order) {
+		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Delop order was issued.");
 		//-- Validate command and then create order
 		return 0;
 	}
@@ -30,6 +31,7 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 	 * {@inheritDoc}
 	 */
 	public int advance(Order p_order) {
+		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Advance order was issued.");
 		//-- Validate command and then create order
 		return 0;
 	}
@@ -38,6 +40,7 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 	 * {@inheritDoc}
 	 */
 	public int bomb(Order p_order) {
+		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Bomb order was issued.");
 		//-- Validate command and then create order
 		return 0;
 	}
@@ -46,6 +49,7 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 	 * {@inheritDoc}
 	 */
 	public int blockade(Order p_order) {
+		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Blockade order was issued.");
 		//-- Validate command and then create order
 		return 0;
 	}
@@ -54,6 +58,7 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 	 * {@inheritDoc}
 	 */
 	public int negotiate(Order p_order) {
+		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Negotiate order was issued.");
 		//-- Validate command and then create order
 		return 0;
 	}
@@ -62,6 +67,7 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 	 * {@inheritDoc}
 	 */
 	public int airlift(Order p_order) {
+		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Airlift order was issued.");
 		//-- Validate command and then create order
 		return 0;
 	}

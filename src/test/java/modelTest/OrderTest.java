@@ -11,8 +11,10 @@ import controller.GameEngine;
 import model.ContinentModel;
 import model.CoordinateModel;
 import model.CountryModel;
+import model.LogEntryBuffer;
 import model.Order;
 import model.Player;
+import view.FileEntryLogger;
 
 /**
  * This class contains test cases for OrderTest class
@@ -31,7 +33,9 @@ public class OrderTest {
 		ContinentModel l_continent = new ContinentModel("TestContinent", "red", 2);
 		d_country = new CountryModel(1, "TestCountry", l_continent, new CoordinateModel(1, 2));
 		Scanner l_scannerObject = new Scanner(System.in);
-		GameEngine l_gameEngine = new GameEngine(l_scannerObject);
+		LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
+		FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
+		GameEngine l_gameEngine = new GameEngine(l_scannerObject, d_logEntryBuffer, d_fileEntryLogger);
 		Player l_player = new Player("Test", l_gameEngine, l_scannerObject);
 		l_player.addOwnedCountry(d_country);
 		d_order = new Order("deploy", "TestCountry", 2, l_player);

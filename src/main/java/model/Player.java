@@ -86,6 +86,7 @@ public class Player {
 	 *         stop giving orders.
 	 */
 	public int issueOrder() {
+		//------- Need to call ValidateCommandView methods for validating
 		boolean l_issuedOrder = false;
 		while (!l_issuedOrder) {
 			System.out.println(this.getName() + " issue your order");

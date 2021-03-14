@@ -22,6 +22,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 	 * {@inheritDoc}
 	 */
 	public void addPlayers(String[] p_command) {
+		d_gameEngineObject.getLogEntryBuffer().addLogEntry("GamePlayer called with following command: " + p_command);
 		d_gameEngineObject.addRemovePlayers(p_command);
 	}
 	
@@ -29,6 +30,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 	 * {@inheritDoc}
 	 */
 	public void startGame() {
+		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Assigncountries command called.");
 		d_gameEngineObject.assignCountries();
 		d_gameEngineObject.setPhase(3);
 	}

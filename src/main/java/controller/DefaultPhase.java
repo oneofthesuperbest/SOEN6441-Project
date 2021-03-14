@@ -27,7 +27,9 @@ public class DefaultPhase extends IntermediateMapEditingPhase {
 	public void editMap(String p_mapPath) {
 		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 		System.out.println("Valid parameters. Loading map for editing...");
+		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Edit map command called.");
 		boolean readMapResult = l_executeCVObject.readMapFile(d_gameEngineObject, p_mapPath);
+		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Map is loaded for editing.");
 		if (readMapResult) {
 			d_gameEngineObject.setPhase(1);
 		}
@@ -39,9 +41,13 @@ public class DefaultPhase extends IntermediateMapEditingPhase {
 	public void loadMap(String p_mapPath) {
 		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 		System.out.println("Valid parameters. Loading map...");
+		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Load map command called.");
 		boolean loadMapResult = l_executeCVObject.loadMapFile(d_gameEngineObject, p_mapPath);
 		if (loadMapResult) {
+			d_gameEngineObject.getLogEntryBuffer().addLogEntry("Map is loaded for game play.");
 			d_gameEngineObject.setPhase(2);
+		} else {
+			d_gameEngineObject.getLogEntryBuffer().addLogEntry("Map is invalid. It wasn't loaded.");
 		}
 	}
 	

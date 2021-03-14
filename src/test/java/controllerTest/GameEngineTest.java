@@ -13,7 +13,9 @@ import controller.MapController;
 import model.ContinentModel;
 import model.CoordinateModel;
 import model.CountryModel;
+import model.LogEntryBuffer;
 import model.Player;
+import view.FileEntryLogger;
 
 /**
  * This class is used to test GameEngine class
@@ -43,14 +45,16 @@ public class GameEngineTest {
 		ContinentModel l_continent = new ContinentModel("TestContinent", "red", 2);
 		CountryModel l_countryR = new CountryModel(1, "TestCountry", l_continent, new CoordinateModel(1, 2));
 		Scanner l_scannerObject = new Scanner(System.in);
-		GameEngine l_gameEngine = new GameEngine(l_scannerObject);
+		LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
+		FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
+		GameEngine l_gameEngine = new GameEngine(l_scannerObject, d_logEntryBuffer, d_fileEntryLogger);
 		d_player = new Player("Test", l_gameEngine, l_scannerObject);
 		d_player.addOwnedCountry(l_countryR);
 		d_player.setReinforcementsArmies(5);
 		
 		// Initializing test case for reinforcements
 		Scanner l_dummyScannerObject = new Scanner(System.in);
-		d_gameEngineTestCase = new GameEngine(l_dummyScannerObject);
+		d_gameEngineTestCase = new GameEngine(l_dummyScannerObject, d_logEntryBuffer, d_fileEntryLogger);
 		MapController l_mapControllerTestCase = new MapController(d_gameEngineTestCase);
 		d_gameEngineTestCase.getMapState().getListOfContinents().add(new ContinentModel("Continent1", "red", 2));
 		d_gameEngineTestCase.getMapState().getListOfContinents().add(new ContinentModel("Continent2", "blue", 4));
@@ -101,7 +105,7 @@ public class GameEngineTest {
 		l_listOfPlayers.get(0).setReinforcementsArmies(3);
 		l_listOfPlayers.get(1).setReinforcementsArmies(3);
 		// Initializing tested case
-		d_gameEngineCase = new GameEngine(l_dummyScannerObject);
+		d_gameEngineCase = new GameEngine(l_dummyScannerObject, d_logEntryBuffer, d_fileEntryLogger);
 		MapController l_mapControllerCase = new MapController(d_gameEngineCase);
 		d_gameEngineCase.getMapState().getListOfContinents().add(new ContinentModel("Continent1", "red", 2));
 		d_gameEngineCase.getMapState().getListOfContinents().add(new ContinentModel("Continent2", "blue", 4));

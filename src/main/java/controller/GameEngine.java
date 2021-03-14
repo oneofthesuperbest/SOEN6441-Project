@@ -7,9 +7,12 @@ import java.util.Scanner;
 
 import model.ContinentModel;
 import model.CountryModel;
+import model.LogEntryBuffer;
 import model.MapState;
 import model.Player;
 import model.PlayersState;
+import view.FileEntryLogger;
+import view.MapEditingCommandListForUser;
 import view.ValidateCommandView;
 
 /**
@@ -21,15 +24,30 @@ public class GameEngine {
 	String d_commandSeparator = " ";
 	Scanner d_scannerObject;
 	Phase d_phase;
+	// Observable LogEntryBuffer class to push log strings.
+	LogEntryBuffer d_logEntryBuffer;
+	// Observer FileEntryLogger which waits for notification from LogEntryBuffer
+	FileEntryLogger d_fileEntryLogger;
 
 	/**
 	 * This constructor is used to set the scanner object context
 	 * 
 	 * @param p_scannerObject The context of scanner object
 	 */
-	public GameEngine(Scanner p_scannerObject) {
+	public GameEngine(Scanner p_scannerObject, LogEntryBuffer p_logEntryBuffer, FileEntryLogger p_fileEntryLogger) {
 		d_scannerObject = p_scannerObject;
+		d_logEntryBuffer = p_logEntryBuffer;
+	    d_fileEntryLogger = p_fileEntryLogger;
 		setPhase(0);
+	}
+	
+	/**
+	 * This function returns the LogEntryBuffer object which
+	 * is used to add log entries.
+	 * @return A LogEntryBuffer object which is used to push log entries into the file.
+	 */
+	public LogEntryBuffer getLogEntryBuffer(){
+		return d_logEntryBuffer;
 	}
 	
 	/**
@@ -39,14 +57,19 @@ public class GameEngine {
 	 */
 	void setPhase(int p_phase) {
 		if(p_phase == 0) {
+			d_logEntryBuffer.addLogEntry("-----------------Default phase initialized-----------------");
 			d_phase = new DefaultPhase(this);
 		} else if (p_phase == 1) {
+			d_logEntryBuffer.addLogEntry("-----------------Map edit phase initialized-----------------");
 			d_phase = new MapEditingPhase(this);
 		} else if (p_phase == 2) {
+			d_logEntryBuffer.addLogEntry("-----------------Game play start-up phase initialized-----------------");
 			d_phase = new StartUpPhase(this);
 		} else if (p_phase == 3) {
+			d_logEntryBuffer.addLogEntry("-----------------Game play issue order phase initialized-----------------");
 			d_phase = new IssueOrderPhase(this);
 		} else if (p_phase == 4) {
+			d_logEntryBuffer.addLogEntry("-----------------Game play execute order phase initialized-----------------");
 			d_phase = new ExecuteOrderPhase(this);
 		}
 	}
@@ -233,7 +256,7 @@ public class GameEngine {
 	 */
 	public void addRemovePlayers(String[] p_commandList) {
 		for (int l_index = 1; l_index < p_commandList.length; l_index++) {
-			if (p_commandList[l_index].equals(GamePlayCommandList.ADD.getCommandString())) {
+			if (p_commandList[l_index].equals(MapEditingCommandListForUser.ADD.getCommandString())) {
 				l_index++;
 				int l_returnValue = d_playerState
 						.addPlayer(new Player(p_commandList[l_index], this, d_scannerObject));

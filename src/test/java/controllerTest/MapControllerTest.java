@@ -6,6 +6,9 @@ import controller.GameEngine;
 import controller.MapController;
 import model.ContinentModel;
 import model.CountryModel;
+import model.LogEntryBuffer;
+import view.FileEntryLogger;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +21,9 @@ import java.util.Scanner;
  */
 public class MapControllerTest {
 
-	GameEngine l_gameEngineObj = new GameEngine(new Scanner(System.in));
+	LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
+	FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
+	GameEngine l_gameEngineObj = new GameEngine(new Scanner(System.in), d_logEntryBuffer, d_fileEntryLogger);
 	MapController l_mapController = new MapController(l_gameEngineObj);
 
 	/**
