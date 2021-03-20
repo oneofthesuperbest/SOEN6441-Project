@@ -17,6 +17,7 @@ public class Player {
 	private Scanner d_scannerObject;
 	private ArrayList<Order> d_listOfOrders = new ArrayList<Order>();
 	private ArrayList<String> d_listOfConcurredCountries = new ArrayList<String>();
+	private ArrayList<String> d_listOfNegotiatingPlayers = new ArrayList<String>();
 	
 	/**
 	 * 0 for bomb card, 1 for blockade card, 2 for airlift card and 3 for negotiate
@@ -64,6 +65,14 @@ public class Player {
 	 */
 	public ArrayList<String> getConcurredCountries() {
 		return this.d_listOfConcurredCountries;
+	}
+	
+	/**
+	 * This function is used to add a negotiating country to current players list
+	 * @param p_countryName The name of the country the player will negotiate
+	 */
+	public void addNegotiatingPlayer(String p_playerName) {
+		this.d_listOfNegotiatingPlayers.add(p_playerName);
 	}
 	
 	/**
