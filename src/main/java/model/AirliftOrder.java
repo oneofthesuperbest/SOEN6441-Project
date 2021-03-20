@@ -84,13 +84,13 @@ public class AirliftOrder extends Order {
 					boolean returnValue = this.d_issuer.hasCard(2);
 					if (!returnValue) {
 						printUnsuccessfulOrder(
-								"Can't block " + this.d_targetCountryName + ". Player doesn't have airlift card.");
+								"Can't airlift to " + this.d_targetCountryName + ". Player doesn't have airlift card.");
 					} else {
 						ArrayList<CountryModel> l_countries = this.d_gameEngine.getMapState().getListOfCountries();
 						for(CountryModel l_countryTarget : l_countries) {
 							if(l_countryTarget.getName().equals(this.d_targetCountryName)) {
 								this.d_targetCountry = l_countryTarget;
-								if(this.d_issuer.getNegotiatingPlayers().contains(l_countryTarget.getOwner().getName())) {
+								if(this.d_issuer.getNegotiatingPlayers().contains(this.d_targetCountry.getOwner().getName())) {
 									printUnsuccessfulOrder("Can't airlift armies on " + this.d_targetCountryName
 											+ ". Players are in negotiation.");
 									return false;
@@ -99,7 +99,7 @@ public class AirliftOrder extends Order {
 							}
 						}
 					}
-					return returnValue;
+					return false;
 				} else {
 					printUnsuccessfulOrder("Can't airlift armies on " + this.d_targetCountryName
 							+ ". Player doesn't have enough armies.");
@@ -107,7 +107,7 @@ public class AirliftOrder extends Order {
 				}
 			}
 		}
-		printUnsuccessfulOrder("Can't advance armies from " + this.d_sourceCountryName
+		printUnsuccessfulOrder("Can't airlift armies from " + this.d_sourceCountryName
 				+ ". Country doesn't belong to player " + this.d_issuer.getName());
 		return false;
 	}
@@ -116,7 +116,7 @@ public class AirliftOrder extends Order {
 	 * {@inheritDoc}
 	 */
 	public void printOrder() {
-		String l_effectOfCommand = "Advanced " + this.d_numberOfArmies + " armies from " + this.d_sourceCountryName
+		String l_effectOfCommand = "Airlifted " + this.d_numberOfArmies + " armies from " + this.d_sourceCountryName
 				+ " to " + this.d_targetCountryName;
 		System.out.println(l_effectOfCommand);
 		d_gameEngine.getLogEntryBuffer().addLogEntry(l_effectOfCommand);

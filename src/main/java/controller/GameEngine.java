@@ -67,7 +67,7 @@ public class GameEngine {
 	 * 
 	 * @param p_phase integer value of the phase
 	 */
-	void setPhase(int p_phase) {
+	public void setPhase(int p_phase) {
 		if (p_phase == 0) {
 			d_logEntryBuffer.addLogEntry("-----------------Default phase initialized-----------------");
 			d_phase = new DefaultPhase(this);
@@ -146,6 +146,7 @@ public class GameEngine {
 			this.issueOrderLoop();
 			this.setPhase(4);
 			this.executeOrderLoop();
+			this.removeLostPlayers();
 			this.issueCardsAndRefreshNegotiation();
 			if(this.checkWinner()) {
 				break;
@@ -167,6 +168,18 @@ public class GameEngine {
 			}
 		}
 		return false;
+	}
+	
+	/**
+	 * This function is used to remove all players from the game who doesn't own a country.
+	 */
+	public void removeLostPlayers() {
+		ArrayList<Player> l_players = this.getPlayersState().getPlayers();
+		for (int l_playerIndex = 0; l_playerIndex < l_players.size(); l_playerIndex++) {
+			if (l_players.get(l_playerIndex).getOwnedCountry().size() == 0) {
+				l_players.remove(l_playerIndex);
+			}
+		}
 	}
 
 	/**

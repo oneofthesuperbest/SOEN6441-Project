@@ -43,12 +43,13 @@ public class Player {
 	 * @return true if the card is present else false
 	 */
 	public boolean hasCard(int p_cardNumber) {
-		if(this.d_playersCards.contains(p_cardNumber)) {
-			this.d_playersCards.remove(p_cardNumber);
-			return true;
-		} else {
-			return false;
+		for(int l_index = 0; l_index < this.d_playersCards.size(); l_index++) {
+			if(this.d_playersCards.get(l_index) == p_cardNumber) {
+				this.d_playersCards.remove(l_index);
+				return true;
+			}
 		}
+		return false;
 	}
 	
 	/**
@@ -57,6 +58,14 @@ public class Player {
 	public void addCard() {
 		int l_randomCard = (int) (Math.random() * 4);
 		this.d_playersCards.add(l_randomCard);
+	}
+	
+	/**
+	 * This function returns players list of cards.
+	 * @return List of cards in integer form
+	 */
+	public ArrayList<Integer> getCards() {
+		return this.d_playersCards;
 	}
 	
 	/**

@@ -700,7 +700,20 @@ public class MapController {
 			if (l_country.getOwner() == null) {
 				l_listOfCountries += ("\tOwned by: NO ONE\n");
 			} else {
-				l_listOfCountries += ("\tOwned by:" + l_country.getOwner().getName() + "(Reinforcements - "
+				String cards = "| ";
+				ArrayList<Integer> l_cardsList = l_country.getOwner().getCards();
+				for(int l_card : l_cardsList) {
+					if(l_card == 0) {
+						cards += "bomb | ";
+					} else if(l_card == 1) {
+						cards += "blockade | ";
+					} else if(l_card == 2) {
+						cards += "airlift | ";
+					} else if(l_card == 3) {
+						cards += "negotiate | ";
+					}
+				}
+				l_listOfCountries += ("\tOwned by:" + l_country.getOwner().getName()+ "(Cards: " + cards + ") (Reinforcements - "
 						+ l_country.getOwner().getReinforcementsArmies() + ")\n");
 			}
 		}

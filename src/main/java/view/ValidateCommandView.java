@@ -64,7 +64,6 @@ public class ValidateCommandView {
 					l_returnValue = isValidOrderCommand(p_gameEngineObject, l_commandParameters, p_player);
 					if(l_returnValue == 0) {
 						System.out.println("Invalid command: Please check your command");
-						return 0;
 					}
 				}
 			}
@@ -119,6 +118,7 @@ public class ValidateCommandView {
 			if (l_returnValue == 1) {
 				// ------- Call EditContinent function
 				p_gameEngineObject.getPhase().editContinent(p_commandParameters);
+				return 1;
 			}
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.EDITCOUNTRY.getCommandString())) {
 			// validate all sub-commands and parameters of editcountry command
@@ -162,8 +162,9 @@ public class ValidateCommandView {
 			}
 		} else if(p_commandParameters[0].equals(MapEditingCommandListForUser.ASSIGNCOUNTRIES.getCommandString())) {
 			p_gameEngineObject.getPhase().startGame();
+			return 1;
 		}
-		return 1;
+		return 0;
 	}
 
 	/**
@@ -211,8 +212,6 @@ public class ValidateCommandView {
 				System.out.println("Issuing negotiate order");
 				return p_gameEngineObject.getPhase().advance(new NegotiateOrder(p_commandParameters[1], p_player, p_gameEngineObject));
 			}
-		} else {
-			System.out.println("Invalid command: Please check your command");
 		}
 		return 0;
 	}

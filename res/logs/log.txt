@@ -1,7 +1,4 @@
-# Sat Mar 20 21:37:00 IST 2021 -- -----------------Default phase initialized-----------------
-# Sat Mar 20 21:37:00 IST 2021 -- Edit map command called.
-# Sat Mar 20 21:37:00 IST 2021 -- Map is loaded for editing.
-# Sat Mar 20 21:37:00 IST 2021 -- -----------------Map edit phase initialized-----------------
-# Sat Mar 20 21:37:00 IST 2021 -- Save map command called.
-# Sat Mar 20 21:37:00 IST 2021 -- Map saved to res/maps/saved/TestCase.map
-# Sat Mar 20 21:37:00 IST 2021 -- -----------------Default phase initialized-----------------
+# Sun Mar 21 03:07:41 IST 2021 -- -----------------Default phase initialized-----------------
+# Sun Mar 21 03:07:41 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Sun Mar 21 03:07:41 IST 2021 -- Advance order was issued.
+# Sun Mar 21 03:07:41 IST 2021 -- Advanced 2 armies from Alberta to BC
