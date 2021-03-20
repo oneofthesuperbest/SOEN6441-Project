@@ -16,6 +16,7 @@ public class Player {
 	private GameEngine d_gameEngineContext;
 	private Scanner d_scannerObject;
 	private ArrayList<Order> d_listOfOrders = new ArrayList<Order>();
+	private ArrayList<String> d_listOfConcurredCountries = new ArrayList<String>();
 	
 	/**
 	 * 0 for bomb card, 1 for blockade card, 2 for airlift card and 3 for negotiate
@@ -41,6 +42,34 @@ public class Player {
 	public void addCard() {
 		int l_randomCard = (int) (Math.random() * 4);
 		d_playersCards.add(l_randomCard);
+	}
+	
+	/**
+	 * This function return the list of concurred countries in the turn
+	 * @return The list of concurred countries
+	 */
+	public ArrayList<String> getConcurredCountries() {
+		return d_listOfConcurredCountries;
+	}
+	
+	/**
+	 * This function is used to add country name to list of concurred country
+	 * @param p_countryName The name of the concurred country
+	 */
+	public void addConcurredCountry(String p_countryName) {
+		d_listOfConcurredCountries.add(p_countryName);
+	}
+	
+	/**
+	 * This function is used to remove country name from list of concurred country
+	 * @param p_countryName The name of the country to be removed
+	 */
+	public void removeConcurredCountry(String p_countryName) {
+		for(int l_countryIndex = 0; l_countryIndex < d_listOfConcurredCountries.size(); l_countryIndex++) {
+			if(d_listOfConcurredCountries.get(l_countryIndex).equals(p_countryName)) {
+				d_listOfConcurredCountries.remove(l_countryIndex);
+			}
+		}
 	}
 
 	/**
@@ -137,6 +166,7 @@ public class Player {
 	 * This function is used to call the next order held by the player
 	 */
 	public void nextOrder() {
+		System.out.println("Player " + getName() + " executing its order");
 		d_listOfOrders.get(0).execute();
 		d_listOfOrders.remove(0);
 	}

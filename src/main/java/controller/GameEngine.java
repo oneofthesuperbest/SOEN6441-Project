@@ -37,26 +37,29 @@ public class GameEngine {
 	public GameEngine(Scanner p_scannerObject, LogEntryBuffer p_logEntryBuffer, FileEntryLogger p_fileEntryLogger) {
 		d_scannerObject = p_scannerObject;
 		d_logEntryBuffer = p_logEntryBuffer;
-	    d_fileEntryLogger = p_fileEntryLogger;
+		d_fileEntryLogger = p_fileEntryLogger;
 		setPhase(0);
 	}
-	
+
 	/**
-	 * This function returns the LogEntryBuffer object which
-	 * is used to add log entries.
-	 * @return A LogEntryBuffer object which is used to push log entries into the file.
+	 * This function returns the LogEntryBuffer object which is used to add log
+	 * entries.
+	 * 
+	 * @return A LogEntryBuffer object which is used to push log entries into the
+	 *         file.
 	 */
-	public LogEntryBuffer getLogEntryBuffer(){
+	public LogEntryBuffer getLogEntryBuffer() {
 		return d_logEntryBuffer;
 	}
-	
+
 	/**
-	 * This function is used to set the phase based on integer value. 0 for default, 1 for map editing,
-	 * 2 for start up, 3 for issue order and 4 for execute order
+	 * This function is used to set the phase based on integer value. 0 for default,
+	 * 1 for map editing, 2 for start up, 3 for issue order and 4 for execute order
+	 * 
 	 * @param p_phase integer value of the phase
 	 */
 	void setPhase(int p_phase) {
-		if(p_phase == 0) {
+		if (p_phase == 0) {
 			d_logEntryBuffer.addLogEntry("-----------------Default phase initialized-----------------");
 			d_phase = new DefaultPhase(this);
 		} else if (p_phase == 1) {
@@ -73,9 +76,10 @@ public class GameEngine {
 			d_phase = new ExecuteOrderPhase(this);
 		}
 	}
-	
+
 	/**
 	 * This functions return object of the current phase
+	 * 
 	 * @return Current phase object
 	 */
 	public Phase getPhase() {
@@ -132,6 +136,21 @@ public class GameEngine {
 			this.issueOrderLoop();
 			this.setPhase(4);
 			this.executeOrderLoop();
+			this.issueCards();
+		}
+	}
+
+	/**
+	 * This function is used to assign cards to all player who concurred atleast one
+	 * country
+	 */
+	public void issueCards() {
+		ArrayList<Player> l_players = this.getPlayersState().getPlayers();
+		for (Player l_player : l_players) {
+			if (l_player.getConcurredCountries().size() > 0) {
+				l_player.addCard();
+				l_player.getConcurredCountries().clear();
+			}
 		}
 	}
 
@@ -258,8 +277,7 @@ public class GameEngine {
 		for (int l_index = 1; l_index < p_commandList.length; l_index++) {
 			if (p_commandList[l_index].equals(MapEditingCommandListForUser.ADD.getCommandString())) {
 				l_index++;
-				int l_returnValue = d_playerState
-						.addPlayer(new Player(p_commandList[l_index], this, d_scannerObject));
+				int l_returnValue = d_playerState.addPlayer(new Player(p_commandList[l_index], this, d_scannerObject));
 				if (l_returnValue == 0) {
 					System.out.println("Player with name '" + p_commandList[l_index] + "' is already present");
 				} else {

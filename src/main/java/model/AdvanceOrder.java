@@ -56,8 +56,10 @@ public class AdvanceOrder extends Order {
 			int remainingAttackingArmies = l_currentAttackingArmies - (int) Math.round(l_currentDefendingArmies * 0.7);
 			d_sourceCountry.setArmies((d_sourceCountry.getArmies() - d_numberOfArmies));
 			if(remainingDefendingArmies <= 0 && remainingAttackingArmies > 0) {
+				d_issuer.addConcurredCountry(d_targetCountryName);
 				d_targetCountry.setArmies(remainingAttackingArmies);
 				d_issuer.addOwnedCountry(d_targetCountry);
+				d_targetCountry.getOwner().removeConcurredCountry(d_targetCountryName);
 				d_targetCountry.getOwner().removeOwnedCountry(d_targetCountry);
 				d_targetCountry.setOwner(d_issuer);
 			} else {
@@ -82,6 +84,7 @@ public class AdvanceOrder extends Order {
 					for (CountryModel l_countryNeighbor : l_neighbors) {
 						if (l_countryNeighbor.getName().equals(d_targetCountryName)) {
 							d_targetCountry = l_countryNeighbor;
+							// Check if players are in negotiate model
 							return true;
 						}
 					}
