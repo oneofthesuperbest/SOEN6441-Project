@@ -173,7 +173,7 @@ public class Player {
 	 * @param p_commandArray The command string split by " "
 	 */
 	public void createOrder(String[] p_commandArray) {
-		d_listOfOrders.add(new Order(p_commandArray[0], p_commandArray[1], Integer.parseInt(p_commandArray[2]), this));
+		//d_listOfOrders.add(new Order(p_commandArray[0], p_commandArray[1], Integer.parseInt(p_commandArray[2]), this));
 	}
 
 	/**

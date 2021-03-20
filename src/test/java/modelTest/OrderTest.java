@@ -11,6 +11,7 @@ import controller.GameEngine;
 import model.ContinentModel;
 import model.CoordinateModel;
 import model.CountryModel;
+import model.DeployOrder;
 import model.LogEntryBuffer;
 import model.Order;
 import model.Player;
@@ -38,7 +39,7 @@ public class OrderTest {
 		GameEngine l_gameEngine = new GameEngine(l_scannerObject, d_logEntryBuffer, d_fileEntryLogger);
 		Player l_player = new Player("Test", l_gameEngine, l_scannerObject);
 		l_player.addOwnedCountry(d_country);
-		d_order = new Order("deploy", "TestCountry", 2, l_player);
+		d_order = new DeployOrder("TestCountry", 2, l_player, l_gameEngine);
 	}
 
 	/**
