@@ -81,11 +81,27 @@ public class AirliftOrder extends Order {
 			if (l_country.getName().equals(this.d_sourceCountryName)) {
 				this.d_sourceCountry = l_country;
 				if (this.d_sourceCountry.getArmies() >= this.d_numberOfArmies) {
-					// this.d_targetCountry = l_countryNeighbor;
-					// Check if players are in negotiate model
-					return true;
+					boolean returnValue = this.d_issuer.hasCard(2);
+					if (!returnValue) {
+						printUnsuccessfulOrder(
+								"Can't block " + this.d_targetCountryName + ". Player doesn't have airlift card.");
+					} else {
+						ArrayList<CountryModel> l_countries = this.d_gameEngine.getMapState().getListOfCountries();
+						for(CountryModel l_countryTarget : l_countries) {
+							if(l_countryTarget.getName().equals(this.d_targetCountryName)) {
+								this.d_targetCountry = l_countryTarget;
+								if(this.d_issuer.getNegotiatingPlayers().contains(l_countryTarget.getOwner().getName())) {
+									printUnsuccessfulOrder("Can't airlift armies on " + this.d_targetCountryName
+											+ ". Players are in negotiation.");
+									return false;
+								}
+								return true;
+							}
+						}
+					}
+					return returnValue;
 				} else {
-					printUnsuccessfulOrder("Can't advance armies on " + this.d_targetCountryName
+					printUnsuccessfulOrder("Can't airlift armies on " + this.d_targetCountryName
 							+ ". Player doesn't have enough armies.");
 					return false;
 				}

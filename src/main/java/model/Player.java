@@ -76,6 +76,14 @@ public class Player {
 	}
 	
 	/**
+	 * This function is used to return the list of players that are in negotiation with current player
+	 * @return The list of player names that are negotiating with current player
+	 */
+	public ArrayList<String> getNegotiatingPlayers() {
+		return this.d_listOfNegotiatingPlayers;
+	}
+	
+	/**
 	 * This function is used to add country name to list of concurred country
 	 * @param p_countryName The name of the concurred country
 	 */

@@ -87,7 +87,11 @@ public class AdvanceOrder extends Order {
 					for (CountryModel l_countryNeighbor : l_neighbors) {
 						if (l_countryNeighbor.getName().equals(this.d_targetCountryName)) {
 							this.d_targetCountry = l_countryNeighbor;
-							// Check if players are in negotiate model
+							if(this.d_issuer.getNegotiatingPlayers().contains(l_countryNeighbor.getOwner().getName())) {
+								printUnsuccessfulOrder("Can't advance armies on " + this.d_targetCountryName
+										+ ". Players are in negotiation.");
+								return false;
+							}
 							return true;
 						}
 					}

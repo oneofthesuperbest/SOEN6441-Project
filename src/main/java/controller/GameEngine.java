@@ -146,21 +146,41 @@ public class GameEngine {
 			this.issueOrderLoop();
 			this.setPhase(4);
 			this.executeOrderLoop();
-			this.issueCards();
+			this.issueCardsAndRefreshNegotiation();
+			if(this.checkWinner()) {
+				break;
+			}
 		}
+		String l_gameEndMessage = "Player " + this.d_playerState.getPlayers().get(0).getName() +" has won the game!!!";
+		this.d_logEntryBuffer.addLogEntry(l_gameEndMessage);
+		System.out.println(l_gameEndMessage);
+	}
+	
+	/**
+	 * This function checks if the game has end.
+	 * @return true if game end else false
+	 */
+	public boolean checkWinner() {
+		if(this.d_playerState.getPlayers().size() == 1) {
+			if(this.d_playerState.getPlayers().get(0).getOwnedCountry().size() == this.d_mapState.getListOfCountries().size() && this.d_neutralPlayer.getOwnedCountry().size() == 0) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
 	 * This function is used to assign cards to all player who concurred atleast one
-	 * country
+	 * country. It also refreshes all of the players that were in negotiation.
 	 */
-	public void issueCards() {
+	public void issueCardsAndRefreshNegotiation() {
 		ArrayList<Player> l_players = this.getPlayersState().getPlayers();
 		for (Player l_player : l_players) {
 			if (l_player.getConcurredCountries().size() > 0) {
 				l_player.addCard();
 				l_player.getConcurredCountries().clear();
 			}
+			l_player.getNegotiatingPlayers().clear();
 		}
 	}
 

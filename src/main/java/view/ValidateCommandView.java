@@ -6,6 +6,7 @@ import model.AirliftOrder;
 import model.BlockadeOrder;
 import model.BombOrder;
 import model.DeployOrder;
+import model.NegotiateOrder;
 import model.Player;
 
 /**
@@ -189,25 +190,26 @@ public class ValidateCommandView {
 		} else if(p_commandParameters[0].equals(MapEditingCommandListForUser.BOMB.getCommandString())){
 			int l_returnValue = validateOrderParameters(p_commandParameters, MapEditingCommandListForUser.BOMB);
 			if(l_returnValue == 1) {
-				System.out.println("Issuing advance order");
+				System.out.println("Issuing bomb order");
 				return p_gameEngineObject.getPhase().advance(new BombOrder(p_commandParameters[1], p_player, p_gameEngineObject));
 			}
 		} else if(p_commandParameters[0].equals(MapEditingCommandListForUser.BLOCKADE.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, MapEditingCommandListForUser.BLOCKADE);
 			if(l_returnValue == 1) {
-				System.out.println("Issuing advance order");
+				System.out.println("Issuing blockade order");
 				return p_gameEngineObject.getPhase().advance(new BlockadeOrder(p_commandParameters[1], p_player, p_gameEngineObject));
 			}
 		} else if(p_commandParameters[0].equals(MapEditingCommandListForUser.AIRLIFT.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, MapEditingCommandListForUser.AIRLIFT);
 			if(l_returnValue == 1) {
-				System.out.println("Issuing advance order");
+				System.out.println("Issuing airlift order");
 				return p_gameEngineObject.getPhase().advance(new AirliftOrder(p_commandParameters[1], p_commandParameters[2], Integer.parseInt(p_commandParameters[3]), p_player, p_gameEngineObject));
 			}
 		} else if(p_commandParameters[0].equals(MapEditingCommandListForUser.NEGOTIATE.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, MapEditingCommandListForUser.NEGOTIATE);
 			if(l_returnValue == 1) {
-				//--- create order, call resp. order method from issue order phase and then return value returned by the method
+				System.out.println("Issuing negotiate order");
+				return p_gameEngineObject.getPhase().advance(new NegotiateOrder(p_commandParameters[1], p_player, p_gameEngineObject));
 			}
 		} else {
 			System.out.println("Invalid command: Please check your command");
