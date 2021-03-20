@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import controller.GameEngine;
 
+/**
+ * This class is used to store deploy order
+ */
 public class DeployOrder extends Order {
 	String d_targetCountryName;
 	int d_numberOfArmies;
@@ -23,10 +26,10 @@ public class DeployOrder extends Order {
 	 */
 	public DeployOrder(String p_targetCountryName, int p_numberOfArmies, Player p_player,
 			GameEngine p_gameEngine) {
-		d_targetCountryName = p_targetCountryName;
-		d_numberOfArmies = p_numberOfArmies;
-		d_issuer = p_player;
-		d_gameEngine = p_gameEngine;
+		this.d_targetCountryName = p_targetCountryName;
+		this.d_numberOfArmies = p_numberOfArmies;
+		this.d_issuer = p_player;
+		this.d_gameEngine = p_gameEngine;
 	}
 
 	/**
@@ -34,10 +37,10 @@ public class DeployOrder extends Order {
 	 */
 	public void execute() {
 		if (isValid()) {
-			int l_currentArmies = d_countryOfInterest.getArmies();
-			d_countryOfInterest.setArmies((d_numberOfArmies + l_currentArmies));
-			int l_reinforcements = d_issuer.getReinforcementsArmies();
-			d_issuer.setReinforcementsArmies((l_reinforcements - d_numberOfArmies));
+			int l_currentArmies = this.d_countryOfInterest.getArmies();
+			this.d_countryOfInterest.setArmies((this.d_numberOfArmies + l_currentArmies));
+			int l_reinforcements = this.d_issuer.getReinforcementsArmies();
+			this.d_issuer.setReinforcementsArmies((l_reinforcements - this.d_numberOfArmies));
 			printOrder();
 			return;
 		}
@@ -47,19 +50,19 @@ public class DeployOrder extends Order {
 	 * {@inheritDoc}
 	 */
 	public boolean isValid() {
-		ArrayList<CountryModel> l_listOfOwnedCountries = d_issuer.getOwnedCountry();
+		ArrayList<CountryModel> l_listOfOwnedCountries = this.d_issuer.getOwnedCountry();
 		for (CountryModel l_country : l_listOfOwnedCountries) {
-			if (l_country.getName().equals(d_targetCountryName)) {
-				d_countryOfInterest = l_country;
-				if(d_issuer.getReinforcementsArmies() >= d_numberOfArmies) {
+			if (l_country.getName().equals(this.d_targetCountryName)) {
+				this.d_countryOfInterest = l_country;
+				if(this.d_issuer.getReinforcementsArmies() >= this.d_numberOfArmies) {
 					return true;
 				} else {
-					printUnsuccessfulOrder("Can't delop armies on " + d_targetCountryName + ". Player doesn't have enough reinforcements.");
+					printUnsuccessfulOrder("Can't delop armies on " + this.d_targetCountryName + ". Player doesn't have enough reinforcements.");
 					return false;
 				}
 			}
 		}
-		printUnsuccessfulOrder("Can't delop armies on " + d_targetCountryName + ". Country doesn't belong to player " + d_issuer.getName());
+		printUnsuccessfulOrder("Can't delop armies on " + this.d_targetCountryName + ". Country doesn't belong to player " + d_issuer.getName());
 		return false;
 	}
 
@@ -67,9 +70,9 @@ public class DeployOrder extends Order {
 	 * {@inheritDoc}
 	 */
 	public void printOrder() {
-		String l_effectOfCommand = "Deployed " + d_numberOfArmies + " armies on country " + d_targetCountryName;
+		String l_effectOfCommand = "Deployed " + this.d_numberOfArmies + " armies on country " + this.d_targetCountryName;
 		System.out.println(l_effectOfCommand);
-		d_gameEngine.getLogEntryBuffer()
+		this.d_gameEngine.getLogEntryBuffer()
 				.addLogEntry(l_effectOfCommand);
 	}
 	
@@ -78,7 +81,7 @@ public class DeployOrder extends Order {
 	 */
 	public void printUnsuccessfulOrder(String p_errorMessage) {
 		System.out.println(p_errorMessage);
-		d_gameEngine.getLogEntryBuffer()
+		this.d_gameEngine.getLogEntryBuffer()
 				.addLogEntry(p_errorMessage);
 	}
 	
@@ -86,6 +89,6 @@ public class DeployOrder extends Order {
 	 * {@inheritDoc}
 	 */
 	public Player getPlayer() {
-		return d_issuer;
+		return this.d_issuer;
 	}
 }

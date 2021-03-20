@@ -36,7 +36,7 @@ public class CountryModel {
 	 * @return The index of the country
 	 */
 	public int getCountryIdMap() {
-		return d_countryIdMap;
+		return this.d_countryIdMap;
 	}
 
 	/**

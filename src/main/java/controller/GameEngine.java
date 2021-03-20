@@ -28,6 +28,7 @@ public class GameEngine {
 	LogEntryBuffer d_logEntryBuffer;
 	// Observer FileEntryLogger which waits for notification from LogEntryBuffer
 	FileEntryLogger d_fileEntryLogger;
+	Player d_neutralPlayer = null;
 
 	/**
 	 * This constructor is used to set the scanner object context
@@ -50,6 +51,14 @@ public class GameEngine {
 	 */
 	public LogEntryBuffer getLogEntryBuffer() {
 		return d_logEntryBuffer;
+	}
+	
+	/**
+	 * This function returns the pointer to neutral player
+	 * @return The player object
+	 */
+	public Player getNeutralPlayer() {
+		return this.d_neutralPlayer;
 	}
 
 	/**
@@ -122,6 +131,7 @@ public class GameEngine {
 			}
 		}
 		this.loadGameEngine();
+		this.d_neutralPlayer = new Player("Neutral", this, this.d_scannerObject);
 	}
 
 	/**

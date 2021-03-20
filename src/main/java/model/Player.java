@@ -32,8 +32,22 @@ public class Player {
 	 */
 	public Player(String p_name, GameEngine p_gameEngine, Scanner p_scannerObject) {
 		this.d_name = p_name;
-		d_gameEngineContext = p_gameEngine;
-		d_scannerObject = p_scannerObject;
+		this.d_gameEngineContext = p_gameEngine;
+		this.d_scannerObject = p_scannerObject;
+	}
+	
+	/**
+	 * This function is used to check if player has a certain card. It also removes the card.
+	 * @param p_cardNumber The card number to check
+	 * @return true if the card is present else false
+	 */
+	public boolean hasCard(int p_cardNumber) {
+		if(this.d_playersCards.contains(p_cardNumber)) {
+			this.d_playersCards.remove(p_cardNumber);
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/**
@@ -41,7 +55,7 @@ public class Player {
 	 */
 	public void addCard() {
 		int l_randomCard = (int) (Math.random() * 4);
-		d_playersCards.add(l_randomCard);
+		this.d_playersCards.add(l_randomCard);
 	}
 	
 	/**
@@ -49,7 +63,7 @@ public class Player {
 	 * @return The list of concurred countries
 	 */
 	public ArrayList<String> getConcurredCountries() {
-		return d_listOfConcurredCountries;
+		return this.d_listOfConcurredCountries;
 	}
 	
 	/**
@@ -57,7 +71,7 @@ public class Player {
 	 * @param p_countryName The name of the concurred country
 	 */
 	public void addConcurredCountry(String p_countryName) {
-		d_listOfConcurredCountries.add(p_countryName);
+		this.d_listOfConcurredCountries.add(p_countryName);
 	}
 	
 	/**
@@ -65,9 +79,9 @@ public class Player {
 	 * @param p_countryName The name of the country to be removed
 	 */
 	public void removeConcurredCountry(String p_countryName) {
-		for(int l_countryIndex = 0; l_countryIndex < d_listOfConcurredCountries.size(); l_countryIndex++) {
-			if(d_listOfConcurredCountries.get(l_countryIndex).equals(p_countryName)) {
-				d_listOfConcurredCountries.remove(l_countryIndex);
+		for(int l_countryIndex = 0; l_countryIndex < this.d_listOfConcurredCountries.size(); l_countryIndex++) {
+			if(this.d_listOfConcurredCountries.get(l_countryIndex).equals(p_countryName)) {
+				this.d_listOfConcurredCountries.remove(l_countryIndex);
 			}
 		}
 	}
@@ -89,7 +103,7 @@ public class Player {
 	 *                  list of owned countries
 	 */
 	public void addOwnedCountry(CountryModel p_country) {
-		d_listOfOwnedCountries.add(p_country);
+		this.d_listOfOwnedCountries.add(p_country);
 	}
 
 	/**
@@ -98,7 +112,7 @@ public class Player {
 	 * @return List of countries owned by the player
 	 */
 	public ArrayList<CountryModel> getOwnedCountry() {
-		return d_listOfOwnedCountries;
+		return this.d_listOfOwnedCountries;
 	}
 
 	/**
@@ -109,7 +123,7 @@ public class Player {
 	 *                 reinforcement armies
 	 */
 	public void setReinforcementsArmies(int p_armies) {
-		d_reinforementsArmies = p_armies;
+		this.d_reinforementsArmies = p_armies;
 	}
 
 	/**
@@ -118,7 +132,7 @@ public class Player {
 	 * @return The number of reinforcement armies held by the player
 	 */
 	public int getReinforcementsArmies() {
-		return d_reinforementsArmies;
+		return this.d_reinforementsArmies;
 	}
 
 	/**
@@ -126,7 +140,7 @@ public class Player {
 	 * @param p_countryModel The object of country to be removed
 	 */
 	public void removeOwnedCountry(CountryModel p_countryModel) {
-		d_listOfOwnedCountries.remove(p_countryModel);
+		this.d_listOfOwnedCountries.remove(p_countryModel);
 	}
 	
 	/**
@@ -140,10 +154,10 @@ public class Player {
 		boolean l_issuedOrder = false;
 		while (!l_issuedOrder) {
 			System.out.println(this.getName() + " issue your order");
-			String l_command = d_scannerObject.nextLine();
+			String l_command = this.d_scannerObject.nextLine();
 			
 			ValidateCommandView l_VCVObject = new ValidateCommandView();
-			int returnValue = l_VCVObject.checkCommand(d_gameEngineContext, l_command, this);
+			int returnValue = l_VCVObject.checkCommand(this.d_gameEngineContext, l_command, this);
 			if(returnValue == 1) {
 				l_issuedOrder = true;
 			} else if (returnValue == 2) {
@@ -159,7 +173,7 @@ public class Player {
 	 * @param p_order The order object
 	 */
 	public void addOrder(Order p_order) {
-		d_listOfOrders.add(p_order);
+		this.d_listOfOrders.add(p_order);
 	}
 
 	/**
@@ -167,8 +181,8 @@ public class Player {
 	 */
 	public void nextOrder() {
 		System.out.println("Player " + getName() + " executing its order");
-		d_listOfOrders.get(0).execute();
-		d_listOfOrders.remove(0);
+		this.d_listOfOrders.get(0).execute();
+		this.d_listOfOrders.remove(0);
 	}
 
 	/**
@@ -177,6 +191,6 @@ public class Player {
 	 * @return Arraylist of order that haven't been executed yet
 	 */
 	public ArrayList<Order> getOrders() {
-		return d_listOfOrders;
+		return this.d_listOfOrders;
 	}
 }

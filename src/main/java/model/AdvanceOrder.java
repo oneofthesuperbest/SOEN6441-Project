@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import controller.GameEngine;
 import controller.MapController;
 
+/**
+ * This class is used to store advance order
+ */
 public class AdvanceOrder extends Order {
 	String d_targetCountryName;
 	String d_sourceCountryName;
@@ -27,11 +30,11 @@ public class AdvanceOrder extends Order {
 	 */
 	public AdvanceOrder(String p_sourceCountryName, String p_targetCountryName, int p_numberOfArmies, Player p_player,
 			GameEngine p_gameEngine) {
-		d_sourceCountryName = p_sourceCountryName;
-		d_targetCountryName = p_targetCountryName;
-		d_numberOfArmies = p_numberOfArmies;
-		d_issuer = p_player;
-		d_gameEngine = p_gameEngine;
+		this.d_sourceCountryName = p_sourceCountryName;
+		this.d_targetCountryName = p_targetCountryName;
+		this.d_numberOfArmies = p_numberOfArmies;
+		this.d_issuer = p_player;
+		this.d_gameEngine = p_gameEngine;
 	}
 
 	/**
@@ -41,29 +44,29 @@ public class AdvanceOrder extends Order {
 		if (isValid()) {
 			ArrayList<CountryModel> l_listOfOwnedCountries = d_issuer.getOwnedCountry();
 			for (CountryModel l_country : l_listOfOwnedCountries) {
-				if (l_country.getName().equals(d_targetCountryName)) {
+				if (l_country.getName().equals(this.d_targetCountryName)) {
 					int l_currentArmies = l_country.getArmies();
-					l_country.setArmies((d_numberOfArmies + l_currentArmies));
-					l_currentArmies = d_sourceCountry.getArmies();
-					d_sourceCountry.setArmies((d_numberOfArmies - l_currentArmies));
+					l_country.setArmies((this.d_numberOfArmies + l_currentArmies));
+					l_currentArmies = this.d_sourceCountry.getArmies();
+					this.d_sourceCountry.setArmies((this.d_numberOfArmies - l_currentArmies));
 					printOrder();
 					return;
 				}
 			}
-			int l_currentAttackingArmies = d_numberOfArmies;
-			int l_currentDefendingArmies = d_targetCountry.getArmies();
+			int l_currentAttackingArmies = this.d_numberOfArmies;
+			int l_currentDefendingArmies = this.d_targetCountry.getArmies();
 			int remainingDefendingArmies = l_currentDefendingArmies - (int) Math.round(l_currentAttackingArmies * 0.6);
 			int remainingAttackingArmies = l_currentAttackingArmies - (int) Math.round(l_currentDefendingArmies * 0.7);
-			d_sourceCountry.setArmies((d_sourceCountry.getArmies() - d_numberOfArmies));
+			this.d_sourceCountry.setArmies((this.d_sourceCountry.getArmies() - this.d_numberOfArmies));
 			if(remainingDefendingArmies <= 0 && remainingAttackingArmies > 0) {
-				d_issuer.addConcurredCountry(d_targetCountryName);
-				d_targetCountry.setArmies(remainingAttackingArmies);
-				d_issuer.addOwnedCountry(d_targetCountry);
-				d_targetCountry.getOwner().removeConcurredCountry(d_targetCountryName);
-				d_targetCountry.getOwner().removeOwnedCountry(d_targetCountry);
-				d_targetCountry.setOwner(d_issuer);
+				this.d_issuer.addConcurredCountry(this.d_targetCountryName);
+				this.d_targetCountry.setArmies(remainingAttackingArmies);
+				this.d_issuer.addOwnedCountry(this.d_targetCountry);
+				this.d_targetCountry.getOwner().removeConcurredCountry(this.d_targetCountryName);
+				this.d_targetCountry.getOwner().removeOwnedCountry(this.d_targetCountry);
+				this.d_targetCountry.setOwner(this.d_issuer);
 			} else {
-				d_targetCountry.setArmies(remainingDefendingArmies);
+				this.d_targetCountry.setArmies(remainingDefendingArmies);
 			}
 			printOrder();
 			return;
@@ -74,29 +77,29 @@ public class AdvanceOrder extends Order {
 	 * {@inheritDoc}
 	 */
 	public boolean isValid() {
-		ArrayList<CountryModel> l_listOfOwnedCountries = d_issuer.getOwnedCountry();
+		ArrayList<CountryModel> l_listOfOwnedCountries = this.d_issuer.getOwnedCountry();
 		for (CountryModel l_country : l_listOfOwnedCountries) {
-			if (l_country.getName().equals(d_sourceCountryName)) {
-				d_sourceCountry = l_country;
-				if(d_sourceCountry.getArmies() >= d_numberOfArmies) {
-					MapController l_mapController = new MapController(d_gameEngine);
+			if (l_country.getName().equals(this.d_sourceCountryName)) {
+				this.d_sourceCountry = l_country;
+				if(this.d_sourceCountry.getArmies() >= this.d_numberOfArmies) {
+					MapController l_mapController = new MapController(this.d_gameEngine);
 					ArrayList<CountryModel> l_neighbors = l_mapController.getNeighbors(l_country);
 					for (CountryModel l_countryNeighbor : l_neighbors) {
-						if (l_countryNeighbor.getName().equals(d_targetCountryName)) {
-							d_targetCountry = l_countryNeighbor;
+						if (l_countryNeighbor.getName().equals(this.d_targetCountryName)) {
+							this.d_targetCountry = l_countryNeighbor;
 							// Check if players are in negotiate model
 							return true;
 						}
 					}
-					printUnsuccessfulOrder("Can't advance armies from " + d_sourceCountryName + ". Country aren't neighbors.");
+					printUnsuccessfulOrder("Can't advance armies from " + this.d_sourceCountryName + ". Country aren't neighbors.");
 					return false;
 				} else {
-					printUnsuccessfulOrder("Can't advance armies on " + d_targetCountryName + ". Player doesn't have enough armies.");
+					printUnsuccessfulOrder("Can't advance armies on " + this.d_targetCountryName + ". Player doesn't have enough armies.");
 					return false;
 				}
 			}
 		}
-		printUnsuccessfulOrder("Can't advance armies from " + d_sourceCountryName + ". Country doesn't belong to player " + d_issuer.getName());
+		printUnsuccessfulOrder("Can't advance armies from " + this.d_sourceCountryName + ". Country doesn't belong to player " + this.d_issuer.getName());
 		return false;
 	}
 
@@ -104,7 +107,7 @@ public class AdvanceOrder extends Order {
 	 * {@inheritDoc}
 	 */
 	public void printOrder() {
-		String l_effectOfCommand = "Advanced " + d_numberOfArmies + " armies from " + d_sourceCountryName + " to " + d_targetCountryName;
+		String l_effectOfCommand = "Advanced " + this.d_numberOfArmies + " armies from " + this.d_sourceCountryName + " to " + this.d_targetCountryName;
 		System.out.println(l_effectOfCommand);
 		d_gameEngine.getLogEntryBuffer()
 				.addLogEntry(l_effectOfCommand);
@@ -115,7 +118,7 @@ public class AdvanceOrder extends Order {
 	 */
 	public void printUnsuccessfulOrder(String p_errorMessage) {
 		System.out.println(p_errorMessage);
-		d_gameEngine.getLogEntryBuffer()
+		this.d_gameEngine.getLogEntryBuffer()
 				.addLogEntry(p_errorMessage);
 	}
 	
@@ -123,6 +126,6 @@ public class AdvanceOrder extends Order {
 	 * {@inheritDoc}
 	 */
 	public Player getPlayer() {
-		return d_issuer;
+		return this.d_issuer;
 	}
 }

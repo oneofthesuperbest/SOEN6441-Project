@@ -2,6 +2,8 @@ package view;
 
 import controller.GameEngine;
 import model.AdvanceOrder;
+import model.BlockadeOrder;
+import model.BombOrder;
 import model.DeployOrder;
 import model.Player;
 
@@ -186,12 +188,14 @@ public class ValidateCommandView {
 		} else if(p_commandParameters[0].equals(MapEditingCommandListForUser.BOMB.getCommandString())){
 			int l_returnValue = validateOrderParameters(p_commandParameters, MapEditingCommandListForUser.BOMB);
 			if(l_returnValue == 1) {
-				//--- create order, call resp. order method from issue order phase and then return value returned by the method
+				System.out.println("Issuing advance order");
+				return p_gameEngineObject.getPhase().advance(new BombOrder(p_commandParameters[1], p_player, p_gameEngineObject));
 			}
 		} else if(p_commandParameters[0].equals(MapEditingCommandListForUser.BLOCKADE.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, MapEditingCommandListForUser.BLOCKADE);
 			if(l_returnValue == 1) {
-				//--- create order, call resp. order method from issue order phase and then return value returned by the method
+				System.out.println("Issuing advance order");
+				return p_gameEngineObject.getPhase().advance(new BlockadeOrder(p_commandParameters[1], p_player, p_gameEngineObject));
 			}
 		} else if(p_commandParameters[0].equals(MapEditingCommandListForUser.AIRLIFT.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, MapEditingCommandListForUser.AIRLIFT);

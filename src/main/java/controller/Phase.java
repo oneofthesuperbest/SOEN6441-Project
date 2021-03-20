@@ -13,7 +13,7 @@ public abstract class Phase {
 	 * @param p_gameEngine The current context of game engine object
 	 */
 	Phase(GameEngine p_gameEngine) {
-		d_gameEngineObject = p_gameEngine;
+		this.d_gameEngineObject = p_gameEngine;
 	}
 	
 	/**
