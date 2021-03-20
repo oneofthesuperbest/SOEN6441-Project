@@ -17,7 +17,7 @@ public class NegotiateOrder extends Order {
 	 * This constructor is used to initialized the data members i.e.: create an
 	 * order
 	 * 
-	 * @param p_targetCountryName Name of the target country affected by the order
+	 * @param p_targetPlayerName Name of the target player affected by the order
 	 * @param p_player            The player who issued the command
 	 * @param p_gameEngine        The game engine object
 	 */

@@ -22,7 +22,7 @@ public abstract class Order {
 	
 	/**
 	 * This function is used to print error that occured while executing the order
-	 * @param p_errorMessage
+	 * @param p_errorMessage The message to be printed
 	 */
 	public abstract void printUnsuccessfulOrder(String p_errorMessage);
 	

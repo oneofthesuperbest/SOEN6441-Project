@@ -19,16 +19,20 @@ public class StartUpPhaseTest {
 	GameEngine d_gameEngineObject;
 	ValidateCommandView l_VCVObject;
 
-	@Before
-	public void init() {
+	/**
+	 * This function initializes context
+	 */
+	@Before	public void init() {
 		LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
 		FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
 		l_VCVObject = new ValidateCommandView();
 		d_gameEngineObject = new GameEngine(new Scanner(System.in), d_logEntryBuffer, d_fileEntryLogger);
 	}
 
-	@Test
-	public void testDefaultPhase() {
+	/**
+	 * This function is used to test default phase
+	 */
+	@Test public void testDefaultPhase() {
 		l_VCVObject.checkCommand(d_gameEngineObject, "loadmap res/maps/brasil/brasil.map", null);
 		assertEquals("start-up", d_gameEngineObject.getPhase().getString());
 		

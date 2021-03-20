@@ -78,7 +78,7 @@ public class Player {
 	
 	/**
 	 * This function is used to add a negotiating country to current players list
-	 * @param p_countryName The name of the country the player will negotiate
+	 * @param p_playerName The name of the player to be negotiated with
 	 */
 	public void addNegotiatingPlayer(String p_playerName) {
 		this.d_listOfNegotiatingPlayers.add(p_playerName);
