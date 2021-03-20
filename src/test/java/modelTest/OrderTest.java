@@ -24,6 +24,7 @@ public class OrderTest {
 
 	Order d_order;
 	CountryModel d_country;
+	Player d_player;
 
 	/**
 	 * Initialize test case
@@ -37,9 +38,10 @@ public class OrderTest {
 		LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
 		FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
 		GameEngine l_gameEngine = new GameEngine(l_scannerObject, d_logEntryBuffer, d_fileEntryLogger);
-		Player l_player = new Player("Test", l_gameEngine, l_scannerObject);
-		l_player.addOwnedCountry(d_country);
-		d_order = new DeployOrder("TestCountry", 2, l_player, l_gameEngine);
+		d_player = new Player("Test", l_gameEngine, l_scannerObject);
+		d_player.addOwnedCountry(d_country);
+		d_player.setReinforcementsArmies(2);
+		d_order = new DeployOrder("TestCountry", 2, d_player, l_gameEngine);
 	}
 
 	/**
@@ -52,6 +54,9 @@ public class OrderTest {
 
 		// Check if 2 armies were deployed on the country
 		assertEquals(2, d_country.getArmies());
+		
+		//check reinforcements have been reduced
+		assertEquals(0, d_player.getReinforcementsArmies());
 	}
 
 }

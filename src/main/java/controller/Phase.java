@@ -130,4 +130,10 @@ public abstract class Phase {
 	 * @return 1 if the airlift order was issued else 0
 	 */
 	public abstract int airlift(Order p_order);
+	
+	/**
+	 * This function is used to issue stop command
+	 * @return 2 to indicate the order was issued
+	 */
+	public abstract int stop();
 }

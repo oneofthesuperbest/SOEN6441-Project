@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import controller.GameEngine;
-import controller.MapController;
+import view.ValidateCommandView;
 
 /**
  * Represents a player
@@ -16,6 +16,11 @@ public class Player {
 	private GameEngine d_gameEngineContext;
 	private Scanner d_scannerObject;
 	private ArrayList<Order> d_listOfOrders = new ArrayList<Order>();
+	
+	/**
+	 * 0 for bomb card, 1 for blockade card, 2 for airlift card and 3 for negotiate
+	 */
+	private ArrayList<Integer> d_playersCards = new ArrayList<Integer>();
 
 	/**
 	 * Creates a player with the specified name.
@@ -28,6 +33,14 @@ public class Player {
 		this.d_name = p_name;
 		d_gameEngineContext = p_gameEngine;
 		d_scannerObject = p_scannerObject;
+	}
+	
+	/**
+	 * This function randomly adds a card
+	 */
+	public void addCard() {
+		int l_randomCard = (int) (Math.random() * 4);
+		d_playersCards.add(l_randomCard);
 	}
 
 	/**
@@ -80,6 +93,14 @@ public class Player {
 	}
 
 	/**
+	 * This function is used to removed country owned from players list
+	 * @param p_countryModel The object of country to be removed
+	 */
+	public void removeOwnedCountry(CountryModel p_countryModel) {
+		d_listOfOwnedCountries.remove(p_countryModel);
+	}
+	
+	/**
 	 * This function is used to ask player to issue their orders
 	 * 
 	 * @return It returns 1 if player has issued an order and 0 if player decides to
@@ -91,89 +112,25 @@ public class Player {
 		while (!l_issuedOrder) {
 			System.out.println(this.getName() + " issue your order");
 			String l_command = d_scannerObject.nextLine();
-			if (l_command.equals(GamePlayCommandListForPlayer.STOP.getCommandString())) {
-				d_reinforementsArmies = 0;
+			
+			ValidateCommandView l_VCVObject = new ValidateCommandView();
+			int returnValue = l_VCVObject.checkCommand(d_gameEngineContext, l_command, this);
+			if(returnValue == 1) {
+				l_issuedOrder = true;
+			} else if (returnValue == 2) {
 				return 0;
-			} else if (l_command.equals(GamePlayCommandListForPlayer.SHOWMAP.getCommandString())) {
-				MapController l_mapController = new MapController(d_gameEngineContext);
-				l_mapController.showMapForGamePlay();
-			} else {
-				int l_returnValue = validateOrder(l_command);
-				if (l_returnValue > 0) {
-					l_issuedOrder = true;
-				}
 			}
 		}
 		return 1;
 	}
 
 	/**
-	 * This function is used to validate the command
+	 * This function is used to add order
 	 * 
-	 * @param p_command The command entered by the player
-	 * @return 'number greater than 0' if the command is valid and order was issued
-	 *         or it returns 0 if the order was incorrect
+	 * @param p_order The order object
 	 */
-	public int validateOrder(String p_command) {
-		String[] l_commandArray = p_command.split(" ");
-		if (l_commandArray[0].equals(GamePlayCommandListForPlayer.DEPLOY.getCommandString())) {
-			int[] l_numberOfRequiredParameters = GamePlayCommandListForPlayer.DEPLOY.getCommandTypes();
-			for (int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
-				if (l_numberOfRequiredParameters[l_parameterIndex] == 0) {
-					try {
-						int l_testIfInteger = Integer.parseInt(l_commandArray[(l_parameterIndex + 1)]);
-						if (l_testIfInteger > d_reinforementsArmies) {
-							System.out.println("You exceeded your current reinforcement armies");
-							return 0;
-						}
-					} catch (NumberFormatException e) {
-						System.out.println("Invalid parameter type: One of the parameter is not of type integer");
-						return 0;
-					} catch (ArrayIndexOutOfBoundsException e) {
-						System.out.println("Invalid number of parameters: Missing parameters");
-						return 0;
-					}
-				} else if (l_numberOfRequiredParameters[l_parameterIndex] == 1) {
-					try {
-						String l_stringParamter = (l_commandArray[(l_parameterIndex + 1)]);
-						boolean l_isCountryOwned = false;
-						for (CountryModel l_ownedCountries : d_listOfOwnedCountries) {
-							if (l_ownedCountries.getName().equals(l_stringParamter)) {
-								l_isCountryOwned = true;
-								break;
-							}
-						}
-						if (!l_isCountryOwned) {
-							System.out.println("You do not own country '" + l_stringParamter + "'");
-							return 0;
-						}
-					} catch (ArrayIndexOutOfBoundsException e) {
-						System.out.println("Invalid number of parameters: Missing parameters");
-						return 0;
-					}
-				}
-			}
-			if (l_commandArray.length > 3) {
-				System.out.println(
-						"Invalid number of parameters: Extra parameter(s) present. deploy command only requires 2 parameters.");
-				return 0;
-			}
-		} else {
-			System.out.println("Invalid command: Please check your command");
-			return 0;
-		}
-		createOrder(l_commandArray);
-		d_reinforementsArmies -= Integer.parseInt(l_commandArray[2]);
-		return Integer.parseInt(l_commandArray[2]);
-	}
-
-	/**
-	 * This function is used to create order
-	 * 
-	 * @param p_commandArray The command string split by " "
-	 */
-	public void createOrder(String[] p_commandArray) {
-		//d_listOfOrders.add(new Order(p_commandArray[0], p_commandArray[1], Integer.parseInt(p_commandArray[2]), this));
+	public void addOrder(Order p_order) {
+		d_listOfOrders.add(p_order);
 	}
 
 	/**

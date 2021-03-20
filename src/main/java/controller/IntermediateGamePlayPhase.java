@@ -70,4 +70,12 @@ public abstract class IntermediateGamePlayPhase extends Phase {
 	public void validate() {
 		printErrorMessage(this);
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public int stop() {
+		printErrorMessage(this);
+		return 0;
+	}
 }

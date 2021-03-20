@@ -1,6 +1,8 @@
 package view;
 
 import controller.GameEngine;
+import model.AdvanceOrder;
+import model.DeployOrder;
 import model.Player;
 
 /**
@@ -21,7 +23,9 @@ public class ValidateCommandView {
 	 */
 	public int checkCommand(GameEngine p_gameEngineObject, String p_command, Player p_player) {
 		String[] l_commandParameters = p_command.split(d_commandSeparator);
-		if (l_commandParameters[0].equals(MapEditingCommandListForUser.EDITMAP.getCommandString())) {
+		if(p_command.equals(MapEditingCommandListForUser.STOP.getCommandString())) {
+			return p_gameEngineObject.getPhase().stop();
+		} else if (l_commandParameters[0].equals(MapEditingCommandListForUser.EDITMAP.getCommandString())) {
 			// Check if base command is editmap
 			System.out.println("Valid base command. Checking if all the parameters (if any) are valid...");
 			if (l_commandParameters.length == 2) {
@@ -58,9 +62,9 @@ public class ValidateCommandView {
 						System.out.println("Invalid command: Please check your command");
 						return 0;
 					}
-					return l_returnValue;
 				}
 			}
+			return l_returnValue;
 		}
 		return 1;
 	}
@@ -81,8 +85,8 @@ public class ValidateCommandView {
 						"Incorrect command: Extra parameters passed. showmap command doesn't require a parameter.");
 			}
 			p_gameEngineObject.getPhase().showMap();
-			// Returning 0 to indicate showmap is not an order
-			return 0;
+			// Returning 3 to indicate showmap is not an order
+			return 3;
 		} else if (p_commandParameters[0].equals(MapEditingCommandListForUser.VALIDATEMAP.getCommandString())) {
 			// ------- Call ValidateMap functions
 			if (p_commandParameters.length > 1) {
@@ -170,12 +174,14 @@ public class ValidateCommandView {
 		if (p_commandParameters[0].equals(MapEditingCommandListForUser.DEPLOY.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, MapEditingCommandListForUser.DEPLOY);
 			if(l_returnValue == 1) {
-				//--- create order, call resp. order method from issue order phase and then return value returned by the method
+				System.out.println("Issuing deploy order");
+				return p_gameEngineObject.getPhase().delop(new DeployOrder(p_commandParameters[1], Integer.parseInt(p_commandParameters[2]), p_player, p_gameEngineObject));
 			}
 		} else if(p_commandParameters[0].equals(MapEditingCommandListForUser.ADVANCE.getCommandString())) { 
 			int l_returnValue = validateOrderParameters(p_commandParameters, MapEditingCommandListForUser.ADVANCE);
 			if(l_returnValue == 1) {
-				//--- create order, call resp. order method from issue order phase and then return value returned by the method
+				System.out.println("Issuing advance order");
+				return p_gameEngineObject.getPhase().advance(new AdvanceOrder(p_commandParameters[1], p_commandParameters[2], Integer.parseInt(p_commandParameters[3]), p_player, p_gameEngineObject));
 			}
 		} else if(p_commandParameters[0].equals(MapEditingCommandListForUser.BOMB.getCommandString())){
 			int l_returnValue = validateOrderParameters(p_commandParameters, MapEditingCommandListForUser.BOMB);
@@ -189,6 +195,11 @@ public class ValidateCommandView {
 			}
 		} else if(p_commandParameters[0].equals(MapEditingCommandListForUser.AIRLIFT.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, MapEditingCommandListForUser.AIRLIFT);
+			if(l_returnValue == 1) {
+				//--- create order, call resp. order method from issue order phase and then return value returned by the method
+			}
+		} else if(p_commandParameters[0].equals(MapEditingCommandListForUser.NEGOTIATE.getCommandString())) {
+			int l_returnValue = validateOrderParameters(p_commandParameters, MapEditingCommandListForUser.NEGOTIATE);
 			if(l_returnValue == 1) {
 				//--- create order, call resp. order method from issue order phase and then return value returned by the method
 			}

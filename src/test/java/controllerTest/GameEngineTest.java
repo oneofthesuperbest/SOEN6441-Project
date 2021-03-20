@@ -165,19 +165,4 @@ public class GameEngineTest {
 				d_gameEngineTestCase.getPlayersState().getPlayers().get(1).getReinforcementsArmies());
 	}
 
-	/**
-	 * This function is used to check if players order are prevented if the army
-	 * number exceeds player reinforcement number
-	 */
-	@Test
-	public void testDeployCheck() {
-		// Executing function
-		d_player.validateOrder("deploy TestCountry 2");
-		d_player.validateOrder("deploy TestCountry 2");
-		d_player.validateOrder("deploy TestCountry 2");
-
-		// Check if only two order were issued
-		assertEquals(2, d_player.getOrders().size());
-	}
-
 }

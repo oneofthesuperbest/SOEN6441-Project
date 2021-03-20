@@ -75,4 +75,12 @@ public abstract class IntermediateMapEditingPhase extends Phase{
 		printErrorMessage(this);
 		return 0;
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public int stop() {
+		printErrorMessage(this);
+		return 0;
+	}
 }

@@ -28,9 +28,18 @@ public class ExecuteOrderPhase extends IntermediateOrderPhase {
 	/**
 	 * {@inheritDoc}
 	 */
+	public int stop() {
+		printErrorMessage(this);
+		return 0;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public int delop(Order p_order) {
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Delop order was executed.");
-		//-- Validate command and then execute order
+		System.out.println("Deploy order was executed.");
+		p_order.execute();
 		return 0;
 	}
 	
@@ -39,7 +48,8 @@ public class ExecuteOrderPhase extends IntermediateOrderPhase {
 	 */
 	public int advance(Order p_order) {
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Advance order was executed.");
-		//-- Validate command and then execute order
+		System.out.println("Advance order was executed.");
+		p_order.execute();
 		return 0;
 	}
 	
@@ -48,7 +58,8 @@ public class ExecuteOrderPhase extends IntermediateOrderPhase {
 	 */
 	public int bomb(Order p_order) {
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Bomb order was executed.");
-		//-- Validate command and then execute order
+		System.out.println("Bomb order was executed.");
+		p_order.execute();
 		return 0;
 	}
 	
@@ -57,7 +68,8 @@ public class ExecuteOrderPhase extends IntermediateOrderPhase {
 	 */
 	public int blockade(Order p_order) {
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Blockade order was executed.");
-		//-- Validate command and then execute order
+		System.out.println("Blockade order was executed.");
+		p_order.execute();
 		return 0;
 	}
 	
@@ -66,7 +78,8 @@ public class ExecuteOrderPhase extends IntermediateOrderPhase {
 	 */
 	public int negotiate(Order p_order) {
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Negotiate order was executed.");
-		//-- Validate command and then execute order
+		System.out.println("Negotiate order was executed.");
+		p_order.execute();
 		return 0;
 	}
 	
@@ -75,7 +88,8 @@ public class ExecuteOrderPhase extends IntermediateOrderPhase {
 	 */
 	public int airlift(Order p_order) {
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Airlift order was executed.");
-		//-- Validate command and then execute order
+		System.out.println("Airlift order was executed.");
+		p_order.execute();
 		return 0;
 	}
 }
