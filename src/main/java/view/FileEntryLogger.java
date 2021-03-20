@@ -24,6 +24,23 @@ public class FileEntryLogger implements Observer {
      */
     public FileEntryLogger(LogEntryBuffer p_logEntryBuffer){
         p_logEntryBuffer.attach(this);
+        clearLog();
+    }
+    
+    /**
+     * Used to clear the log of the previous game
+     */
+    void clearLog() {
+    	String l_directory = "res/logs/";
+        String l_filePath = l_directory + "log.txt";
+        try{
+            FileWriter l_logWriter = new FileWriter(l_filePath, false);
+            l_logWriter.write("");
+            l_logWriter.close();
+
+        } catch (IOException e){
+            System.out.println("An Error has occurred while adding log entry.");
+        }
     }
 
     /**
@@ -49,9 +66,9 @@ public class FileEntryLogger implements Observer {
         String l_directory = "res/logs/";
         String l_filePath = l_directory + "log.txt";
         try{
-            FileWriter logWriter = new FileWriter(l_filePath, true);
-            logWriter.write(p_logEntry);
-            logWriter.close();
+            FileWriter l_logWriter = new FileWriter(l_filePath, true);
+            l_logWriter.write(p_logEntry);
+            l_logWriter.close();
 
         } catch (IOException e){
             System.out.println("An Error has occurred while adding log entry.");

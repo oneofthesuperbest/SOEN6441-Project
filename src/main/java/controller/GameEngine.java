@@ -107,13 +107,13 @@ public class GameEngine {
 		System.out.println("GameEngine console loaded.");
 		ValidateCommandView l_VCVObject = new ValidateCommandView();
 		while (true) {
-			System.out.println("Enter your command");
-			String l_command = "";
-			l_command = d_scannerObject.nextLine();
 			if (!this.getPhase().getString().equals("start-up")) {
 				// Break out of Game engine console for user
 				break;
 			} else {
+				System.out.println("Enter your command");
+				String l_command = "";
+				l_command = d_scannerObject.nextLine();
 				l_VCVObject.checkCommand(this, l_command, null);
 			}
 		}

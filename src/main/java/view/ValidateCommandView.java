@@ -14,9 +14,9 @@ public class ValidateCommandView {
 	/**
 	 * This functions is used to check if the base command is valid or not
 	 * 
-	 * @param p_gameEngineObject
-	 * @param p_command
-	 * @param p_player
+	 * @param p_gameEngineObject The object of GameEngine class
+	 * @param p_command The command entered by user
+	 * @param p_player The player who issued the command
 	 * @return Greater than 1 if valid else 0
 	 */
 	public int checkCommand(GameEngine p_gameEngineObject, String p_command, Player p_player) {
