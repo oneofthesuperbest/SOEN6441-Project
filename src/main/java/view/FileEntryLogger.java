@@ -2,8 +2,6 @@ package view;
 
 import model.LogEntryBuffer;
 import model.Observable;
-import model.Observer;
-
 import java.io.FileWriter;
 import java.io.IOException;
 

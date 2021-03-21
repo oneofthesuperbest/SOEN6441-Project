@@ -1,4 +1,6 @@
-package model;
+package view;
+
+import model.Observable;
 
 /**
  * Interface class for the Observer, which forces all views to implement the
