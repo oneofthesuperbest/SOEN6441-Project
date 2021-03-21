@@ -1,4 +1,4 @@
-# Sun Mar 21 22:00:42 IST 2021 -- -----------------Default phase initialized-----------------
-# Sun Mar 21 22:00:42 IST 2021 -- -----------------Game play issue order phase initialized-----------------
-# Sun Mar 21 22:00:42 IST 2021 -- Advance order was issued.
-# Sun Mar 21 22:00:42 IST 2021 -- Advanced 2 armies from Alberta to BC
+# Mon Mar 22 03:08:55 IST 2021 -- -----------------Default phase initialized-----------------
+# Mon Mar 22 03:08:55 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Mon Mar 22 03:08:55 IST 2021 -- Advance order was issued.
+# Mon Mar 22 03:08:55 IST 2021 -- Advanced 2 armies from Alberta to BC

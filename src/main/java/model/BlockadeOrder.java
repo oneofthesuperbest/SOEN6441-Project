@@ -53,6 +53,7 @@ public class BlockadeOrder extends Order {
 		ArrayList<CountryModel> l_listOfOwnedCountries = this.d_issuer.getOwnedCountry();
 		for (CountryModel l_country : l_listOfOwnedCountries) {
 			if (l_country.getName().equals(this.d_targetCountryName)) {
+				this.d_targetCountry = l_country;
 				boolean returnValue = this.d_issuer.hasCard(1);
 				if (!returnValue) {
 					printUnsuccessfulOrder("Can't block " + this.d_targetCountryName + ". Player doesn't have blockade card.");

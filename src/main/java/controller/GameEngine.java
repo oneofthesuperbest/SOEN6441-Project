@@ -132,8 +132,8 @@ public class GameEngine {
 				l_VCVObject.checkCommand(this, l_command, null);
 			}
 		}
-		this.loadGameEngine();
 		this.d_neutralPlayer = new Player("Neutral", this, this.d_scannerObject);
+		this.loadGameEngine();
 	}
 
 	/**

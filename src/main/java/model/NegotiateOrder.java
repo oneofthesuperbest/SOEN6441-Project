@@ -49,7 +49,7 @@ public class NegotiateOrder extends Order {
 	 * {@inheritDoc}
 	 */
 	public boolean isValid() {
-		if (this.d_issuer.getName().equals(this.d_targetPlayerName)) {
+		if (!this.d_issuer.getName().equals(this.d_targetPlayerName)) {
 			boolean returnValue = this.d_issuer.hasCard(3);
 			if (!returnValue) {
 				printUnsuccessfulOrder(

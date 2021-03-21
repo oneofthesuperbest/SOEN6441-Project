@@ -97,6 +97,7 @@ public class ValidateCommandView {
 						"Incorrect command: Extra parameters passed. validatemap command doesn't require a parameter.");
 			}
 			p_gameEngineObject.getPhase().validate();
+			return 1;
 		} else if (p_commandParameters[0].equals(CommandList.SAVEMAP.getCommandString())) {
 			if (p_commandParameters.length == 2) {
 				// ------- Call ValidateMap function and based on the boolean value return call
@@ -192,25 +193,25 @@ public class ValidateCommandView {
 			int l_returnValue = validateOrderParameters(p_commandParameters, CommandList.BOMB);
 			if(l_returnValue == 1) {
 				System.out.println("Issuing bomb order");
-				return p_gameEngineObject.getPhase().advance(new BombOrder(p_commandParameters[1], p_player, p_gameEngineObject));
+				return p_gameEngineObject.getPhase().bomb(new BombOrder(p_commandParameters[1], p_player, p_gameEngineObject));
 			}
 		} else if(p_commandParameters[0].equals(CommandList.BLOCKADE.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, CommandList.BLOCKADE);
 			if(l_returnValue == 1) {
 				System.out.println("Issuing blockade order");
-				return p_gameEngineObject.getPhase().advance(new BlockadeOrder(p_commandParameters[1], p_player, p_gameEngineObject));
+				return p_gameEngineObject.getPhase().blockade(new BlockadeOrder(p_commandParameters[1], p_player, p_gameEngineObject));
 			}
 		} else if(p_commandParameters[0].equals(CommandList.AIRLIFT.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, CommandList.AIRLIFT);
 			if(l_returnValue == 1) {
 				System.out.println("Issuing airlift order");
-				return p_gameEngineObject.getPhase().advance(new AirliftOrder(p_commandParameters[1], p_commandParameters[2], Integer.parseInt(p_commandParameters[3]), p_player, p_gameEngineObject));
+				return p_gameEngineObject.getPhase().airlift(new AirliftOrder(p_commandParameters[1], p_commandParameters[2], Integer.parseInt(p_commandParameters[3]), p_player, p_gameEngineObject));
 			}
 		} else if(p_commandParameters[0].equals(CommandList.NEGOTIATE.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, CommandList.NEGOTIATE);
 			if(l_returnValue == 1) {
 				System.out.println("Issuing negotiate order");
-				return p_gameEngineObject.getPhase().advance(new NegotiateOrder(p_commandParameters[1], p_player, p_gameEngineObject));
+				return p_gameEngineObject.getPhase().negotiate(new NegotiateOrder(p_commandParameters[1], p_player, p_gameEngineObject));
 			}
 		}
 		return 0;

@@ -688,11 +688,11 @@ public class MapController {
 					l_neighbourXMap.add(1);
 				}
 			}
-			for (int l_mapIndex = 0; l_mapIndex < l_neighbourXMap.size() - 1; l_mapIndex++) {
+			for (int l_mapIndex = 0; l_mapIndex < l_neighbourXMap.size(); l_mapIndex++) {
 				if (l_neighbourXMap.get(l_mapIndex) == 0) {
 					l_sideLabels += "\t";
 				} else {
-					l_sideLabels += "\tX";
+					l_sideLabels += "X\t";
 				}
 			}
 			l_sideLabels += "\n";

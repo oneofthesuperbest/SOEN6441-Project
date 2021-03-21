@@ -54,10 +54,13 @@ public class BombOrder extends Order {
 				printUnsuccessfulOrder("Can't bomb " + this.d_targetCountryName + ". Country belong to player who issued the order.");
 				return false;
 			}
-			MapController l_mapController = new MapController(this.d_gameEngine);
+		}
+		MapController l_mapController = new MapController(this.d_gameEngine);
+		for (CountryModel l_country : l_listOfOwnedCountries) {
 			ArrayList<CountryModel> l_neighbors = l_mapController.getNeighbors(l_country);
 			for (CountryModel l_countryNeighbor : l_neighbors) {
 				if (l_countryNeighbor.getName().equals(this.d_targetCountryName)) {
+					this.d_targetCountry = l_countryNeighbor;
 					boolean returnValue = this.d_issuer.hasCard(0);
 					if(!returnValue) {
 						printUnsuccessfulOrder("Can't bomb " + this.d_targetCountryName + ". Player doesn't have bomb card.");
