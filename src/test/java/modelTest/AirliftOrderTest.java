@@ -17,6 +17,9 @@ import model.Player;
 import view.FileEntryLogger;
 import view.ValidateCommandView;
 
+/**
+ * This class is used to test AirliftOrder class
+ */
 public class AirliftOrderTest {
 	Order d_order;
 	CountryModel d_country;

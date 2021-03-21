@@ -1,5 +1,8 @@
 package controller;
 
+/**
+ * This class implements functions that are not part of Issue order or Execute order phase
+ */
 public abstract class IntermediateOrderPhase extends IntermediateGamePlayPhase {
 
 	/**

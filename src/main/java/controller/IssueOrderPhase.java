@@ -2,6 +2,9 @@ package controller;
 
 import model.Order;
 
+/**
+ * This class implements functions related to issue order phase
+ */
 public class IssueOrderPhase extends IntermediateOrderPhase {
 	
 	/**

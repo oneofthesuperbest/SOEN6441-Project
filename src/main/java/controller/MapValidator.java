@@ -16,7 +16,7 @@ public class MapValidator {
 	
 	/**
 	 * This constructor initializes the game engine object
-	 * @param p_gameEngine
+	 * @param p_gameEngine The game engine object
 	 */
 	public MapValidator(GameEngine p_gameEngine) {
 		this.d_gameEngine = p_gameEngine;

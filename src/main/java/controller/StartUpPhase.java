@@ -2,6 +2,9 @@ package controller;
 
 import model.Order;
 
+/**
+ * This class implements functions related to start up phase
+ */
 public class StartUpPhase extends IntermediateGamePlayPhase {
 	
 	/**

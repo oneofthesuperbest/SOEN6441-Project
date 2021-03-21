@@ -19,8 +19,10 @@ public class MapEditingPhaseTest {
 	GameEngine d_gameEngineObject;
 	ValidateCommandView l_VCVObject;
 
-	@Before
-	public void init() {
+	/**
+	 * This function initializes the context
+	 */
+	@Before public void init() {
 		LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
 		FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
 		l_VCVObject = new ValidateCommandView();
@@ -29,8 +31,10 @@ public class MapEditingPhaseTest {
 		l_VCVObject.checkCommand(d_gameEngineObject, "editmap res/maps/brasil/brasil.map", null);
 	}
 
-	@Test
-	public void testDefaultPhase() {
+	/**
+	 * This function tests if phases are correctly initialized and transitioned
+	 */
+	@Test public void testDefaultPhase() {
 		assertEquals("map editing", d_gameEngineObject.getPhase().getString());
 		
 		l_VCVObject.checkCommand(d_gameEngineObject, "savemap res/maps/saved/TestCase.map", null);

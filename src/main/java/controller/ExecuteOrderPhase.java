@@ -2,6 +2,9 @@ package controller;
 
 import model.Order;
 
+/**
+ * This class is a placeholder
+ */
 public class ExecuteOrderPhase extends IntermediateOrderPhase {
 	
 	/**

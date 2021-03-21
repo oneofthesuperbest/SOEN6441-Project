@@ -34,6 +34,8 @@ public class GameEngine {
 	 * This constructor is used to set the scanner object context
 	 * 
 	 * @param p_scannerObject The context of scanner object
+	 * @param p_logEntryBuffer The context of concrete Observer class
+	 * @param p_fileEntryLogger The context of concrete Obeservable class
 	 */
 	public GameEngine(Scanner p_scannerObject, LogEntryBuffer p_logEntryBuffer, FileEntryLogger p_fileEntryLogger) {
 		d_scannerObject = p_scannerObject;

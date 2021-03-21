@@ -16,6 +16,9 @@ import model.Player;
 import view.FileEntryLogger;
 import view.ValidateCommandView;
 
+/**
+ * This class is used to test AdvanceOrder class
+ */
 public class AdvanceOrderTest {
 	Order d_order;
 	CountryModel d_country;

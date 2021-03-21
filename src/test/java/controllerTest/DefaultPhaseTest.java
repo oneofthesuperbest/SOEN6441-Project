@@ -18,12 +18,18 @@ import view.ValidateCommandView;
 public class DefaultPhaseTest {
     GameEngine d_gameEngineObject;
 	
+    /**
+	 * This function initializes the context
+	 */
 	@Before public void init() {
 		LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
 		FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
 		d_gameEngineObject = new GameEngine(new Scanner(System.in), d_logEntryBuffer, d_fileEntryLogger);
 	}
 	
+	/**
+	 * This function tests if phases are correctly initialized and transitioned
+	 */
 	@Test public void testDefaultPhase() {
 		ValidateCommandView l_VCVObject = new ValidateCommandView();
 		l_VCVObject.checkCommand(d_gameEngineObject, "validatemap", null);
