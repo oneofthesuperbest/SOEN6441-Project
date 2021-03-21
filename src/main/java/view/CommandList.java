@@ -3,7 +3,7 @@ package view;
 /**
  * This enum is used to store list of valid commands for map editing phase.
  */
-public enum MapEditingCommandListForUser {
+public enum CommandList {
 	/**
 	 * This is an enum for loadmap command
 	 */
@@ -246,7 +246,7 @@ public enum MapEditingCommandListForUser {
 	 * 
 	 * @param p_command The string value of the command held by the enum
 	 */
-	MapEditingCommandListForUser(String p_command) {
+	CommandList(String p_command) {
 		this.d_command = p_command;
 	}
 

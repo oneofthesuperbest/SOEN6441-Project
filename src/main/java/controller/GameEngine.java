@@ -12,7 +12,7 @@ import model.MapState;
 import model.Player;
 import model.PlayersState;
 import view.FileEntryLogger;
-import view.MapEditingCommandListForUser;
+import view.CommandList;
 import view.ValidateCommandView;
 
 /**
@@ -318,7 +318,7 @@ public class GameEngine {
 	 */
 	public void addRemovePlayers(String[] p_commandList) {
 		for (int l_index = 1; l_index < p_commandList.length; l_index++) {
-			if (p_commandList[l_index].equals(MapEditingCommandListForUser.ADD.getCommandString())) {
+			if (p_commandList[l_index].equals(CommandList.ADD.getCommandString())) {
 				l_index++;
 				int l_returnValue = d_playerState.addPlayer(new Player(p_commandList[l_index], this, d_scannerObject));
 				if (l_returnValue == 0) {

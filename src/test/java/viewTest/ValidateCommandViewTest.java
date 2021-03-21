@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import view.MapEditingCommandListForUser;
+import view.CommandList;
 import view.ValidateCommandView;
 
 /**
@@ -32,7 +32,7 @@ public class ValidateCommandViewTest {
 		String[] l_str = { "IncorrectCommand", "-add" };
 
 		// check if the above command return 0 as it is incorrect
-		assertEquals(0, d_VCV.validateSubCommands(l_str, MapEditingCommandListForUser.EDITCONTINENT));
+		assertEquals(0, d_VCV.validateSubCommands(l_str, CommandList.EDITCONTINENT));
 	}
 
 }
