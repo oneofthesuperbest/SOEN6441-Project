@@ -9,7 +9,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import controller.GameEngine;
-import controller.MapController;
 import model.ContinentModel;
 import model.CoordinateModel;
 import model.CountryModel;
@@ -55,7 +54,6 @@ public class GameEngineTest {
 		// Initializing test case for reinforcements
 		Scanner l_dummyScannerObject = new Scanner(System.in);
 		d_gameEngineTestCase = new GameEngine(l_dummyScannerObject, d_logEntryBuffer, d_fileEntryLogger);
-		MapController l_mapControllerTestCase = new MapController(d_gameEngineTestCase);
 		d_gameEngineTestCase.getMapState().getListOfContinents().add(new ContinentModel("Continent1", "red", 2));
 		d_gameEngineTestCase.getMapState().getListOfContinents().add(new ContinentModel("Continent2", "blue", 4));
 		ArrayList<ContinentModel> l_listOfCoontinents = d_gameEngineTestCase.getMapState().getListOfContinents();
@@ -106,7 +104,6 @@ public class GameEngineTest {
 		l_listOfPlayers.get(1).setReinforcementsArmies(3);
 		// Initializing tested case
 		d_gameEngineCase = new GameEngine(l_dummyScannerObject, d_logEntryBuffer, d_fileEntryLogger);
-		MapController l_mapControllerCase = new MapController(d_gameEngineCase);
 		d_gameEngineCase.getMapState().getListOfContinents().add(new ContinentModel("Continent1", "red", 2));
 		d_gameEngineCase.getMapState().getListOfContinents().add(new ContinentModel("Continent2", "blue", 4));
 		l_listOfCoontinents = d_gameEngineCase.getMapState().getListOfContinents();

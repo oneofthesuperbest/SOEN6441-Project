@@ -2,6 +2,7 @@ package view;
 
 import controller.GameEngine;
 import controller.MapController;
+import controller.MapValidator;
 
 /**
  * This class is used to execute entered command i.e.: call respective functions
@@ -78,8 +79,8 @@ public class ExecuteCommandView {
 	 * @param p_gameEngineObject GameEngine object that holds the map data.
 	 */
 	public void validateMap(GameEngine p_gameEngineObject) {
-		MapController l_mapController = new MapController(p_gameEngineObject);
-		if (!l_mapController.validateMap()) {
+		MapValidator l_mapValidator = new MapValidator(p_gameEngineObject);
+		if (!l_mapValidator.validateMap()) {
 			System.out.println("VALIDATION CHECK FAILED. INVALID MAP.");
 		} else {
 			System.out.println("VALIDATION CHECK PASSED. MAP IS VALID");

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import controller.GameEngine;
 import controller.MapController;
+import controller.MapValidator;
 import model.ContinentModel;
 import model.CountryModel;
 import model.LogEntryBuffer;
@@ -25,6 +26,7 @@ public class MapControllerTest {
 	FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
 	GameEngine l_gameEngineObj = new GameEngine(new Scanner(System.in), d_logEntryBuffer, d_fileEntryLogger);
 	MapController l_mapController = new MapController(l_gameEngineObj);
+	MapValidator l_mapValidator = new MapValidator(l_gameEngineObj);
 
 	/**
 	 * Load a valid map before every test case.
@@ -51,7 +53,7 @@ public class MapControllerTest {
 	public void mapValFullyConnectedTest() {
 		// isolate a country.
 		l_mapController.removeNeighbor("Alberta", "BC");
-		assertFalse(l_mapController.isMapValid());
+		assertFalse(l_mapValidator.isMapValid());
 	}
 
 	/**
@@ -62,7 +64,7 @@ public class MapControllerTest {
 	public void mapValFullyConnectedContinentTest() {
 		// disconnect countries in the continent.
 		l_mapController.removeNeighbor("Cali", "LA");
-		assertFalse(l_mapController.isMapValid());
+		assertFalse(l_mapValidator.isMapValid());
 	}
 
 	/**
@@ -100,6 +102,6 @@ public class MapControllerTest {
 	public void mapValEmptyContinentTest() {
 		// add an empty country.
 		l_mapController.addContinent("EmptyContinent", 21);
-		assertFalse(l_mapController.isMapValid());
+		assertFalse(l_mapValidator.isMapValid());
 	}
 }
