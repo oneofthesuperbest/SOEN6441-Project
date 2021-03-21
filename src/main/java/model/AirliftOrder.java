@@ -98,6 +98,8 @@ public class AirliftOrder extends Order {
 								return true;
 							}
 						}
+						printUnsuccessfulOrder("Can't airlift armies on " + this.d_targetCountryName
+								+ ". Country not found.");
 					}
 					return false;
 				} else {

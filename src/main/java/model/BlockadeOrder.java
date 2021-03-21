@@ -61,7 +61,7 @@ public class BlockadeOrder extends Order {
 			}
 		}
 		printUnsuccessfulOrder("Can't block " + this.d_targetCountryName
-				+ ". Country doesn't belong to player to issued the command.");
+				+ ". Country doesn't belong to player who issued the command.");
 		return false;
 	}
 
