@@ -32,7 +32,7 @@ public class MapEditingPhaseTest {
 	}
 
 	/**
-	 * This function tests if phases are correctly initialized and transitioned
+	 * This function tests if commands are validated and phases are correctly initialized and transitioned
 	 */
 	@Test public void testDefaultPhase() {
 		assertEquals("map editing", d_gameEngineObject.getPhase().getString());

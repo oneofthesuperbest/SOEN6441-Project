@@ -30,7 +30,7 @@ public class StartUpPhaseTest {
 	}
 
 	/**
-	 * This function is used to test default phase
+	 * This function is used to test validation and switching of phases
 	 */
 	@Test public void testDefaultPhase() {
 		l_VCVObject.checkCommand(d_gameEngineObject, "loadmap res/maps/brasil/brasil.map", null);
