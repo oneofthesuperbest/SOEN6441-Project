@@ -47,7 +47,7 @@ public class AirliftOrder extends Order {
 					int l_currentArmies = l_country.getArmies();
 					l_country.setArmies((this.d_numberOfArmies + l_currentArmies));
 					l_currentArmies = this.d_sourceCountry.getArmies();
-					this.d_sourceCountry.setArmies((this.d_numberOfArmies - l_currentArmies));
+					this.d_sourceCountry.setArmies((l_currentArmies - this.d_numberOfArmies));
 					printOrder();
 					return;
 				}
