@@ -24,8 +24,7 @@ public class DeployOrder extends Order {
 	 * @param p_player            The player who issued the command
 	 * @param p_gameEngine        The game engine object
 	 */
-	public DeployOrder(String p_targetCountryName, int p_numberOfArmies, Player p_player,
-			GameEngine p_gameEngine) {
+	public DeployOrder(String p_targetCountryName, int p_numberOfArmies, Player p_player, GameEngine p_gameEngine) {
 		this.d_targetCountryName = p_targetCountryName;
 		this.d_numberOfArmies = p_numberOfArmies;
 		this.d_issuer = p_player;
@@ -54,15 +53,17 @@ public class DeployOrder extends Order {
 		for (CountryModel l_country : l_listOfOwnedCountries) {
 			if (l_country.getName().equals(this.d_targetCountryName)) {
 				this.d_countryOfInterest = l_country;
-				if(this.d_issuer.getReinforcementsArmies() >= this.d_numberOfArmies) {
+				if (this.d_issuer.getReinforcementsArmies() >= this.d_numberOfArmies) {
 					return true;
 				} else {
-					printUnsuccessfulOrder("Can't delop armies on " + this.d_targetCountryName + ". Player doesn't have enough reinforcements.");
+					printUnsuccessfulOrder("Can't delop armies on " + this.d_targetCountryName
+							+ ". Player doesn't have enough reinforcements.");
 					return false;
 				}
 			}
 		}
-		printUnsuccessfulOrder("Can't delop armies on " + this.d_targetCountryName + ". Country doesn't belong to player " + d_issuer.getName());
+		printUnsuccessfulOrder("Can't delop armies on " + this.d_targetCountryName
+				+ ". Country doesn't belong to player " + d_issuer.getName());
 		return false;
 	}
 
@@ -70,21 +71,20 @@ public class DeployOrder extends Order {
 	 * {@inheritDoc}
 	 */
 	public void printOrder() {
-		String l_effectOfCommand = "Deployed " + this.d_numberOfArmies + " armies on country " + this.d_targetCountryName;
+		String l_effectOfCommand = "Deployed " + this.d_numberOfArmies + " armies on country "
+				+ this.d_targetCountryName;
 		System.out.println(l_effectOfCommand);
-		this.d_gameEngine.getLogEntryBuffer()
-				.addLogEntry(l_effectOfCommand);
+		this.d_gameEngine.getLogEntryBuffer().addLogEntry(l_effectOfCommand);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public void printUnsuccessfulOrder(String p_errorMessage) {
 		System.out.println(p_errorMessage);
-		this.d_gameEngine.getLogEntryBuffer()
-				.addLogEntry(p_errorMessage);
+		this.d_gameEngine.getLogEntryBuffer().addLogEntry(p_errorMessage);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

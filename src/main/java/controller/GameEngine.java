@@ -33,8 +33,8 @@ public class GameEngine {
 	/**
 	 * This constructor is used to set the scanner object context
 	 * 
-	 * @param p_scannerObject The context of scanner object
-	 * @param p_logEntryBuffer The context of concrete Observer class
+	 * @param p_scannerObject   The context of scanner object
+	 * @param p_logEntryBuffer  The context of concrete Observer class
 	 * @param p_fileEntryLogger The context of concrete Observable class
 	 */
 	public GameEngine(Scanner p_scannerObject, LogEntryBuffer p_logEntryBuffer, FileEntryLogger p_fileEntryLogger) {
@@ -42,6 +42,13 @@ public class GameEngine {
 		d_logEntryBuffer = p_logEntryBuffer;
 		d_fileEntryLogger = p_fileEntryLogger;
 		setPhase(0);
+	}
+
+	/**
+	 * This functions is used to initialize neutral player
+	 */
+	public void setNeutralPlayer() {
+		this.d_neutralPlayer = new Player("Neutral", this, this.d_scannerObject);
 	}
 
 	/**
@@ -54,9 +61,10 @@ public class GameEngine {
 	public LogEntryBuffer getLogEntryBuffer() {
 		return d_logEntryBuffer;
 	}
-	
+
 	/**
 	 * This function returns the pointer to neutral player
+	 * 
 	 * @return The player object
 	 */
 	public Player getNeutralPlayer() {
@@ -132,7 +140,7 @@ public class GameEngine {
 				l_VCVObject.checkCommand(this, l_command, null);
 			}
 		}
-		this.d_neutralPlayer = new Player("Neutral", this, this.d_scannerObject);
+		this.setNeutralPlayer();
 		this.loadGameEngine();
 	}
 
@@ -150,30 +158,33 @@ public class GameEngine {
 			this.executeOrderLoop();
 			this.removeLostPlayers();
 			this.issueCardsAndRefreshNegotiation();
-			if(this.checkWinner()) {
+			if (this.checkWinner()) {
 				break;
 			}
 		}
-		String l_gameEndMessage = "Player " + this.d_playerState.getPlayers().get(0).getName() +" has won the game!!!";
+		String l_gameEndMessage = "Player " + this.d_playerState.getPlayers().get(0).getName() + " has won the game!!!";
 		this.d_logEntryBuffer.addLogEntry(l_gameEndMessage);
 		System.out.println(l_gameEndMessage);
 	}
-	
+
 	/**
 	 * This function checks if the game has end.
+	 * 
 	 * @return true if game end else false
 	 */
 	public boolean checkWinner() {
-		if(this.d_playerState.getPlayers().size() == 1) {
-			if(this.d_playerState.getPlayers().get(0).getOwnedCountry().size() == this.d_mapState.getListOfCountries().size() && this.d_neutralPlayer.getOwnedCountry().size() == 0) {
+		if (this.d_playerState.getPlayers().size() == 1) {
+			if (this.d_playerState.getPlayers().get(0).getOwnedCountry().size() == this.d_mapState.getListOfCountries()
+					.size() && this.d_neutralPlayer.getOwnedCountry().size() == 0) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	/**
-	 * This function is used to remove all players from the game who doesn't own a country.
+	 * This function is used to remove all players from the game who doesn't own a
+	 * country.
 	 */
 	public void removeLostPlayers() {
 		ArrayList<Player> l_players = this.getPlayersState().getPlayers();

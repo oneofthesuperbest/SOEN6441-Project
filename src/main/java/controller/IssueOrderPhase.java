@@ -6,21 +6,21 @@ import model.Order;
  * This class implements functions related to issue order phase
  */
 public class IssueOrderPhase extends IntermediateOrderPhase {
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	IssueOrderPhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public String getString() {
 		return "issue order";
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -30,7 +30,7 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 		p_order.getPlayer().addOrder(p_order);
 		return 1;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -40,7 +40,7 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 		p_order.getPlayer().addOrder(p_order);
 		return 1;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -50,7 +50,7 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 		p_order.getPlayer().addOrder(p_order);
 		return 1;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -60,7 +60,7 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 		p_order.getPlayer().addOrder(p_order);
 		return 1;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -70,7 +70,7 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 		p_order.getPlayer().addOrder(p_order);
 		return 1;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -80,7 +80,7 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 		p_order.getPlayer().addOrder(p_order);
 		return 1;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

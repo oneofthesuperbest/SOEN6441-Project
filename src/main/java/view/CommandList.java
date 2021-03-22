@@ -8,7 +8,7 @@ public enum CommandList {
 	 * This is an enum for loadmap command
 	 */
 	LOADMAP("loadmap"),
-	
+
 	/**
 	 * This is an enum for gameplayer command
 	 */
@@ -33,12 +33,12 @@ public enum CommandList {
 			return new int[] { 1 };
 		}
 	},
-	
+
 	/**
 	 * This is an enum for assigncountries command
 	 */
 	ASSIGNCOUNTRIES("assigncountries"),
-	
+
 	/**
 	 * This is an enum for editcontinent command
 	 */
@@ -143,7 +143,7 @@ public enum CommandList {
 	 * This is an enum for remove command
 	 */
 	REMOVE("-remove"),
-	
+
 	/**
 	 * This is an enum for deploy command
 	 */
@@ -158,7 +158,7 @@ public enum CommandList {
 			return new int[] { 1, 0 };
 		}
 	},
-	
+
 	/**
 	 * This is an enum for advance command
 	 */
@@ -173,7 +173,7 @@ public enum CommandList {
 			return new int[] { 1, 1, 0 };
 		}
 	},
-	
+
 	/**
 	 * This is an enum for bomb command
 	 */
@@ -185,10 +185,10 @@ public enum CommandList {
 		 *         string and 0 for integer
 		 */
 		public int[] getCommandTypes() {
-			return new int[] { 1};
+			return new int[] { 1 };
 		}
 	},
-	
+
 	/**
 	 * This is an enum for blockade command
 	 */
@@ -200,10 +200,10 @@ public enum CommandList {
 		 *         string and 0 for integer
 		 */
 		public int[] getCommandTypes() {
-			return new int[] { 1};
+			return new int[] { 1 };
 		}
 	},
-	
+
 	/**
 	 * This is an enum for airlift command
 	 */
@@ -218,7 +218,7 @@ public enum CommandList {
 			return new int[] { 1, 1, 0 };
 		}
 	},
-	
+
 	/**
 	 * This is an enum for negotiate command
 	 */
@@ -230,10 +230,10 @@ public enum CommandList {
 		 *         string and 0 for integer
 		 */
 		public int[] getCommandTypes() {
-			return new int[] { 1};
+			return new int[] { 1 };
 		}
 	},
-	
+
 	/**
 	 * This is an enum for stop issuing order
 	 */
@@ -278,7 +278,7 @@ public enum CommandList {
 	public int[] getRemoveCommandTypes() {
 		return new int[] {};
 	}
-	
+
 	/**
 	 * This functions returns default parameter requirement
 	 * 

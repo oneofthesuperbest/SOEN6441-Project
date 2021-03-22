@@ -1,7 +1,8 @@
 package controller;
 
 /**
- * This class implements functions that are not part of Issue order or Execute order phase
+ * This class implements functions that are not part of Issue order or Execute
+ * order phase
  */
 public abstract class IntermediateOrderPhase extends IntermediateGamePlayPhase {
 
@@ -11,14 +12,14 @@ public abstract class IntermediateOrderPhase extends IntermediateGamePlayPhase {
 	IntermediateOrderPhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public void addPlayers(String[] p_command) {
 		printErrorMessage(this);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

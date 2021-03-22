@@ -21,13 +21,13 @@ public class ValidateCommandView {
 	 * This functions is used to check if the base command is valid or not
 	 * 
 	 * @param p_gameEngineObject The object of GameEngine class
-	 * @param p_command The command entered by user
-	 * @param p_player The player who issued the command
+	 * @param p_command          The command entered by user
+	 * @param p_player           The player who issued the command
 	 * @return Greater than 1 if valid else 0
 	 */
 	public int checkCommand(GameEngine p_gameEngineObject, String p_command, Player p_player) {
 		String[] l_commandParameters = p_command.split(d_commandSeparator);
-		if(p_command.equals(CommandList.STOP.getCommandString())) {
+		if (p_command.equals(CommandList.STOP.getCommandString())) {
 			return p_gameEngineObject.getPhase().stop();
 		} else if (l_commandParameters[0].equals(CommandList.EDITMAP.getCommandString())) {
 			// Check if base command is editmap
@@ -58,11 +58,11 @@ public class ValidateCommandView {
 			}
 		} else {
 			int l_returnValue = isValidMapEditing(p_gameEngineObject, l_commandParameters);
-			if(l_returnValue == 0) {
+			if (l_returnValue == 0) {
 				l_returnValue = isValidGamePlay(p_gameEngineObject, l_commandParameters);
-				if(l_returnValue == 0) {
+				if (l_returnValue == 0) {
 					l_returnValue = isValidOrderCommand(p_gameEngineObject, l_commandParameters, p_player);
-					if(l_returnValue == 0) {
+					if (l_returnValue == 0) {
 						System.out.println("Invalid command: Please check your command");
 					}
 				}
@@ -142,7 +142,7 @@ public class ValidateCommandView {
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * This function is use to check if command is valid game playe command
 	 * 
@@ -161,7 +161,7 @@ public class ValidateCommandView {
 				p_gameEngineObject.getPhase().addPlayers(p_commandParameters);
 				return 1;
 			}
-		} else if(p_commandParameters[0].equals(CommandList.ASSIGNCOUNTRIES.getCommandString())) {
+		} else if (p_commandParameters[0].equals(CommandList.ASSIGNCOUNTRIES.getCommandString())) {
 			p_gameEngineObject.getPhase().startGame();
 			return 1;
 		}
@@ -170,57 +170,67 @@ public class ValidateCommandView {
 
 	/**
 	 * This function is use to check if command is valid order command
-	 * @param p_gameEngineObject This is the main GameEngine object
+	 * 
+	 * @param p_gameEngineObject  This is the main GameEngine object
 	 * @param p_commandParameters This is the list of sub-commands and their
 	 *                            parameters
-	 * @param p_player The player who issued the command
+	 * @param p_player            The player who issued the command
 	 * @return 0 if unsuccessful, 1 if successful and 2 if the command was to stop
 	 */
 	int isValidOrderCommand(GameEngine p_gameEngineObject, String[] p_commandParameters, Player p_player) {
 		if (p_commandParameters[0].equals(CommandList.DEPLOY.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, CommandList.DEPLOY);
-			if(l_returnValue == 1) {
+			if (l_returnValue == 1) {
 				System.out.println("Issuing deploy order");
-				return p_gameEngineObject.getPhase().delop(new DeployOrder(p_commandParameters[1], Integer.parseInt(p_commandParameters[2]), p_player, p_gameEngineObject));
+				return p_gameEngineObject.getPhase().delop(new DeployOrder(p_commandParameters[1],
+						Integer.parseInt(p_commandParameters[2]), p_player, p_gameEngineObject));
 			}
-		} else if(p_commandParameters[0].equals(CommandList.ADVANCE.getCommandString())) { 
+		} else if (p_commandParameters[0].equals(CommandList.ADVANCE.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, CommandList.ADVANCE);
-			if(l_returnValue == 1) {
+			if (l_returnValue == 1) {
 				System.out.println("Issuing advance order");
-				return p_gameEngineObject.getPhase().advance(new AdvanceOrder(p_commandParameters[1], p_commandParameters[2], Integer.parseInt(p_commandParameters[3]), p_player, p_gameEngineObject));
+				return p_gameEngineObject.getPhase()
+						.advance(new AdvanceOrder(p_commandParameters[1], p_commandParameters[2],
+								Integer.parseInt(p_commandParameters[3]), p_player, p_gameEngineObject));
 			}
-		} else if(p_commandParameters[0].equals(CommandList.BOMB.getCommandString())){
+		} else if (p_commandParameters[0].equals(CommandList.BOMB.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, CommandList.BOMB);
-			if(l_returnValue == 1) {
+			if (l_returnValue == 1) {
 				System.out.println("Issuing bomb order");
-				return p_gameEngineObject.getPhase().bomb(new BombOrder(p_commandParameters[1], p_player, p_gameEngineObject));
+				return p_gameEngineObject.getPhase()
+						.bomb(new BombOrder(p_commandParameters[1], p_player, p_gameEngineObject));
 			}
-		} else if(p_commandParameters[0].equals(CommandList.BLOCKADE.getCommandString())) {
+		} else if (p_commandParameters[0].equals(CommandList.BLOCKADE.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, CommandList.BLOCKADE);
-			if(l_returnValue == 1) {
+			if (l_returnValue == 1) {
 				System.out.println("Issuing blockade order");
-				return p_gameEngineObject.getPhase().blockade(new BlockadeOrder(p_commandParameters[1], p_player, p_gameEngineObject));
+				return p_gameEngineObject.getPhase()
+						.blockade(new BlockadeOrder(p_commandParameters[1], p_player, p_gameEngineObject));
 			}
-		} else if(p_commandParameters[0].equals(CommandList.AIRLIFT.getCommandString())) {
+		} else if (p_commandParameters[0].equals(CommandList.AIRLIFT.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, CommandList.AIRLIFT);
-			if(l_returnValue == 1) {
+			if (l_returnValue == 1) {
 				System.out.println("Issuing airlift order");
-				return p_gameEngineObject.getPhase().airlift(new AirliftOrder(p_commandParameters[1], p_commandParameters[2], Integer.parseInt(p_commandParameters[3]), p_player, p_gameEngineObject));
+				return p_gameEngineObject.getPhase()
+						.airlift(new AirliftOrder(p_commandParameters[1], p_commandParameters[2],
+								Integer.parseInt(p_commandParameters[3]), p_player, p_gameEngineObject));
 			}
-		} else if(p_commandParameters[0].equals(CommandList.NEGOTIATE.getCommandString())) {
+		} else if (p_commandParameters[0].equals(CommandList.NEGOTIATE.getCommandString())) {
 			int l_returnValue = validateOrderParameters(p_commandParameters, CommandList.NEGOTIATE);
-			if(l_returnValue == 1) {
+			if (l_returnValue == 1) {
 				System.out.println("Issuing negotiate order");
-				return p_gameEngineObject.getPhase().negotiate(new NegotiateOrder(p_commandParameters[1], p_player, p_gameEngineObject));
+				return p_gameEngineObject.getPhase()
+						.negotiate(new NegotiateOrder(p_commandParameters[1], p_player, p_gameEngineObject));
 			}
 		}
 		return 0;
 	}
-	
+
 	/**
 	 * This function is used to validate all the parameters in player order command
+	 * 
 	 * @param p_commandParameters The command in array form
-	 * @param p_mainCommand The pointer to the type of order
+	 * @param p_mainCommand       The pointer to the type of order
 	 * @return 1 if valid command else 0
 	 */
 	int validateOrderParameters(String[] p_commandParameters, CommandList p_mainCommand) {
@@ -254,7 +264,7 @@ public class ValidateCommandView {
 		}
 		return 1;
 	}
-	
+
 	/**
 	 * This function is used to traverse through all the sub-commands for a specific
 	 * main command and return 0 if any sub-commands or number of parameters passed

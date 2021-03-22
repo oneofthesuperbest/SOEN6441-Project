@@ -57,13 +57,13 @@ public class MapController {
 		}
 
 		for (int l_idx = 0; l_idx < l_lines.size(); l_idx++) {
-			String currentLine = l_lines.get(l_idx);
+			String l_currentLine = l_lines.get(l_idx);
 			// ignore the comments in .map file.
-			if (currentLine.startsWith(";")) {
+			if (l_currentLine.startsWith(";")) {
 				continue;
 			}
-			String beginningWord = currentLine.split(" ")[0];
-			switch (beginningWord) {
+			String l_beginningWord = l_currentLine.split(" ")[0];
+			switch (l_beginningWord) {
 			case "[continents]": {
 				l_idx = loadMapContinentsFromFile(l_idx, l_lines);
 				break;
@@ -186,8 +186,8 @@ public class MapController {
 	 * @return current index
 	 */
 	public int loadMapBordersFromFile(int p_idx, List<String> p_lines) {
-		int totalCountries = d_gameEngine.getMapState().getListOfCountries().size();
-		int[][] l_graph = new int[totalCountries][totalCountries];
+		int l_totalCountries = d_gameEngine.getMapState().getListOfCountries().size();
+		int[][] l_graph = new int[l_totalCountries][l_totalCountries];
 
 		p_idx += 1;
 		while (checkSameBlock(p_idx, p_lines)) {
@@ -201,10 +201,10 @@ public class MapController {
 			int[] l_neighbours = IntStream.range(l_start, l_end).map(i -> l_intSegments[i]).toArray();
 			int l_countryId = l_intSegments[0];
 
-			for (int neighbour : l_neighbours) {
+			for (int l_neighbour : l_neighbours) {
 				// creating only one way connections at the moment.
 				// Assuming, 1-way connections are possible.
-				l_graph[l_countryId - 1][neighbour - 1] = 1;
+				l_graph[l_countryId - 1][l_neighbour - 1] = 1;
 			}
 
 			p_idx++;
@@ -241,9 +241,9 @@ public class MapController {
 	 * @return Country.
 	 */
 	public CountryModel getCountryById(String p_id) {
-		for (CountryModel country : d_gameEngine.getMapState().getListOfCountries()) {
-			if (country.getName().equals(p_id)) {
-				return country;
+		for (CountryModel l_country : d_gameEngine.getMapState().getListOfCountries()) {
+			if (l_country.getName().equals(p_id)) {
+				return l_country;
 			}
 		}
 		return null;
@@ -377,22 +377,22 @@ public class MapController {
 	 *                          which the border is to be removed.
 	 */
 	public void removeBorder(int p_countryPosition) {
-		int[][] l_currentBorderGraph = d_gameEngine.getMapState().getBorderGraph();		
+		int[][] l_currentBorderGraph = d_gameEngine.getMapState().getBorderGraph();
 		int l_newSize = l_currentBorderGraph[0].length - 1;
 
 		int[][] l_newBorderGraph = new int[l_newSize][l_newSize];
 
 		// Copy the new graph while avoiding the position of the country to be removed.
 
-		for (int row = 0; row < p_countryPosition; row++) {
-			for (int col = 0; col < p_countryPosition; col++) {
-				l_newBorderGraph[row][col] = l_currentBorderGraph[row][col];
+		for (int l_row = 0; l_row < p_countryPosition; l_row++) {
+			for (int l_col = 0; l_col < p_countryPosition; l_col++) {
+				l_newBorderGraph[l_row][l_col] = l_currentBorderGraph[l_row][l_col];
 			}
 		}
 
-		for (int row = l_newSize - 1; row >= p_countryPosition; row--) {
-			for (int col = l_newSize - 1; col >= p_countryPosition; col--) {
-				l_newBorderGraph[row][col] = l_currentBorderGraph[row + 1][col + 1];
+		for (int l_row = l_newSize - 1; l_row >= p_countryPosition; l_row--) {
+			for (int l_col = l_newSize - 1; l_col >= p_countryPosition; l_col--) {
+				l_newBorderGraph[l_row][l_col] = l_currentBorderGraph[l_row + 1][l_col + 1];
 			}
 		}
 
@@ -470,23 +470,24 @@ public class MapController {
 			System.out.println("error: Unable to add country with id: " + p_countryId + ". Already exists.");
 			return;
 		}
-		int insertionOrder = d_gameEngine.getMapState().getBorderGraph().length + 1;
-		l_countryToAdd = new CountryModel(insertionOrder, p_countryId, p_parentContinent, new CoordinateModel(-1, -1));
+		int l_insertionOrder = d_gameEngine.getMapState().getBorderGraph().length + 1;
+		l_countryToAdd = new CountryModel(l_insertionOrder, p_countryId, p_parentContinent,
+				new CoordinateModel(-1, -1));
 
 		d_gameEngine.getMapState().getListOfCountries().add(l_countryToAdd);
 		p_parentContinent.getCountries().add(l_countryToAdd);
 
 		// update the graph.
 		int[][] l_currentBorderGraph = d_gameEngine.getMapState().getBorderGraph();
-		int[][] l_newBorderGraph = new int[insertionOrder][insertionOrder];
+		int[][] l_newBorderGraph = new int[l_insertionOrder][l_insertionOrder];
 
-		for (int row = 0; row < insertionOrder - 1; row++) {
-			l_newBorderGraph[row] = Arrays.copyOf(l_currentBorderGraph[row], insertionOrder);
-			l_newBorderGraph[insertionOrder - 1][row] = 0;
+		for (int l_row = 0; l_row < l_insertionOrder - 1; l_row++) {
+			l_newBorderGraph[l_row] = Arrays.copyOf(l_currentBorderGraph[l_row], l_insertionOrder);
+			l_newBorderGraph[l_insertionOrder - 1][l_row] = 0;
 		}
 
-		for (int col = 0; col < insertionOrder; col++) {
-			l_newBorderGraph[insertionOrder - 1][col] = 0;
+		for (int l_col = 0; l_col < l_insertionOrder; l_col++) {
+			l_newBorderGraph[l_insertionOrder - 1][l_col] = 0;
 		}
 
 		d_gameEngine.getMapState().setBorderGraph(l_newBorderGraph);
@@ -602,8 +603,8 @@ public class MapController {
 			String l_name = l_continent.getName();
 			String l_color = l_continent.getColor();
 			int l_army = l_continent.getArmy();
-			int totalCountries = l_continent.getCountries().toArray().length;
-			System.out.printf("%5s %15s %10s %15s", l_continentOrder, l_name, l_army, l_color, totalCountries);
+			int l_totalCountries = l_continent.getCountries().toArray().length;
+			System.out.printf("%5s %15s %10s %15s", l_continentOrder, l_name, l_army, l_color, l_totalCountries);
 			System.out.println("");
 			System.out.println("\t\t Countries:");
 			// countries
@@ -701,21 +702,21 @@ public class MapController {
 			if (l_country.getOwner() == null) {
 				l_listOfCountries += ("\tOwned by: NO ONE\n");
 			} else {
-				String cards = "| ";
+				String l_cards = "| ";
 				ArrayList<Integer> l_cardsList = l_country.getOwner().getCards();
-				for(int l_card : l_cardsList) {
-					if(l_card == 0) {
-						cards += "bomb | ";
-					} else if(l_card == 1) {
-						cards += "blockade | ";
-					} else if(l_card == 2) {
-						cards += "airlift | ";
-					} else if(l_card == 3) {
-						cards += "negotiate | ";
+				for (int l_card : l_cardsList) {
+					if (l_card == 0) {
+						l_cards += "bomb | ";
+					} else if (l_card == 1) {
+						l_cards += "blockade | ";
+					} else if (l_card == 2) {
+						l_cards += "airlift | ";
+					} else if (l_card == 3) {
+						l_cards += "negotiate | ";
 					}
 				}
-				l_listOfCountries += ("\tOwned by:" + l_country.getOwner().getName()+ "(Cards: " + cards + ") (Reinforcements - "
-						+ l_country.getOwner().getReinforcementsArmies() + ")\n");
+				l_listOfCountries += ("\tOwned by:" + l_country.getOwner().getName() + "(Cards: " + l_cards
+						+ ") (Reinforcements - " + l_country.getOwner().getReinforcementsArmies() + ")\n");
 			}
 		}
 		System.out.println(l_topLabels);
@@ -735,21 +736,21 @@ public class MapController {
 			System.out.println("savemap command failed: Map not valid");
 			return false;
 		}
-		FileWriter writer = null;
+		FileWriter l_writer = null;
 		try {
-			writer = new FileWriter(fileName);
-			writer.write("; custom map, saved by the us.\n\n\n");
+			l_writer = new FileWriter(fileName);
+			l_writer.write("; custom map, saved by the us.\n\n\n");
 
-			writer.write("[continents]\n");
-			saveContinents(writer);
+			l_writer.write("[continents]\n");
+			saveContinents(l_writer);
 
-			writer.write("[countries]\n");
-			saveCountries(writer);
+			l_writer.write("[countries]\n");
+			saveCountries(l_writer);
 
-			writer.write("[borders]\n");
-			saveBorders(writer);
+			l_writer.write("[borders]\n");
+			saveBorders(l_writer);
 
-			writer.close();
+			l_writer.close();
 
 			return true;
 
@@ -787,9 +788,9 @@ public class MapController {
 		for (CountryModel l_country : l_countries) {
 			int l_countryOrd = d_gameEngine.getMapState().getListOfCountries().indexOf(l_country) + 1;
 			int l_continentOrd = d_gameEngine.getMapState().getListOfContinents().indexOf(l_country.getContinent()) + 1;
-			CoordinateModel coordinates = l_country.getCoordinate();
+			CoordinateModel l_coordinates = l_country.getCoordinate();
 			String l_countryStr = l_countryOrd + " " + l_country.getName() + " " + l_continentOrd + " "
-					+ coordinates.getX() + " " + coordinates.getY();
+					+ l_coordinates.getX() + " " + l_coordinates.getY();
 			p_writer.write(l_countryStr + "\n");
 		}
 
@@ -832,10 +833,10 @@ public class MapController {
 		ArrayList<CountryModel> l_neighbors = new ArrayList<>();
 		int l_countryPosition = d_gameEngine.getMapState().getListOfCountries().indexOf(p_country);
 
-		int[][] borderGraph = d_gameEngine.getMapState().getBorderGraph();
+		int[][] l_borderGraph = d_gameEngine.getMapState().getBorderGraph();
 
-		for (int l_position = 0; l_position < borderGraph[l_countryPosition].length; l_position++) {
-			if (borderGraph[l_countryPosition][l_position] == 1) {
+		for (int l_position = 0; l_position < l_borderGraph[l_countryPosition].length; l_position++) {
+			if (l_borderGraph[l_countryPosition][l_position] == 1) {
 				l_neighbors.add(d_gameEngine.getMapState().getListOfCountries().get(l_position));
 			}
 		}

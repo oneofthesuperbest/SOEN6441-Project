@@ -18,7 +18,8 @@ public class ConsoleView {
 	void startConsole() {
 		ValidateCommandView l_VCVObject = new ValidateCommandView();
 		Scanner l_scannerObject = new Scanner(System.in);
-		// Need to use the same Scanner object, as creating a new scanner object throws NoSuchElementException
+		// Need to use the same Scanner object, as creating a new scanner object throws
+		// NoSuchElementException
 		// Observable LogEntryBuffer class to push log strings.
 		LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
 		// Observer FileEntryLogger which waits for notification from LogEntryBuffer

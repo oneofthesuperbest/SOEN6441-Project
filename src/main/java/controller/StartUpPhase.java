@@ -6,21 +6,21 @@ import model.Order;
  * This class implements functions related to start up phase
  */
 public class StartUpPhase extends IntermediateGamePlayPhase {
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	StartUpPhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public String getString() {
 		return "start-up";
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -28,7 +28,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("GamePlayer called with following command: " + p_command);
 		d_gameEngineObject.addRemovePlayers(p_command);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -37,7 +37,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 		d_gameEngineObject.assignCountries();
 		d_gameEngineObject.setPhase(3);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -45,7 +45,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 		printErrorMessage(this);
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -53,7 +53,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 		printErrorMessage(this);
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -61,7 +61,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 		printErrorMessage(this);
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -69,7 +69,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 		printErrorMessage(this);
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -77,7 +77,7 @@ public class StartUpPhase extends IntermediateGamePlayPhase {
 		printErrorMessage(this);
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

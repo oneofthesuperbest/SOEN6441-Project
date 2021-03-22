@@ -3,9 +3,10 @@ package controller;
 import model.Order;
 
 /**
- * This abstract class represents the intermediate state were all game play command are invalid
+ * This abstract class represents the intermediate state were all game play
+ * command are invalid
  */
-public abstract class IntermediateMapEditingPhase extends Phase{
+public abstract class IntermediateMapEditingPhase extends Phase {
 
 	/**
 	 * {@inheritDoc}
@@ -13,21 +14,21 @@ public abstract class IntermediateMapEditingPhase extends Phase{
 	IntermediateMapEditingPhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public void addPlayers(String[] p_command) {
 		printErrorMessage(this);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public void startGame() {
 		printErrorMessage(this);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -35,7 +36,7 @@ public abstract class IntermediateMapEditingPhase extends Phase{
 		printErrorMessage(this);
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -43,7 +44,7 @@ public abstract class IntermediateMapEditingPhase extends Phase{
 		printErrorMessage(this);
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -51,7 +52,7 @@ public abstract class IntermediateMapEditingPhase extends Phase{
 		printErrorMessage(this);
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -59,7 +60,7 @@ public abstract class IntermediateMapEditingPhase extends Phase{
 		printErrorMessage(this);
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -67,7 +68,7 @@ public abstract class IntermediateMapEditingPhase extends Phase{
 		printErrorMessage(this);
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -75,7 +76,7 @@ public abstract class IntermediateMapEditingPhase extends Phase{
 		printErrorMessage(this);
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

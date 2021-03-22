@@ -18,8 +18,8 @@ public class NegotiateOrder extends Order {
 	 * order
 	 * 
 	 * @param p_targetPlayerName Name of the target player affected by the order
-	 * @param p_player            The player who issued the command
-	 * @param p_gameEngine        The game engine object
+	 * @param p_player           The player who issued the command
+	 * @param p_gameEngine       The game engine object
 	 */
 	public NegotiateOrder(String p_targetPlayerName, Player p_player, GameEngine p_gameEngine) {
 		this.d_targetPlayerName = p_targetPlayerName;
@@ -34,8 +34,8 @@ public class NegotiateOrder extends Order {
 		if (isValid()) {
 			this.d_issuer.addNegotiatingPlayer(d_targetPlayerName);
 			ArrayList<Player> l_players = this.d_gameEngine.getPlayersState().getPlayers();
-			for(Player l_player : l_players) {
-				if(l_player.getName().equals(d_targetPlayerName)) {
+			for (Player l_player : l_players) {
+				if (l_player.getName().equals(d_targetPlayerName)) {
 					l_player.addNegotiatingPlayer(this.d_issuer.getName());
 					break;
 				}
@@ -50,12 +50,12 @@ public class NegotiateOrder extends Order {
 	 */
 	public boolean isValid() {
 		if (!this.d_issuer.getName().equals(this.d_targetPlayerName)) {
-			boolean returnValue = this.d_issuer.hasCard(3);
-			if (!returnValue) {
+			boolean l_returnValue = this.d_issuer.hasCard(3);
+			if (!l_returnValue) {
 				printUnsuccessfulOrder(
 						"Can't negotiate with " + this.d_targetPlayerName + ". Player doesn't have negotiate card.");
 			}
-			return returnValue;
+			return l_returnValue;
 		}
 		printUnsuccessfulOrder(
 				"Can't negotiate with " + this.d_targetPlayerName + ". Player can't negotiate with himself.");

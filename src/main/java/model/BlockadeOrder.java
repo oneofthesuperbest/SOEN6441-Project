@@ -54,11 +54,12 @@ public class BlockadeOrder extends Order {
 		for (CountryModel l_country : l_listOfOwnedCountries) {
 			if (l_country.getName().equals(this.d_targetCountryName)) {
 				this.d_targetCountry = l_country;
-				boolean returnValue = this.d_issuer.hasCard(1);
-				if (!returnValue) {
-					printUnsuccessfulOrder("Can't block " + this.d_targetCountryName + ". Player doesn't have blockade card.");
+				boolean l_returnValue = this.d_issuer.hasCard(1);
+				if (!l_returnValue) {
+					printUnsuccessfulOrder(
+							"Can't block " + this.d_targetCountryName + ". Player doesn't have blockade card.");
 				}
-				return returnValue;
+				return l_returnValue;
 			}
 		}
 		printUnsuccessfulOrder("Can't block " + this.d_targetCountryName

@@ -6,28 +6,28 @@ import model.Order;
  * This class is a placeholder
  */
 public class ExecuteOrderPhase extends IntermediateOrderPhase {
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	ExecuteOrderPhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public String getString() {
 		return "execute order";
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public void showMap() {
 		printErrorMessage(this);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -35,7 +35,7 @@ public class ExecuteOrderPhase extends IntermediateOrderPhase {
 		printErrorMessage(this);
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -45,7 +45,7 @@ public class ExecuteOrderPhase extends IntermediateOrderPhase {
 		p_order.execute();
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -55,7 +55,7 @@ public class ExecuteOrderPhase extends IntermediateOrderPhase {
 		p_order.execute();
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -65,7 +65,7 @@ public class ExecuteOrderPhase extends IntermediateOrderPhase {
 		p_order.execute();
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -75,7 +75,7 @@ public class ExecuteOrderPhase extends IntermediateOrderPhase {
 		p_order.execute();
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -85,7 +85,7 @@ public class ExecuteOrderPhase extends IntermediateOrderPhase {
 		p_order.execute();
 		return 0;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

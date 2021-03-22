@@ -18,7 +18,7 @@ public class Player {
 	private ArrayList<Order> d_listOfOrders = new ArrayList<Order>();
 	private ArrayList<String> d_listOfConcurredCountries = new ArrayList<String>();
 	private ArrayList<String> d_listOfNegotiatingPlayers = new ArrayList<String>();
-	
+
 	/**
 	 * 0 for bomb card, 1 for blockade card, 2 for airlift card and 3 for negotiate
 	 */
@@ -36,22 +36,24 @@ public class Player {
 		this.d_gameEngineContext = p_gameEngine;
 		this.d_scannerObject = p_scannerObject;
 	}
-	
+
 	/**
-	 * This function is used to check if player has a certain card. It also removes the card.
+	 * This function is used to check if player has a certain card. It also removes
+	 * the card.
+	 * 
 	 * @param p_cardNumber The card number to check
 	 * @return true if the card is present else false
 	 */
 	public boolean hasCard(int p_cardNumber) {
-		for(int l_index = 0; l_index < this.d_playersCards.size(); l_index++) {
-			if(this.d_playersCards.get(l_index) == p_cardNumber) {
+		for (int l_index = 0; l_index < this.d_playersCards.size(); l_index++) {
+			if (this.d_playersCards.get(l_index) == p_cardNumber) {
 				this.d_playersCards.remove(l_index);
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	/**
 	 * This function randomly adds a card
 	 */
@@ -59,54 +61,61 @@ public class Player {
 		int l_randomCard = (int) (Math.random() * 4);
 		this.d_playersCards.add(l_randomCard);
 	}
-	
+
 	/**
 	 * This function returns players list of cards.
+	 * 
 	 * @return List of cards in integer form
 	 */
 	public ArrayList<Integer> getCards() {
 		return this.d_playersCards;
 	}
-	
+
 	/**
 	 * This function return the list of concurred countries in the turn
+	 * 
 	 * @return The list of concurred countries
 	 */
 	public ArrayList<String> getConcurredCountries() {
 		return this.d_listOfConcurredCountries;
 	}
-	
+
 	/**
 	 * This function is used to add a negotiating country to current players list
+	 * 
 	 * @param p_playerName The name of the player to be negotiated with
 	 */
 	public void addNegotiatingPlayer(String p_playerName) {
 		this.d_listOfNegotiatingPlayers.add(p_playerName);
 	}
-	
+
 	/**
-	 * This function is used to return the list of players that are in negotiation with current player
+	 * This function is used to return the list of players that are in negotiation
+	 * with current player
+	 * 
 	 * @return The list of player names that are negotiating with current player
 	 */
 	public ArrayList<String> getNegotiatingPlayers() {
 		return this.d_listOfNegotiatingPlayers;
 	}
-	
+
 	/**
 	 * This function is used to add country name to list of concurred country
+	 * 
 	 * @param p_countryName The name of the concurred country
 	 */
 	public void addConcurredCountry(String p_countryName) {
 		this.d_listOfConcurredCountries.add(p_countryName);
 	}
-	
+
 	/**
 	 * This function is used to remove country name from list of concurred country
+	 * 
 	 * @param p_countryName The name of the country to be removed
 	 */
 	public void removeConcurredCountry(String p_countryName) {
-		for(int l_countryIndex = 0; l_countryIndex < this.d_listOfConcurredCountries.size(); l_countryIndex++) {
-			if(this.d_listOfConcurredCountries.get(l_countryIndex).equals(p_countryName)) {
+		for (int l_countryIndex = 0; l_countryIndex < this.d_listOfConcurredCountries.size(); l_countryIndex++) {
+			if (this.d_listOfConcurredCountries.get(l_countryIndex).equals(p_countryName)) {
 				this.d_listOfConcurredCountries.remove(l_countryIndex);
 			}
 		}
@@ -163,12 +172,13 @@ public class Player {
 
 	/**
 	 * This function is used to removed country owned from players list
+	 * 
 	 * @param p_countryModel The object of country to be removed
 	 */
 	public void removeOwnedCountry(CountryModel p_countryModel) {
 		this.d_listOfOwnedCountries.remove(p_countryModel);
 	}
-	
+
 	/**
 	 * This function is used to ask player to issue their orders
 	 * 
@@ -176,15 +186,15 @@ public class Player {
 	 *         stop giving orders.
 	 */
 	public int issueOrder() {
-		//------- Need to call ValidateCommandView methods for validating
+		// ------- Need to call ValidateCommandView methods for validating
 		boolean l_issuedOrder = false;
 		while (!l_issuedOrder) {
 			System.out.println(this.getName() + " issue your order");
 			String l_command = this.d_scannerObject.nextLine();
-			
+
 			ValidateCommandView l_VCVObject = new ValidateCommandView();
 			int returnValue = l_VCVObject.checkCommand(this.d_gameEngineContext, l_command, this);
-			if(returnValue == 1) {
+			if (returnValue == 1) {
 				l_issuedOrder = true;
 			} else if (returnValue == 2) {
 				return 0;

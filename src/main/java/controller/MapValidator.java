@@ -13,15 +13,16 @@ import model.CountryModel;
  */
 public class MapValidator {
 	GameEngine d_gameEngine;
-	
+
 	/**
 	 * This constructor initializes the game engine object
+	 * 
 	 * @param p_gameEngine The game engine object
 	 */
 	public MapValidator(GameEngine p_gameEngine) {
 		this.d_gameEngine = p_gameEngine;
 	}
-	
+
 	/**
 	 * A helper method to validate the map
 	 * 
@@ -54,21 +55,21 @@ public class MapValidator {
 		boolean l_countriesAreVaid = validateCountries(l_listOfCountries);
 		boolean l_continentsAreVaid = validateContinents(l_listOfContinents);
 		boolean l_bordersAreVaid = validateBorders(l_bordergraph);
-		int isMyGraphconnected = 0;
+		int l_isMyGraphconnected = 0;
 		for (int i = 0; i < l_bordergraph.length; i++) {
 			boolean connectedCheck = validateGraph(l_bordergraph, i, true);
 			if (connectedCheck == false) {
-				isMyGraphconnected = +1;
+				l_isMyGraphconnected = +1;
 			}
 		}
-		if (isMyGraphconnected == 0) {
+		if (l_isMyGraphconnected == 0) {
 			System.out.println("Validation Check: The map is a connected graph ");
 		} else {
 			System.out.println("Validation Check Failed: The map is not a connected graph ");
 		}
 
 		if (l_countriesAreVaid == false || l_continentsAreVaid == false || l_bordersAreVaid == false
-				|| isMyGraphconnected > 0) {
+				|| l_isMyGraphconnected > 0) {
 			return false;
 		} else {
 			return true;
@@ -84,26 +85,26 @@ public class MapValidator {
 	 *         not
 	 */
 	public boolean validateCountries(ArrayList<CountryModel> p_listOfCountries) {
-		boolean areCountriesValid = true;
+		boolean l_areCountriesValid = true;
 		ArrayList<String> l_Countries = new ArrayList<String>();
 		for (int l_idx = 0; l_idx < p_listOfCountries.size(); l_idx++) {
 			l_Countries.add(p_listOfCountries.get(l_idx).getName());
 		}
 		if (p_listOfCountries.size() > 0) {
-			areCountriesValid = true;
+			l_areCountriesValid = true;
 			if (hasDuplicates(l_Countries) == true) {
 				System.out.println(
 						"Validation Check Failed: A country should not be duplicated or A Country cannot be assigned to multiple continents");
-				areCountriesValid = false;
+				l_areCountriesValid = false;
 			} else {
 				System.out.println("Validation Check: No duplicates countries found");
-				areCountriesValid = true;
+				l_areCountriesValid = true;
 			}
 		} else {
 			System.out.println("Validation Check Failed: Map must contain at least one country");
-			areCountriesValid = false;
+			l_areCountriesValid = false;
 		}
-		return areCountriesValid;
+		return l_areCountriesValid;
 	}
 
 	/**
@@ -150,16 +151,16 @@ public class MapValidator {
 	 *         at least one country in them
 	 */
 	public boolean isEmptyContinent(ArrayList<ContinentModel> p_listOfContinents) {
-		int emptyCheck = 0;
-		for (ContinentModel continent : p_listOfContinents) {
-			ArrayList<CountryModel> countriesInContinent = continent.getCountries();
-			if (countriesInContinent.size() == 0) {
+		int l_emptyCheck = 0;
+		for (ContinentModel l_continent : p_listOfContinents) {
+			ArrayList<CountryModel> l_countriesInContinent = l_continent.getCountries();
+			if (l_countriesInContinent.size() == 0) {
 				System.out.println(
-						"Validation Check Failed: There are no countries in the continent " + continent.getName());
-				emptyCheck++;
+						"Validation Check Failed: There are no countries in the continent " + l_continent.getName());
+				l_emptyCheck++;
 			}
 		}
-		if (emptyCheck > 0) {
+		if (l_emptyCheck > 0) {
 			return true;
 		} else {
 			return false;
@@ -175,14 +176,14 @@ public class MapValidator {
 	 * @return a boolean specifying whether the given array has duplicates or not
 	 */
 	public boolean hasDuplicates(ArrayList<String> p_mapData) {
-		boolean haveDuplicates = true;
+		boolean l_haveDuplicates = true;
 		Set<String> l_mapSet = new HashSet<String>(p_mapData);
 		if (l_mapSet.size() < p_mapData.size()) {
-			haveDuplicates = true;
+			l_haveDuplicates = true;
 		} else {
-			haveDuplicates = false;
+			l_haveDuplicates = false;
 		}
-		return haveDuplicates;
+		return l_haveDuplicates;
 	}
 
 	/**
@@ -215,12 +216,12 @@ public class MapValidator {
 	public boolean validateGraph(int p_adjacencyMatrix[][], int p_source, boolean isSubGraph) {
 		int l_numberOfNodes = p_adjacencyMatrix[p_source].length;
 		int[] l_visited = new int[l_numberOfNodes];
-		Stack<Integer> stack = new Stack<Integer>();
+		Stack<Integer> l_stack = new Stack<Integer>();
 		int i, element;
 		l_visited[p_source] = 1;
-		stack.push(p_source);
-		while (!stack.isEmpty()) {
-			element = stack.pop();
+		l_stack.push(p_source);
+		while (!l_stack.isEmpty()) {
+			element = l_stack.pop();
 			if (isSubGraph == false) {
 				i = 1;
 			} else {
@@ -228,20 +229,20 @@ public class MapValidator {
 			}
 			while (i < l_numberOfNodes) {
 				if (p_adjacencyMatrix[element][i] == 1 && l_visited[i] == 0) {
-					stack.push(i);
+					l_stack.push(i);
 					l_visited[i] = 1;
 				}
 				i++;
 			}
 		}
 
-		int count = 0;
-		for (int v = 0; v < l_numberOfNodes; v++)
-			if (l_visited[v] == 1) {
-				count++;
+		int l_count = 0;
+		for (int l_v = 0; l_v < l_numberOfNodes; l_v++)
+			if (l_visited[l_v] == 1) {
+				l_count++;
 			}
 
-		if (count == l_numberOfNodes) {
+		if (l_count == l_numberOfNodes) {
 			return true;
 		} else {
 			return false;

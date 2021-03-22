@@ -54,18 +54,20 @@ public class AirliftOrder extends Order {
 			}
 			int l_currentAttackingArmies = this.d_numberOfArmies;
 			int l_currentDefendingArmies = this.d_targetCountry.getArmies();
-			int remainingDefendingArmies = l_currentDefendingArmies - (int) Math.round(l_currentAttackingArmies * 0.6);
-			int remainingAttackingArmies = l_currentAttackingArmies - (int) Math.round(l_currentDefendingArmies * 0.7);
+			int l_remainingDefendingArmies = l_currentDefendingArmies
+					- (int) Math.round(l_currentAttackingArmies * 0.6);
+			int l_remainingAttackingArmies = l_currentAttackingArmies
+					- (int) Math.round(l_currentDefendingArmies * 0.7);
 			this.d_sourceCountry.setArmies((this.d_sourceCountry.getArmies() - this.d_numberOfArmies));
-			if (remainingDefendingArmies <= 0 && remainingAttackingArmies > 0) {
+			if (l_remainingDefendingArmies <= 0 && l_remainingAttackingArmies > 0) {
 				this.d_issuer.addConcurredCountry(this.d_targetCountryName);
-				this.d_targetCountry.setArmies(remainingAttackingArmies);
+				this.d_targetCountry.setArmies(l_remainingAttackingArmies);
 				this.d_issuer.addOwnedCountry(this.d_targetCountry);
 				this.d_targetCountry.getOwner().removeConcurredCountry(this.d_targetCountryName);
 				this.d_targetCountry.getOwner().removeOwnedCountry(this.d_targetCountry);
 				this.d_targetCountry.setOwner(this.d_issuer);
 			} else {
-				this.d_targetCountry.setArmies(remainingDefendingArmies);
+				this.d_targetCountry.setArmies(l_remainingDefendingArmies);
 			}
 			printOrder();
 			return;
@@ -81,16 +83,17 @@ public class AirliftOrder extends Order {
 			if (l_country.getName().equals(this.d_sourceCountryName)) {
 				this.d_sourceCountry = l_country;
 				if (this.d_sourceCountry.getArmies() >= this.d_numberOfArmies) {
-					boolean returnValue = this.d_issuer.hasCard(2);
-					if (!returnValue) {
+					boolean l_returnValue = this.d_issuer.hasCard(2);
+					if (!l_returnValue) {
 						printUnsuccessfulOrder(
 								"Can't airlift to " + this.d_targetCountryName + ". Player doesn't have airlift card.");
 					} else {
 						ArrayList<CountryModel> l_countries = this.d_gameEngine.getMapState().getListOfCountries();
-						for(CountryModel l_countryTarget : l_countries) {
-							if(l_countryTarget.getName().equals(this.d_targetCountryName)) {
+						for (CountryModel l_countryTarget : l_countries) {
+							if (l_countryTarget.getName().equals(this.d_targetCountryName)) {
 								this.d_targetCountry = l_countryTarget;
-								if(this.d_issuer.getNegotiatingPlayers().contains(this.d_targetCountry.getOwner().getName())) {
+								if (this.d_issuer.getNegotiatingPlayers()
+										.contains(this.d_targetCountry.getOwner().getName())) {
 									printUnsuccessfulOrder("Can't airlift armies on " + this.d_targetCountryName
 											+ ". Players are in negotiation.");
 									return false;
@@ -98,8 +101,8 @@ public class AirliftOrder extends Order {
 								return true;
 							}
 						}
-						printUnsuccessfulOrder("Can't airlift armies on " + this.d_targetCountryName
-								+ ". Country not found.");
+						printUnsuccessfulOrder(
+								"Can't airlift armies on " + this.d_targetCountryName + ". Country not found.");
 					}
 					return false;
 				} else {

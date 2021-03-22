@@ -6,44 +6,45 @@ import view.ExecuteCommandView;
  * This class represents the map editing phase.
  */
 public class MapEditingPhase extends IntermediateMapEditingPhase {
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	MapEditingPhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public String getString() {
 		return "map editing";
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public void editMap(String p_mapPath) {
 		printErrorMessage(this);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public void loadMap(String p_mapPath) {
 		printErrorMessage(this);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public void editContinent(String[] p_command) {
 		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
-		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Edit continent called with following command: " + p_command);
+		d_gameEngineObject.getLogEntryBuffer()
+				.addLogEntry("Edit continent called with following command: " + p_command);
 		l_executeCVObject.editContinent(d_gameEngineObject, p_command);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -52,7 +53,7 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Edit country called with following command: " + p_command);
 		l_executeCVObject.editCountry(d_gameEngineObject, p_command);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -61,7 +62,7 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Edit neighbor called with following command: " + p_command);
 		l_executeCVObject.editNeighbor(d_gameEngineObject, p_command);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -70,7 +71,7 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Show map command called.");
 		l_executeCVObject.showMap(d_gameEngineObject);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -86,7 +87,7 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 			d_gameEngineObject.getLogEntryBuffer().addLogEntry("Invalid map: Map wasn't saved.");
 		}
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

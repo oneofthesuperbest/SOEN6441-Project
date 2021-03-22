@@ -24,8 +24,7 @@ public class BombOrder extends Order {
 	 * @param p_player            The player who issued the command
 	 * @param p_gameEngine        The game engine object
 	 */
-	public BombOrder(String p_targetCountryName, Player p_player,
-			GameEngine p_gameEngine) {
+	public BombOrder(String p_targetCountryName, Player p_player, GameEngine p_gameEngine) {
 		d_targetCountryName = p_targetCountryName;
 		d_issuer = p_player;
 		d_gameEngine = p_gameEngine;
@@ -37,7 +36,7 @@ public class BombOrder extends Order {
 	public void execute() {
 		if (isValid()) {
 			int l_armies = this.d_targetCountry.getArmies();
-			int l_remainingArmies = Math.round(l_armies/2);
+			int l_remainingArmies = Math.round(l_armies / 2);
 			this.d_targetCountry.setArmies(l_remainingArmies);
 			printOrder();
 			return;
@@ -51,7 +50,8 @@ public class BombOrder extends Order {
 		ArrayList<CountryModel> l_listOfOwnedCountries = this.d_issuer.getOwnedCountry();
 		for (CountryModel l_country : l_listOfOwnedCountries) {
 			if (l_country.getName().equals(this.d_targetCountryName)) {
-				printUnsuccessfulOrder("Can't bomb " + this.d_targetCountryName + ". Country belong to player who issued the order.");
+				printUnsuccessfulOrder(
+						"Can't bomb " + this.d_targetCountryName + ". Country belong to player who issued the order.");
 				return false;
 			}
 		}
@@ -61,15 +61,17 @@ public class BombOrder extends Order {
 			for (CountryModel l_countryNeighbor : l_neighbors) {
 				if (l_countryNeighbor.getName().equals(this.d_targetCountryName)) {
 					this.d_targetCountry = l_countryNeighbor;
-					boolean returnValue = this.d_issuer.hasCard(0);
-					if(!returnValue) {
-						printUnsuccessfulOrder("Can't bomb " + this.d_targetCountryName + ". Player doesn't have bomb card.");
+					boolean l_returnValue = this.d_issuer.hasCard(0);
+					if (!l_returnValue) {
+						printUnsuccessfulOrder(
+								"Can't bomb " + this.d_targetCountryName + ". Player doesn't have bomb card.");
 					}
-					return returnValue;
+					return l_returnValue;
 				}
 			}
 		}
-		printUnsuccessfulOrder("Can't bomb " + this.d_targetCountryName + ". Country isn't a neighbors of players countries.");
+		printUnsuccessfulOrder(
+				"Can't bomb " + this.d_targetCountryName + ". Country isn't a neighbors of players countries.");
 		return false;
 	}
 
@@ -79,19 +81,17 @@ public class BombOrder extends Order {
 	public void printOrder() {
 		String l_effectOfCommand = "Bombed " + this.d_targetCountryName;
 		System.out.println(l_effectOfCommand);
-		d_gameEngine.getLogEntryBuffer()
-				.addLogEntry(l_effectOfCommand);
+		d_gameEngine.getLogEntryBuffer().addLogEntry(l_effectOfCommand);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	public void printUnsuccessfulOrder(String p_errorMessage) {
 		System.out.println(p_errorMessage);
-		this.d_gameEngine.getLogEntryBuffer()
-				.addLogEntry(p_errorMessage);
+		this.d_gameEngine.getLogEntryBuffer().addLogEntry(p_errorMessage);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
