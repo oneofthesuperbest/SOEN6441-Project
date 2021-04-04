@@ -10,6 +10,8 @@ public class CountryModel {
 	private CoordinateModel d_coordinate;
 	private Player d_owner;
 	private int d_armies;
+	
+	private int d_potentialArmies;
 
 	/**
 	 * Creates a country with the specified order, name, continent order and,
@@ -75,6 +77,24 @@ public class CountryModel {
 		return this.d_owner;
 	}
 
+	/**
+	 * Get the potential armies stationed on this country
+	 * 
+	 * @return Number of potential armies stationed on this country
+	 */
+	public int getPotentialArmies() {
+		return this.d_potentialArmies;
+	}
+
+	/**
+	 * Set the potential armies stationed on this country
+	 * 
+	 * @param p_armies Number of potential armies to be stationed on this country
+	 */
+	public void setPotentialArmies(int p_armies) {
+		this.d_potentialArmies = p_armies;
+	}
+	
 	/**
 	 * Get the armies stationed on this country
 	 * 
