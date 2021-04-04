@@ -6,6 +6,9 @@ import java.util.Scanner;
 import controller.GameEngine;
 import controller.MapController;
 
+/**
+ * This class implements behaviour of Random strategy
+ */
 public class RandomStrategy extends Strategy {
 	Player d_player;
 	GameEngine d_gameEngine;
