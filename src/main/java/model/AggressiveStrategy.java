@@ -16,6 +16,7 @@ public class AggressiveStrategy extends Strategy {
 
 	CountryModel d_strongestCountry;
 	boolean d_airlift = false;
+	int d_remainingReinforcements = -1;
 
 	/**
 	 * This constructor initialized the data members for current strategy
@@ -34,26 +35,29 @@ public class AggressiveStrategy extends Strategy {
 	 * {@inheritDoc}
 	 */
 	public int issueOrder() {
-		int l_numberOfRemainingReinforcements = d_player.getReinforcementsArmies();
-		if (l_numberOfRemainingReinforcements > 0) {
+		if(d_remainingReinforcements == -1) {
+			d_remainingReinforcements = d_player.getReinforcementsArmies();
+		}
+		if (d_remainingReinforcements > 0) {
 			CountryModel l_strongestCountry = getStrongestCountry();
 			d_strongestCountry = l_strongestCountry;
-			d_player.addOrder(new DeployOrder(l_strongestCountry.getName(), l_numberOfRemainingReinforcements, d_player,
+			d_gameEngine.getPhase().delop(new DeployOrder(l_strongestCountry.getName(), d_remainingReinforcements, d_player,
 					d_gameEngine));
-			d_player.setReinforcementsArmies(0);
+			d_remainingReinforcements = 0;
 			return 1;
 		} else {
 			CountryModel l_targetCountry = getTargetCountry();
 			if (d_airlift) {
-				d_player.addOrder(new AirliftOrder(d_strongestCountry.getName(), l_targetCountry.getName(),
+				d_gameEngine.getPhase().airlift(new AirliftOrder(d_strongestCountry.getName(), l_targetCountry.getName(),
 						d_strongestCountry.getArmies(), d_player, d_gameEngine));
 				d_player.hasCard(2);
 			} else {
-				d_player.addOrder(new AdvanceOrder(d_strongestCountry.getName(), l_targetCountry.getName(),
+				d_gameEngine.getPhase().advance(new AdvanceOrder(d_strongestCountry.getName(), l_targetCountry.getName(),
 						d_strongestCountry.getArmies(), d_player, d_gameEngine));
 			}
 			d_airlift = false;
 			d_strongestCountry = null;
+			d_remainingReinforcements = -1;
 			// It will stop issuing orders after attack, as any instance there will only be
 			// one strongest country and rest of the owned countries will have 0 armies
 			return 0;
