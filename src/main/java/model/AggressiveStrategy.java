@@ -15,6 +15,7 @@ public class AggressiveStrategy extends Strategy {
 	Scanner d_scannerObject;
 
 	CountryModel d_strongestCountry;
+	boolean d_airlift = false;
 
 	/**
 	 * This constructor initialized the data members for current strategy
@@ -39,11 +40,20 @@ public class AggressiveStrategy extends Strategy {
 			d_strongestCountry = l_strongestCountry;
 			d_player.addOrder(new DeployOrder(l_strongestCountry.getName(), l_numberOfRemainingReinforcements, d_player,
 					d_gameEngine));
+			d_player.setReinforcementsArmies(0);
 			return 1;
 		} else {
 			CountryModel l_targetCountry = getTargetCountry();
-			d_player.addOrder(new AdvanceOrder(d_strongestCountry.getName(), l_targetCountry.getName(),
-					d_strongestCountry.getArmies(), d_player, d_gameEngine));
+			if (d_airlift) {
+				d_player.addOrder(new AirliftOrder(d_strongestCountry.getName(), l_targetCountry.getName(),
+						d_strongestCountry.getArmies(), d_player, d_gameEngine));
+				d_player.hasCard(2);
+			} else {
+				d_player.addOrder(new AdvanceOrder(d_strongestCountry.getName(), l_targetCountry.getName(),
+						d_strongestCountry.getArmies(), d_player, d_gameEngine));
+			}
+			d_airlift = false;
+			d_strongestCountry = null;
 			// It will stop issuing orders after attack, as any instance there will only be
 			// one strongest country and rest of the owned countries will have 0 armies
 			return 0;
@@ -68,7 +78,7 @@ public class AggressiveStrategy extends Strategy {
 					break;
 				}
 			}
-			if (l_isEdgeCountry
+			if ((d_player.containsCard(2) || l_isEdgeCountry)
 					&& (l_strongestCountry == null || l_strongestCountry.getArmies() < l_playerCountry.getArmies())) {
 				l_strongestCountry = l_playerCountry;
 			}
@@ -90,6 +100,18 @@ public class AggressiveStrategy extends Strategy {
 			if (!l_neighbor.getOwner().getName().equals(d_player.getName())) {
 				l_targetCountry = l_neighbor;
 				break;
+			}
+		}
+		if (l_targetCountry == null) {
+			for (CountryModel l_playerCountry : d_player.getOwnedCountry()) {
+				l_neighbors = l_mapController.getNeighbors(l_playerCountry);
+				for (CountryModel l_neighbor : l_neighbors) {
+					if (!l_neighbor.getOwner().getName().equals(d_player.getName())) {
+						d_airlift = true;
+						l_targetCountry = l_neighbor;
+						break;
+					}
+				}
 			}
 		}
 		return l_targetCountry;

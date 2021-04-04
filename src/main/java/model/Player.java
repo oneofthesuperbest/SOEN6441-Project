@@ -53,6 +53,21 @@ public class Player {
 		}
 		return false;
 	}
+	
+	/**
+	 * This function is used to check if player has a certain card.
+	 * 
+	 * @param p_cardNumber The card number to check
+	 * @return true if the card is present else false
+	 */
+	public boolean containsCard(int p_cardNumber) {
+		for (int l_index = 0; l_index < this.d_playersCards.size(); l_index++) {
+			if (this.d_playersCards.get(l_index) == p_cardNumber) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * This function randomly adds a card
