@@ -49,7 +49,7 @@ public class BenevolentStrategy extends Strategy {
 			d_remainingReinforcements -= 1;
 			return 1;
 		} else {
-			
+			// Need to check if countries are unevenly distributed and also check if able to distribute using airlift
 		}
 		
 		d_remainingReinforcements = -1;

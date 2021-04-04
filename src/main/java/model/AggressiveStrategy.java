@@ -35,25 +35,31 @@ public class AggressiveStrategy extends Strategy {
 	 * {@inheritDoc}
 	 */
 	public int issueOrder() {
-		if(d_remainingReinforcements == -1) {
+		if (d_remainingReinforcements == -1) {
 			d_remainingReinforcements = d_player.getReinforcementsArmies();
 		}
 		if (d_remainingReinforcements > 0) {
 			CountryModel l_strongestCountry = getStrongestCountry();
 			d_strongestCountry = l_strongestCountry;
-			d_gameEngine.getPhase().delop(new DeployOrder(l_strongestCountry.getName(), d_remainingReinforcements, d_player,
-					d_gameEngine));
+			d_gameEngine.getPhase().delop(
+					new DeployOrder(l_strongestCountry.getName(), d_remainingReinforcements, d_player, d_gameEngine));
 			d_remainingReinforcements = 0;
 			return 1;
 		} else {
 			CountryModel l_targetCountry = getTargetCountry();
 			if (d_airlift) {
-				d_gameEngine.getPhase().airlift(new AirliftOrder(d_strongestCountry.getName(), l_targetCountry.getName(),
-						d_strongestCountry.getArmies(), d_player, d_gameEngine));
+				d_gameEngine.getPhase().airlift(new AirliftOrder(d_strongestCountry.getName(),
+						l_targetCountry.getName(), d_strongestCountry.getArmies(), d_player, d_gameEngine));
 				d_player.hasCard(2);
 			} else {
-				d_gameEngine.getPhase().advance(new AdvanceOrder(d_strongestCountry.getName(), l_targetCountry.getName(),
-						d_strongestCountry.getArmies(), d_player, d_gameEngine));
+				if (d_player.hasCard(0)) {
+					d_gameEngine.getPhase()
+					.bomb(new BombOrder(l_targetCountry.getName(), d_player, d_gameEngine));
+					return 1;
+				} else {
+					d_gameEngine.getPhase().advance(new AdvanceOrder(d_strongestCountry.getName(),
+							l_targetCountry.getName(), d_strongestCountry.getArmies(), d_player, d_gameEngine));
+				}
 			}
 			d_airlift = false;
 			d_strongestCountry = null;
