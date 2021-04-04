@@ -1,14 +1,12 @@
 package model;
 
-import java.util.Scanner;
-
 /**
  * This class is the base/abstract strategy class for strategy pattern
  */
 public abstract class Strategy {
 	/**
 	 * This method is used to implement issueOrder() functionality based on the strategy
-	 * @param p_scObj Handle to the scanner object (To be used for 'Player' strategy behavior)
+	 * @return 1 if the order was issued successfully and 0 to indicate no stopping of issueOrders
 	 */
-	public abstract void issueOrder(Scanner p_scObj);
+	public abstract int issueOrder();
 }
