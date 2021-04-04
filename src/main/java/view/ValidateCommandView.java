@@ -144,7 +144,7 @@ public class ValidateCommandView {
 	}
 
 	/**
-	 * This function is use to check if command is valid game playe command
+	 * This function is use to check if command is valid game player command
 	 * 
 	 * @param p_gameEngineObject  This is the main GameEngine object
 	 * @param p_commandParameters This is the list of sub-commands and their
