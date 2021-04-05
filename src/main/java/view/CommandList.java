@@ -20,7 +20,7 @@ public enum CommandList {
 		 *         string and 0 for integer
 		 */
 		public int[] getAddCommandTypes() {
-			return new int[] { 1 };
+			return new int[] { 1, 1 };
 		}
 
 		/**

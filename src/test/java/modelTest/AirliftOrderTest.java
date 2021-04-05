@@ -45,9 +45,9 @@ public class AirliftOrderTest {
 		d_gameEngine.getMapState().getListOfCountries().add(d_targetCountry);
 		d_gameEngine.getMapState().getListOfCountries().add(d_country);
 		d_gameEngine.setPhase(3);
-		d_player = new Player("Test", d_gameEngine, l_scannerObject);
+		d_player = new Player("Test", "", d_gameEngine, l_scannerObject);
 		d_gameEngine.getPlayersState().addPlayer(d_player);
-		Player l_targetPlayer = new Player("Test1", d_gameEngine, l_scannerObject);
+		Player l_targetPlayer = new Player("Test1", "", d_gameEngine, l_scannerObject);
 		d_gameEngine.getPlayersState().addPlayer(l_targetPlayer);
 		d_player.addOwnedCountry(d_country);
 		d_country.setOwner(d_player);

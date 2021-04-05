@@ -48,7 +48,7 @@ public class GameEngine {
 	 * This functions is used to initialize neutral player
 	 */
 	public void setNeutralPlayer() {
-		this.d_neutralPlayer = new Player("Neutral", this, this.d_scannerObject);
+		this.d_neutralPlayer = new Player("Neutral", "human", this, this.d_scannerObject);
 	}
 
 	/**
@@ -332,8 +332,8 @@ public class GameEngine {
 	public void addRemovePlayers(String[] p_commandList) {
 		for (int l_index = 1; l_index < p_commandList.length; l_index++) {
 			if (p_commandList[l_index].equals(CommandList.ADD.getCommandString())) {
-				l_index++;
-				int l_returnValue = d_playerState.addPlayer(new Player(p_commandList[l_index], this, d_scannerObject));
+				int l_returnValue = d_playerState.addPlayer(new Player(p_commandList[l_index + 1], p_commandList[l_index + 2], this, d_scannerObject));
+				l_index += 2;
 				if (l_returnValue == 0) {
 					System.out.println("Player with name '" + p_commandList[l_index] + "' is already present");
 				} else {

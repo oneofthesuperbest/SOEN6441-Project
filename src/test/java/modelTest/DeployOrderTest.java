@@ -38,7 +38,7 @@ public class DeployOrderTest {
 		FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
 		GameEngine l_gameEngine = new GameEngine(l_scannerObject, d_logEntryBuffer, d_fileEntryLogger);
 		l_gameEngine.setPhase(3);
-		d_player = new Player("Test", l_gameEngine, l_scannerObject);
+		d_player = new Player("Test", "", l_gameEngine, l_scannerObject);
 		d_player.addOwnedCountry(d_country);
 		d_player.setReinforcementsArmies(2);
 		ValidateCommandView l_VCVObject = new ValidateCommandView();

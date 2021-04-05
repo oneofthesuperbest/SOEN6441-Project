@@ -47,7 +47,7 @@ public class GameEngineTest {
 		LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
 		FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
 		GameEngine l_gameEngine = new GameEngine(l_scannerObject, d_logEntryBuffer, d_fileEntryLogger);
-		d_player = new Player("Test", l_gameEngine, l_scannerObject);
+		d_player = new Player("Test", "", l_gameEngine, l_scannerObject);
 		d_player.addOwnedCountry(l_countryR);
 		d_player.setReinforcementsArmies(5);
 		
@@ -58,9 +58,9 @@ public class GameEngineTest {
 		d_gameEngineTestCase.getMapState().getListOfContinents().add(new ContinentModel("Continent2", "blue", 4));
 		ArrayList<ContinentModel> l_listOfCoontinents = d_gameEngineTestCase.getMapState().getListOfContinents();
 		d_gameEngineTestCase.getPlayersState()
-				.addPlayer(new Player("Player1", d_gameEngineTestCase, l_dummyScannerObject));
+				.addPlayer(new Player("Player1", "", d_gameEngineTestCase, l_dummyScannerObject));
 		d_gameEngineTestCase.getPlayersState()
-				.addPlayer(new Player("Player2", d_gameEngineTestCase, l_dummyScannerObject));
+				.addPlayer(new Player("Player2", "", d_gameEngineTestCase, l_dummyScannerObject));
 		ArrayList<Player> l_listOfPlayers = d_gameEngineTestCase.getPlayersState().getPlayers();
 
 		CountryModel l_country = new CountryModel(1, "Continent1Country1", l_listOfCoontinents.get(0),
@@ -107,8 +107,8 @@ public class GameEngineTest {
 		d_gameEngineCase.getMapState().getListOfContinents().add(new ContinentModel("Continent1", "red", 2));
 		d_gameEngineCase.getMapState().getListOfContinents().add(new ContinentModel("Continent2", "blue", 4));
 		l_listOfCoontinents = d_gameEngineCase.getMapState().getListOfContinents();
-		d_gameEngineCase.getPlayersState().addPlayer(new Player("Player1", d_gameEngineCase, l_dummyScannerObject));
-		d_gameEngineCase.getPlayersState().addPlayer(new Player("Player2", d_gameEngineCase, l_dummyScannerObject));
+		d_gameEngineCase.getPlayersState().addPlayer(new Player("Player1", "", d_gameEngineCase, l_dummyScannerObject));
+		d_gameEngineCase.getPlayersState().addPlayer(new Player("Player2", "", d_gameEngineCase, l_dummyScannerObject));
 		l_listOfPlayers = d_gameEngineCase.getPlayersState().getPlayers();
 		l_country = new CountryModel(1, "Continent1Country1", l_listOfCoontinents.get(0), new CoordinateModel(1, 2));
 		d_gameEngineCase.getMapState().getListOfCountries().add(l_country);

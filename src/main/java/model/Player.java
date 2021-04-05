@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import controller.GameEngine;
-import view.ValidateCommandView;
 
 /**
  * Represents a player
@@ -13,11 +12,10 @@ public class Player {
 	private String d_name;
 	private ArrayList<CountryModel> d_listOfOwnedCountries = new ArrayList<CountryModel>();
 	private int d_reinforementsArmies;
-	private GameEngine d_gameEngineContext;
-	private Scanner d_scannerObject;
 	private ArrayList<Order> d_listOfOrders = new ArrayList<Order>();
 	private ArrayList<String> d_listOfConcurredCountries = new ArrayList<String>();
 	private ArrayList<String> d_listOfNegotiatingPlayers = new ArrayList<String>();
+	Strategy d_playerStrategy;
 
 	/**
 	 * 0 for bomb card, 1 for blockade card, 2 for airlift card and 3 for negotiate
@@ -28,13 +26,23 @@ public class Player {
 	 * Creates a player with the specified name.
 	 * 
 	 * @param p_name          The players name.
+	 * @param p_strategy      The behaviour of the player.
 	 * @param p_gameEngine    GameEngine reference.
 	 * @param p_scannerObject Scanner object reference.
 	 */
-	public Player(String p_name, GameEngine p_gameEngine, Scanner p_scannerObject) {
+	public Player(String p_name, String p_strategy, GameEngine p_gameEngine, Scanner p_scannerObject) {
 		this.d_name = p_name;
-		this.d_gameEngineContext = p_gameEngine;
-		this.d_scannerObject = p_scannerObject;
+		if(p_strategy.equals("human")) {
+			d_playerStrategy = new PlayerStrategy(p_gameEngine, this, p_scannerObject);
+		} else if(p_strategy.equals("aggressive")) {
+			d_playerStrategy = new AggressiveStrategy(p_gameEngine, this, p_scannerObject);
+		} else if(p_strategy.equals("cheater")) {
+			d_playerStrategy = new CheaterStrategy(p_gameEngine, this, p_scannerObject);
+		} else if(p_strategy.equals("benevolent")) {
+			d_playerStrategy = new BenevolentStrategy(p_gameEngine, this, p_scannerObject);
+		} else {
+			d_playerStrategy = new RandomStrategy(p_gameEngine, this, p_scannerObject);
+		}
 	}
 
 	/**
@@ -201,21 +209,7 @@ public class Player {
 	 *         stop giving orders.
 	 */
 	public int issueOrder() {
-		// ------- Need to call ValidateCommandView methods for validating
-		boolean l_issuedOrder = false;
-		while (!l_issuedOrder) {
-			System.out.println(this.getName() + " issue your order");
-			String l_command = this.d_scannerObject.nextLine();
-
-			ValidateCommandView l_VCVObject = new ValidateCommandView();
-			int returnValue = l_VCVObject.checkCommand(this.d_gameEngineContext, l_command, this);
-			if (returnValue == 1) {
-				l_issuedOrder = true;
-			} else if (returnValue == 2) {
-				return 0;
-			}
-		}
-		return 1;
+		return this.d_playerStrategy.issueOrder();
 	}
 
 	/**

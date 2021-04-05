@@ -36,11 +36,15 @@ public class RandomStrategy extends Strategy {
 		if(d_remainingReinforcements == -1) {
 			d_remainingReinforcements = d_player.getReinforcementsArmies();
 			d_maxnumberOfOrder = 10;
+			for (CountryModel l_playerCountry : d_player.getOwnedCountry()) {
+				l_playerCountry.setPotentialArmies(l_playerCountry.getArmies());
+			}
 		}
 		if(d_remainingReinforcements > 0) {
 			int l_randomCountry = (int) Math.random() * d_player.getOwnedCountry().size();
 			d_gameEngine.getPhase().delop(
 					new DeployOrder(d_player.getOwnedCountry().get(l_randomCountry).getName(), d_remainingReinforcements, d_player, d_gameEngine));
+			d_player.getOwnedCountry().get(l_randomCountry).setPotentialArmies((d_player.getOwnedCountry().get(l_randomCountry).getPotentialArmies() + d_remainingReinforcements));
 			d_remainingReinforcements = 0;
 			d_maxnumberOfOrder--;
 			return 1;
@@ -50,15 +54,17 @@ public class RandomStrategy extends Strategy {
 				int l_randomCountry = (int) Math.random() * d_player.getOwnedCountry().size();
 				MapController l_mapController = new MapController(this.d_gameEngine);
 				ArrayList<CountryModel> l_neighbors = l_mapController.getNeighbors(d_player.getOwnedCountry().get(l_randomCountry));
+				int l_armiesToMove = d_player.getOwnedCountry().get(l_randomCountry).getArmies() > 0 ? d_player.getOwnedCountry().get(l_randomCountry).getArmies() : d_player.getOwnedCountry().get(l_randomCountry).getPotentialArmies();
 				d_gameEngine.getPhase().advance(
 						new AdvanceOrder(d_player.getOwnedCountry().get(l_randomCountry).getName(),
-								l_neighbors.get(0).getName(), d_player.getOwnedCountry().get(l_randomCountry).getArmies(), d_player, d_gameEngine));
+								l_neighbors.get(0).getName(), l_armiesToMove, d_player, d_gameEngine));
 			} else {
 				int l_randomCountry = (int) Math.random() * d_player.getOwnedCountry().size();
 				int l_randomTargetCountry = (int) Math.random() * d_gameEngine.getMapState().getListOfCountries().size();
+				int l_armiesToMove = d_player.getOwnedCountry().get(l_randomCountry).getArmies() > 0 ? d_player.getOwnedCountry().get(l_randomCountry).getArmies() : d_player.getOwnedCountry().get(l_randomCountry).getPotentialArmies();
 				d_gameEngine.getPhase().airlift(
 						new AirliftOrder(d_player.getOwnedCountry().get(l_randomCountry).getName(),
-								d_gameEngine.getMapState().getListOfCountries().get(l_randomTargetCountry).getName(), d_player.getOwnedCountry().get(l_randomCountry).getArmies(), d_player, d_gameEngine));
+								d_gameEngine.getMapState().getListOfCountries().get(l_randomTargetCountry).getName(), l_armiesToMove, d_player, d_gameEngine));
 				d_player.hasCard(2);
 			}
 			d_maxnumberOfOrder--;

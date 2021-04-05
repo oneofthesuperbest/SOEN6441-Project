@@ -40,9 +40,9 @@ public class NegotiateOrderTest {
 		MapController l_mapController = new MapController(d_gameEngine);
 		l_mapController.loadMapData("src/test/test_resources/testmap_3Countries.map", false, false);
 		d_gameEngine.setPhase(3);
-		d_player = new Player("Test", d_gameEngine, l_scannerObject);
+		d_player = new Player("Test", "", d_gameEngine, l_scannerObject);
 		d_gameEngine.getPlayersState().addPlayer(d_player);
-		d_targetPlayer = new Player("TestTarget", d_gameEngine, l_scannerObject);
+		d_targetPlayer = new Player("TestTarget", "", d_gameEngine, l_scannerObject);
 		d_gameEngine.getPlayersState().addPlayer(d_targetPlayer);
 		d_country = d_gameEngine.getMapState().getListOfCountries().get(0);
 		d_targetCountry = d_gameEngine.getMapState().getListOfCountries().get(1);

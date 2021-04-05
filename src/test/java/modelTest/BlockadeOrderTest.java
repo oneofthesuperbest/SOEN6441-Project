@@ -39,8 +39,8 @@ public class BlockadeOrderTest {
 		MapController l_mapController = new MapController(l_gameEngine);
 		l_mapController.loadMapData("src/test/test_resources/testmap_3Countries.map", false, false);
 		l_gameEngine.setPhase(3);
-		d_player = new Player("Test", l_gameEngine, l_scannerObject);
-		Player l_targetPlayer = new Player("Test1", l_gameEngine, l_scannerObject);
+		d_player = new Player("Test", "", l_gameEngine, l_scannerObject);
+		Player l_targetPlayer = new Player("Test1", "", l_gameEngine, l_scannerObject);
 		d_country = l_gameEngine.getMapState().getListOfCountries().get(0);
 		d_targetCountry = l_gameEngine.getMapState().getListOfCountries().get(2);
 		d_player.addOwnedCountry(d_country);
