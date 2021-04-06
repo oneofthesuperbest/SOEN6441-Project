@@ -32,18 +32,23 @@ public class CheaterStrategy extends Strategy {
 	 */
 	public int issueOrder() {
 		ArrayList<String> l_listOfConqueredCountries = new ArrayList<String>();
+		ArrayList<CountryModel> l_conqueredCountries = new ArrayList<CountryModel>();
 		for (CountryModel l_playerCountry : d_player.getOwnedCountry()) {
 			if (!l_listOfConqueredCountries.contains(l_playerCountry.getName())) {
 				MapController l_mapController = new MapController(this.d_gameEngine);
 				ArrayList<CountryModel> l_neighbors = l_mapController.getNeighbors(l_playerCountry);
 				for (CountryModel l_neighbor : l_neighbors) {
 					if (!l_neighbor.getOwner().getName().equals(d_player.getName())) {
+						l_conqueredCountries.add(l_neighbor);
 						l_listOfConqueredCountries.add(l_neighbor.getName());
-						l_neighbor.setOwner(d_player);
-						d_player.addOwnedCountry(l_neighbor);
 					}
 				}
 			}
+		}
+		for(CountryModel l_country : l_conqueredCountries) {
+			l_country.getOwner().getOwnedCountry().remove(l_country);
+			l_country.setOwner(d_player);
+			d_player.addOwnedCountry(l_country);
 		}
 		for (CountryModel l_playerCountry : d_player.getOwnedCountry()) {
 			MapController l_mapController = new MapController(this.d_gameEngine);

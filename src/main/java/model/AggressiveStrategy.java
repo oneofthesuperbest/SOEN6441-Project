@@ -43,35 +43,41 @@ public class AggressiveStrategy extends Strategy {
 		}
 		if (d_remainingReinforcements > 0) {
 			CountryModel l_strongestCountry = getStrongestCountry();
-			d_strongestCountry = l_strongestCountry;
-			d_gameEngine.getPhase().delop(
-					new DeployOrder(l_strongestCountry.getName(), d_remainingReinforcements, d_player, d_gameEngine));
-			l_strongestCountry.setPotentialArmies((l_strongestCountry.getPotentialArmies() + d_remainingReinforcements));
-			d_remainingReinforcements = 0;
-			return 1;
+			if (l_strongestCountry != null) {
+				d_strongestCountry = l_strongestCountry;
+				d_gameEngine.getPhase().delop(new DeployOrder(l_strongestCountry.getName(), d_remainingReinforcements,
+						d_player, d_gameEngine));
+				l_strongestCountry
+						.setPotentialArmies((l_strongestCountry.getPotentialArmies() + d_remainingReinforcements));
+				d_remainingReinforcements = 0;
+				return 1;
+			}
 		} else {
 			CountryModel l_targetCountry = getTargetCountry();
-			if (d_airlift) {
-				d_gameEngine.getPhase().airlift(new AirliftOrder(d_strongestCountry.getName(),
-						l_targetCountry.getName(), d_strongestCountry.getPotentialArmies(), d_player, d_gameEngine));
-				d_player.hasCard(2);
-			} else {
-				if (d_player.hasCard(0)) {
+			if (l_targetCountry != null) {
+				if (d_airlift) {
 					d_gameEngine.getPhase()
-					.bomb(new BombOrder(l_targetCountry.getName(), d_player, d_gameEngine));
-					return 1;
+							.airlift(new AirliftOrder(d_strongestCountry.getName(), l_targetCountry.getName(),
+									d_strongestCountry.getPotentialArmies(), d_player, d_gameEngine));
+					d_player.hasCard(2);
 				} else {
-					d_gameEngine.getPhase().advance(new AdvanceOrder(d_strongestCountry.getName(),
-							l_targetCountry.getName(), d_strongestCountry.getPotentialArmies(), d_player, d_gameEngine));
+					if (d_player.hasCard(0)) {
+						d_gameEngine.getPhase().bomb(new BombOrder(l_targetCountry.getName(), d_player, d_gameEngine));
+						return 1;
+					} else {
+						d_gameEngine.getPhase()
+								.advance(new AdvanceOrder(d_strongestCountry.getName(), l_targetCountry.getName(),
+										d_strongestCountry.getPotentialArmies(), d_player, d_gameEngine));
+					}
 				}
 			}
-			d_airlift = false;
-			d_strongestCountry = null;
-			d_remainingReinforcements = -1;
-			// It will stop issuing orders after attack, as any instance there will only be
-			// one strongest country and rest of the owned countries will have 0 armies
-			return 0;
 		}
+		d_airlift = false;
+		d_strongestCountry = null;
+		d_remainingReinforcements = -1;
+		// It will stop issuing orders after attack, as any instance there will only be
+		// one strongest country and rest of the owned countries will have 0 armies
+		return 0;
 	}
 
 	/**

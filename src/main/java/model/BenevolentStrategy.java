@@ -13,7 +13,7 @@ public class BenevolentStrategy extends Strategy {
 	Player d_player;
 	GameEngine d_gameEngine;
 	Scanner d_scannerObject;
-	
+
 	int d_remainingReinforcements = -1;
 
 	/**
@@ -33,7 +33,7 @@ public class BenevolentStrategy extends Strategy {
 	 * {@inheritDoc}
 	 */
 	public int issueOrder() {
-		if(d_remainingReinforcements == -1) {
+		if (d_remainingReinforcements == -1) {
 			d_remainingReinforcements = d_player.getReinforcementsArmies();
 			for (CountryModel l_playerCountry : d_player.getOwnedCountry()) {
 				l_playerCountry.setPotentialArmies(l_playerCountry.getArmies());
@@ -48,17 +48,20 @@ public class BenevolentStrategy extends Strategy {
 					l_weakCountries = l_playerCountry;
 				}
 			}
-			d_gameEngine.getPhase().delop(new DeployOrder(l_weakCountries.getName(), 1, d_player, d_gameEngine));
-			d_remainingReinforcements -= 1;
-			l_weakCountries.setPotentialArmies((l_weakCountries.getPotentialArmies() + 1));
-			return 1;
+			if (l_weakCountries != null) {
+				d_gameEngine.getPhase().delop(new DeployOrder(l_weakCountries.getName(), 1, d_player, d_gameEngine));
+				d_remainingReinforcements -= 1;
+				l_weakCountries.setPotentialArmies((l_weakCountries.getPotentialArmies() + 1));
+				return 1;
+			}
 		} else {
 			CountryModel l_weakCountries = null;
 			for (CountryModel l_playerCountry : d_player.getOwnedCountry()) {
 				MapController l_mapController = new MapController(this.d_gameEngine);
 				ArrayList<CountryModel> l_neighbors = l_mapController.getNeighbors(l_playerCountry);
 				for (CountryModel l_neighbor : l_neighbors) {
-					if (l_neighbor.getOwner().getName().equals(d_player.getName()) && (l_playerCountry.getPotentialArmies() - l_neighbor.getPotentialArmies()) == 2) {
+					if (l_neighbor.getOwner().getName().equals(d_player.getName())
+							&& (l_playerCountry.getPotentialArmies() - l_neighbor.getPotentialArmies()) == 2) {
 						l_weakCountries = l_neighbor;
 					}
 				}
@@ -69,7 +72,7 @@ public class BenevolentStrategy extends Strategy {
 				}
 			}
 		}
-		
+
 		d_remainingReinforcements = -1;
 		return 0;
 	}
