@@ -50,6 +50,14 @@ public class DefaultPhase extends IntermediateMapEditingPhase {
 			d_gameEngineObject.getLogEntryBuffer().addLogEntry("Map is invalid. It wasn't loaded.");
 		}
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void startTournament(String[] p_command) {
+		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Starting tournament.");
+		// call new tournament method
+	}
 
 	/**
 	 * {@inheritDoc}

@@ -28,7 +28,7 @@ public abstract class IntermediateMapEditingPhase extends Phase {
 	public void startGame() {
 		printErrorMessage(this);
 	}
-
+	
 	/**
 	 * {@inheritDoc}
 	 */

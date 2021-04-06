@@ -29,6 +29,7 @@ public class GameEngine {
 	// Observer FileEntryLogger which waits for notification from LogEntryBuffer
 	FileEntryLogger d_fileEntryLogger;
 	Player d_neutralPlayer = null;
+	int d_maxTurns = 20;
 
 	/**
 	 * This constructor is used to set the scanner object context
@@ -151,6 +152,7 @@ public class GameEngine {
 	public void loadGameEngine() {
 		System.out.println("Game Engine loaded.");
 		while (true) {
+			this.d_maxTurns--;
 			this.setPhase(3);
 			this.assignReinforcements();
 			this.issueOrderLoop();
@@ -161,10 +163,18 @@ public class GameEngine {
 			if (this.checkWinner()) {
 				break;
 			}
+			if (this.d_maxTurns == 0) {
+				break;
+			}
 		}
-		String l_gameEndMessage = "Player " + this.d_playerState.getPlayers().get(0).getName() + " has won the game!!!";
-		this.d_logEntryBuffer.addLogEntry(l_gameEndMessage);
-		System.out.println(l_gameEndMessage);
+		if (this.d_playerState.getPlayers().size() > 1) {
+			String l_gameEndMessage = "Player " + this.d_playerState.getPlayers().get(0).getName()
+					+ " has won the game!!!";
+			this.d_logEntryBuffer.addLogEntry(l_gameEndMessage);
+			System.out.println(l_gameEndMessage);
+		} else {
+			// call draw
+		}
 	}
 
 	/**
@@ -332,7 +342,8 @@ public class GameEngine {
 	public void addRemovePlayers(String[] p_commandList) {
 		for (int l_index = 1; l_index < p_commandList.length; l_index++) {
 			if (p_commandList[l_index].equals(CommandList.ADD.getCommandString())) {
-				int l_returnValue = d_playerState.addPlayer(new Player(p_commandList[l_index + 1], p_commandList[l_index + 2], this, d_scannerObject));
+				int l_returnValue = d_playerState.addPlayer(
+						new Player(p_commandList[l_index + 1], p_commandList[l_index + 2], this, d_scannerObject));
 				l_index += 2;
 				if (l_returnValue == 0) {
 					System.out.println("Player with name '" + p_commandList[l_index] + "' is already present");

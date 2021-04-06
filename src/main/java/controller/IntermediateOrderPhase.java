@@ -26,4 +26,11 @@ public abstract class IntermediateOrderPhase extends IntermediateGamePlayPhase {
 	public void startGame() {
 		printErrorMessage(this);
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void startTournament(String[] p_command) {
+		printErrorMessage(this);
+	}
 }

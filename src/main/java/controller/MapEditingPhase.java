@@ -96,4 +96,11 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Validate command called.");
 		l_executeCVObject.validateMap(d_gameEngineObject);
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void startTournament(String[] p_command) {
+		printErrorMessage(this);
+	}
 }

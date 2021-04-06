@@ -104,6 +104,11 @@ public abstract class Phase {
 	 * This function is used to assign players to countries and start the game
 	 */
 	public abstract void startGame();
+	
+	/**
+	 * This function is used to start the tournament
+	 */
+	public abstract void startTournament(String[] p_command);
 
 	/**
 	 * This function is used to issue deploy order

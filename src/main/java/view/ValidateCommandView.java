@@ -56,6 +56,14 @@ public class ValidateCommandView {
 				}
 				return 0;
 			}
+		} else if (l_commandParameters[0].equals(CommandList.TOURNAMENT.getCommandString())) {
+			// validate all sub-commands and parameters of tournament command
+			System.out.println("Validating all sub-commands and parameters of tournament command...");
+			int l_returnValue = validateSubCommands(l_commandParameters, CommandList.TOURNAMENT);
+			if (l_returnValue == 1) {
+				p_gameEngineObject.getPhase().startTournament(l_commandParameters);
+				return 1;
+			}
 		} else {
 			int l_returnValue = isValidMapEditing(p_gameEngineObject, l_commandParameters);
 			if (l_returnValue == 0) {
@@ -279,8 +287,10 @@ public class ValidateCommandView {
 		for (int l_index = 1; l_index < p_commandParameters.length; l_index++) {
 			String l_commandOrParameter = p_commandParameters[l_index];
 			l_sunCommandIndex++;
-			if (l_commandOrParameter.equals(CommandList.ADD.getCommandString())) {
-				int[] l_numberOfRequiredParameters = p_mainCommand.getAddCommandTypes();
+			if (l_commandOrParameter.equals(CommandList.ADD.getCommandString())
+					|| l_commandOrParameter.equals(CommandList.M.getCommandString())
+					|| l_commandOrParameter.equals(CommandList.P.getCommandString())) {
+				int[] l_numberOfRequiredParameters = l_commandOrParameter.equals(CommandList.ADD.getCommandString()) ? p_mainCommand.getAddCommandTypes() : p_mainCommand.getMCommandTypes();
 				for (int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
 					if (l_numberOfRequiredParameters[l_parameterIndex] == 0) {
 						try {
@@ -319,8 +329,10 @@ public class ValidateCommandView {
 					}
 				}
 				l_index += (l_numberOfRequiredParameters.length);
-			} else if (l_commandOrParameter.equals(CommandList.REMOVE.getCommandString())) {
-				int[] l_numberOfRequiredParameters = p_mainCommand.getRemoveCommandTypes();
+			} else if (l_commandOrParameter.equals(CommandList.REMOVE.getCommandString())
+					|| l_commandOrParameter.equals(CommandList.G.getCommandString())
+					|| l_commandOrParameter.equals(CommandList.D.getCommandString())) {
+				int[] l_numberOfRequiredParameters = l_commandOrParameter.equals(CommandList.REMOVE.getCommandString()) ? p_mainCommand.getRemoveCommandTypes() : p_mainCommand.getGCommandTypes();
 				for (int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
 					if (l_numberOfRequiredParameters[l_parameterIndex] == 0) {
 						try {

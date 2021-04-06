@@ -110,8 +110,6 @@ public class MapController {
 	 */
 	public int loadMapContinentsFromFile(int p_idx, List<String> p_lines) {
 		p_idx += 1;
-		// l_continentId is not being used at. keeping it the next dev plan.
-		int l_continentId = 1;
 		while (checkSameBlock(p_idx, p_lines)) {
 			String[] l_segments = p_lines.get(p_idx).split(" ");
 
@@ -127,7 +125,6 @@ public class MapController {
 					.add(new ContinentModel(l_continentName, l_color, l_continentArmy));
 
 			p_idx++;
-			l_continentId++;
 		}
 		System.out.println("...Reading Continents. Total: " + d_gameEngine.getMapState().getListOfContinents().size());
 		return p_idx;
