@@ -146,6 +146,72 @@ public class GameEngine {
 	}
 
 	/**
+	 * This functions is used to refresh all of the game objects
+	 */
+	void refresh() {
+		this.d_mapState = new MapState();
+		this.d_playerState = new PlayersState();
+		this.setPhase(2);
+		this.setNeutralPlayer();
+	}
+
+	/**
+	 * This function is used to load and start the tournament
+	 * 
+	 * @param p_command The tournament command entered by user
+	 */
+	void playTournament(String[] p_command) {
+		MapController l_mapController = new MapController(this);
+		ArrayList<ArrayList<String>> l_result = new ArrayList<ArrayList<String>>();
+		String[] l_maps = p_command[2].split(",");
+		int l_currentMapIndex = 0;
+		String[] l_players = p_command[4].split(",");
+		int l_totalGames = Integer.parseInt(p_command[6]);
+		int l_totalRounds = Integer.parseInt(p_command[8]);
+		while (l_currentMapIndex < l_maps.length) {
+			int l_game = l_totalGames;
+			ArrayList<String> l_mapResult = new ArrayList<String>();
+			while (l_game > 0) {
+				if (l_mapController.loadMapData(l_maps[l_currentMapIndex], false, false)) {
+					for (String l_player : l_players) {
+						d_playerState.addPlayer(new Player(l_player, l_player, this, d_scannerObject));
+					}
+					this.assignCountries();
+					this.d_maxTurns = l_totalRounds;
+					this.loadGameEngine();
+					
+					if(this.d_playerState.getPlayers().size() == 1) {
+						l_mapResult.add(this.d_playerState.getPlayers().get(0).getName());
+					} else {
+						l_mapResult.add("Draw");
+					}
+
+					this.refresh();
+				} else {
+					l_mapResult.add("Invalid map");
+				}
+				l_game--;
+			}
+			l_currentMapIndex ++;
+			l_result.add(l_mapResult);
+		}
+		String l_resultTable = "\t";
+		for(int l_i = 0; l_i < l_totalGames; l_i++) {
+			l_resultTable += "Game " + (l_i + 1) + "\t";
+		}
+		l_resultTable += "\n";
+		for(int l_i = 0; l_i < l_maps.length; l_i++) {
+			l_resultTable += l_maps[l_i] + "\t";
+			for(String l_r : l_result.get(l_i)) {
+				l_resultTable += l_r + "\t";
+			}
+			l_resultTable += "\n";
+		}
+		this.d_logEntryBuffer.addLogEntry(l_resultTable);
+		System.out.println(l_resultTable);
+	}
+
+	/**
 	 * This function loads the Game Engine machine that starts the game and
 	 * initializes the main game loop.
 	 */
@@ -172,8 +238,6 @@ public class GameEngine {
 					+ " has won the game!!!";
 			this.d_logEntryBuffer.addLogEntry(l_gameEndMessage);
 			System.out.println(l_gameEndMessage);
-		} else {
-			// call draw
 		}
 	}
 

@@ -56,7 +56,7 @@ public class DefaultPhase extends IntermediateMapEditingPhase {
 	 */
 	public void startTournament(String[] p_command) {
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Starting tournament.");
-		// call new tournament method
+		d_gameEngineObject.playTournament(p_command);
 	}
 
 	/**

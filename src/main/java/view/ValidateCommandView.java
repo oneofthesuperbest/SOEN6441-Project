@@ -290,7 +290,9 @@ public class ValidateCommandView {
 			if (l_commandOrParameter.equals(CommandList.ADD.getCommandString())
 					|| l_commandOrParameter.equals(CommandList.M.getCommandString())
 					|| l_commandOrParameter.equals(CommandList.P.getCommandString())) {
-				int[] l_numberOfRequiredParameters = l_commandOrParameter.equals(CommandList.ADD.getCommandString()) ? p_mainCommand.getAddCommandTypes() : p_mainCommand.getMCommandTypes();
+				int[] l_numberOfRequiredParameters = l_commandOrParameter.equals(CommandList.ADD.getCommandString())
+						? p_mainCommand.getAddCommandTypes()
+						: p_mainCommand.getMCommandTypes();
 				for (int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
 					if (l_numberOfRequiredParameters[l_parameterIndex] == 0) {
 						try {
@@ -332,7 +334,9 @@ public class ValidateCommandView {
 			} else if (l_commandOrParameter.equals(CommandList.REMOVE.getCommandString())
 					|| l_commandOrParameter.equals(CommandList.G.getCommandString())
 					|| l_commandOrParameter.equals(CommandList.D.getCommandString())) {
-				int[] l_numberOfRequiredParameters = l_commandOrParameter.equals(CommandList.REMOVE.getCommandString()) ? p_mainCommand.getRemoveCommandTypes() : p_mainCommand.getGCommandTypes();
+				int[] l_numberOfRequiredParameters = l_commandOrParameter.equals(CommandList.REMOVE.getCommandString())
+						? p_mainCommand.getRemoveCommandTypes()
+						: p_mainCommand.getGCommandTypes();
 				for (int l_parameterIndex = 0; l_parameterIndex < l_numberOfRequiredParameters.length; l_parameterIndex++) {
 					if (l_numberOfRequiredParameters[l_parameterIndex] == 0) {
 						try {
