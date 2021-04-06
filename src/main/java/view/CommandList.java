@@ -8,6 +8,51 @@ public enum CommandList {
 	 * This is an enum for loadmap command
 	 */
 	LOADMAP("loadmap"),
+	
+	/**
+	 * This is an enum for tournament command
+	 */
+	TOURNAMENT("tournament") {
+		/**
+		 * This functions returns parameter requirement for -M sub-command
+		 * 
+		 * @return Array of number of parameters required and their types i.e: 1 for
+		 *         string and 0 for integer
+		 */
+		public int[] getMCommandTypes() {
+			return new int[] { 1 };
+		}
+
+		/**
+		 * This functions returns parameter requirement for -P sub-command
+		 * 
+		 * @return Array of number of parameters required and their types i.e: 1 for
+		 *         string and 0 for integer
+		 */
+		public int[] getPCommandTypes() {
+			return new int[] { 1 };
+		}
+		
+		/**
+		 * This functions returns parameter requirement for -G sub-command
+		 * 
+		 * @return Array of number of parameters required and their types i.e: 1 for
+		 *         string and 0 for integer
+		 */
+		public int[] getGCommandTypes() {
+			return new int[] { 0 };
+		}
+
+		/**
+		 * This functions returns parameter requirement for - sub-command
+		 * 
+		 * @return Array of number of parameters required and their types i.e: 1 for
+		 *         string and 0 for integer
+		 */
+		public int[] getDCommandTypes() {
+			return new int[] { 0 };
+		}
+	},
 
 	/**
 	 * This is an enum for gameplayer command
@@ -138,6 +183,26 @@ public enum CommandList {
 	 * This is an enum for add command
 	 */
 	ADD("-add"),
+	
+	/**
+	 * This is an enum for M command
+	 */
+	M("-M"),
+
+	/**
+	 * This is an enum for P command
+	 */
+	P("-P"),
+	
+	/**
+	 * This is an enum for G command
+	 */
+	G("-G"),
+	
+	/**
+	 * This is an enum for D command
+	 */
+	D("-D"),
 
 	/**
 	 * This is an enum for remove command
@@ -276,6 +341,46 @@ public enum CommandList {
 	 *         string and 0 for integer
 	 */
 	public int[] getRemoveCommandTypes() {
+		return new int[] {};
+	}
+	
+	/**
+	 * This functions returns default parameter requirement for -M sub-command
+	 * 
+	 * @return ParameterTypes Number of parameters required and their types i.e: 1
+	 *         for string and 0 for integer
+	 */
+	public int[] getMCommandTypes() {
+		return new int[] {};
+	}
+
+	/**
+	 * This functions returns default parameter requirement for -P sub-command
+	 * 
+	 * @return Array of number of parameters required and their types i.e: 1 for
+	 *         string and 0 for integer
+	 */
+	public int[] getPCommandTypes() {
+		return new int[] {};
+	}
+	
+	/**
+	 * This functions returns default parameter requirement for -G sub-command
+	 * 
+	 * @return ParameterTypes Number of parameters required and their types i.e: 1
+	 *         for string and 0 for integer
+	 */
+	public int[] getGCommandTypes() {
+		return new int[] {};
+	}
+
+	/**
+	 * This functions returns default parameter requirement for -D sub-command
+	 * 
+	 * @return Array of number of parameters required and their types i.e: 1 for
+	 *         string and 0 for integer
+	 */
+	public int[] getDCommandTypes() {
 		return new int[] {};
 	}
 
