@@ -36,4 +36,14 @@ public class DefaultPhaseTest {
 		
 		assertEquals("default", d_gameEngineObject.getPhase().getString());
 	}
+	
+	/**
+	 * This function tests if tournament works as expected
+	 */
+	@Test public void tesTournament() {
+		ValidateCommandView l_VCVObject = new ValidateCommandView();
+		assertEquals(1, l_VCVObject.checkCommand(d_gameEngineObject, "tournament -M res/maps/brasil/brasil.map,res/maps/saved/newsaved.map -P benevolent,cheater,random,aggressive -G 5 -D 20", null));
+		
+		assertEquals("default", d_gameEngineObject.getPhase().getString());
+	}
 }

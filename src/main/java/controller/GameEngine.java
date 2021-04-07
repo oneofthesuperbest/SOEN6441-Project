@@ -152,7 +152,6 @@ public class GameEngine {
 		this.d_mapState = new MapState();
 		this.d_playerState = new PlayersState();
 		this.setPhase(2);
-		this.setNeutralPlayer();
 	}
 
 	/**
@@ -174,13 +173,16 @@ public class GameEngine {
 			while (l_game > 0) {
 				if (l_mapController.loadMapData(l_maps[l_currentMapIndex], false, false)) {
 					for (String l_player : l_players) {
-						d_playerState.addPlayer(new Player(l_player, l_player, this, d_scannerObject));
+						if (!l_player.equals("human")) {
+							d_playerState.addPlayer(new Player(l_player, l_player, this, d_scannerObject));
+						}
 					}
 					this.assignCountries();
 					this.d_maxTurns = l_totalRounds;
+					this.setNeutralPlayer();
 					this.loadGameEngine();
-					
-					if(this.d_playerState.getPlayers().size() == 1) {
+
+					if (this.d_playerState.getPlayers().size() == 1) {
 						l_mapResult.add(this.d_playerState.getPlayers().get(0).getName());
 					} else {
 						l_mapResult.add("Draw");
@@ -192,23 +194,24 @@ public class GameEngine {
 				}
 				l_game--;
 			}
-			l_currentMapIndex ++;
+			l_currentMapIndex++;
 			l_result.add(l_mapResult);
 		}
 		String l_resultTable = "\t";
-		for(int l_i = 0; l_i < l_totalGames; l_i++) {
+		for (int l_i = 0; l_i < l_totalGames; l_i++) {
 			l_resultTable += "Game " + (l_i + 1) + "\t";
 		}
 		l_resultTable += "\n";
-		for(int l_i = 0; l_i < l_maps.length; l_i++) {
+		for (int l_i = 0; l_i < l_maps.length; l_i++) {
 			l_resultTable += l_maps[l_i] + "\t";
-			for(String l_r : l_result.get(l_i)) {
+			for (String l_r : l_result.get(l_i)) {
 				l_resultTable += l_r + "\t";
 			}
 			l_resultTable += "\n";
 		}
 		this.d_logEntryBuffer.addLogEntry(l_resultTable);
 		System.out.println(l_resultTable);
+		this.setPhase(0);
 	}
 
 	/**
