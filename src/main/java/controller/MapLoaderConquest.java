@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -18,6 +19,7 @@ import model.CountryModel;
  */
 public class MapLoaderConquest {
 	private GameEngine d_gameEngine;
+	HashMap<String, String[]> d_countryBorders = new HashMap<String, String[]>();
 
 	/**
 	 * Create a new map controller with the specified GameEngine.
@@ -27,7 +29,7 @@ public class MapLoaderConquest {
 	public MapLoaderConquest(GameEngine p_gameEngine) {
 		d_gameEngine = p_gameEngine;
 	}
-	
+
 	/**
 	 * Load the map contents into the game.
 	 * 
@@ -62,25 +64,22 @@ public class MapLoaderConquest {
 			String l_currentLine = l_lines.get(l_idx);
 			String l_beginningWord = l_currentLine.split(" ")[0];
 			switch (l_beginningWord) {
-			case "[Continents]": {
-				l_idx = loadMapContinentsFromFile(l_idx, l_lines);
-				break;
-			}
-			case "[Territories]": {
-				l_idx = loadMapCountriesFromFile(l_idx, l_lines);
-				break;
-			}
-			case "[borders]": {
-				l_idx = loadMapBordersFromFile(l_idx, l_lines);
-				break;
-			}
-			case "[Map]":
-			case "":
-			default: {
-				break;
-			}
+				case "[Continents]": {
+					l_idx = loadMapContinentsFromFile(l_idx, l_lines);
+					break;
+				}
+				case "[Territories]": {
+					l_idx = loadMapCountriesFromFile(l_idx, l_lines);
+					break;
+				}
+				case "[Map]":
+				case "":
+				default: {
+					break;
+				}
 			}
 		}
+		loadMapBorders();
 
 		// Validate map
 		MapValidator l_mapValidator = new MapValidator(this.d_gameEngine);
@@ -127,7 +126,7 @@ public class MapLoaderConquest {
 		System.out.println("...Reading Continents. Total: " + d_gameEngine.getMapState().getListOfContinents().size());
 		return p_idx;
 	}
-	
+
 	/**
 	 * A utility method to read the contents from file.
 	 * 
@@ -153,17 +152,20 @@ public class MapLoaderConquest {
 	 */
 	public int loadMapCountriesFromFile(int p_idx, List<String> p_lines) {
 		p_idx += 1;
+		int l_countryIdCount = 1;
 		while (checkSameBlock(p_idx, p_lines)) {
-			String[] l_segments = p_lines.get(p_idx).split(" ");
+			if (p_lines.get(p_idx).equals("")) {
+				p_idx++;
+				continue;
+			}
+			String[] l_segments = p_lines.get(p_idx).split(",");
 
-			int l_countryId = Integer.parseInt(l_segments[0]);
-			String l_countryName = l_segments[1];
-			int l_continentIdMap = Integer.parseInt(l_segments[2]);
+			int l_countryId = l_countryIdCount++;
+			String l_countryName = l_segments[0];
 
 			ContinentModel l_parentContinent = null;
 			for (ContinentModel l_Continent : d_gameEngine.getMapState().getListOfContinents()) {
-				int l_parentContinentOrder = d_gameEngine.getMapState().getListOfContinents().indexOf(l_Continent) + 1;
-				if (l_parentContinentOrder == l_continentIdMap) {
+				if (l_Continent.getName().equals(l_segments[3])) {
 					l_parentContinent = l_Continent;
 					break;
 				}
@@ -172,10 +174,6 @@ public class MapLoaderConquest {
 			// default coordinates
 			int l_x_coordinate = -1;
 			int l_y_coordinate = -1;
-			if (l_segments.length == 5) {
-				l_x_coordinate = Integer.parseInt(l_segments[3]);
-				l_y_coordinate = Integer.parseInt(l_segments[4]);
-			}
 			CoordinateModel l_coordinate = new CoordinateModel(l_x_coordinate, l_y_coordinate);
 
 			CountryModel l_currentCountry = new CountryModel(l_countryId, l_countryName, l_parentContinent,
@@ -183,6 +181,8 @@ public class MapLoaderConquest {
 			d_gameEngine.getMapState().getListOfCountries().add(l_currentCountry);
 			// Add the country to the continent as well.
 			l_parentContinent.getCountries().add(l_currentCountry);
+			
+			d_countryBorders.put(l_countryName, l_segments);
 			p_idx++;
 		}
 		System.out.println("...Reading Countries. Total: " + d_gameEngine.getMapState().getListOfCountries().size());
@@ -191,16 +191,12 @@ public class MapLoaderConquest {
 
 	/**
 	 * Load the borders from map file.
-	 * 
-	 * @param p_idx   Index of the current line
-	 * @param p_lines List of all the lines in the map file.
-	 * @return current index
 	 */
-	public int loadMapBordersFromFile(int p_idx, List<String> p_lines) {
+	public void loadMapBorders() {
 		int l_totalCountries = d_gameEngine.getMapState().getListOfCountries().size();
 		int[][] l_graph = new int[l_totalCountries][l_totalCountries];
 
-		p_idx += 1;
+		/*p_idx += 1;
 		while (checkSameBlock(p_idx, p_lines)) {
 			String[] l_segments = p_lines.get(p_idx).split(" ");
 			// parse the string segments into integers.
@@ -222,8 +218,7 @@ public class MapLoaderConquest {
 		}
 
 		d_gameEngine.getMapState().setBorderGraph(l_graph);
-		System.out.println("...Reading borders.");
-		return p_idx;
+		System.out.println("...Reading borders.");*/
 	}
 
 	/**
@@ -240,7 +235,6 @@ public class MapLoaderConquest {
 		if (p_idx >= p_lines.size()) {
 			return false;
 		}
-		String l_currentLine = p_lines.get(p_idx);
-		return !l_currentLine.equals("") && l_currentLine.contains(" ");
+		return true;
 	}
 }
