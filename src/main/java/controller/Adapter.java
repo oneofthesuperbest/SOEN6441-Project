@@ -1,5 +1,8 @@
 package controller;
 
+import java.io.IOException;
+import java.util.List;
+
 /**
  * This class implements the adapter class from adapte pattern
  */
@@ -25,6 +28,24 @@ public class Adapter extends MapLoaderWarzone {
 	 * @return true if map was loaded successfully else it returns false
 	 */
 	public boolean loadMapData(String p_fileName, boolean p_createNewFile, boolean p_allowInvalid) {
+		List<String> l_lines = null;
+		try {
+			l_lines = readMap(p_fileName);
+			if(l_lines.get(0).equals("[Map]")) {
+				d_mapLoaderConquest.loadMapData(p_fileName, p_createNewFile, p_allowInvalid);
+			} else {
+				super.loadMapData(p_fileName, p_createNewFile, p_allowInvalid);
+			}
+		} catch (IOException e) {
+			if (p_createNewFile) {
+				System.out.println("File not found. Loaded an empty map.");
+				return true;
+
+			} else {
+				System.out.println("error: file not found.");
+				return false;
+			}
+		}
 		
 		return true;
 	}

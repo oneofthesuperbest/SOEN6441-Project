@@ -60,17 +60,13 @@ public class MapLoaderConquest {
 
 		for (int l_idx = 0; l_idx < l_lines.size(); l_idx++) {
 			String l_currentLine = l_lines.get(l_idx);
-			// ignore the comments in .map file.
-			if (l_currentLine.startsWith(";")) {
-				continue;
-			}
 			String l_beginningWord = l_currentLine.split(" ")[0];
 			switch (l_beginningWord) {
-			case "[continents]": {
+			case "[Continents]": {
 				l_idx = loadMapContinentsFromFile(l_idx, l_lines);
 				break;
 			}
-			case "[countries]": {
+			case "[Territories]": {
 				l_idx = loadMapCountriesFromFile(l_idx, l_lines);
 				break;
 			}
@@ -78,7 +74,7 @@ public class MapLoaderConquest {
 				l_idx = loadMapBordersFromFile(l_idx, l_lines);
 				break;
 			}
-			case "[files]":
+			case "[Map]":
 			case "":
 			default: {
 				break;
@@ -113,7 +109,7 @@ public class MapLoaderConquest {
 	public int loadMapContinentsFromFile(int p_idx, List<String> p_lines) {
 		p_idx += 1;
 		while (checkSameBlock(p_idx, p_lines)) {
-			String[] l_segments = p_lines.get(p_idx).split(" ");
+			String[] l_segments = p_lines.get(p_idx).split("=");
 
 			String l_continentName = l_segments[0];
 			int l_continentArmy = Integer.parseInt(l_segments[1]);
