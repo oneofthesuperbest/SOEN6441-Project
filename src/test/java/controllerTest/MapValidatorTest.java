@@ -7,8 +7,8 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 
+import controller.Adapter;
 import controller.GameEngine;
-import controller.MapController;
 import model.LogEntryBuffer;
 import view.FileEntryLogger;
 
@@ -16,7 +16,7 @@ import view.FileEntryLogger;
  * This class is used to test MapValidator class
  */
 public class MapValidatorTest {
-	MapController d_mapController;
+	Adapter d_mapController;
 	GameEngine d_gameEngine;
 
 	/**
@@ -29,7 +29,7 @@ public class MapValidatorTest {
 		LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
 		FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
 		d_gameEngine = new GameEngine(l_scannerObject, d_logEntryBuffer, d_fileEntryLogger);
-		d_mapController = new MapController(d_gameEngine);
+		d_mapController = new Adapter(d_gameEngine);
 	}
 
 	/**

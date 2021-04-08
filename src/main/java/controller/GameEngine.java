@@ -160,7 +160,7 @@ public class GameEngine {
 	 * @param p_command The tournament command entered by user
 	 */
 	void playTournament(String[] p_command) {
-		MapController l_mapController = new MapController(this);
+		Adapter l_mapLoader = new Adapter(this);
 		ArrayList<ArrayList<String>> l_result = new ArrayList<ArrayList<String>>();
 		String[] l_maps = p_command[2].split(",");
 		int l_currentMapIndex = 0;
@@ -171,7 +171,7 @@ public class GameEngine {
 			int l_game = l_totalGames;
 			ArrayList<String> l_mapResult = new ArrayList<String>();
 			while (l_game > 0) {
-				if (l_mapController.loadMapData(l_maps[l_currentMapIndex], false, false)) {
+				if (l_mapLoader.loadMapData(l_maps[l_currentMapIndex], false, false)) {
 					for (String l_player : l_players) {
 						if (!l_player.equals("human")) {
 							d_playerState.addPlayer(new Player(l_player, l_player, this, d_scannerObject));

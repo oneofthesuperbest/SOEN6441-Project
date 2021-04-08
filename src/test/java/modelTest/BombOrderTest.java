@@ -7,8 +7,8 @@ import java.util.Scanner;
 import org.junit.Before;
 import org.junit.Test;
 
+import controller.Adapter;
 import controller.GameEngine;
-import controller.MapController;
 import model.CountryModel;
 import model.LogEntryBuffer;
 import model.Order;
@@ -35,7 +35,7 @@ public class BombOrderTest {
 		LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
 		FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
 		GameEngine l_gameEngine = new GameEngine(l_scannerObject, d_logEntryBuffer, d_fileEntryLogger);
-		MapController l_mapController = new MapController(l_gameEngine);
+		Adapter l_mapController = new Adapter(l_gameEngine);
 		l_mapController.loadMapData("src/test/test_resources/testmap_3Countries.map", false, false);
 		l_gameEngine.setPhase(3);
 		d_player = new Player("Test", "", l_gameEngine, l_scannerObject);

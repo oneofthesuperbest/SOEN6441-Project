@@ -1,4 +1,1391 @@
-# Thu Apr 08 02:54:50 IST 2021 -- -----------------Default phase initialized-----------------
-# Thu Apr 08 02:54:50 IST 2021 -- -----------------Game play issue order phase initialized-----------------
-# Thu Apr 08 02:54:50 IST 2021 -- Advance order was issued.
-# Thu Apr 08 02:54:50 IST 2021 -- Advanced 2 armies from Alberta to BC
+# Fri Apr 09 00:29:02 IST 2021 -- -----------------Default phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Starting tournament.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 5 armies on country Mato_Grosso
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 5 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Roraima
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 5 armies from Mato_Grosso to Amazonas
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 5 armies from Rio_de_Janeiro to Minas_Gerais
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Amapa
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Can't delop armies on Para. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Amazonas
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 5 armies on country Parana
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 5 armies from Amazonas to Acre
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 5 armies from Parana to Mato_Grosso_do_Sul
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Roraima
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Acre. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Acre. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Acre. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Player benevolent has won the game!!!
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Minas_Gerais
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Ceara
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 5 armies on country Sergipe
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Ceara to Piaui
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 5 armies from Sergipe to Alagoas
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Sao_Paulo
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Santa_Catarina
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Parana
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Minas_Gerais
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Can't delop armies on Espirito_Santo. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Ceara
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Ceara to Piaui
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Fernando_de_Noronha to Rio_Grande_do_Norte
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Santa_Catarina
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Parana
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Santa_Catarina
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Parana
+# Fri Apr 09 00:29:14 IST 2021 -- Player benevolent has won the game!!!
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Santa_Catarina
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Alagoas
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 6 armies on country Mato_Grosso_do_Sul
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Parana
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Alagoas to Pernambuco
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 6 armies from Mato_Grosso_do_Sul to Mato_Grosso
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Pernambuco. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Acre
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Pernambuco. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Pernambuco. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Santa_Catarina
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 6 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Parana
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 6 armies from Rio_de_Janeiro to Minas_Gerais
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Santa_Catarina
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Parana
+# Fri Apr 09 00:29:14 IST 2021 -- Player benevolent has won the game!!!
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Santa_Catarina
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Alagoas
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 6 armies on country Mato_Grosso_do_Sul
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Parana
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Alagoas to Pernambuco
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 6 armies from Mato_Grosso_do_Sul to Mato_Grosso
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Pernambuco. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Acre
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Pernambuco. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Pernambuco. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Santa_Catarina
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 6 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Parana
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 6 armies from Rio_de_Janeiro to Minas_Gerais
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Santa_Catarina
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Parana
+# Fri Apr 09 00:29:14 IST 2021 -- Player benevolent has won the game!!!
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Can't delop armies on Mato_Grosso_do_Sul. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Amapa
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Paraiba
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Goias
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Amapa to Para
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Paraiba to Rio_Grande_do_Norte
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Distrito_Federal
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Minas_Gerais
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Can't delop armies on Goias. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Amapa
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Norte
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Distrito_Federal
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Amapa to Para
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 6 armies from Rio_Grande_do_Norte to Ceara
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Player benevolent has won the game!!!
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Can't delop armies on Mato_Grosso_do_Sul. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Amapa
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Paraiba
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Distrito_Federal
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Amapa to Para
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Paraiba to Rio_Grande_do_Norte
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Can't delop armies on Distrito_Federal. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Amapa
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Norte
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Amapa to Para
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 6 armies from Rio_Grande_do_Norte to Ceara
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Player cheater has won the game!!!
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Amazonas
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 5 armies on country Mato_Grosso
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 27 armies on country Minas_Gerais
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 5 armies from Mato_Grosso to Amazonas
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 27 armies from Minas_Gerais to Bahia
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Roraima
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Bomb order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Can't delop armies on Amapa. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 5 armies on country Mato_Grosso_do_Sul
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 27 armies on country Minas_Gerais
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 5 armies from Mato_Grosso_do_Sul to Mato_Grosso
+# Fri Apr 09 00:29:14 IST 2021 -- Can't bomb Bahia. Player doesn't have bomb card.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Mato_Grosso. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 27 armies from Minas_Gerais to Bahia
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Mato_Grosso. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Mato_Grosso. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Player benevolent has won the game!!!
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Roraima
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 5 armies on country Mato_Grosso
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 24 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Amapa
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 5 armies from Mato_Grosso to Amazonas
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 24 armies from Rio_de_Janeiro to Minas_Gerais
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Para
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Airlift order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Can't delop armies on Maranhao. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Amazonas
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 24 armies on country chandigarh
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Roraima
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 5 armies from Amazonas to Acre
+# Fri Apr 09 00:29:14 IST 2021 -- Can't airlift to Amazonas. Player doesn't have airlift card.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Amapa
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Acre. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Acre. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Acre. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Player benevolent has won the game!!!
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Amazonas
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 5 armies on country Mato_Grosso
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 27 armies on country Minas_Gerais
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 5 armies from Mato_Grosso to Amazonas
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 27 armies from Minas_Gerais to Bahia
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Roraima
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Can't delop armies on Amapa. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 5 armies on country Mato_Grosso_do_Sul
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 27 armies on country Minas_Gerais
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 5 armies from Mato_Grosso_do_Sul to Mato_Grosso
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 27 armies from Minas_Gerais to Bahia
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Mato_Grosso. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Mato_Grosso. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Mato_Grosso. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Player benevolent has won the game!!!
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Distrito_Federal
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Piaui
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Alagoas
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Minas_Gerais
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Piaui to Tocantins
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Alagoas to Pernambuco
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Tocantins. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Tocantins. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Distrito_Federal
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Tocantins. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Minas_Gerais
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Ceara
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 3 armies on country Pernambuco
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Distrito_Federal
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 3 armies from Ceara to Piaui
+# Fri Apr 09 00:29:14 IST 2021 -- Advanced 6 armies from Pernambuco to Piaui
+# Fri Apr 09 00:29:14 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:14 IST 2021 -- Player benevolent has won the game!!!
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:14 IST 2021 -- 	Game 1	Game 2	Game 3	Game 4	Game 5	
+res/maps/brasil/brasil.map	Draw	Draw	Draw	Draw	Draw	
+res/maps/saved/newsaved.map	Draw	Draw	Draw	Draw	Draw	
+
+# Fri Apr 09 00:29:14 IST 2021 -- -----------------Default phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Starting tournament.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 3 armies on country Amapa
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 3 armies on country Ceara
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Distrito_Federal
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 3 armies from Amapa to Para
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 3 armies from Ceara to Piaui
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Distrito_Federal
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Can't delop armies on Distrito_Federal. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 3 armies on country Amapa
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 3 armies on country Piaui
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 3 armies from Amapa to Para
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 6 armies from Piaui to Tocantins
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Para. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 3 armies on country Ceara
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 3 armies from Ceara to Piaui
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Norte
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 3 armies from Rio_Grande_do_Norte to Ceara
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Can't delop armies on Fernando_de_Noronha. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Maranhao
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 8 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 7 armies on country Acre
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Ceara
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 8 armies from Rio_de_Janeiro to Minas_Gerais
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 7 armies from Acre to Amazonas
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Maranhao
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Minas_Gerais. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Minas_Gerais. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Minas_Gerais. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Can't delop armies on Ceara. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 3 armies from Rio_Grande_do_Sul to Santa_Catarina
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Santa_Catarina. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Santa_Catarina. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Santa_Catarina. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 3 armies from Rio_Grande_do_Sul to Santa_Catarina
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Santa_Catarina. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Santa_Catarina. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Santa_Catarina. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Can't delop armies on Tocantins. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 6 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Maranhao
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 6 armies from Rio_de_Janeiro to Minas_Gerais
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 3 armies from Rio_Grande_do_Sul to Santa_Catarina
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Ceara
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Minas_Gerais. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Minas_Gerais. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Minas_Gerais. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Bomb order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Can't delop armies on Maranhao. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:24 IST 2021 -- Can't bomb Santa_Catarina. Player doesn't have bomb card.
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 3 armies from Rio_Grande_do_Sul to Santa_Catarina
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Paraiba
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 5 armies on country Santa_Catarina
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 3 armies on country Para
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Pernambuco
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 5 armies from Santa_Catarina to Parana
+# Fri Apr 09 00:29:24 IST 2021 -- Advanced 3 armies from Para to Amazonas
+# Fri Apr 09 00:29:24 IST 2021 -- Deployed 1 armies on country Alagoas
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Parana. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Parana. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- Can't advance armies on Parana. Player doesn't have enough armies.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:24 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:24 IST 2021 -- Can't delop armies on Sergipe. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 5 armies on country Santa_Catarina
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Amapa
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 5 armies from Santa_Catarina to Parana
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Amapa to Para
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Paraiba
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Parana. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Parana. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Parana. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Amapa
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Rio_Grande_do_Sul to Santa_Catarina
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Amapa to Para
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Santa_Catarina. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Santa_Catarina. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Santa_Catarina. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Can't delop armies on Fernando_de_Noronha. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Rio_Grande_do_Sul to Santa_Catarina
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Santa_Catarina. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Santa_Catarina. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Santa_Catarina. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Can't delop armies on Tocantins. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 6 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Maranhao
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 6 armies from Rio_de_Janeiro to Minas_Gerais
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Rio_Grande_do_Sul to Santa_Catarina
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Ceara
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Minas_Gerais. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Minas_Gerais. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Minas_Gerais. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Bomb order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Can't delop armies on Maranhao. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Sul
+# Fri Apr 09 00:29:25 IST 2021 -- Can't bomb Santa_Catarina. Player doesn't have bomb card.
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Rio_Grande_do_Sul to Santa_Catarina
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Distrito_Federal
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Piaui
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Alagoas
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Minas_Gerais
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Piaui to Tocantins
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Alagoas to Pernambuco
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Tocantins. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Tocantins. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Distrito_Federal
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Tocantins. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Minas_Gerais
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Bomb order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Ceara
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Pernambuco
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Distrito_Federal
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Ceara to Piaui
+# Fri Apr 09 00:29:25 IST 2021 -- Can't bomb Piaui. Player doesn't have bomb card.
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 6 armies from Pernambuco to Piaui
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Can't delop armies on Distrito_Federal. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Ceara
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Alagoas
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Ceara to Piaui
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Alagoas to Bahia
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Bomb order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Norte
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Alagoas
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Rio_Grande_do_Norte to Ceara
+# Fri Apr 09 00:29:25 IST 2021 -- Can't bomb Pernambuco. Player doesn't have bomb card.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Ceara. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Alagoas to Pernambuco
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Ceara. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Ceara. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Norte
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Rio_Grande_do_Norte to Ceara
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Fernando_de_Noronha to Rio_Grande_do_Norte
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies from Rio_Grande_do_Norte. Country doesn't belong to player random
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies from Rio_Grande_do_Norte. Country doesn't belong to player random
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies from Rio_Grande_do_Norte. Country doesn't belong to player random
+# Fri Apr 09 00:29:25 IST 2021 -- Player cheater has won the game!!!
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Ceara
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 5 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Ceara to Piaui
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 5 armies from Fernando_de_Noronha to Rio_Grande_do_Norte
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Sao_Paulo
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Piaui. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Sao_Paulo
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Sao_Paulo
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Sao_Paulo
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Espirito_Santo
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Sao_Paulo
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Ceara
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Norte
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Ceara to Piaui
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 8 armies from Rio_Grande_do_Norte to Ceara
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies from Ceara. Country doesn't belong to player random
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies from Ceara. Country doesn't belong to player random
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies from Ceara. Country doesn't belong to player random
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Can't delop armies on mohali. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Fernando_de_Noronha to Paraiba
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Can't delop armies on chandigarh. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Fernando_de_Noronha to Rio_Grande_do_Norte
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Alagoas
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Acre
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Maranhao
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Sergipe
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Acre to Amazonas
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Maranhao to Para
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Can't delop armies on Alagoas. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Acre
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Ceara
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Acre to Amazonas
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Ceara to Piaui
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Rio_Grande_do_Norte
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Rio_Grande_do_Norte to Ceara
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Fernando_de_Noronha
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Can't delop armies on Fernando_de_Noronha. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Amapa
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 5 armies on country Mato_Grosso
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 24 armies on country Sao_Paulo
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Para
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 5 armies from Mato_Grosso to Amazonas
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 24 armies from Sao_Paulo to Mato_Grosso_do_Sul
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Maranhao
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Amapa
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Amazonas
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 24 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Amapa
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 5 armies from Amazonas to Acre
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 24 armies from mohali to Sao_Paulo
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Amapa
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Acre. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Acre. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Acre. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Can't delop armies on Amapa. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Acre
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 24 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 5 armies from Acre to Amazonas
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 24 armies from mohali to Sao_Paulo
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Amazonas. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 24 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 24 armies from chandigarh to mohali
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Bomb order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 24 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Can't bomb mohali. Player doesn't have bomb card.
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 24 armies from chandigarh to mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Player cheater has won the game!!!
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 3 armies on country Alagoas
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 6 armies on country Mato_Grosso_do_Sul
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 3 armies from Alagoas to Pernambuco
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 6 armies from Mato_Grosso_do_Sul to Mato_Grosso
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Acre
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Pernambuco. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Pernambuco. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Can't advance armies on Pernambuco. Player doesn't have enough armies.
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Acre
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Acre
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Acre
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Acre
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Acre
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country Rondonia
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Advance order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 6 armies on country Rio_de_Janeiro
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Advanced 6 armies from Rio_de_Janeiro to Minas_Gerais
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country mohali
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- Deployed 1 armies on country chandigarh
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play issue order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Delop order was issued.
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play execute order phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- Can't delop armies on chandigarh. Country doesn't belong to player benevolent
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Game play start-up phase initialized-----------------
+# Fri Apr 09 00:29:25 IST 2021 -- 	Game 1	Game 2	Game 3	Game 4	Game 5	
+res/maps/brasil/brasil.map	cheater	cheater	cheater	cheater	cheater	
+res/maps/saved/newsaved.map	Draw	cheater	cheater	Draw	cheater	
+
+# Fri Apr 09 00:29:25 IST 2021 -- -----------------Default phase initialized-----------------

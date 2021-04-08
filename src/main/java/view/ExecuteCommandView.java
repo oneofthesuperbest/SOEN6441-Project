@@ -1,5 +1,6 @@
 package view;
 
+import controller.Adapter;
 import controller.GameEngine;
 import controller.MapController;
 import controller.MapValidator;
@@ -20,8 +21,8 @@ public class ExecuteCommandView {
 	 * @return It return true if map is loaded else false
 	 */
 	public boolean readMapFile(GameEngine p_gameEngineObject, String p_filename) {
-		MapController l_mapController = new MapController(p_gameEngineObject);
-		return l_mapController.loadMapData(p_filename, true, true);
+		Adapter l_mapLoader = new Adapter(p_gameEngineObject);
+		return l_mapLoader.loadMapData(p_filename, true, true);
 	}
 
 	/**
@@ -34,8 +35,8 @@ public class ExecuteCommandView {
 	 * @return It return true if map is loaded else false
 	 */
 	public boolean loadMapFile(GameEngine p_gameEngineObject, String p_filename) {
-		MapController l_mapController = new MapController(p_gameEngineObject);
-		return l_mapController.loadMapData(p_filename, false, false);
+		Adapter l_mapLoader = new Adapter(p_gameEngineObject);
+		return l_mapLoader.loadMapData(p_filename, false, false);
 	}
 
 	/**

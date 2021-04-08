@@ -2,6 +2,7 @@ package controllerTest;
 
 import static org.junit.Assert.*;
 
+import controller.Adapter;
 import controller.GameEngine;
 import controller.MapController;
 import controller.MapValidator;
@@ -24,9 +25,10 @@ public class MapControllerTest {
 
 	LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
 	FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
-	GameEngine l_gameEngineObj = new GameEngine(new Scanner(System.in), d_logEntryBuffer, d_fileEntryLogger);
-	MapController l_mapController = new MapController(l_gameEngineObj);
-	MapValidator l_mapValidator = new MapValidator(l_gameEngineObj);
+	GameEngine d_gameEngineObj = new GameEngine(new Scanner(System.in), d_logEntryBuffer, d_fileEntryLogger);
+	MapController d_mapController = new MapController(d_gameEngineObj);
+	Adapter d_adapter = new Adapter(d_gameEngineObj);
+	MapValidator d_mapValidator = new MapValidator(d_gameEngineObj);
 
 	/**
 	 * Load a valid map before every test case.
@@ -34,7 +36,7 @@ public class MapControllerTest {
 	@Before
 	public void loadMapBeforeTest() {
 		// load a valid map.
-		l_mapController.loadMapData("src/test/test_resources/testmap.map", false, false);
+		d_adapter.loadMapData("src/test/test_resources/testmap.map", false, false);
 	}
 
 	/**
@@ -42,7 +44,7 @@ public class MapControllerTest {
 	 */
 	@After
 	public void clearMapAfterTest() {
-		l_gameEngineObj.getMapState().clear();
+		d_gameEngineObj.getMapState().clear();
 	}
 
 	/**
@@ -52,8 +54,8 @@ public class MapControllerTest {
 	@Test
 	public void mapValFullyConnectedTest() {
 		// isolate a country.
-		l_mapController.removeNeighbor("Alberta", "BC");
-		assertFalse(l_mapValidator.isMapValid());
+		d_mapController.removeNeighbor("Alberta", "BC");
+		assertFalse(d_mapValidator.isMapValid());
 	}
 
 	/**
@@ -63,8 +65,8 @@ public class MapControllerTest {
 	@Test
 	public void mapValFullyConnectedContinentTest() {
 		// disconnect countries in the continent.
-		l_mapController.removeNeighbor("Cali", "LA");
-		assertFalse(l_mapValidator.isMapValid());
+		d_mapController.removeNeighbor("Cali", "LA");
+		assertFalse(d_mapValidator.isMapValid());
 	}
 
 	/**
@@ -73,8 +75,8 @@ public class MapControllerTest {
 	@Test
 	public void addContinentTest() {
 		// add a new continent.
-		l_mapController.addContinent("NewContinent", 21);
-		ArrayList<ContinentModel> l_continentList = l_gameEngineObj.getMapState().getListOfContinents();
+		d_mapController.addContinent("NewContinent", 21);
+		ArrayList<ContinentModel> l_continentList = d_gameEngineObj.getMapState().getListOfContinents();
 		ContinentModel l_lastContinent = l_continentList.get(l_continentList.size() - 1);
 
 		assertEquals("NewContinent", l_lastContinent.getName());
@@ -87,8 +89,8 @@ public class MapControllerTest {
 	@Test
 	public void addCountryTest() {
 		// add a new country.
-		l_mapController.addCountry("NewCountry", "Canada");
-		ArrayList<CountryModel> l_countryList = l_gameEngineObj.getMapState().getListOfCountries();
+		d_mapController.addCountry("NewCountry", "Canada");
+		ArrayList<CountryModel> l_countryList = d_gameEngineObj.getMapState().getListOfCountries();
 		CountryModel l_lastCountry = l_countryList.get(l_countryList.size() - 1);
 
 		assertEquals("NewCountry", l_lastCountry.getName());
@@ -101,7 +103,7 @@ public class MapControllerTest {
 	@Test
 	public void mapValEmptyContinentTest() {
 		// add an empty country.
-		l_mapController.addContinent("EmptyContinent", 21);
-		assertFalse(l_mapValidator.isMapValid());
+		d_mapController.addContinent("EmptyContinent", 21);
+		assertFalse(d_mapValidator.isMapValid());
 	}
 }
