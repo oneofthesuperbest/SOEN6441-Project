@@ -93,12 +93,13 @@ public class ExecuteCommandView {
 	 * Save the map to the file described by the filename.
 	 * 
 	 * @param p_gameEngineObject GameEngine object that holds the map data.
-	 * @param fileName           Location where the map will be saved.
+	 * @param p_fileName           Location where the map will be saved.
+	 * @param p_type The type of map file. 1 for domination and 0 for conquest.
 	 * @return true if map was saved successful else returns false
 	 */
-	public boolean saveMap(GameEngine p_gameEngineObject, String fileName) {
-		MapController l_mapController = new MapController(p_gameEngineObject);
-		return l_mapController.saveMap(fileName);
+	public boolean saveMap(GameEngine p_gameEngineObject, String p_fileName, int p_type) {
+		Adapter l_mapController = new Adapter(p_gameEngineObject);
+		return l_mapController.saveMap(p_fileName, p_type);
 	}
 
 	/**

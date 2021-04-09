@@ -107,10 +107,16 @@ public class ValidateCommandView {
 			p_gameEngineObject.getPhase().validate();
 			return 1;
 		} else if (p_commandParameters[0].equals(CommandList.SAVEMAP.getCommandString())) {
-			if (p_commandParameters.length == 2) {
+			if (p_commandParameters.length == 3) {
 				// ------- Call ValidateMap function and based on the boolean value return call
 				// SaveMap
-				p_gameEngineObject.getPhase().saveMap(p_commandParameters[1]);
+				try {
+					p_gameEngineObject.getPhase().saveMap(p_commandParameters[1], Integer
+							.parseInt(p_commandParameters[2]));
+				} catch (NumberFormatException e) {
+					System.out.println("Invalid parameter type: One of the parameter is not of type integer");
+					return 0;
+				}
 				return 1;
 			} else {
 				if (p_commandParameters.length < 2) {

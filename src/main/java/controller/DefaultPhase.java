@@ -90,7 +90,7 @@ public class DefaultPhase extends IntermediateMapEditingPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void saveMap(String p_filename) {
+	public void saveMap(String p_filename, int p_type) {
 		printErrorMessage(this);
 	}
 

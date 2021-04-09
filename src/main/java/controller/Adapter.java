@@ -32,9 +32,9 @@ public class Adapter extends MapLoaderWarzone {
 		try {
 			l_lines = readMap(p_fileName);
 			if(l_lines.get(0).equals("[Map]")) {
-				d_mapLoaderConquest.loadMapData(p_fileName, p_createNewFile, p_allowInvalid);
+				return d_mapLoaderConquest.loadMapData(p_fileName, p_createNewFile, p_allowInvalid);
 			} else {
-				super.loadMapData(p_fileName, p_createNewFile, p_allowInvalid);
+				return super.loadMapData(p_fileName, p_createNewFile, p_allowInvalid);
 			}
 		} catch (IOException e) {
 			if (p_createNewFile) {
@@ -46,7 +46,20 @@ public class Adapter extends MapLoaderWarzone {
 				return false;
 			}
 		}
-		
-		return true;
+	}
+	
+	/**
+	 * Write the map to file.
+	 * 
+	 * @param p_fileName Filename to which the map is to be written.
+	 * @param p_type The type of map file. 1 for domination and 0 for conquest.
+	 * @return true if map was saved successful else returns false
+	 */
+	public boolean saveMap(String p_fileName, int p_type) {
+		if(p_type == 1) {
+			return saveMap(p_fileName);
+		} else {
+			return d_mapLoaderConquest.saveMap(p_fileName);
+		}
 	}
 }

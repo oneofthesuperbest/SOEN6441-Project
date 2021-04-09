@@ -69,7 +69,7 @@ public abstract class IntermediateGamePlayPhase extends Phase {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void saveMap(String p_filename) {
+	public void saveMap(String p_filename, int p_type) {
 		printErrorMessage(this);
 	}
 

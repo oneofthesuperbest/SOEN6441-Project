@@ -1,7 +1,5 @@
 package controller;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 
 import model.ContinentModel;
@@ -512,105 +510,6 @@ public class MapController {
 		System.out.println(l_topLabels);
 		System.out.println(l_sideLabels);
 		return l_listOfCountries;
-	}
-
-	/**
-	 * Write the map to file.
-	 * 
-	 * @param fileName Filename to which the map is to be written.
-	 * @return true if map was saved successful else returns false
-	 */
-	public boolean saveMap(String fileName) {
-		MapValidator l_mapValidator = new MapValidator(this.d_gameEngine);
-		if (!l_mapValidator.isMapValid()) {
-			System.out.println("savemap command failed: Map not valid");
-			return false;
-		}
-		FileWriter l_writer = null;
-		try {
-			l_writer = new FileWriter(fileName);
-			l_writer.write("; custom map, saved by the us.\n\n\n");
-
-			l_writer.write("[continents]\n");
-			saveContinents(l_writer);
-
-			l_writer.write("[countries]\n");
-			saveCountries(l_writer);
-
-			l_writer.write("[borders]\n");
-			saveBorders(l_writer);
-
-			l_writer.close();
-
-			return true;
-
-		} catch (IOException e) {
-			System.out.println("Error while writing to file. Invalid filename.");
-			return false;
-		}
-	}
-
-	/**
-	 * Write the Continent data in the map file.
-	 * 
-	 * @param p_writer FileWriter object.
-	 * @throws IOException Input-output related exceptions while writing to file.
-	 */
-	public void saveContinents(FileWriter p_writer) throws IOException {
-		ArrayList<ContinentModel> l_continents = d_gameEngine.getMapState().getListOfContinents();
-		for (ContinentModel l_continent : l_continents) {
-			String l_continentStr = l_continent.getName() + " " + l_continent.getArmy() + " " + l_continent.getColor();
-			p_writer.write(l_continentStr + "\n");
-		}
-
-		p_writer.write("\n");
-		System.out.println("...saved continents to file.");
-	}
-
-	/**
-	 * Write Country data in the map file.
-	 * 
-	 * @param p_writer FileWriter object.
-	 * @throws IOException Input-output related exceptions while writing to file.
-	 */
-	public void saveCountries(FileWriter p_writer) throws IOException {
-		ArrayList<CountryModel> l_countries = d_gameEngine.getMapState().getListOfCountries();
-		for (CountryModel l_country : l_countries) {
-			int l_countryOrd = d_gameEngine.getMapState().getListOfCountries().indexOf(l_country) + 1;
-			int l_continentOrd = d_gameEngine.getMapState().getListOfContinents().indexOf(l_country.getContinent()) + 1;
-			CoordinateModel l_coordinates = l_country.getCoordinate();
-			String l_countryStr = l_countryOrd + " " + l_country.getName() + " " + l_continentOrd + " "
-					+ l_coordinates.getX() + " " + l_coordinates.getY();
-			p_writer.write(l_countryStr + "\n");
-		}
-
-		p_writer.write("\n");
-		System.out.println("...saved countries to file.");
-	}
-
-	/**
-	 * Write border data in the map file.
-	 * 
-	 * @param p_writer FileWriter object.
-	 * @throws IOException Input-output related exceptions while writing to file.
-	 */
-	public void saveBorders(FileWriter p_writer) throws IOException {
-		ArrayList<CountryModel> l_countries = d_gameEngine.getMapState().getListOfCountries();
-
-		for (CountryModel l_country : l_countries) {
-			String l_countryStr = "";
-			int l_countryPosition = d_gameEngine.getMapState().getListOfCountries().indexOf(l_country) + 1;
-			l_countryStr += l_countryPosition + " ";
-			ArrayList<CountryModel> l_neighbors = getNeighbors(l_country);
-			for (CountryModel l_neighbor : l_neighbors) {
-				int l_neighborPosition = d_gameEngine.getMapState().getListOfCountries().indexOf(l_neighbor) + 1;
-				l_countryStr += l_neighborPosition + " ";
-			}
-			p_writer.write(l_countryStr + "\n");
-		}
-
-		p_writer.write("\n");
-		System.out.println("...saved borders to file.");
 	}
 
 	/**

@@ -75,10 +75,10 @@ public class MapEditingPhase extends IntermediateMapEditingPhase {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void saveMap(String p_filename) {
+	public void saveMap(String p_filename, int p_type) {
 		ExecuteCommandView l_executeCVObject = new ExecuteCommandView();
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Save map command called.");
-		boolean l_returnValue = l_executeCVObject.saveMap(d_gameEngineObject, p_filename);
+		boolean l_returnValue = l_executeCVObject.saveMap(d_gameEngineObject, p_filename, p_type);
 		if (l_returnValue) {
 			System.out.println("Moving out of map editing phase.");
 			d_gameEngineObject.getLogEntryBuffer().addLogEntry("Map saved to " + p_filename);
