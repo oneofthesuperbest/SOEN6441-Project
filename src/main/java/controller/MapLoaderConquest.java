@@ -245,16 +245,13 @@ public class MapLoaderConquest {
 		FileWriter l_writer = null;
 		try {
 			l_writer = new FileWriter(fileName);
-			l_writer.write("; custom map, saved by the us.\n\n\n");
+			l_writer.write("[Map]\n\n\n");
 
-			l_writer.write("[continents]\n");
+			l_writer.write("[Continents]\n");
 			saveContinents(l_writer);
 
-			l_writer.write("[countries]\n");
+			l_writer.write("[Territories]\n");
 			saveCountries(l_writer);
-
-			l_writer.write("[borders]\n");
-			saveBorders(l_writer);
 
 			l_writer.close();
 
@@ -275,7 +272,7 @@ public class MapLoaderConquest {
 	public void saveContinents(FileWriter p_writer) throws IOException {
 		ArrayList<ContinentModel> l_continents = d_gameEngine.getMapState().getListOfContinents();
 		for (ContinentModel l_continent : l_continents) {
-			String l_continentStr = l_continent.getName() + " " + l_continent.getArmy() + " " + l_continent.getColor();
+			String l_continentStr = l_continent.getName() + "=" + l_continent.getArmy();
 			p_writer.write(l_continentStr + "\n");
 		}
 
@@ -292,41 +289,30 @@ public class MapLoaderConquest {
 	public void saveCountries(FileWriter p_writer) throws IOException {
 		ArrayList<CountryModel> l_countries = d_gameEngine.getMapState().getListOfCountries();
 		for (CountryModel l_country : l_countries) {
-			int l_countryOrd = d_gameEngine.getMapState().getListOfCountries().indexOf(l_country) + 1;
-			int l_continentOrd = d_gameEngine.getMapState().getListOfContinents().indexOf(l_country.getContinent()) + 1;
-			CoordinateModel l_coordinates = l_country.getCoordinate();
-			String l_countryStr = l_countryOrd + " " + l_country.getName() + " " + l_continentOrd + " "
-					+ l_coordinates.getX() + " " + l_coordinates.getY();
+			String l_continentName = l_country.getContinent().getName();
+			String l_countryStr = l_country.getName() + ",0,0," + l_continentName + saveBorders(l_country);
 			p_writer.write(l_countryStr + "\n");
 		}
 
 		p_writer.write("\n");
 		System.out.println("...saved countries to file.");
+		System.out.println("...saved borders to file.");
 	}
 
 	/**
 	 * Write border data in the map file.
 	 * 
-	 * @param p_writer FileWriter object.
-	 * @throws IOException Input-output related exceptions while writing to file.
+	 * @param p_country The country for which to find borders.
+	 * @return The neighbours in string form.
 	 */
-	public void saveBorders(FileWriter p_writer) throws IOException {
+	public String saveBorders(CountryModel p_country) {
 		MapController l_mapController = new MapController(d_gameEngine);
-		ArrayList<CountryModel> l_countries = d_gameEngine.getMapState().getListOfCountries();
+		String l_neighbours = "";
+		ArrayList<CountryModel> l_countries = l_mapController.getNeighbors(p_country);
 
 		for (CountryModel l_country : l_countries) {
-			String l_countryStr = "";
-			int l_countryPosition = d_gameEngine.getMapState().getListOfCountries().indexOf(l_country) + 1;
-			l_countryStr += l_countryPosition + " ";
-			ArrayList<CountryModel> l_neighbors = l_mapController.getNeighbors(l_country);
-			for (CountryModel l_neighbor : l_neighbors) {
-				int l_neighborPosition = d_gameEngine.getMapState().getListOfCountries().indexOf(l_neighbor) + 1;
-				l_countryStr += l_neighborPosition + " ";
-			}
-			p_writer.write(l_countryStr + "\n");
+			l_neighbours += ("," + l_country.getName());
 		}
-
-		p_writer.write("\n");
-		System.out.println("...saved borders to file.");
+		return l_neighbours;
 	}
 }
