@@ -5,10 +5,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Map;
 
 import model.ContinentModel;
 import model.CoordinateModel;
@@ -20,6 +19,7 @@ import model.CountryModel;
 public class MapLoaderConquest {
 	private GameEngine d_gameEngine;
 	HashMap<String, String[]> d_countryBorders = new HashMap<String, String[]>();
+	HashMap<String, Integer> d_countryIds = new HashMap<String, Integer>();
 
 	/**
 	 * Create a new map controller with the specified GameEngine.
@@ -160,8 +160,9 @@ public class MapLoaderConquest {
 			}
 			String[] l_segments = p_lines.get(p_idx).split(",");
 
-			int l_countryId = l_countryIdCount++;
 			String l_countryName = l_segments[0];
+			d_countryIds.put(l_countryName, (l_countryIdCount - 1));
+			int l_countryId = l_countryIdCount++;
 
 			ContinentModel l_parentContinent = null;
 			for (ContinentModel l_Continent : d_gameEngine.getMapState().getListOfContinents()) {
@@ -195,30 +196,19 @@ public class MapLoaderConquest {
 	public void loadMapBorders() {
 		int l_totalCountries = d_gameEngine.getMapState().getListOfCountries().size();
 		int[][] l_graph = new int[l_totalCountries][l_totalCountries];
-
-		/*p_idx += 1;
-		while (checkSameBlock(p_idx, p_lines)) {
-			String[] l_segments = p_lines.get(p_idx).split(" ");
-			// parse the string segments into integers.
-			int[] l_intSegments = Arrays.stream(l_segments).mapToInt(Integer::parseInt).toArray();
-
-			// slice the intSegments array [1:length]
-			int l_start = 1;
-			int l_end = l_intSegments.length;
-			int[] l_neighbours = IntStream.range(l_start, l_end).map(i -> l_intSegments[i]).toArray();
-			int l_countryId = l_intSegments[0];
-
-			for (int l_neighbour : l_neighbours) {
-				// creating only one way connections at the moment.
-				// Assuming, 1-way connections are possible.
-				l_graph[l_countryId - 1][l_neighbour - 1] = 1;
+		
+		int l_currentCountryId = 0;
+		for(@SuppressWarnings("rawtypes") Map.Entry l_country : d_countryBorders.entrySet()) {
+			String[] l_neighbourMap = ((String[]) l_country.getValue());
+			for(int l_n = 4; l_n < l_neighbourMap.length; l_n++) {
+				int l_neighbourId = d_countryIds.get(l_neighbourMap[l_n]);
+				l_graph[l_currentCountryId][l_neighbourId] = 1;
 			}
-
-			p_idx++;
+			l_currentCountryId++;
 		}
-
+		
 		d_gameEngine.getMapState().setBorderGraph(l_graph);
-		System.out.println("...Reading borders.");*/
+		System.out.println("...Reading borders.");
 	}
 
 	/**
