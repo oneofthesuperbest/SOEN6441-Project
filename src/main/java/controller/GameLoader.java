@@ -15,6 +15,7 @@ import java.util.stream.IntStream;
 import model.ContinentModel;
 import model.CoordinateModel;
 import model.CountryModel;
+import model.Player;
 
 /**
  * This class is used to load and save games in warzone format
@@ -30,7 +31,7 @@ public class GameLoader {
 	public GameLoader(GameEngine p_gameEngine) {
 		d_gameEngine = p_gameEngine;
 	}
-	
+
 	/**
 	 * Load the map contents into the game.
 	 * 
@@ -61,36 +62,45 @@ public class GameLoader {
 			}
 		}
 
-		for (int l_idx = 0; l_idx < l_lines.size(); l_idx++) {
-			String l_currentLine = l_lines.get(l_idx);
-			// ignore the comments in .map file.
-			if (l_currentLine.startsWith(";")) {
-				continue;
+		try {
+			for (int l_idx = 0; l_idx < l_lines.size(); l_idx++) {
+				String l_currentLine = l_lines.get(l_idx);
+				// ignore the comments in .map file.
+				if (l_currentLine.startsWith(";")) {
+					continue;
+				}
+				String l_beginningWord = l_currentLine.split(" ")[0];
+				switch (l_beginningWord) {
+				case "[continents]": {
+					l_idx = loadMapContinentsFromFile(l_idx, l_lines);
+					break;
+				}
+				case "[countries]": {
+					l_idx = loadMapCountriesFromFile(l_idx, l_lines);
+					break;
+				}
+				case "[borders]": {
+					l_idx = loadMapBordersFromFile(l_idx, l_lines);
+					break;
+				}
+				case "[game]": {
+					l_idx = loadGameEngine(l_idx, l_lines);
+					break;
+				}
+				case "[players]": {
+					l_idx = loadPlayers(l_idx, l_lines);
+					break;
+				}
+				case "[files]":
+				case "":
+				default: {
+					break;
+				}
+				}
 			}
-			String l_beginningWord = l_currentLine.split(" ")[0];
-			switch (l_beginningWord) {
-			case "[continents]": {
-				l_idx = loadMapContinentsFromFile(l_idx, l_lines);
-				break;
-			}
-			case "[countries]": {
-				l_idx = loadMapCountriesFromFile(l_idx, l_lines);
-				break;
-			}
-			case "[borders]": {
-				l_idx = loadMapBordersFromFile(l_idx, l_lines);
-				break;
-			}
-			case "[game]": {
-				l_idx = loadGameEngine(l_idx, l_lines);
-				break;
-			}
-			case "[files]":
-			case "":
-			default: {
-				break;
-			}
-			}
+		} catch (Exception e) {
+			System.out.println("The file is not a valid game file.");
+			return false;
 		}
 
 		// Validate map
@@ -111,7 +121,7 @@ public class GameLoader {
 			return true;
 		}
 	}
-	
+
 	/**
 	 * Load the GameEngine data from map file.
 	 * 
@@ -121,16 +131,31 @@ public class GameLoader {
 	 */
 	public int loadGameEngine(int p_idx, List<String> p_lines) {
 		p_idx += 1;
-		this.d_gameEngine.d_maxTurns = Integer.parseInt( p_lines.get(p_idx));
+		this.d_gameEngine.d_maxTurns = Integer.parseInt(p_lines.get(p_idx));
 		p_idx += 1;
 		String[] l_segments = p_lines.get(p_idx).split(" ");
 
-		for(String l_player : l_segments) {
+		for (String l_player : l_segments) {
 			this.d_gameEngine.d_playersMapCompleted.put(l_player, 1);
 		}
 
 		p_idx++;
 		System.out.println("...Read GameEngine data");
+		return p_idx;
+	}
+	
+	/**
+	 * Load the players data from map file.
+	 * 
+	 * @param p_idx   Index of the current line.
+	 * @param p_lines List of all the lines in the map file.
+	 * @return current index.
+	 */
+	public int loadPlayers(int p_idx, List<String> p_lines) {
+		//+++++++++++++++++++ load players
+
+		p_idx++;
+		System.out.println("...Read Players data");
 		return p_idx;
 	}
 
@@ -162,7 +187,7 @@ public class GameLoader {
 		System.out.println("...Reading Continents. Total: " + d_gameEngine.getMapState().getListOfContinents().size());
 		return p_idx;
 	}
-	
+
 	/**
 	 * A utility method to read the contents from file.
 	 * 
@@ -215,6 +240,8 @@ public class GameLoader {
 
 			CountryModel l_currentCountry = new CountryModel(l_countryId, l_countryName, l_parentContinent,
 					l_coordinate);
+			l_currentCountry.setPotentialArmies(Integer.parseInt(l_segments[5]));
+			l_currentCountry.setArmies(Integer.parseInt(l_segments[6]));
 			d_gameEngine.getMapState().getListOfCountries().add(l_currentCountry);
 			// Add the country to the continent as well.
 			l_parentContinent.getCountries().add(l_currentCountry);
@@ -278,7 +305,7 @@ public class GameLoader {
 		String l_currentLine = p_lines.get(p_idx);
 		return !l_currentLine.equals("") && l_currentLine.contains(" ");
 	}
-	
+
 	/**
 	 * Write the map to file.
 	 * 
@@ -304,9 +331,12 @@ public class GameLoader {
 
 			l_writer.write("[borders]\n");
 			saveBorders(l_writer);
-			
+
 			l_writer.write("[game]\n");
 			saveGameEngine(l_writer);
+
+			l_writer.write("[players]\n");
+			savePlayers(l_writer);
 
 			l_writer.close();
 
@@ -318,7 +348,7 @@ public class GameLoader {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Write the GameEngine data in the map file.
 	 * 
@@ -328,14 +358,54 @@ public class GameLoader {
 	public void saveGameEngine(FileWriter p_writer) throws IOException {
 		p_writer.write(d_gameEngine.d_maxTurns + "\n");
 		String l_concludedPlayers = "";
-		for(@SuppressWarnings("rawtypes") Map.Entry l_player : d_gameEngine.d_playersMapCompleted.entrySet()) {
+		for (@SuppressWarnings("rawtypes")
+		Map.Entry l_player : d_gameEngine.d_playersMapCompleted.entrySet()) {
 			l_concludedPlayers += (((String) l_player.getKey()) + " ");
 		}
-		
+
 		p_writer.write(l_concludedPlayers + "\n");
 
 		p_writer.write("\n");
+		p_writer.write("\n");
 		System.out.println("...saved GameEngine data to file.");
+	}
+
+	/**
+	 * Write the Players data in the map file.
+	 * 
+	 * @param p_writer FileWriter object.
+	 * @throws IOException Input-output related exceptions while writing to file.
+	 */
+	public void savePlayers(FileWriter p_writer) throws IOException {
+		ArrayList<Player> l_players = d_gameEngine.getPlayersState().getPlayers();
+		for (Player l_player : l_players) {
+			String l_playerStr = l_player.getName() + " " + l_player.d_playerStrategy.getClass().getName() + " "
+					+ l_player.getReinforcementsArmies() + "\n";
+			for(CountryModel l_country : l_player.getOwnedCountry()) {
+				l_playerStr += (l_country.getName() + " ");
+			}
+			l_playerStr += "\n";
+			for(String l_country : l_player.getConcurredCountries()) {
+				l_playerStr += (l_country + " ");
+			}
+			l_playerStr += "\n";
+			for(String l_negPlayer : l_player.getNegotiatingPlayers()) {
+				l_playerStr += (l_negPlayer + " ");
+			}
+			l_playerStr += "\n";
+			for(int l_card : l_player.getCards()) {
+				l_playerStr += (l_card + " ");
+			}
+			l_playerStr += "\n";
+			
+			//++++++++++++++ save players orders
+			
+			p_writer.write(l_playerStr + "\n");
+		}
+
+		p_writer.write("\n");
+		p_writer.write("\n");
+		System.out.println("...saved players data to file.");
 	}
 
 	/**
@@ -368,7 +438,8 @@ public class GameLoader {
 			int l_continentOrd = d_gameEngine.getMapState().getListOfContinents().indexOf(l_country.getContinent()) + 1;
 			CoordinateModel l_coordinates = l_country.getCoordinate();
 			String l_countryStr = l_countryOrd + " " + l_country.getName() + " " + l_continentOrd + " "
-					+ l_coordinates.getX() + " " + l_coordinates.getY();
+					+ l_coordinates.getX() + " " + l_coordinates.getY() + " " + l_country.getPotentialArmies() + " "
+					+ l_country.getArmies();
 			p_writer.write(l_countryStr + "\n");
 		}
 

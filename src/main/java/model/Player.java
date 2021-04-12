@@ -15,7 +15,7 @@ public class Player {
 	private ArrayList<Order> d_listOfOrders = new ArrayList<Order>();
 	private ArrayList<String> d_listOfConcurredCountries = new ArrayList<String>();
 	private ArrayList<String> d_listOfNegotiatingPlayers = new ArrayList<String>();
-	Strategy d_playerStrategy;
+	public Strategy d_playerStrategy;
 
 	/**
 	 * 0 for bomb card, 1 for blockade card, 2 for airlift card and 3 for negotiate
