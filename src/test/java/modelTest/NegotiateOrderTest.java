@@ -38,7 +38,7 @@ public class NegotiateOrderTest {
 		FileEntryLogger d_fileEntryLogger = new FileEntryLogger(d_logEntryBuffer);
 		d_gameEngine = new GameEngine(l_scannerObject, d_logEntryBuffer, d_fileEntryLogger);
 		Adapter l_mapController = new Adapter(d_gameEngine);
-		l_mapController.loadMapData("src/test/test_resources/testmap_3Countries.map", false, false);
+		l_mapController.loadMapData("src/test/test_resources/testmap_3Countries_Domination.map", false, false);
 		d_gameEngine.setPhase(3);
 		d_player = new Player("Test", "", d_gameEngine, l_scannerObject);
 		d_gameEngine.getPlayersState().addPlayer(d_player);

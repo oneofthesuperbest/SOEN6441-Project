@@ -1,0 +1,11 @@
+[Map]
+
+
+[Continents]
+TestContinent=5
+
+[Territories]
+TestCountry1,0,0,TestContinent,TestCountry2,TestCountry3
+TestCountry2,0,0,TestContinent,TestCountry1
+TestCountry3,0,0,TestContinent,TestCountry2
+

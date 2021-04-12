@@ -155,7 +155,7 @@ public class MapLoaderConquest {
 	public int loadMapCountriesFromFile(int p_idx, List<String> p_lines) {
 		p_idx += 1;
 		int l_countryIdCount = 1;
-		while (checkSameBlock(p_idx, p_lines)) {
+		while (checkSameBlockForCountries(p_idx, p_lines)) {
 			if (p_lines.get(p_idx).equals("")) {
 				p_idx++;
 				continue;
@@ -199,9 +199,9 @@ public class MapLoaderConquest {
 		int l_totalCountries = d_gameEngine.getMapState().getListOfCountries().size();
 		int[][] l_graph = new int[l_totalCountries][l_totalCountries];
 		
-		int l_currentCountryId = 0;
 		for(@SuppressWarnings("rawtypes") Map.Entry l_country : d_countryBorders.entrySet()) {
 			String[] l_neighbourMap = ((String[]) l_country.getValue());
+			int l_currentCountryId = d_countryIds.get((String) l_country.getKey());
 			for(int l_n = 4; l_n < l_neighbourMap.length; l_n++) {
 				int l_neighbourId = d_countryIds.get(l_neighbourMap[l_n]);
 				l_graph[l_currentCountryId][l_neighbourId] = 1;
@@ -224,6 +224,24 @@ public class MapLoaderConquest {
 	 *         block.
 	 */
 	public boolean checkSameBlock(int p_idx, List<String> p_lines) {
+		if (p_idx >= p_lines.size()) {
+			return false;
+		}
+		String l_currentLine = p_lines.get(p_idx);
+		return !l_currentLine.equals("") && l_currentLine.contains("=");
+	}
+	
+	/**
+	 * Checks whether the given line is a part of an existing block in the map file.
+	 * The check is based on the fact that the lines in a block are not blank and
+	 * contain at least 1 space.
+	 *
+	 * @param p_idx   Index of the current line.
+	 * @param p_lines List of all the lines in the map.
+	 * @return Boolean indicating whether the current line is a part of the existing
+	 *         block.
+	 */
+	public boolean checkSameBlockForCountries(int p_idx, List<String> p_lines) {
 		if (p_idx >= p_lines.size()) {
 			return false;
 		}

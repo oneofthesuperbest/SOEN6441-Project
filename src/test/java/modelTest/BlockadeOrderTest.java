@@ -37,7 +37,7 @@ public class BlockadeOrderTest {
 		GameEngine l_gameEngine = new GameEngine(l_scannerObject, d_logEntryBuffer, d_fileEntryLogger);
 		l_gameEngine.setNeutralPlayer();
 		Adapter l_mapController = new Adapter(l_gameEngine);
-		l_mapController.loadMapData("src/test/test_resources/testmap_3Countries.map", false, false);
+		l_mapController.loadMapData("src/test/test_resources/testmap_3Countries_Domination.map", false, false);
 		l_gameEngine.setPhase(3);
 		d_player = new Player("Test", "", l_gameEngine, l_scannerObject);
 		Player l_targetPlayer = new Player("Test1", "", l_gameEngine, l_scannerObject);
