@@ -45,7 +45,10 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 	 * {@inheritDoc}
 	 */
 	public void saveGame(String p_filename) {
-		
+		this.d_gameEngineObject.getLogEntryBuffer().addLogEntry("Game save command was issued.");
+		System.out.println("Game save command was issued.");
+		GameLoader p_gameLoader = new GameLoader(this.d_gameEngineObject);
+		p_gameLoader.saveGame(p_filename);
 	}
 
 	/**

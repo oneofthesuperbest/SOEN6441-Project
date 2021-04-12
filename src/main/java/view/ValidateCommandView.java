@@ -80,7 +80,7 @@ public class ValidateCommandView {
 			}
 		} else if (l_commandParameters[0].equals(CommandList.SAVEGAME.getCommandString())) {
 			if (l_commandParameters.length == 2) {
-				// ------- Call loadgame function
+				// ------- Call savegame function
 				p_gameEngineObject.getPhase().saveGame(l_commandParameters[1]);
 				return 1;
 			} else {

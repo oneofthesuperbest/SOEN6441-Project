@@ -30,6 +30,8 @@ public class GameEngine {
 	FileEntryLogger d_fileEntryLogger;
 	Player d_neutralPlayer = null;
 	int d_maxTurns = 20;
+	boolean d_isLoadedGame = false;
+	HashMap<String, Integer> d_playersMapCompleted = new HashMap<String, Integer>();
 
 	/**
 	 * This constructor is used to set the scanner object context
@@ -130,19 +132,27 @@ public class GameEngine {
 	public void loadGameEngineConsole() {
 		System.out.println("GameEngine console loaded.");
 		ValidateCommandView l_VCVObject = new ValidateCommandView();
-		while (true) {
-			if (!this.getPhase().getString().equals("start-up")) {
-				// Break out of Game engine console for user
-				break;
-			} else {
-				System.out.println("Enter your command");
-				String l_command = "";
-				l_command = d_scannerObject.nextLine();
-				l_VCVObject.checkCommand(this, l_command, null);
+		if (this.getPhase().toString().equals("issue order")) {
+			while (true) {
+				if (!this.getPhase().getString().equals("start-up")) {
+					// Break out of Game engine console for user
+					break;
+				} else {
+					System.out.println("Enter your command");
+					String l_command = "";
+					l_command = d_scannerObject.nextLine();
+					l_VCVObject.checkCommand(this, l_command, null);
+				}
 			}
+			this.setNeutralPlayer();
+			this.loadGameEngine();
+		} else {
+			if (this.d_neutralPlayer == null) {
+				this.setNeutralPlayer();
+			}
+			d_isLoadedGame = true;
+			this.loadGameEngine();
 		}
-		this.setNeutralPlayer();
-		this.loadGameEngine();
 	}
 
 	/**
@@ -221,10 +231,15 @@ public class GameEngine {
 	public void loadGameEngine() {
 		System.out.println("Game Engine loaded.");
 		while (true) {
-			this.d_maxTurns--;
-			this.setPhase(3);
-			this.assignReinforcements();
+			if (!d_isLoadedGame) {
+				this.d_maxTurns--;
+				this.setPhase(3);
+				this.assignReinforcements();
+			}
 			this.issueOrderLoop();
+			if (this.getPhase().toString().equals("default")) {
+				return;
+			}
 			this.setPhase(4);
 			this.executeOrderLoop();
 			this.removeLostPlayers();
@@ -316,21 +331,36 @@ public class GameEngine {
 	public void issueOrderLoop() {
 		ArrayList<Player> l_players = this.getPlayersState().getPlayers();
 		HashMap<String, Integer> l_playersMapCompleted = new HashMap<String, Integer>();
+		if (d_isLoadedGame) {
+			for (@SuppressWarnings("rawtypes")
+			Map.Entry l_player : d_playersMapCompleted.entrySet()) {
+				if (!((String) l_player.getKey()).equals("")) {
+					l_playersMapCompleted.put((String) l_player.getKey(), 1);
+				}
+			}
+		}
 
 		while (l_playersMapCompleted.size() < l_players.size()) {
 			for (Player l_player : l_players) {
 				if (l_playersMapCompleted.get(l_player.getName()) == null) {
 					if (l_player.getReinforcementsArmies() > 0) {
 						int l_returnValue = l_player.issueOrder();
+						if (this.getPhase().toString().equals("default")) {
+							return;
+						}
 						if (l_returnValue == 0) {
 							l_playersMapCompleted.put(l_player.getName(), 1);
+							d_playersMapCompleted.put(l_player.getName(), 1);
 						}
 					} else {
 						l_playersMapCompleted.put(l_player.getName(), 1);
+						d_playersMapCompleted.put(l_player.getName(), 1);
 					}
 				}
 			}
 		}
+		d_playersMapCompleted.clear();
+		d_isLoadedGame = false;
 		System.out.println("All players have issued their orders");
 	}
 

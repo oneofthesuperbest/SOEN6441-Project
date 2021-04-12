@@ -31,13 +31,11 @@ public class ConsoleView {
 			l_command = l_scannerObject.nextLine();
 			l_VCVObject.checkCommand(d_gameEngineObject, l_command, null);
 
-			if (d_gameEngineObject.getPhase().getString().equals("start-up")) {
-				// if phase 2 then exit loop and call GameEngine loadmap
-				break;
+			if (d_gameEngineObject.getPhase().getString().equals("start-up") || d_gameEngineObject.getPhase().getString().equals("issue order")) {
+				// if phase 2 then call GameEngine loadmap
+				System.out.println("Loading GameEngine console...");
+				d_gameEngineObject.loadGameEngineConsole();
 			}
 		}
-
-		System.out.println("Loading GameEngine console...");
-		d_gameEngineObject.loadGameEngineConsole();
 	}
 }
