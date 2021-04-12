@@ -55,6 +55,18 @@ public class DeployOrderTest {
 
 		// Check if 2 armies were deployed on the country
 		assertEquals(2, d_country.getArmies());
+	}
+	
+	/**
+	 * This function tests if order was executed correctly
+	 */
+	@Test
+	public void testConquerExecute() {
+		// Executing function
+		this.d_player.nextOrder();
+
+		// Check if 2 armies were deployed on the country
+		assertEquals(2, d_country.getArmies());
 		
 		//check reinforcements have been reduced
 		assertEquals(0, d_player.getReinforcementsArmies());

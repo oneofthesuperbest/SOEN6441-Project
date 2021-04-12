@@ -50,19 +50,26 @@ public class RandomStrategyTest {
 		d_targetCountry.setOwner(l_targetPlayer);
 		l_targetPlayer.addOwnedCountry(l_gameEngine.getMapState().getListOfCountries().get(0));
 		l_gameEngine.getMapState().getListOfCountries().get(0).setOwner(l_targetPlayer);
+		d_player.issueOrder();
+		d_player.issueOrder();
+		d_player.issueOrder();
+		d_player.issueOrder();
+		d_player.issueOrder();
 	}
 	
 	/**
 	 * This function tests if order was issued correctly
 	 */
 	@Test
-	public void testExecute() {
-		d_player.issueOrder();
-		d_player.issueOrder();
-		d_player.issueOrder();
-		d_player.issueOrder();
-		d_player.issueOrder();
+	public void testIssueExecute1() {
 		assertEquals(0, d_player.issueOrder());
+	}
+	
+	/**
+	 * This function tests if order was issued correctly
+	 */
+	@Test
+	public void testIssueExecute2() {
 		assertEquals(5, d_player.getOrders().size());
 	}
 	
@@ -70,7 +77,7 @@ public class RandomStrategyTest {
 	 * This function tests if countries were concurred correctly
 	 */
 	@Test
-	public void testExecuteOrder() {
+	public void testOrderExecute1() {
 		d_player.nextOrder();
 		
 		assertEquals(0, d_player.getReinforcementsArmies());

@@ -70,6 +70,20 @@ public class NegotiateOrderTest {
 
 		// Check if 1 armies were remains on the country
 		assertEquals(1, d_targetCountry.getArmies());
+	}
+	
+	/**
+	 * This function tests if order was executed correctly
+	 */
+	@Test
+	public void testConquerExecute() {
+		// Executing function
+		ValidateCommandView l_VCVObject = new ValidateCommandView();
+		l_VCVObject.checkCommand(d_gameEngine, "advance "+d_country.getName()+" "+d_targetCountry.getName()+" 2", this.d_player);
+		this.d_player.nextOrder();
+
+		// Check if 1 armies were remains on the country
+		assertEquals(1, d_targetCountry.getArmies());
 		
 		
 		// Check if country belongs to same player
@@ -81,6 +95,20 @@ public class NegotiateOrderTest {
 	 */
 	@Test
 	public void testOtherPlayersCommand() {
+		// Executing function
+		ValidateCommandView l_VCVObject = new ValidateCommandView();
+		l_VCVObject.checkCommand(d_gameEngine, "advance "+d_targetCountry.getName()+" "+d_country.getName()+" 1", this.d_targetPlayer);
+		this.d_targetPlayer.nextOrder();
+
+		// Check if 1 armies were remains on the country
+		assertEquals(2, d_country.getArmies());
+	}
+	
+	/**
+	 * This function tests if order was executed correctly
+	 */
+	@Test
+	public void testOtherPlayersConquerCommand() {
 		// Executing function
 		ValidateCommandView l_VCVObject = new ValidateCommandView();
 		l_VCVObject.checkCommand(d_gameEngine, "advance "+d_targetCountry.getName()+" "+d_country.getName()+" 1", this.d_targetPlayer);
