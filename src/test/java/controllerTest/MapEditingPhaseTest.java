@@ -37,7 +37,7 @@ public class MapEditingPhaseTest {
 	@Test public void testDefaultPhase() {
 		assertEquals("map editing", d_gameEngineObject.getPhase().getString());
 		
-		l_VCVObject.checkCommand(d_gameEngineObject, "savemap res/maps/saved/TestCase.map", null);
+		l_VCVObject.checkCommand(d_gameEngineObject, "savemap res/maps/saved/TestCase.map 1", null);
 		assertEquals("default", d_gameEngineObject.getPhase().getString());
 	}
 }
