@@ -54,6 +54,20 @@ public class DefaultPhase extends IntermediateMapEditingPhase {
 	/**
 	 * {@inheritDoc}
 	 */
+	public void loadGame(String p_filename) {
+		
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void saveGame(String p_filename) {
+		printErrorMessage(this);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	public void startTournament(String[] p_command) {
 		d_gameEngineObject.getLogEntryBuffer().addLogEntry("Starting tournament.");
 		d_gameEngineObject.playTournament(p_command);

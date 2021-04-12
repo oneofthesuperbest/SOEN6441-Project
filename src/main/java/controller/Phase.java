@@ -81,6 +81,22 @@ public abstract class Phase {
 	 * @param p_type The type of the map. 1 for domination and 0 for conquest.
 	 */
 	public abstract void saveMap(String p_filename, int p_type);
+	
+	/**
+	 * This function is used to invoke another function that saves current map being
+	 * edited
+	 * 
+	 * @param p_filename The filename for the new map
+	 */
+	public abstract void loadGame(String p_filename);
+	
+	/**
+	 * This function is used to invoke another function that saves current map being
+	 * edited
+	 * 
+	 * @param p_filename The filename for the new map
+	 */
+	public abstract void saveGame(String p_filename);
 
 	/**
 	 * This function is used to validate current map and display appropriate message

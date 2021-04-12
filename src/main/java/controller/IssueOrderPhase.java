@@ -40,6 +40,13 @@ public class IssueOrderPhase extends IntermediateOrderPhase {
 		p_order.getPlayer().addOrder(p_order);
 		return 1;
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void saveGame(String p_filename) {
+		
+	}
 
 	/**
 	 * {@inheritDoc}

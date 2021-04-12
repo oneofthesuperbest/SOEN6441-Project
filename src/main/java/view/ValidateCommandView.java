@@ -64,6 +64,33 @@ public class ValidateCommandView {
 				p_gameEngineObject.getPhase().startTournament(l_commandParameters);
 				return 1;
 			}
+			System.out.println("Invalid command: Please check your command");
+		} else if (l_commandParameters[0].equals(CommandList.LOADGAME.getCommandString())) {
+			if (l_commandParameters.length == 2) {
+				// ------- Call loadgame function
+				p_gameEngineObject.getPhase().loadGame(l_commandParameters[1]);
+				return 1;
+			} else {
+				if (l_commandParameters.length < 2) {
+					System.out.println("Incorrect command: filename not entered.");
+				} else {
+					System.out.println(
+							"Incorrect command: Extra parameters passed. loadgame command only requires 1 parameter.");
+				}
+			}
+		} else if (l_commandParameters[0].equals(CommandList.SAVEGAME.getCommandString())) {
+			if (l_commandParameters.length == 2) {
+				// ------- Call loadgame function
+				p_gameEngineObject.getPhase().saveGame(l_commandParameters[1]);
+				return 1;
+			} else {
+				if (l_commandParameters.length < 2) {
+					System.out.println("Incorrect command: filename not entered.");
+				} else {
+					System.out.println(
+							"Incorrect command: Extra parameters passed. savegame command only requires 1 parameter.");
+				}
+			}
 		} else {
 			int l_returnValue = isValidMapEditing(p_gameEngineObject, l_commandParameters);
 			if (l_returnValue == 0) {
@@ -77,7 +104,7 @@ public class ValidateCommandView {
 			}
 			return l_returnValue;
 		}
-		return 1;
+		return 0;
 	}
 
 	/**

@@ -21,6 +21,21 @@ public abstract class IntermediateMapEditingPhase extends Phase {
 	public void addPlayers(String[] p_command) {
 		printErrorMessage(this);
 	}
+	
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void loadGame(String p_filename) {
+		printErrorMessage(this);
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	public void saveGame(String p_filename) {
+		printErrorMessage(this);
+	}
 
 	/**
 	 * {@inheritDoc}

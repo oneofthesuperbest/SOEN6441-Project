@@ -173,6 +173,16 @@ public enum CommandList {
 	 * This is an enum for savemap command
 	 */
 	SAVEMAP("savemap"),
+	
+	/**
+	 * This is an enum for savegame command
+	 */
+	SAVEGAME("savegame"),
+	
+	/**
+	 * This is an enum for loadgame command
+	 */
+	LOADGAME("loadgame"),
 
 	/**
 	 * This is an enum for validatemap command
