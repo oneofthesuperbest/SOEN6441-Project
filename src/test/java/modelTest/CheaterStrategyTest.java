@@ -57,9 +57,15 @@ public class CheaterStrategyTest {
 	 * This function tests if order was issued correctly
 	 */
 	@Test
-	public void testExecute() {
+	public void testIssueExecute1() {
 		assertEquals(0, d_player.issueOrder());
-		
+	}
+	
+	/**
+	 * This function tests if order was issued correctly
+	 */
+	@Test
+	public void testIssueOrderExecute2() {
 		assertEquals(0, d_player.getOrders().size());
 	}
 	
@@ -67,8 +73,15 @@ public class CheaterStrategyTest {
 	 * This function tests if countries were concurred correctly
 	 */
 	@Test
-	public void testExecuteOrder() {
+	public void testOrderExecute1() {
 		assertEquals(4, d_targetCountry.getArmies());
+	}
+	
+	/**
+	 * This function tests if countries were concurred correctly
+	 */
+	@Test
+	public void testOrderExecute2() {
 		assertEquals(1, d_country.getArmies());
 	}
 	
@@ -76,11 +89,23 @@ public class CheaterStrategyTest {
 	 * This function tests if countries were concurred correctly
 	 */
 	@Test
-	public void testOwnership() {
+	public void testOrderExecute3() {
 		assertEquals(2, d_player.getOwnedCountry().size());
-		
+	}
+	
+	/**
+	 * This function tests if countries were concurred correctly
+	 */
+	@Test
+	public void testOrderExecute4() {
 		assertEquals("TestAF", d_targetCountry.getOwner().getName());
-		
+	}
+	
+	/**
+	 * This function tests if countries were concurred correctly
+	 */
+	@Test
+	public void testOrderExecute5() {
 		assertEquals(1, d_targetPlayer.getOwnedCountry().size());
 	}
 }

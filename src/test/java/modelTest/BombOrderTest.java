@@ -57,7 +57,19 @@ public class BombOrderTest {
 	 * This function tests if order was executed correctly
 	 */
 	@Test
-	public void testExecute() {
+	public void testOrderExecute1() {
+		// Executing function
+		this.d_player.nextOrder();
+
+		// Check if 1 armies were remains on the country
+		assertEquals(1, d_targetCountry.getArmies());
+	}
+	
+	/**
+	 * This function tests if order was executed correctly
+	 */
+	@Test
+	public void testOrderExecute2() {
 		// Executing function
 		this.d_player.nextOrder();
 

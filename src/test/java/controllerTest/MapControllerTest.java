@@ -80,6 +80,18 @@ public class MapControllerTest {
 		ContinentModel l_lastContinent = l_continentList.get(l_continentList.size() - 1);
 
 		assertEquals("NewContinent", l_lastContinent.getName());
+	}
+	
+	/**
+	 * Test if new Continent is added successfully.
+	 */
+	@Test
+	public void addContinentArmyTest() {
+		// add a new continent.
+		d_mapController.addContinent("NewContinent", 21);
+		ArrayList<ContinentModel> l_continentList = d_gameEngineObj.getMapState().getListOfContinents();
+		ContinentModel l_lastContinent = l_continentList.get(l_continentList.size() - 1);
+
 		assertEquals(21, l_lastContinent.getArmy());
 	}
 
@@ -94,6 +106,18 @@ public class MapControllerTest {
 		CountryModel l_lastCountry = l_countryList.get(l_countryList.size() - 1);
 
 		assertEquals("NewCountry", l_lastCountry.getName());
+	}
+	
+	/**
+	 * Test if the country is added successfully.
+	 */
+	@Test
+	public void addCountryContinentTest() {
+		// add a new country.
+		d_mapController.addCountry("NewCountry", "Canada");
+		ArrayList<CountryModel> l_countryList = d_gameEngineObj.getMapState().getListOfCountries();
+		CountryModel l_lastCountry = l_countryList.get(l_countryList.size() - 1);
+
 		assertEquals("Canada", l_lastCountry.getContinent().getName());
 	}
 

@@ -145,19 +145,26 @@ public class GameEngineTest {
 		l_listOfCoontinents.get(1).getCountries().add(l_country);
 		l_country.setOwner(l_listOfPlayers.get(0));
 		l_listOfPlayers.get(0).addOwnedCountry(l_country);
+		// calling functions that assigns reinforcements
+		d_gameEngineCase.assignReinforcements();
 	}
 
 	/**
 	 * This function is used to test assign Reinforcements functionality
 	 */
 	@Test
-	public void testAssignReinforcements() {
-		// calling functions that assigns reinforcements
-		d_gameEngineCase.assignReinforcements();
-
-		// checking if both players got the reinforcements as per the test case
+	public void testAssignReinforcements1() {
+		// checking if first players got the reinforcements as per the test case
 		assertEquals(d_gameEngineCase.getPlayersState().getPlayers().get(0).getReinforcementsArmies(),
 				d_gameEngineTestCase.getPlayersState().getPlayers().get(0).getReinforcementsArmies());
+	}
+	
+	/**
+	 * This function is used to test assign Reinforcements functionality
+	 */
+	@Test
+	public void testAssignReinforcements2() {
+		// checking if second players got the reinforcements as per the test case
 		assertEquals(d_gameEngineCase.getPlayersState().getPlayers().get(1).getReinforcementsArmies(),
 				d_gameEngineTestCase.getPlayersState().getPlayers().get(1).getReinforcementsArmies());
 	}

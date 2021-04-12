@@ -36,7 +36,12 @@ public class MapEditingPhaseTest {
 	 */
 	@Test public void testDefaultPhase() {
 		assertEquals("map editing", d_gameEngineObject.getPhase().getString());
-		
+	}
+	
+	/**
+	 * This function tests if commands are validated and phases are correctly initialized and transitioned
+	 */
+	@Test public void testSavePhase() {
 		l_VCVObject.checkCommand(d_gameEngineObject, "savemap res/maps/saved/TestCase.map 1", null);
 		assertEquals("default", d_gameEngineObject.getPhase().getString());
 	}

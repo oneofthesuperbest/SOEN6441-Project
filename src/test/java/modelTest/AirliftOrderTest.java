@@ -64,7 +64,34 @@ public class AirliftOrderTest {
 	 * This function tests if order was executed correctly
 	 */
 	@Test
-	public void testExecute() {
+	public void testExecute1() {
+		// Executing function
+		this.d_player.nextOrder();
+
+		// Check if 1 armies were remains on the country
+		assertEquals(1, d_targetCountry.getArmies());
+	}
+	
+	/**
+	 * This function tests if order was executed correctly
+	 */
+	@Test
+	public void testExecute2() {
+		// Executing function
+		this.d_player.nextOrder();
+
+		// Check if 1 armies were remains on the country
+		assertEquals(1, d_targetCountry.getArmies());
+		
+		// Check if country belongs to other player
+		assertEquals("Test", d_targetCountry.getOwner().getName());
+	}
+	
+	/**
+	 * This function tests if order was executed correctly
+	 */
+	@Test
+	public void testExecute3() {
 		// Executing function
 		this.d_player.nextOrder();
 

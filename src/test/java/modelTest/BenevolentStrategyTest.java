@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Scanner;
 
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 import controller.Adapter;
@@ -19,16 +19,16 @@ import view.FileEntryLogger;
  * This class is used to test BenevolentStrategy class
  */
 public class BenevolentStrategyTest {
-	static Order d_order;
-	static CountryModel d_country;
-	static CountryModel d_targetCountry;
-	static Player d_player;
-	
+	Order d_order;
+	CountryModel d_country;
+	CountryModel d_targetCountry;
+	Player d_player;
+
 	/**
 	 * Initialize test case
 	 */
-	@BeforeClass
-	public static void init() {
+	@Before
+	public void init() {
 		// Initializing test case
 		Scanner l_scannerObject = new Scanner(System.in);
 		LogEntryBuffer d_logEntryBuffer = new LogEntryBuffer();
@@ -48,29 +48,45 @@ public class BenevolentStrategyTest {
 		d_targetCountry.setOwner(d_player);
 		l_targetPlayer.addOwnedCountry(l_gameEngine.getMapState().getListOfCountries().get(0));
 		l_gameEngine.getMapState().getListOfCountries().get(0).setOwner(l_targetPlayer);
+		d_player.issueOrder();
+		d_player.issueOrder();
 	}
-	
+
 	/**
 	 * This function tests if order was issued correctly
 	 */
 	@Test
-	public void testExecute() {
-		d_player.issueOrder();
-		d_player.issueOrder();
-		
+	public void testIssueExecute1() {
 		assertEquals(0, d_player.issueOrder());
-		
+	}
+
+	/**
+	 * This function tests if order was issued correctly
+	 */
+	@Test
+	public void testIssueExecute2() {
 		assertEquals(2, d_player.getOrders().size());
+	}
+
+	/**
+	 * This function tests if order was executed correctly
+	 */
+	@Test
+	public void testExecuteOrder1() {
+		d_player.nextOrder();
+		d_player.nextOrder();
+
+		assertEquals(1, d_country.getArmies());
 	}
 	
 	/**
 	 * This function tests if order was executed correctly
 	 */
 	@Test
-	public void testExecuteOrder() {
+	public void testExecuteOrder2() {
 		d_player.nextOrder();
 		d_player.nextOrder();
-		
+
 		assertEquals(1, d_country.getArmies());
 		assertEquals(1, d_targetCountry.getArmies());
 	}

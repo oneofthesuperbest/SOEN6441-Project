@@ -50,6 +50,8 @@ public class AdvanceOrderTest {
 		d_targetCountry.setArmies(2);
 		ValidateCommandView l_VCVObject = new ValidateCommandView();
 		l_VCVObject.checkCommand(l_gameEngine, "advance "+d_country.getName()+" " + d_targetCountry.getName()+" 2", this.d_player);
+		// Executing function
+		this.d_player.nextOrder();
 	}
 
 	/**
@@ -57,15 +59,24 @@ public class AdvanceOrderTest {
 	 */
 	@Test
 	public void testExecute() {
-		// Executing function
-		this.d_player.nextOrder();
-
 		// Check if 1 armies were remains on the country
 		assertEquals(1, d_targetCountry.getArmies());
-		
+	}
+	
+	/**
+	 * This function tests if order was executed correctly
+	 */
+	@Test
+	public void testExecuteOwner() {
 		// Check if country belongs to same player
 		assertEquals("Test1", d_targetCountry.getOwner().getName());
-		
+	}
+	
+	/**
+	 * This function tests if order was executed correctly
+	 */
+	@Test
+	public void testExecuteArmies() {
 		//check armies have been reduced
 		assertEquals(0, d_country.getArmies());
 	}

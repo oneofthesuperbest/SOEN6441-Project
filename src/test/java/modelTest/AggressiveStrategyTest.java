@@ -23,7 +23,7 @@ public class AggressiveStrategyTest {
 	static CountryModel d_country;
 	static CountryModel d_targetCountry;
 	static Player d_player;
-	
+
 	/**
 	 * Initialize test case
 	 */
@@ -49,30 +49,60 @@ public class AggressiveStrategyTest {
 		l_targetPlayer.addOwnedCountry(l_gameEngine.getMapState().getListOfCountries().get(0));
 		l_gameEngine.getMapState().getListOfCountries().get(0).setOwner(l_targetPlayer);
 	}
-	
+
 	/**
 	 * This function tests if order was issued correctly
 	 */
 	@Test
 	public void testExecute() {
 		d_player.issueOrder();
-		
+
 		assertEquals(0, d_player.issueOrder());
-		
+	}
+
+	/**
+	 * This function tests if order was issued correctly
+	 */
+	@Test
+	public void testOrdersExecute() {
+		d_player.issueOrder();
+
+		assertEquals(0, d_player.issueOrder());
+
 		assertEquals(2, d_player.getOrders().size());
+	}
+
+	/**
+	 * This function tests if order was executed correctly
+	 */
+	@Test
+	public void testExecuteOrder1() {
+		d_player.nextOrder();
+		assertEquals(4, d_country.getArmies());
 	}
 	
 	/**
 	 * This function tests if order was executed correctly
 	 */
 	@Test
-	public void testExecuteOrder() {
-		d_player.nextOrder();
-		assertEquals(4, d_country.getArmies());
-		
+	public void testExecuteOrder2() {
 		d_player.nextOrder();
 		assertEquals(0, d_country.getArmies());
+	}
+	
+	/**
+	 * This function tests if order was executed correctly
+	 */
+	@Test
+	public void testExecuteOrder3() {
 		assertEquals(4, d_targetCountry.getArmies());
+	}
+	
+	/**
+	 * This function tests if order was executed correctly
+	 */
+	@Test
+	public void testExecuteOrder4() {
 		assertEquals("TestAF", d_targetCountry.getOwner().getName());
 	}
 }

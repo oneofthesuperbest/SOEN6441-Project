@@ -35,6 +35,14 @@ public class StartUpPhaseTest {
 	@Test public void testDefaultPhase() {
 		l_VCVObject.checkCommand(d_gameEngineObject, "loadmap res/maps/brasil/brasil.map", null);
 		assertEquals("start-up", d_gameEngineObject.getPhase().getString());
+	}
+	
+	/**
+	 * This function is used to test validation and switching of phases
+	 */
+	@Test public void testAssignPhase() {
+		l_VCVObject.checkCommand(d_gameEngineObject, "loadmap res/maps/brasil/brasil.map", null);
+		assertEquals("start-up", d_gameEngineObject.getPhase().getString());
 		
 		l_VCVObject.checkCommand(d_gameEngineObject, "assigncountries", null);
 		assertEquals("issue order", d_gameEngineObject.getPhase().getString());
