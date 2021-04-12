@@ -24,7 +24,9 @@ public abstract class Phase {
 	 * @param p_phase Object of the current phase
 	 */
 	void printErrorMessage(Phase p_phase) {
-		System.out.println("Invalid command: Command is invalid for " + p_phase.getString() + " phase");
+		String p_str = "Invalid command: Command is invalid for " + p_phase.getString() + " phase";
+		d_gameEngineObject.getLogEntryBuffer().addLogEntry(p_str);
+		System.out.println(p_str);
 	}
 
 	/**
@@ -108,6 +110,8 @@ public abstract class Phase {
 	
 	/**
 	 * This function is used to start the tournament
+	 * 
+	 * @param p_command The command to start tournament
 	 */
 	public abstract void startTournament(String[] p_command);
 
