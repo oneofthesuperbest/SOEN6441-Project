@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
@@ -22,6 +23,7 @@ import model.Player;
  */
 public class GameLoader {
 	private GameEngine d_gameEngine;
+	HashMap<String, CountryModel> d_countryMap = new HashMap<String, CountryModel>();
 
 	/**
 	 * Create a new map controller with the specified GameEngine.
@@ -133,6 +135,8 @@ public class GameLoader {
 		p_idx += 1;
 		this.d_gameEngine.d_maxTurns = Integer.parseInt(p_lines.get(p_idx));
 		p_idx += 1;
+		this.d_gameEngine.d_currentPlayer = p_lines.get(p_idx);
+		p_idx += 1;
 		String[] l_segments = p_lines.get(p_idx).split(" ");
 
 		for (String l_player : l_segments) {
@@ -143,7 +147,7 @@ public class GameLoader {
 		System.out.println("...Read GameEngine data");
 		return p_idx;
 	}
-	
+
 	/**
 	 * Load the players data from map file.
 	 * 
@@ -152,7 +156,56 @@ public class GameLoader {
 	 * @return current index.
 	 */
 	public int loadPlayers(int p_idx, List<String> p_lines) {
-		//+++++++++++++++++++ load players
+		while (p_idx >= p_lines.size() && !p_lines.get(p_idx).equals("[new]")) {
+			String[] l_player = p_lines.get(p_idx).split(" ");
+			Player l_currentPlayer = new Player(l_player[0], l_player[1], this.d_gameEngine,
+					this.d_gameEngine.d_scannerObject);
+			l_currentPlayer.setReinforcementsArmies(Integer.parseInt(l_player[2]));
+
+			p_idx++;
+			String[] l_country = p_lines.get(p_idx).split(" ");
+			for (String l_c : l_country) {
+				if (!l_c.equals(" ")) {
+					l_currentPlayer.addOwnedCountry(d_countryMap.get(l_c));
+				}
+			}
+
+			p_idx++;
+			String[] l_countryC = p_lines.get(p_idx).split(" ");
+			for (String l_c : l_countryC) {
+				if (!l_c.equals(" ")) {
+					l_currentPlayer.addConcurredCountry(l_c);
+				}
+			}
+
+			p_idx++;
+			String[] l_negPlayers = p_lines.get(p_idx).split(" ");
+			for (String l_negPlayer : l_negPlayers) {
+				if (!l_negPlayer.equals(" ")) {
+					l_currentPlayer.addNegotiatingPlayer(l_negPlayer);
+				}
+			}
+
+			p_idx++;
+			String[] l_cards = p_lines.get(p_idx).split(" ");
+			for (String l_negCard : l_cards) {
+				if (!l_negCard.equals(" ")) {
+					l_currentPlayer.d_playersCards.add(Integer.parseInt(l_negCard));
+				}
+			}
+			
+			p_idx++;
+			while(p_idx >= p_lines.size() && !p_lines.get(p_idx).equals("[new]")) {
+				
+				p_idx++;
+			}
+
+			if (l_currentPlayer.getName().equals("Neutral")) {
+				this.d_gameEngine.d_neutralPlayer = l_currentPlayer;
+			} else {
+				this.d_gameEngine.getPlayersState().addPlayer(l_currentPlayer);
+			}
+		}
 
 		p_idx++;
 		System.out.println("...Read Players data");
@@ -210,8 +263,9 @@ public class GameLoader {
 	 * @param p_idx   Index of the current line
 	 * @param p_lines List of all the lines in the map file.
 	 * @return current index
+	 * @throws Exception if the file is not a gmae file
 	 */
-	public int loadMapCountriesFromFile(int p_idx, List<String> p_lines) {
+	public int loadMapCountriesFromFile(int p_idx, List<String> p_lines) throws Exception {
 		p_idx += 1;
 		while (checkSameBlock(p_idx, p_lines)) {
 			String[] l_segments = p_lines.get(p_idx).split(" ");
@@ -242,6 +296,7 @@ public class GameLoader {
 					l_coordinate);
 			l_currentCountry.setPotentialArmies(Integer.parseInt(l_segments[5]));
 			l_currentCountry.setArmies(Integer.parseInt(l_segments[6]));
+			d_countryMap.put(l_countryName, l_currentCountry);
 			d_gameEngine.getMapState().getListOfCountries().add(l_currentCountry);
 			// Add the country to the continent as well.
 			l_parentContinent.getCountries().add(l_currentCountry);
@@ -357,6 +412,7 @@ public class GameLoader {
 	 */
 	public void saveGameEngine(FileWriter p_writer) throws IOException {
 		p_writer.write(d_gameEngine.d_maxTurns + "\n");
+		p_writer.write(d_gameEngine.d_currentPlayer + "\n");
 		String l_concludedPlayers = "";
 		for (@SuppressWarnings("rawtypes")
 		Map.Entry l_player : d_gameEngine.d_playersMapCompleted.entrySet()) {
@@ -379,29 +435,49 @@ public class GameLoader {
 	public void savePlayers(FileWriter p_writer) throws IOException {
 		ArrayList<Player> l_players = d_gameEngine.getPlayersState().getPlayers();
 		for (Player l_player : l_players) {
-			String l_playerStr = l_player.getName() + " " + l_player.d_playerStrategy.getClass().getName() + " "
+			String l_playerStr = "[new]\n" + l_player.getName() + " " + l_player.d_playerStrategy.getClass().getName() + " "
 					+ l_player.getReinforcementsArmies() + "\n";
-			for(CountryModel l_country : l_player.getOwnedCountry()) {
+			for (CountryModel l_country : l_player.getOwnedCountry()) {
 				l_playerStr += (l_country.getName() + " ");
 			}
 			l_playerStr += "\n";
-			for(String l_country : l_player.getConcurredCountries()) {
+			for (String l_country : l_player.getConcurredCountries()) {
 				l_playerStr += (l_country + " ");
 			}
 			l_playerStr += "\n";
-			for(String l_negPlayer : l_player.getNegotiatingPlayers()) {
+			for (String l_negPlayer : l_player.getNegotiatingPlayers()) {
 				l_playerStr += (l_negPlayer + " ");
 			}
 			l_playerStr += "\n";
-			for(int l_card : l_player.getCards()) {
+			for (int l_card : l_player.getCards()) {
 				l_playerStr += (l_card + " ");
 			}
 			l_playerStr += "\n";
-			
-			//++++++++++++++ save players orders
-			
+
+			// ++++++++++++++ save players orders
+
 			p_writer.write(l_playerStr + "\n");
 		}
+		Player l_player = this.d_gameEngine.getNeutralPlayer();
+		String l_playerStr = "[new]\n" + l_player.getName() + " " + l_player.d_playerStrategy.getClass().getName() + " "
+				+ l_player.getReinforcementsArmies() + "\n";
+		for (CountryModel l_country : l_player.getOwnedCountry()) {
+			l_playerStr += (l_country.getName() + " ");
+		}
+		l_playerStr += "\n";
+		for (String l_country : l_player.getConcurredCountries()) {
+			l_playerStr += (l_country + " ");
+		}
+		l_playerStr += "\n";
+		for (String l_negPlayer : l_player.getNegotiatingPlayers()) {
+			l_playerStr += (l_negPlayer + " ");
+		}
+		l_playerStr += "\n";
+		for (int l_card : l_player.getCards()) {
+			l_playerStr += (l_card + " ");
+		}
+		l_playerStr += "\n";
+		p_writer.write(l_playerStr + "\n");
 
 		p_writer.write("\n");
 		p_writer.write("\n");

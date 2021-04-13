@@ -20,7 +20,7 @@ public class Player {
 	/**
 	 * 0 for bomb card, 1 for blockade card, 2 for airlift card and 3 for negotiate
 	 */
-	private ArrayList<Integer> d_playersCards = new ArrayList<Integer>();
+	public ArrayList<Integer> d_playersCards = new ArrayList<Integer>();
 
 	/**
 	 * Creates a player with the specified name.
@@ -32,13 +32,13 @@ public class Player {
 	 */
 	public Player(String p_name, String p_strategy, GameEngine p_gameEngine, Scanner p_scannerObject) {
 		this.d_name = p_name;
-		if(p_strategy.equals("human")) {
+		if(p_strategy.equals("human") || p_strategy.equals("PlayerStrategy")) {
 			d_playerStrategy = new PlayerStrategy(p_gameEngine, this, p_scannerObject);
-		} else if(p_strategy.equals("aggressive")) {
+		} else if(p_strategy.equals("aggressive") || p_strategy.equals("AggressiveStrategy")) {
 			d_playerStrategy = new AggressiveStrategy(p_gameEngine, this, p_scannerObject);
-		} else if(p_strategy.equals("cheater")) {
+		} else if(p_strategy.equals("cheater") || p_strategy.equals("CheaterStrategy")) {
 			d_playerStrategy = new CheaterStrategy(p_gameEngine, this, p_scannerObject);
-		} else if(p_strategy.equals("benevolent")) {
+		} else if(p_strategy.equals("benevolent") || p_strategy.equals("BenevolentStrategy")) {
 			d_playerStrategy = new BenevolentStrategy(p_gameEngine, this, p_scannerObject);
 		} else {
 			d_playerStrategy = new RandomStrategy(p_gameEngine, this, p_scannerObject);

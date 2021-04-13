@@ -32,6 +32,7 @@ public class GameEngine {
 	int d_maxTurns = 20;
 	boolean d_isLoadedGame = false;
 	HashMap<String, Integer> d_playersMapCompleted = new HashMap<String, Integer>();
+	String d_currentPlayer;
 
 	/**
 	 * This constructor is used to set the scanner object context
@@ -342,25 +343,28 @@ public class GameEngine {
 
 		while (l_playersMapCompleted.size() < l_players.size()) {
 			for (Player l_player : l_players) {
-				if (l_playersMapCompleted.get(l_player.getName()) == null) {
-					if (l_player.getReinforcementsArmies() > 0) {
-						int l_returnValue = l_player.issueOrder();
-						if (this.getPhase().toString().equals("default")) {
-							return;
-						}
-						if (l_returnValue == 0) {
+				if ((d_isLoadedGame && l_player.getName().equals(d_currentPlayer)) || !d_isLoadedGame) {
+					if (l_playersMapCompleted.get(l_player.getName()) == null) {
+						if (l_player.getReinforcementsArmies() > 0) {
+							d_currentPlayer = l_player.getName();
+							int l_returnValue = l_player.issueOrder();
+							if (this.getPhase().toString().equals("default")) {
+								return;
+							}
+							if (l_returnValue == 0) {
+								l_playersMapCompleted.put(l_player.getName(), 1);
+								d_playersMapCompleted.put(l_player.getName(), 1);
+							}
+						} else {
 							l_playersMapCompleted.put(l_player.getName(), 1);
 							d_playersMapCompleted.put(l_player.getName(), 1);
 						}
-					} else {
-						l_playersMapCompleted.put(l_player.getName(), 1);
-						d_playersMapCompleted.put(l_player.getName(), 1);
 					}
+					d_isLoadedGame = false;
 				}
 			}
 		}
 		d_playersMapCompleted.clear();
-		d_isLoadedGame = false;
 		System.out.println("All players have issued their orders");
 	}
 
