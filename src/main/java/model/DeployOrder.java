@@ -8,8 +8,14 @@ import controller.GameEngine;
  * This class is used to store deploy order
  */
 public class DeployOrder extends Order {
-	String d_targetCountryName;
-	int d_numberOfArmies;
+	/**
+	 * Name of the target country
+	 */
+	public String d_targetCountryName;
+	/**
+	 * Number of armies to deploy
+	 */
+	public int d_numberOfArmies;
 	Player d_issuer;
 	GameEngine d_gameEngine;
 

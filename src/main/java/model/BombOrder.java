@@ -10,7 +10,10 @@ import controller.MapController;
  *
  */
 public class BombOrder extends Order {
-	String d_targetCountryName;
+	/**
+	 * Name of the target country
+	 */
+	public String d_targetCountryName;
 	Player d_issuer;
 	GameEngine d_gameEngine;
 

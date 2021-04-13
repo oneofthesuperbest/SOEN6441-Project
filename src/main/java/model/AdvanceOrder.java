@@ -9,9 +9,18 @@ import controller.MapController;
  * This class is used to store advance order
  */
 public class AdvanceOrder extends Order {
-	String d_targetCountryName;
-	String d_sourceCountryName;
-	int d_numberOfArmies;
+	/**
+	 * Name of the target country
+	 */
+	public String d_targetCountryName;
+	/**
+	 * Name of the source country
+	 */
+	public String d_sourceCountryName;
+	/**
+	 * number of armies to deploy
+	 */
+	public int d_numberOfArmies;
 	Player d_issuer;
 	GameEngine d_gameEngine;
 

@@ -11,10 +11,13 @@ import controller.GameEngine;
 public class Player {
 	private String d_name;
 	private ArrayList<CountryModel> d_listOfOwnedCountries = new ArrayList<CountryModel>();
-	private int d_reinforementsArmies;
+	private int d_reinforementsArmies = 0;
 	private ArrayList<Order> d_listOfOrders = new ArrayList<Order>();
 	private ArrayList<String> d_listOfConcurredCountries = new ArrayList<String>();
 	private ArrayList<String> d_listOfNegotiatingPlayers = new ArrayList<String>();
+	/**
+	 * The strategy of the player
+	 */
 	public Strategy d_playerStrategy;
 
 	/**

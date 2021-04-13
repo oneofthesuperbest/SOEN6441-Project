@@ -13,9 +13,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
+import model.AdvanceOrder;
+import model.AirliftOrder;
+import model.BlockadeOrder;
+import model.BombOrder;
 import model.ContinentModel;
 import model.CoordinateModel;
 import model.CountryModel;
+import model.DeployOrder;
+import model.NegotiateOrder;
+import model.Order;
 import model.Player;
 
 /**
@@ -156,7 +163,7 @@ public class GameLoader {
 	 * @return current index.
 	 */
 	public int loadPlayers(int p_idx, List<String> p_lines) {
-		while (p_idx >= p_lines.size() && !p_lines.get(p_idx).equals("[new]")) {
+		while (p_idx >= p_lines.size()) {
 			String[] l_player = p_lines.get(p_idx).split(" ");
 			Player l_currentPlayer = new Player(l_player[0], l_player[1], this.d_gameEngine,
 					this.d_gameEngine.d_scannerObject);
@@ -193,10 +200,26 @@ public class GameLoader {
 					l_currentPlayer.d_playersCards.add(Integer.parseInt(l_negCard));
 				}
 			}
-			
+
 			p_idx++;
-			while(p_idx >= p_lines.size() && !p_lines.get(p_idx).equals("[new]")) {
-				
+			while (p_idx >= p_lines.size() && !p_lines.get(p_idx).equals("[new]")) {
+				String[] l_order = p_lines.get(p_idx).split(" ");
+				if (l_order[0].equals("AdvanceOrder")) {
+					l_currentPlayer.addOrder(new AdvanceOrder(l_order[1], l_order[2], Integer.parseInt(l_order[3]),
+							l_currentPlayer, this.d_gameEngine));
+				} else if (l_order[0].equals("AirliftOrder")) {
+					l_currentPlayer.addOrder(new AirliftOrder(l_order[1], l_order[2], Integer.parseInt(l_order[3]),
+							l_currentPlayer, this.d_gameEngine));
+				} else if (l_order[0].equals("BlockadeOrder")) {
+					l_currentPlayer.addOrder(new BlockadeOrder(l_order[1], l_currentPlayer, this.d_gameEngine));
+				} else if (l_order[0].equals("BombOrder")) {
+					l_currentPlayer.addOrder(new BombOrder(l_order[1], l_currentPlayer, this.d_gameEngine));
+				} else if (l_order[0].equals("DeployOrder")) {
+					l_currentPlayer.addOrder(new DeployOrder(l_order[1], Integer.parseInt(l_order[2]),
+							l_currentPlayer, this.d_gameEngine));
+				} else if (l_order[0].equals("NegotiateOrder")) {
+					l_currentPlayer.addOrder(new NegotiateOrder(l_order[1], l_currentPlayer, this.d_gameEngine));
+				}
 				p_idx++;
 			}
 
@@ -205,6 +228,7 @@ public class GameLoader {
 			} else {
 				this.d_gameEngine.getPlayersState().addPlayer(l_currentPlayer);
 			}
+			p_idx++;
 		}
 
 		p_idx++;
@@ -435,8 +459,8 @@ public class GameLoader {
 	public void savePlayers(FileWriter p_writer) throws IOException {
 		ArrayList<Player> l_players = d_gameEngine.getPlayersState().getPlayers();
 		for (Player l_player : l_players) {
-			String l_playerStr = "[new]\n" + l_player.getName() + " " + l_player.d_playerStrategy.getClass().getName() + " "
-					+ l_player.getReinforcementsArmies() + "\n";
+			String l_playerStr = "[new]\n" + l_player.getName() + " " + l_player.d_playerStrategy.getClass().getName()
+					+ " " + l_player.getReinforcementsArmies() + "\n";
 			for (CountryModel l_country : l_player.getOwnedCountry()) {
 				l_playerStr += (l_country.getName() + " ");
 			}
@@ -454,7 +478,29 @@ public class GameLoader {
 			}
 			l_playerStr += "\n";
 
-			// ++++++++++++++ save players orders
+			for (Order l_order : l_player.getOrders()) {
+				if (l_order.getClass().getName().equals("AdvanceOrder")) {
+					l_playerStr += (l_order.getClass().getName() + " " + ((AdvanceOrder) l_order).d_sourceCountryName
+							+ " " + ((AdvanceOrder) l_order).d_targetCountryName + " "
+							+ ((AdvanceOrder) l_order).d_numberOfArmies + "\n");
+				} else if (l_order.getClass().getName().equals("AirliftOrder")) {
+					l_playerStr += (l_order.getClass().getName() + " " + ((AirliftOrder) l_order).d_sourceCountryName
+							+ " " + ((AirliftOrder) l_order).d_targetCountryName + " "
+							+ ((AirliftOrder) l_order).d_numberOfArmies + "\n");
+				} else if (l_order.getClass().getName().equals("BlockadeOrder")) {
+					l_playerStr += (l_order.getClass().getName() + " " + ((BlockadeOrder) l_order).d_targetCountryName
+							+ "\n");
+				} else if (l_order.getClass().getName().equals("BombOrder")) {
+					l_playerStr += (l_order.getClass().getName() + " " + ((BombOrder) l_order).d_targetCountryName
+							+ "\n");
+				} else if (l_order.getClass().getName().equals("DeployOrder")) {
+					l_playerStr += (l_order.getClass().getName() + " " + ((DeployOrder) l_order).d_targetCountryName
+							+ " " + ((DeployOrder) l_order).d_numberOfArmies + "\n");
+				} else if (l_order.getClass().getName().equals("NegotiateOrder")) {
+					l_playerStr += (l_order.getClass().getName() + " " + ((NegotiateOrder) l_order).d_targetPlayerName
+							+ "\n");
+				}
+			}
 
 			p_writer.write(l_playerStr + "\n");
 		}

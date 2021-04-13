@@ -9,7 +9,10 @@ import controller.GameEngine;
  *
  */
 public class BlockadeOrder extends Order {
-	String d_targetCountryName;
+	/**
+	 * Name of the target country
+	 */
+	public String d_targetCountryName;
 	Player d_issuer;
 	GameEngine d_gameEngine;
 

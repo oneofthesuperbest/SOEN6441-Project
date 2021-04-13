@@ -9,7 +9,10 @@ import controller.GameEngine;
  *
  */
 public class NegotiateOrder extends Order {
-	String d_targetPlayerName;
+	/**
+	 * The name of the target player
+	 */
+	public String d_targetPlayerName;
 	Player d_issuer;
 	GameEngine d_gameEngine;
 
