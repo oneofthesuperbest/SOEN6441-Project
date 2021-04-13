@@ -83,18 +83,24 @@ public class GameEngine {
 	 */
 	public void setPhase(int p_phase) {
 		if (p_phase == 0) {
+			System.out.println("-----------------Default phase initialized-----------------");
 			d_logEntryBuffer.addLogEntry("-----------------Default phase initialized-----------------");
 			d_phase = new DefaultPhase(this);
 		} else if (p_phase == 1) {
+			System.out.println("-----------------Map edit phase initialized-----------------");
 			d_logEntryBuffer.addLogEntry("-----------------Map edit phase initialized-----------------");
 			d_phase = new MapEditingPhase(this);
 		} else if (p_phase == 2) {
+			this.d_playerState = new PlayersState();
+			System.out.println("-----------------Game play start-up phase initialized-----------------");
 			d_logEntryBuffer.addLogEntry("-----------------Game play start-up phase initialized-----------------");
 			d_phase = new StartUpPhase(this);
 		} else if (p_phase == 3) {
+			System.out.println("-----------------Game play issue order phase initialized-----------------");
 			d_logEntryBuffer.addLogEntry("-----------------Game play issue order phase initialized-----------------");
 			d_phase = new IssueOrderPhase(this);
 		} else if (p_phase == 4) {
+			System.out.println("-----------------Game play execute order phase initialized-----------------");
 			d_logEntryBuffer.addLogEntry("-----------------Game play execute order phase initialized-----------------");
 			d_phase = new ExecuteOrderPhase(this);
 		}
@@ -133,7 +139,7 @@ public class GameEngine {
 	public void loadGameEngineConsole() {
 		System.out.println("GameEngine console loaded.");
 		ValidateCommandView l_VCVObject = new ValidateCommandView();
-		if (this.getPhase().toString().equals("issue order")) {
+		if (!this.getPhase().getString().equals("issue order")) {
 			while (true) {
 				if (!this.getPhase().getString().equals("start-up")) {
 					// Break out of Game engine console for user
@@ -182,6 +188,7 @@ public class GameEngine {
 			int l_game = l_totalGames;
 			ArrayList<String> l_mapResult = new ArrayList<String>();
 			while (l_game > 0) {
+				this.refresh();
 				if (l_mapLoader.loadMapData(l_maps[l_currentMapIndex], false, false)) {
 					for (String l_player : l_players) {
 						if (!l_player.equals("human")) {
@@ -198,8 +205,6 @@ public class GameEngine {
 					} else {
 						l_mapResult.add("Draw");
 					}
-
-					this.refresh();
 				} else {
 					l_mapResult.add("Invalid map");
 				}
@@ -238,7 +243,7 @@ public class GameEngine {
 				this.assignReinforcements();
 			}
 			this.issueOrderLoop();
-			if (this.getPhase().toString().equals("default")) {
+			if (this.getPhase().getString().equals("default")) {
 				return;
 			}
 			this.setPhase(4);
@@ -252,11 +257,17 @@ public class GameEngine {
 				break;
 			}
 		}
-		if (this.d_playerState.getPlayers().size() > 1) {
+		if (this.d_playerState.getPlayers().size() == 1) {
 			String l_gameEndMessage = "Player " + this.d_playerState.getPlayers().get(0).getName()
 					+ " has won the game!!!";
 			this.d_logEntryBuffer.addLogEntry(l_gameEndMessage);
 			System.out.println(l_gameEndMessage);
+			this.setPhase(0);
+		} else {
+			String l_gameEndMessage = "The game was a draw!!!";
+			this.d_logEntryBuffer.addLogEntry(l_gameEndMessage);
+			System.out.println(l_gameEndMessage);
+			this.setPhase(0);
 		}
 	}
 
@@ -348,7 +359,7 @@ public class GameEngine {
 						if (l_player.getReinforcementsArmies() > 0) {
 							d_currentPlayer = l_player.getName();
 							int l_returnValue = l_player.issueOrder();
-							if (this.getPhase().toString().equals("default")) {
+							if (this.getPhase().getString().equals("default")) {
 								return;
 							}
 							if (l_returnValue == 0) {
@@ -447,17 +458,17 @@ public class GameEngine {
 						new Player(p_commandList[l_index + 1], p_commandList[l_index + 2], this, d_scannerObject));
 				l_index += 2;
 				if (l_returnValue == 0) {
-					System.out.println("Player with name '" + p_commandList[l_index] + "' is already present");
+					System.out.println("Player with name '" + p_commandList[l_index - 1] + "' is already present");
 				} else {
-					System.out.println("Player '" + p_commandList[l_index] + "' is added");
+					System.out.println("Player '" + p_commandList[l_index - 1] + "' is added");
 				}
 			} else {
 				l_index++;
-				int l_returnValue = d_playerState.removePlayer(p_commandList[l_index]);
+				int l_returnValue = d_playerState.removePlayer(p_commandList[l_index - 1]);
 				if (l_returnValue == 0) {
-					System.out.println("Player '" + p_commandList[l_index] + "' not found");
+					System.out.println("Player '" + p_commandList[l_index - 1] + "' not found");
 				} else {
-					System.out.println("Player '" + p_commandList[l_index] + "' is removed");
+					System.out.println("Player '" + p_commandList[l_index - 1] + "' is removed");
 				}
 			}
 		}

@@ -35,13 +35,13 @@ public class Player {
 	 */
 	public Player(String p_name, String p_strategy, GameEngine p_gameEngine, Scanner p_scannerObject) {
 		this.d_name = p_name;
-		if(p_strategy.equals("human") || p_strategy.equals("PlayerStrategy")) {
+		if(p_strategy.equals("human") || p_strategy.equals("model.PlayerStrategy")) {
 			d_playerStrategy = new PlayerStrategy(p_gameEngine, this, p_scannerObject);
-		} else if(p_strategy.equals("aggressive") || p_strategy.equals("AggressiveStrategy")) {
+		} else if(p_strategy.equals("aggressive") || p_strategy.equals("model.AggressiveStrategy")) {
 			d_playerStrategy = new AggressiveStrategy(p_gameEngine, this, p_scannerObject);
-		} else if(p_strategy.equals("cheater") || p_strategy.equals("CheaterStrategy")) {
+		} else if(p_strategy.equals("cheater") || p_strategy.equals("model.CheaterStrategy")) {
 			d_playerStrategy = new CheaterStrategy(p_gameEngine, this, p_scannerObject);
-		} else if(p_strategy.equals("benevolent") || p_strategy.equals("BenevolentStrategy")) {
+		} else if(p_strategy.equals("benevolent") || p_strategy.equals("model.BenevolentStrategy")) {
 			d_playerStrategy = new BenevolentStrategy(p_gameEngine, this, p_scannerObject);
 		} else {
 			d_playerStrategy = new RandomStrategy(p_gameEngine, this, p_scannerObject);

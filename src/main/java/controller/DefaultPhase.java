@@ -57,8 +57,11 @@ public class DefaultPhase extends IntermediateMapEditingPhase {
 	public void loadGame(String p_filename) {
 		this.d_gameEngineObject.getLogEntryBuffer().addLogEntry("Game load command was issued.");
 		System.out.println("Game load command was issued.");
+		this.d_gameEngineObject.refresh();
 		GameLoader p_gameLoader = new GameLoader(this.d_gameEngineObject);
-		p_gameLoader.loadGame(p_filename, false, false);
+		if(!p_gameLoader.loadGame(p_filename, false, false)) {
+			this.d_gameEngineObject.setPhase(0);
+		}
 	}
 	
 	/**

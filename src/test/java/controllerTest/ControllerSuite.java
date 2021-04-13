@@ -9,6 +9,7 @@ import org.junit.runners.Suite.SuiteClasses;
  */
 @RunWith(Suite.class)
 @SuiteClasses({ GameEngineTest.class, MapControllerTest.class, MapEditingPhaseTest.class, DefaultPhaseTest.class,
-		StartUpPhaseTest.class, MapValidatorTest.class, MapLoaderWarzoneTest.class, MapLoaderConquestTest.class })
+		StartUpPhaseTest.class, MapValidatorTest.class, MapLoaderWarzoneTest.class, MapLoaderConquestTest.class,
+		GameLoaderTest.class })
 public class ControllerSuite {
 }
